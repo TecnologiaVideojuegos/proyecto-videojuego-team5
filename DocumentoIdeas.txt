@@ -1,0 +1,3 @@
+Creo este documento por si en algún mommento se os ocurre una idea 
+relacionada con el videojuego (narrativa, ambientación, experiencia de 
+juego) la dejeis aquí. Así también podemos practicar el uso de git
