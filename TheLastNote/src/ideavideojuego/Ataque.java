@@ -27,8 +27,7 @@ public class Ataque {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+ 
 
     public int getDmg() {
         return dmg;
