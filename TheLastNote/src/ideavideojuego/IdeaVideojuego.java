@@ -34,23 +34,10 @@ public class IdeaVideojuego {
         
         
         while(AlfredoMercurio.getVida()>0 && DonaldTrap.getVida()>0){
-            if(AlfredoMercurio.getVida()>0){
-                System.out.println("--------------------------------------------------------------------------------------------");
-                System.out.println("Selecciona un ataque: ");
-                for(int i=0; i<AlfredoMercurio.getAtaques().size(); i++){
-                    System.out.println(i+". "+AlfredoMercurio.getAtaques().get(i).getNombre());
-                }
-                int seleccion = scanner.nextInt();
-                DonaldTrap.setVida(DonaldTrap.getVida()-AlfredoMercurio.getAtaques().get(seleccion).getDmg());
-                System.out.println("Ahora DonaldTrap tiene: "+DonaldTrap.getVida()+" vida");
-            }
-            if(DonaldTrap.getVida()>0){
-                System.out.println("--------------------------------------------------------------------------------------------");
-                int ataqueEnemigo = (int) Math.random()*2;
-                AlfredoMercurio.setVida(AlfredoMercurio.getVida()-DonaldTrap.getAtaques().get(ataqueEnemigo).getDmg());
-                System.out.println("DonaldTrap usó: "+DonaldTrap.getAtaques().get(ataqueEnemigo).getNombre());
-                System.out.println("Ahora AlfredoMercurio tiene: "+AlfredoMercurio.getVida()+ " vida");
-            }
+            System.out.println("--------------------------------------------------------------------------------------------");
+            AlfredoMercurio.atacar(DonaldTrap);
+            System.out.println("--------------------------------------------------------------------------------------------");
+            DonaldTrap.ataqueEnemigo(AlfredoMercurio);
         }
         System.out.println("SE HA TERMIADO EL COMBATE");
     }

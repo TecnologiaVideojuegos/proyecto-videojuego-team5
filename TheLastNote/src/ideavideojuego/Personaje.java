@@ -6,6 +6,7 @@
 package ideavideojuego;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -52,6 +53,27 @@ public class Personaje {
         return "Personaje{" + "vida=" + vida + ", nombre=" + nombre + ", ataques=" + ataques + '}';
     }
     
+    public void atacar(Personaje penemigo){
+        if(this.getVida()>0){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Selecciona un ataque: ");
+                for(int i=0; i<this.getAtaques().size(); i++){
+                    System.out.println(i+". "+this.getAtaques().get(i).getNombre());
+                }
+                int seleccion = scanner.nextInt();
+                penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
+                System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
+        }else{
+            System.out.println("¡HAS MUERTO!");
+        }
+    }
     
-    
+    public void ataqueEnemigo(Personaje personaje){
+        if(this.getVida()>0){
+            int ataqueEnemigo = (int) Math.random()*2;
+            personaje.setVida(personaje.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
+            System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
+            System.out.println("Ahora "+personaje.getNombre()+" tiene: "+personaje.getVida()+ " vida");
+        }
+    }
 }
