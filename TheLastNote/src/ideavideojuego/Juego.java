@@ -13,6 +13,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SpriteSheet;
 /**
  *
@@ -29,6 +30,7 @@ public class Juego extends BasicGame{
     private float ang = 30f;
     private Image fondo;
     private int cX = 600,cY=360;
+    private Music music;
     
     
     public Juego() throws  SlickException{
@@ -48,6 +50,7 @@ public class Juego extends BasicGame{
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
         anim = new Animation(sprite,100);//Animation del personaje
+        music = new Music("Musica/rock_hall.ogg", false);
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
@@ -64,7 +67,12 @@ public class Juego extends BasicGame{
             }
         }*/
         ang += delta * 0.1f;
-		
+	if (container.getInput().isKeyDown(Input.KEY_M)){
+			music.play();
+        }
+        if (container.getInput().isKeyDown(Input.KEY_N)){
+			music.stop();
+        }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             anim.start();
             if(x>0){
@@ -100,12 +108,11 @@ public class Juego extends BasicGame{
     public void render(GameContainer container, Graphics g) throws SlickException {
         /*g.setColor(Color.green);
         g.drawString(texto, x, y);*/
+        //music.play();
         fondo.draw();
         anim.draw(x, y);
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
-        
-        
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);    
     }
     
     
