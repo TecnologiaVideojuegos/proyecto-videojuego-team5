@@ -11,6 +11,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SpriteSheet;
 /**
@@ -26,25 +27,29 @@ public class Juego extends BasicGame{
     private Animation anim;
     private SpriteSheet sprite;
     private float ang = 30f;
-    private int cX = 600,cY=400;
+    private Image fondo;
+    private int cX = 600,cY=360;
     
     
     public Juego() throws  SlickException{
         super("Primera Pantalla") ;
         contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(cX, cY, false);
+        contenedor.setDisplayMode(cX, cY, false);//Indicamos cuantos pixeles tendra la ventana
+        contenedor.setShowFPS(false);//No se muestran los fps
         contenedor.start();
+        
     }
 
     @Override
     public void init(GameContainer container) throws SlickException {
-        this.x = 30;
-        this.y = 40;
-        texto = "Hello World";
-        sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);
-        anim = new Animation(sprite,100);
-        contenedor.getGraphics().setBackground(Color.gray);
-        anim.stop();
+        this.x = 20; //Coordenadas donde empieza el personaje
+        this.y = 193;
+        //texto = "Hello World";
+        fondo = new Image("Design/hallway1.png"); //Imagen de fondo
+        sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
+        anim = new Animation(sprite,100);//Animation del personaje
+        //contenedor.getGraphics().setBackground(Color.gray);
+        //anim.stop();
         //anim.setAutoUpdate(true);
     }
 
@@ -74,13 +79,13 @@ public class Juego extends BasicGame{
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP)) {
             anim.start();
-            if(y>0){
+            if(y>160){
                 y -= delta * 0.1f;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN)) {
             anim.start();
-            if(y<350){
+            if(y<217){
                 y += delta * 0.1f;
             }
 	}
@@ -95,8 +100,11 @@ public class Juego extends BasicGame{
     public void render(GameContainer container, Graphics g) throws SlickException {
         /*g.setColor(Color.green);
         g.drawString(texto, x, y);*/
+        fondo.draw();
         anim.draw(x, y);
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        
         
     }
     
