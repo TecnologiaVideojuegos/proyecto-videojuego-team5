@@ -26,11 +26,13 @@ public class Juego extends BasicGame{
     private Animation anim;
     private SpriteSheet sprite;
     private float ang = 30f;
+    private int cX = 600,cY=400;
+    
     
     public Juego() throws  SlickException{
         super("Primera Pantalla") ;
         contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(800, 600, false);
+        contenedor.setDisplayMode(cX, cY, false);
         contenedor.start();
     }
 
@@ -60,19 +62,27 @@ public class Juego extends BasicGame{
 		
         if (container.getInput().isKeyDown(Input.KEY_LEFT)) {
             anim.start();
-            x -= delta * 0.1f;
+            if(x>0){
+                x -= delta * 0.1f;
+            }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT)) {
             anim.start();
-            x += delta * 0.1f;
+            if(x<572){
+                x += delta * 0.1f;
+            }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP)) {
             anim.start();
-            y -= delta * 0.1f;
+            if(y>0){
+                y -= delta * 0.1f;
+            }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN)) {
             anim.start();
-            y += delta * 0.1f;
+            if(y<350){
+                y += delta * 0.1f;
+            }
 	}
         else{
             anim.stop();
@@ -86,6 +96,7 @@ public class Juego extends BasicGame{
         /*g.setColor(Color.green);
         g.drawString(texto, x, y);*/
         anim.draw(x, y);
+        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         
     }
     
