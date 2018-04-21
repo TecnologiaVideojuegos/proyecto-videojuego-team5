@@ -65,25 +65,25 @@ public class Juego extends BasicGame{
         }*/
         ang += delta * 0.1f;
 		
-        if (container.getInput().isKeyDown(Input.KEY_LEFT)) {
+        if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             anim.start();
             if(x>0){
                 x -= delta * 0.1f;
             }
 	}
-        else if (container.getInput().isKeyDown(Input.KEY_RIGHT)) {
+        else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             anim.start();
             if(x<572){
                 x += delta * 0.1f;
             }
 	}
-        else if (container.getInput().isKeyDown(Input.KEY_UP)) {
+        else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             anim.start();
             if(y>160){
                 y -= delta * 0.1f;
             }
 	}
-        else if (container.getInput().isKeyDown(Input.KEY_DOWN)) {
+        else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
             anim.start();
             if(y<217){
                 y += delta * 0.1f;
