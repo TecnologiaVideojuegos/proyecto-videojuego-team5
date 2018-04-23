@@ -18,7 +18,7 @@ public class IdeaVideojuego {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         //INICIALIZACIÓN DE LOS ATAQUES
         Ataque Guitarrazo = new Ataque(30, 20, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10);
         Ataque Mama = new Ataque(65, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 10);
@@ -83,7 +83,7 @@ public class IdeaVideojuego {
             System.out.println("--------------------------------------------------------------------------------------------");
             DonaldTrap.ataqueEnemigo(AlfredoMercurio);
         }
-        System.out.println("SE HA TERMIADO EL COMBATE");
+        System.out.println("SE HA TERMIADO EL COMBATE");*/
     }
     
 }

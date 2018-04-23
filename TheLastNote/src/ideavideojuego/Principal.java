@@ -21,7 +21,7 @@ public class Principal extends StateBasedGame{
     public Principal() throws SlickException{
         super("Pantalla Principal");
         contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(1080, 607, false);
+        contenedor.setDisplayMode(1024, 512, false);
         contenedor.setShowFPS(false);
         contenedor.start();
     }
@@ -31,6 +31,7 @@ public class Principal extends StateBasedGame{
     */
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
+        this.addState(new EstadoMenu());
         this.addState(new PantallaInicio());
         
     }
