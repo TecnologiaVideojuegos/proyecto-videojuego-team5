@@ -3,12 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/MusicListenerTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/SavedStateTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/InputTest.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/ControllerListener.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/AnimationTest.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Personaje.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Juego.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/AlphaMapTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/ImageBufferTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/BigImageTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/TileMapTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/PantallaInicio.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Principal.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/FontTest.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/IdeaVideojuego.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Ataque.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/GraphicsTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/CopyAreaAlphaTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/CachedRenderTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/TransitionTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Personaje.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Juego.java</file>
         </group>
     </open-files>
 </project-private>

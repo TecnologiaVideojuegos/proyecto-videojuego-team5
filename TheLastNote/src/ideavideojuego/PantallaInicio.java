@@ -4,23 +4,24 @@
  * and open the template in the editor.
  */
 package ideavideojuego;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
 /**
  *
  * @author Álvaro Zamorano
  */
-public class Juego extends BasicGame{
-    
+public class PantallaInicio extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
@@ -32,18 +33,13 @@ public class Juego extends BasicGame{
     private int cX = 600,cY=360;
     private Music music;
     
-    
-    public Juego() throws  SlickException{
-        super("Primera Pantalla") ;
-        contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(cX, cY, false);//Indicamos cuantos pixeles tendra la ventana
-        contenedor.setShowFPS(false);//No se muestran los fps
-        contenedor.start();
-        
+    @Override
+    public int getID() {
+        return 0;
     }
 
     @Override
-    public void init(GameContainer container) throws SlickException {
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 20; //Coordenadas donde empieza el personaje
         this.y = 193;
         //texto = "Hello World";
@@ -57,19 +53,24 @@ public class Juego extends BasicGame{
     }
 
     @Override
-    public void update(GameContainer container, int delta) throws SlickException {
-        /*tiempo += delta;
-        if(tiempo > 50){
-            tiempo = 0;
-            x += 2;
-            if(x > 500){
-                x = 30;
-            }
-        }*/
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        /*g.setColor(Color.green);
+        g.drawString(texto, x, y);*/
+        //music.play();
+        fondo.draw();
+        anim.draw(x, y);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+    }
+
+    @Override
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.1f;
 	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();
-                        //music.resume();                       
+			music.play();                       
+                        //music.resume();
+                        
+                        
         }
         if (container.getInput().isKeyDown(Input.KEY_N)){
 			music.pause();
@@ -102,26 +103,6 @@ public class Juego extends BasicGame{
             anim.stop();
             anim.setCurrentFrame(6);
         }
-        //anim.update(delta);
     }
-
-    @Override
-    public void render(GameContainer container, Graphics g) throws SlickException {
-        /*g.setColor(Color.green);
-        g.drawString(texto, x, y);*/
-        //music.play();
-        fondo.draw();
-        anim.draw(x, y);
-        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);    
-    }
-    
-    
-    public static void main(String args[]){
-        try{
-            new Juego();
-        }catch(org.newdawn.slick.SlickException e){}
-    }
-    
     
 }
