@@ -1,6 +1,6 @@
 package org.newdawn.slick.tests;
 
-import ideavideojuego.AnimationTest;
+//import ideavideojuego.AnimationTest;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;

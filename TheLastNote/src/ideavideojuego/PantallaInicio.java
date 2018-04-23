@@ -26,12 +26,13 @@ public class PantallaInicio extends BasicGameState{
     private float x,y;
     private String texto;
     private int tiempo;
-    private Animation anim;
-    private SpriteSheet sprite;
+    private Animation anim,alfredoD,alfredoI;
+    private SpriteSheet sprite,spriteAlfredoD,spriteAlfredoI;
     private float ang = 30f;
     private Image fondo;
-    private int cX = 600,cY=360;
+    private int cX = 1080,cY=607;
     private Music music;
+    private boolean derecha;
     
     @Override
     public int getID() {
@@ -44,9 +45,14 @@ public class PantallaInicio extends BasicGameState{
         this.y = 193;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
-        anim = new Animation(sprite,100);//Animation del personaje
+        //sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
+        //anim = new Animation(sprite,100);//Animation del personaje
         music = new Music("Musica/rock_hall.ogg", false);
+        spriteAlfredoD = new SpriteSheet("Design/FreddieWalkSMALL_V2.png",18,41);
+        spriteAlfredoI = new SpriteSheet("Design/FreddieWalkSMALL_V1.png",18,41);
+        alfredoD = new Animation(spriteAlfredoD,100);
+        alfredoI = new Animation(spriteAlfredoI,100);
+        derecha=true;
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
@@ -56,9 +62,14 @@ public class PantallaInicio extends BasicGameState{
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         /*g.setColor(Color.green);
         g.drawString(texto, x, y);*/
-        //music.play();
         fondo.draw();
-        anim.draw(x, y);
+        //anim.draw(x, y);
+        if(derecha){
+            alfredoD.draw(x,y);
+        }
+        else{
+            alfredoI.draw(x,y);
+        }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
@@ -76,32 +87,37 @@ public class PantallaInicio extends BasicGameState{
 			music.pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            anim.start();
+            alfredoI.start();
             if(x>0){
                 x -= delta * 0.1f;
+                derecha=false;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            anim.start();
+            alfredoD.start();
             if(x<572){
                 x += delta * 0.1f;
+                derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            anim.start();
+            alfredoD.start();
             if(y>160){
                 y -= delta * 0.1f;
+                derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
-            anim.start();
+            alfredoD.start();
             if(y<217){
                 y += delta * 0.1f;
+                derecha=true;
             }
 	}
         else{
-            anim.stop();
-            anim.setCurrentFrame(6);
+            alfredoD.stop();
+            alfredoI.stop();
+            alfredoD.setCurrentFrame(0);
         }
     }
     
