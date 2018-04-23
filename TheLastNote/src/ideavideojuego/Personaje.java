@@ -7,6 +7,7 @@ package ideavideojuego;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -16,14 +17,31 @@ public class Personaje {
     private int vida, vidaMax;
     private String nombre;
     private ArrayList<Ataque> ataques;
+    private SpriteSheet spritePJ;
 
-    public Personaje(int vida, String nombre) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite) {
         this.vidaMax=vida;
         this.vida=vida;
         this.nombre = nombre;
         ataques = new ArrayList<>();
+        spritePJ=sprite;
     }
 
+    public int getVidaMax() {
+        return vidaMax;
+    }
+
+    public void setVidaMax(int vidaMax) {
+        this.vidaMax = vidaMax;
+    }
+
+    public SpriteSheet getSpritePJ() {
+        return spritePJ;
+    }
+
+    public void setSpritePJ(SpriteSheet spritePJ) {
+        this.spritePJ = spritePJ;
+    }
 
     public int getVida() {
         return vida;
