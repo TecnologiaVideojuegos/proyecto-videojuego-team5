@@ -28,16 +28,21 @@ public class PantallaInicio extends BasicGameState{
     private int tiempo;
     private Animation anim,alfredoD,alfredoI;
     private SpriteSheet sprite,spriteAlfredoD,spriteAlfredoI;
-    private float ang = 30f;
+    private float ang;
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
+    private Personaje personaje;
     
     @Override
     public int getID() {
-        return 0;
+        return 2;
     }
+    
+    /*public PantallaInicio(Personaje personaje){
+        this.personaje=personaje;
+    }*/
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -53,6 +58,7 @@ public class PantallaInicio extends BasicGameState{
         alfredoD = new Animation(spriteAlfredoD,100);
         alfredoI = new Animation(spriteAlfredoI,100);
         derecha=true;
+        ang = 30f;
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
