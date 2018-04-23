@@ -19,7 +19,7 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author Álvaro Zamorano
  */
-public class Juego extends BasicGame{
+public class PruebaDeEstado extends BasicGame{
     
     private AppGameContainer contenedor;
     private float x,y;
@@ -33,7 +33,7 @@ public class Juego extends BasicGame{
     private Music music;
     
     
-    public Juego() throws  SlickException{
+    public PruebaDeEstado() throws  SlickException{
         super("Primera Pantalla") ;
         contenedor = new AppGameContainer(this);
         contenedor.setDisplayMode(cX, cY, false);//Indicamos cuantos pixeles tendra la ventana
@@ -119,7 +119,7 @@ public class Juego extends BasicGame{
     
     public static void main(String args[]){
         try{
-            new Juego();
+            new PruebaDeEstado();
         }catch(org.newdawn.slick.SlickException e){}
     }
     

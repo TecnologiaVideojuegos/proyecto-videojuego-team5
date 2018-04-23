@@ -32,7 +32,7 @@ public class Principal extends StateBasedGame{
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         this.addState(new EstadoMenu());
-        this.addState(new PantallaInicio());
+        this.addState(new EstadoPasillo1());
         
     }
     
