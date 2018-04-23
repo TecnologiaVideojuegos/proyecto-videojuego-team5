@@ -37,11 +37,7 @@ public class PantallaInicio extends BasicGameState{
     
     @Override
     public int getID() {
-<<<<<<< HEAD
-        return 1;
-=======
         return 2;
->>>>>>> 072fc735c32c89740eed83a6b077a827e64fb580
     }
     
     /*public PantallaInicio(Personaje personaje){
