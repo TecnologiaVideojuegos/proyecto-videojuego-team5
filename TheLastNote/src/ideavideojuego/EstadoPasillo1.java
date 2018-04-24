@@ -37,7 +37,7 @@ public class EstadoPasillo1 extends BasicGameState{
     
     @Override
     public int getID() {
-        return 2;
+        return 3;
     }
     
     /*public PantallaInicio(Personaje personaje){
@@ -58,7 +58,7 @@ public class EstadoPasillo1 extends BasicGameState{
         alfredoD = new Animation(spriteAlfredoD,100);
         alfredoI = new Animation(spriteAlfredoI,100);
         derecha=true;
-        ang = 30f;
+        ang = 200f;
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
@@ -95,28 +95,28 @@ public class EstadoPasillo1 extends BasicGameState{
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             alfredoI.start();
             if(x>0){
-                x -= delta * 0.1f;
+                x -= delta * 0.5f;
                 derecha=false;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             alfredoD.start();
             if(x<572){
-                x += delta * 0.1f;
+                x += delta * 0.5f;
                 derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             alfredoD.start();
             if(y>160){
-                y -= delta * 0.1f;
+                y -= delta * 0.5f;
                 derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
             alfredoD.start();
             if(y<217){
-                y += delta * 0.1f;
+                y += delta * 0.5f;
                 derecha=true;
             }
 	}

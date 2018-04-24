@@ -33,7 +33,7 @@ public class EstadoCamerino extends BasicGameState{
     
     @Override
     public int getID() {
-        return 1;
+        return 2;
     }
     
     public EstadoCamerino(Personaje personaje){

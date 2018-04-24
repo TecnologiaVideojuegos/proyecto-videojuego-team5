@@ -8,6 +8,7 @@ package ideavideojuego;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -29,9 +30,9 @@ public class EstadoSeleccion extends BasicGameState {
     private Sprite puntero;
     
     static {
-        ALFREDO = new Punto(275.0f, 125.0f);
-        MOLDOVA = new Punto(275.0f, 200.0f);
-        LUDWIG = new Punto(275.0f, 200.0f);
+        ALFREDO = new Punto(0,0);
+        MOLDOVA = new Punto(300, 0);
+        LUDWIG = new Punto(600, 0);
     }
     
     @Override
@@ -41,9 +42,9 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.botonALFREDO = new Sprite("Design/FreddyStill.png", new Punto(400.0f, 150.0f));
-        this.botonMOLDOVA = new Sprite("Design/SaxoStill.png", new Punto(400.0f, 225.0f));
-        this.botonLUDWIG = new Sprite("Design/BombinStill.png", new Punto(400.0f, 225.0f));
+        this.botonALFREDO = new Sprite("Design/FreddyStill.png", ALFREDO);
+        this.botonMOLDOVA = new Sprite("Design/SaxoStill.png", MOLDOVA);
+        this.botonLUDWIG = new Sprite("Design/BombinStill.png", LUDWIG);
         puntero = new Sprite("Design/PunteroLoL.png", ALFREDO);
         this.indicador = 0;
     }
@@ -52,13 +53,36 @@ public class EstadoSeleccion extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         botonALFREDO.draw();
-        botonALFREDO.draw();
-        botonALFREDO.draw();
+        botonMOLDOVA.draw();
+        botonLUDWIG.draw();
         puntero.draw();
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        
+        Input entrada = container.getInput();
+        if(entrada.isKeyPressed(Input.KEY_RIGHT)){
+            if (indicador==0){
+                indicador=1;
+                puntero.setPosicion(MOLDOVA);
+            }
+            else if(indicador==1){
+                indicador=2;
+                puntero.setPosicion(LUDWIG);
+            }
+        }else if(entrada.isKeyPressed(Input.KEY_LEFT)){
+            if(indicador==1){
+                indicador=0;
+                puntero.setPosicion(ALFREDO);
+            }
+            else if(indicador==2){
+                indicador=1;
+                puntero.setPosicion(MOLDOVA);
+            }
+        }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
+            if(indicador==0 || indicador ==1 || indicador ==2){
+                game.enterState(3);
+            }
+        } 
     }
 }

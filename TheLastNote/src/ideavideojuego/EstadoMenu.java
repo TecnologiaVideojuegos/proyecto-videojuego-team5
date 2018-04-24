@@ -55,7 +55,7 @@ public class EstadoMenu extends BasicGameState{
             puntero.setPosicion(SALIR);
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
-                game.enterState(2);
+                game.enterState(1);
             }else{
                 System.exit(0);
             }
