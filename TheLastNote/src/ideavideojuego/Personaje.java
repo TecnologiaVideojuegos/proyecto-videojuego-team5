@@ -13,7 +13,7 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author Michael Lofer
  */
-public class Personaje {
+public class Personaje{
     private int vida, vidaMax;
     private String nombre;
     private ArrayList<Ataque> ataques;
@@ -124,5 +124,9 @@ public class Personaje {
         for(int i=0; i<ataques.size(); i++){
             ataques.get(i).setUsos(ataques.get(i).getUsosMax());
         }
+    }
+
+    Object getPersonaje() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

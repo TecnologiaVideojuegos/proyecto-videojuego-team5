@@ -11,9 +11,9 @@ import java.util.Scanner;
  *
  * @author Michael Lofer
  */
-public class IdeaVideojuego {
+public class IdeaVideojuego{
 
-    /**
+     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {

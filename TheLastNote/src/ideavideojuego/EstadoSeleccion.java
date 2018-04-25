@@ -28,7 +28,8 @@ public class EstadoSeleccion extends BasicGameState {
     private Image fondo;
     private int indicador;
     private Sprite puntero;
-    Principal p;
+    private IdeaVideojuego p;
+    private Personaje personaje;
     
     static {
         ALFREDO = new Punto(0,0);
@@ -48,6 +49,7 @@ public class EstadoSeleccion extends BasicGameState {
         this.botonLUDWIG = new Sprite("Design/BombinStill.png", LUDWIG);
         puntero = new Sprite("Design/PunteroLoL.png", ALFREDO);
         this.indicador = 0;
+        personaje = new Personaje(200, "Alfredo Mercurio");
     }
         
 
@@ -82,7 +84,8 @@ public class EstadoSeleccion extends BasicGameState {
             }
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0 || indicador ==1 || indicador ==2){
-                p.personaje.setNombre("Alfredo Mercurio");
+                //game.enterState(3);
+                game.addState(new EstadoPasillo1(personaje));
                 game.enterState(3);
             }
         } 
