@@ -21,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoPasillo1 extends BasicGameState{
+public class EstadoEscenarioTrap2 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
@@ -33,11 +33,12 @@ public class EstadoPasillo1 extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
+    private Personaje DonaldTrap;
     private Personaje personaje;
     
     @Override
     public int getID() {
-        return 3;
+        return 6;
     }
     
     /*public PantallaInicio(Personaje personaje){
@@ -63,7 +64,14 @@ public class EstadoPasillo1 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-
+        //Creación ENEMIGO
+        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10);
+        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10);
+        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10);
+        /*DonaldTrap = new Personaje(250, "Donald Trap");
+        DonaldTrap.getAtaques().add(Peluquin);
+        DonaldTrap.getAtaques().add(Trap);
+        DonaldTrap.getAtaques().add(Muro);*/
     }
 
     @Override

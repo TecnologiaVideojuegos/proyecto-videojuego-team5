@@ -34,6 +34,9 @@ public class Principal extends StateBasedGame{
         this.addState(new EstadoMenu());
         this.addState(new EstadoSeleccion());
         this.addState(new EstadoPasillo1());
+        this.addState(new EstadoEscenarioReag1());
+        this.addState(new EstadoEscenarioTrap2());
+        this.addState(new EstadoEscenarioKPOP3());
     }
     
     public static void main(String[] args){

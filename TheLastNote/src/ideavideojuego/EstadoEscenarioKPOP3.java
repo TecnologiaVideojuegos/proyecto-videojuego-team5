@@ -21,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoPasillo1 extends BasicGameState{
+public class EstadoEscenarioKPOP3 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
@@ -33,11 +33,12 @@ public class EstadoPasillo1 extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
+    private Personaje KimJongDos;
     private Personaje personaje;
     
     @Override
     public int getID() {
-        return 3;
+        return 8;
     }
     
     /*public PantallaInicio(Personaje personaje){
@@ -63,7 +64,14 @@ public class EstadoPasillo1 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-
+        //Creación ENEMIGO
+        Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10);
+        Ataque Kpop = new Ataque(30, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 10);
+        Ataque Nuclear = new Ataque(40, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 10);
+        /*imJongDos = new Personaje(250, "Kim Jong-Dos");
+        KimJongDos.getAtaques().add(Misilazo);
+        KimJongDos.getAtaques().add(Kpop);
+        KimJongDos.getAtaques().add(Nuclear);*/
     }
 
     @Override

@@ -21,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoPasillo1 extends BasicGameState{
+public class EstadoEscenarioReag1 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
@@ -33,11 +33,12 @@ public class EstadoPasillo1 extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
+    private Personaje LuisFonsi;
     private Personaje personaje;
     
     @Override
     public int getID() {
-        return 3;
+        return 4;
     }
     
     /*public PantallaInicio(Personaje personaje){
@@ -53,7 +54,7 @@ public class EstadoPasillo1 extends BasicGameState{
         //sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
         //anim = new Animation(sprite,100);//Animation del personaje
         music = new Music("Musica/rock_hall.ogg", false);
-        spriteAlfredoD = new SpriteSheet("Design/FreddieWalkBIG_V2.png", 170, 410);
+        spriteAlfredoD = new SpriteSheet("Design/SaxoStill.png", 170, 410);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalkBIG_V1.png", 170 ,410);
         alfredoD = new Animation(spriteAlfredoD,100);
         alfredoI = new Animation(spriteAlfredoI,100);
@@ -63,7 +64,14 @@ public class EstadoPasillo1 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-
+        //Creación ENEMIGO
+        Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
+        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
+        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 10);
+        LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/SaxoStill.png", 170, 410));
+        LuisFonsi.getAtaques().add(Microfonazo);
+        LuisFonsi.getAtaques().add(Flow);
+        LuisFonsi.getAtaques().add(Despacito);
     }
 
     @Override
@@ -72,6 +80,7 @@ public class EstadoPasillo1 extends BasicGameState{
         g.drawString(texto, x, y);*/
         fondo.draw();
         //anim.draw(x, y);
+        LuisFonsi.getSpritePJ().draw(40, 200);
         if(derecha){
             alfredoD.draw(x,y);
         }
