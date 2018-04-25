@@ -19,14 +19,17 @@ public class Personaje {
     private ArrayList<Ataque> ataques;
     private SpriteSheet spritePJ;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite) {
+    public Personaje(int vida, String nombre/*, SpriteSheet sprite*/) {
         this.vidaMax=vida;
         this.vida=vida;
         this.nombre = nombre;
         ataques = new ArrayList<>();
-        spritePJ=sprite;
+        /*spritePJ=sprite;*/
     }
 
+    public Personaje(){
+        
+    }
     public int getVidaMax() {
         return vidaMax;
     }

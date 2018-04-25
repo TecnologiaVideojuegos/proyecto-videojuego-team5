@@ -17,13 +17,15 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Principal extends StateBasedGame{
 
     private AppGameContainer contenedor;
+    Personaje personaje = new Personaje();
     
     public Principal() throws SlickException{
         super("Pantalla Principal");
         contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(1024, 512, false);
+        contenedor.setDisplayMode(1080, 720, false);
         contenedor.setShowFPS(false);
         contenedor.start();
+        
     }
     
     /**

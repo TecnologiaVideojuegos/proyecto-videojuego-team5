@@ -28,6 +28,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Image fondo;
     private int indicador;
     private Sprite puntero;
+    Principal p;
     
     static {
         ALFREDO = new Punto(0,0);
@@ -81,7 +82,8 @@ public class EstadoSeleccion extends BasicGameState {
             }
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0 || indicador ==1 || indicador ==2){
-                game.enterState(4);
+                p.personaje.setNombre("Alfredo Mercurio");
+                game.enterState(3);
             }
         } 
     }
