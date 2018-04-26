@@ -27,14 +27,13 @@ public class EstadoPasillo1 extends BasicGameState{
     private String texto;
     private int tiempo;
     private Animation anim,alfredoD,alfredoI;
-    private SpriteSheet sprite,spriteAlfredoD,spriteAlfredoI;
+    private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
     private float ang;
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
     private Personaje personaje;
-    private VC vc;
     
     @Override
     public int getID() {
@@ -59,10 +58,13 @@ public class EstadoPasillo1 extends BasicGameState{
         derecha=true;
         ang = 200f;
         
+        //System.out.println("NOMBRE DEL PERSONAJE ELEGIDO --> "+ClaseEstatica.getPersonaje().getNombre());
+        //personaje = ClaseEstatica.getPersonaje();
+        //System.out.println(""+personaje.getNombre());
+        //prueba = personaje.getSpritePJ();
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
-        
 
     }
 
@@ -71,6 +73,7 @@ public class EstadoPasillo1 extends BasicGameState{
         fondo.draw();
         if(derecha){
             alfredoD.draw(x,y);
+            ;
         }
         else{
             alfredoI.draw(x,y);

@@ -10,6 +10,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -31,6 +32,7 @@ public class EstadoSeleccion extends BasicGameState {
     private IdeaVideojuego p;
     private Personaje personaje;
     private Personaje AlfredoMercurio;
+    private SpriteSheet prueba;
     
     static {
         ALFREDO = new Punto(0,0);
@@ -55,7 +57,7 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque Guitarrazo = new Ataque(30, 20, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10);
         Ataque Mama = new Ataque(65, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 10);
         Ataque DiscoPlatino = new Ataque(80, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 10);
-        Personaje AlfredoMercurio = new Personaje(200, "Alfredo Mercurio");
+        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164));
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
@@ -96,8 +98,9 @@ public class EstadoSeleccion extends BasicGameState {
             if(indicador==0 || indicador ==1 || indicador ==2){
                 //game.enterState(3);
                 //game.addState(new EstadoPasillo1(personaje));
-                ClaseEstatica.setPersonaje(personaje);
-                game.enterState(3);
+                ClaseEstatica.setPersonaje(AlfredoMercurio);
+                System.out.println("NOMBRE DEL PERSONAJE ELEGIDO --> "+ClaseEstatica.getPersonaje().getNombre());
+                game.enterState(2);
             }
         } 
     }

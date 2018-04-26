@@ -34,6 +34,7 @@ public class Principal extends StateBasedGame{
     public void initStatesList(GameContainer container) throws SlickException {
         this.addState(new EstadoMenu());
         this.addState(new EstadoSeleccion());
+        this.addState(new EstadoCamerino());
         this.addState(new EstadoPasillo1());
         this.addState(new EstadoEscenarioReag1());
         this.addState(new EstadoEscenarioTrap2());

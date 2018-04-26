@@ -9,7 +9,7 @@ package ideavideojuego;
  *
  * @author Michael Lofer
  */
-public class ClaseEstatica {
+public final class ClaseEstatica {
     private static Personaje personaje;
     
     public ClaseEstatica(){
