@@ -44,6 +44,7 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        this.fondo = new Image("Design/seleccion.jpg");
         this.botonALFREDO = new Sprite("Design/FreddyStill.png", ALFREDO);
         this.botonMOLDOVA = new Sprite("Design/SaxoStill.png", MOLDOVA);
         this.botonLUDWIG = new Sprite("Design/BombinStill.png", LUDWIG);
@@ -55,6 +56,7 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        fondo.draw();
         botonALFREDO.draw();
         botonMOLDOVA.draw();
         botonLUDWIG.draw();
