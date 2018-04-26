@@ -17,11 +17,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Principal extends StateBasedGame{
 
     private AppGameContainer contenedor;
+    Personaje personaje = new Personaje();
     
     public Principal() throws SlickException{
         super("Pantalla Principal");
         contenedor = new AppGameContainer(this);
-        contenedor.setDisplayMode(1024, 512, false);
+        contenedor.setDisplayMode(1080, 720, false);
         contenedor.setShowFPS(false);
         contenedor.start();
     }
@@ -33,7 +34,11 @@ public class Principal extends StateBasedGame{
     public void initStatesList(GameContainer container) throws SlickException {
         this.addState(new EstadoMenu());
         this.addState(new EstadoSeleccion());
+        this.addState(new EstadoCamerino());
         this.addState(new EstadoPasillo1());
+        this.addState(new EstadoEscenarioReag1());
+        this.addState(new EstadoEscenarioTrap2());
+        this.addState(new EstadoEscenarioKPOP3());
     }
     
     public static void main(String[] args){

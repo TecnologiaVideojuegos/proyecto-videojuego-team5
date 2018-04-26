@@ -21,67 +21,73 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoCamerino extends BasicGameState{
+public class EstadoEscenarioTrap2 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
     private int tiempo;
     private Animation anim,alfredoD,alfredoI;
-    private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
+    private SpriteSheet sprite,spriteAlfredoD,spriteAlfredoI;
     private float ang;
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
-    private Personaje personaje/* = ClaseEstatica.getPersonaje()*/;
+    private Personaje DonaldTrap;
+    private Personaje personaje;
     
     @Override
     public int getID() {
-        return 2;
+        return 6;
     }
     
-    /*public EstadoPasillo1(Personaje personaje){
+    /*public PantallaInicio(Personaje personaje){
         this.personaje=personaje;
-    */
+    }*/
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 571; //Coordenadas donde empieza el personaje
+        this.x = 20; //Coordenadas donde empieza el personaje
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        //music = new Music("Musica/rock_hall.ogg", false);
+        //sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
+        //anim = new Animation(sprite,100);//Animation del personaje
+        music = new Music("Musica/rock_hall.ogg", false);
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
         alfredoI = new Animation(spriteAlfredoI,100);
         derecha=true;
         ang = 200f;
-        
-        System.out.println("ESTADO DEL PERSONAJE -----> "+personaje);
-        //System.out.println("NOMBRE DEL PERSONAJE ELEGIO --> "+personaje.getNombre());
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
-
+        
+        //Creación ENEMIGO
+        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10);
+        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10);
+        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10);
+        /*DonaldTrap = new Personaje(250, "Donald Trap");
+        DonaldTrap.getAtaques().add(Peluquin);
+        DonaldTrap.getAtaques().add(Trap);
+        DonaldTrap.getAtaques().add(Muro);*/
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        music = new Music("Musica/rock_hall.ogg", false);
+        /*g.setColor(Color.green);
+        g.drawString(texto, x, y);*/
         fondo.draw();
-        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
+        //anim.draw(x, y);
         if(derecha){
-            //alfredoD.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
+            alfredoD.draw(x,y);
         }
         else{
-            //alfredoI.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            alfredoI.draw(x,y);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override
@@ -97,35 +103,35 @@ public class EstadoCamerino extends BasicGameState{
 			music.pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            ClaseEstatica.getPersonaje().getAnimI().start();
+            alfredoD.stop();
+            alfredoI.start();
             if(x>0){
                 x -= delta * 0.4f;
                 derecha=false;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
+            alfredoI.stop();
+            alfredoD.start();
             if(x<1018){
                 x += delta * 0.4f;
                 derecha=true;
             }else{
-                game.enterState(3);
+                //game.enterState(4);
 
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
+            alfredoI.stop();
+            alfredoD.start();
             if(y>257){
                 y -= delta * 0.4f;
                 derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
+            alfredoI.stop();
+            alfredoD.start();
             if(y<354){
                 y += delta * 0.4f;
                 derecha=true;
@@ -133,18 +139,13 @@ public class EstadoCamerino extends BasicGameState{
 	}
         else{
             if (derecha){
-                ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                alfredoD.stop();
+                alfredoD.setCurrentFrame(0);
             }
             else{
-                ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                alfredoI.stop();
+                alfredoI.setCurrentFrame(0);
             }
         }            
     }
-    @Override
-       public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
-    }
-    
 }
