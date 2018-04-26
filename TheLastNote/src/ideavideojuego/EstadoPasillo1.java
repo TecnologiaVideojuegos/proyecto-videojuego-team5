@@ -34,6 +34,7 @@ public class EstadoPasillo1 extends BasicGameState{
     private Music music;
     private boolean derecha;
     private Personaje personaje;
+    private VC vc;
     
     @Override
     public int getID() {
@@ -57,6 +58,7 @@ public class EstadoPasillo1 extends BasicGameState{
         alfredoI = new Animation(spriteAlfredoI,100);
         derecha=true;
         ang = 200f;
+        
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);

@@ -30,6 +30,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Sprite puntero;
     private IdeaVideojuego p;
     private Personaje personaje;
+    private Personaje AlfredoMercurio;
     
     static {
         ALFREDO = new Punto(0,0);
@@ -50,7 +51,14 @@ public class EstadoSeleccion extends BasicGameState {
         this.botonLUDWIG = new Sprite("Design/BombinStill.png", LUDWIG);
         puntero = new Sprite("Design/PunteroLoL.png", ALFREDO);
         this.indicador = 0;
-        personaje = new Personaje(200, "Alfredo Mercurio");
+        //personaje = new Personaje(200, "Alfredo Mercurio");
+        Ataque Guitarrazo = new Ataque(30, 20, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10);
+        Ataque Mama = new Ataque(65, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 10);
+        Ataque DiscoPlatino = new Ataque(80, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 10);
+        Personaje AlfredoMercurio = new Personaje(200, "Alfredo Mercurio");
+        AlfredoMercurio.getAtaques().add(Guitarrazo);
+        AlfredoMercurio.getAtaques().add(Mama);
+        AlfredoMercurio.getAtaques().add(DiscoPlatino);
     }
         
 
@@ -88,6 +96,7 @@ public class EstadoSeleccion extends BasicGameState {
             if(indicador==0 || indicador ==1 || indicador ==2){
                 //game.enterState(3);
                 //game.addState(new EstadoPasillo1(personaje));
+                ClaseEstatica.setPersonaje(personaje);
                 game.enterState(3);
             }
         } 

@@ -25,7 +25,6 @@ public class Principal extends StateBasedGame{
         contenedor.setDisplayMode(1080, 720, false);
         contenedor.setShowFPS(false);
         contenedor.start();
-        
     }
     
     /**
