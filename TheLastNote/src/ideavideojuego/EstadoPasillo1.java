@@ -40,9 +40,9 @@ public class EstadoPasillo1 extends BasicGameState{
         return 3;
     }
     
-    public EstadoPasillo1(Personaje personaje){
+    /*public EstadoPasillo1(Personaje personaje){
         this.personaje=personaje;
-    }
+    */
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {

@@ -5,11 +5,16 @@
         <group>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo1.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/states/TestState1.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/SavedStateTest.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioTrap2.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/state/StateBasedGame.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/GameContainer.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/StateBasedTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/SpriteSheetFontTest.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/ShapeTest.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoMenu.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Principal.java</file>
+            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tiled/TiledMap.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/PruebaDeEstado.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/IdeaVideojuego.java</file>
             <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/org/newdawn/slick/tests/states/package.html</file>

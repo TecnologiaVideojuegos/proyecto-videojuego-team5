@@ -85,7 +85,7 @@ public class EstadoSeleccion extends BasicGameState {
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0 || indicador ==1 || indicador ==2){
                 //game.enterState(3);
-                game.addState(new EstadoPasillo1(personaje));
+                //game.addState(new EstadoPasillo1(personaje));
                 game.enterState(3);
             }
         } 
