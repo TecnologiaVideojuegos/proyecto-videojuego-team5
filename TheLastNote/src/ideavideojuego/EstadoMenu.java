@@ -21,8 +21,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class EstadoMenu extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
-    private static final Punto JUGAR = new Punto(650, 40);
-    private static final Punto SALIR = new Punto(650, 400);
+    private static final Punto JUGAR = new Punto(450, 200);
+    private static final Punto SALIR = new Punto(450, 400);
     
     private int indicador;
     
@@ -33,7 +33,7 @@ public class EstadoMenu extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/menuProvisional.png");
+        fondo = new Image("Design/menuTekken.jpg");
         puntero = new Sprite("Design/PunteroLoL.png", JUGAR);
         indicador=0;
     }

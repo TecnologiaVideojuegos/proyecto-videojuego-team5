@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo2.java</file>
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioKPOP3.java</file>
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioReag1.java</file>
@@ -12,6 +13,10 @@
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoCamerino.java</file>
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioTrap2.java</file>
             <file>file:/D:/UNIVERSIDAD/REPOSITORIOSGIT/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo1.java</file>
+=======
+            <file>file:/Users/nacho/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoMenu.java</file>
+            <file>file:/Users/nacho/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Principal.java</file>
+>>>>>>> 798836bd1069b208df20f25ea8e39dfd0c2719fa
         </group>
     </open-files>
 </project-private>
