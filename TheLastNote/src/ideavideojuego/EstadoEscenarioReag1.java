@@ -80,7 +80,7 @@ public class EstadoEscenarioReag1 extends BasicGameState{
         g.drawString(texto, x, y);*/
         fondo.draw();
         //anim.draw(x, y);
-        LuisFonsi.getSpritePJ().draw(40, 200);
+        //LuisFonsi.getSpritePJ().draw(40, 200);
         if(derecha){
             alfredoD.draw(x,y);
         }

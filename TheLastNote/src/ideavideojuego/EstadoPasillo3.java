@@ -21,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoPasillo1 extends BasicGameState{
+public class EstadoPasillo3 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
@@ -37,7 +37,7 @@ public class EstadoPasillo1 extends BasicGameState{
     
     @Override
     public int getID() {
-        return 3;
+        return 7;
     }
     
     /*public EstadoPasillo1(Personaje personaje){
