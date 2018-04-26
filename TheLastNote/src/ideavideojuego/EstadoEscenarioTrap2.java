@@ -13,6 +13,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -32,6 +33,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
+    private Sound step;
     private boolean derecha;
     private Personaje DonaldTrap;
     private Personaje personaje;
@@ -54,6 +56,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
         //sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
         //anim = new Animation(sprite,100);//Animation del personaje
         music = new Music("Musica/rock_hall.ogg", false);
+        step = new Sound("Musica/step.ogg");
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
@@ -76,20 +79,23 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        /*g.setColor(Color.green);
-        g.drawString(texto, x, y);*/
+        //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
-        //anim.draw(x, y);
+        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
-            alfredoD.draw(x,y);
+            //alfredoD.draw(x,y);
+            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+            ;
         }
         else{
-            alfredoI.draw(x,y);
+            //alfredoI.draw(x,y);
+            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
-        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
-
+    
+    
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
@@ -103,49 +109,61 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
 			music.pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            alfredoD.stop();
-            alfredoI.start();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimI().start();
             if(x>0){
                 x -= delta * 0.4f;
                 derecha=false;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(x<1018){
                 x += delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }else{
-                //game.enterState(4);
-
+                game.enterState(7);
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(y>257){
                 y -= delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(y<354){
                 y += delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else{
             if (derecha){
-                alfredoD.stop();
-                alfredoD.setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
             }
             else{
-                alfredoI.stop();
-                alfredoI.setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
             }
         }            
+    }
+    
+    @Override
+       public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+       music.play();
     }
 }

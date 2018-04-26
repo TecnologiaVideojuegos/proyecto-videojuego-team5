@@ -105,6 +105,8 @@ public class EstadoCamerino extends BasicGameState{
             if(x>0){
                 x -= delta * 0.4f;
                 derecha=false;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
@@ -126,6 +128,8 @@ public class EstadoCamerino extends BasicGameState{
             if(y>257){
                 y -= delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
@@ -134,6 +138,8 @@ public class EstadoCamerino extends BasicGameState{
             if(y<354){
                 y += delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }
 	}
         else{
