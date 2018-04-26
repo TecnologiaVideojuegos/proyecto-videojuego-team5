@@ -13,6 +13,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -32,6 +33,7 @@ public class EstadoCamerino extends BasicGameState{
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
+    private Sound step;
     private boolean derecha;
     private Personaje personaje/* = ClaseEstatica.getPersonaje()*/;
     
@@ -50,7 +52,8 @@ public class EstadoCamerino extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        //music = new Music("Musica/rock_hall.ogg", false);
+        music = new Music("Musica/rock_hall.ogg", false);
+        step = new Sound("Musica/step.ogg");
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
@@ -68,7 +71,7 @@ public class EstadoCamerino extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        music = new Music("Musica/rock_hall.ogg", false);
+        //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
@@ -110,6 +113,8 @@ public class EstadoCamerino extends BasicGameState{
             if(x<1018){
                 x += delta * 0.4f;
                 derecha=true;
+                if(!step.playing())
+                    step.play();
             }else{
                 game.enterState(3);
 
