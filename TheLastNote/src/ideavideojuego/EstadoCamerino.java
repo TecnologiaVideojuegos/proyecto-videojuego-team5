@@ -33,7 +33,7 @@ public class EstadoCamerino extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
-    private Personaje personaje;
+    private Personaje personaje/* = ClaseEstatica.getPersonaje()*/;
     
     @Override
     public int getID() {
@@ -58,6 +58,8 @@ public class EstadoCamerino extends BasicGameState{
         derecha=true;
         ang = 200f;
         
+        System.out.println("ESTADO DEL PERSONAJE -----> "+personaje);
+        //System.out.println("NOMBRE DEL PERSONAJE ELEGIO --> "+personaje.getNombre());
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
         //anim.setAutoUpdate(true);
@@ -67,12 +69,15 @@ public class EstadoCamerino extends BasicGameState{
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
+        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
-            alfredoD.draw(x,y);
+            //alfredoD.draw(x,y);
+            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
             ;
         }
         else{
-            alfredoI.draw(x,y);
+            //alfredoI.draw(x,y);
+            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
@@ -91,16 +96,16 @@ public class EstadoCamerino extends BasicGameState{
 			music.pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            alfredoD.stop();
-            alfredoI.start();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimI().start();
             if(x>0){
                 x -= delta * 0.4f;
                 derecha=false;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(x<1018){
                 x += delta * 0.4f;
                 derecha=true;
@@ -110,16 +115,16 @@ public class EstadoCamerino extends BasicGameState{
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(y>257){
                 y -= delta * 0.4f;
                 derecha=true;
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
-            alfredoI.stop();
-            alfredoD.start();
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().start();
             if(y<354){
                 y += delta * 0.4f;
                 derecha=true;
@@ -127,12 +132,12 @@ public class EstadoCamerino extends BasicGameState{
 	}
         else{
             if (derecha){
-                alfredoD.stop();
-                alfredoD.setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
             }
             else{
-                alfredoI.stop();
-                alfredoI.setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
             }
         }            
     }

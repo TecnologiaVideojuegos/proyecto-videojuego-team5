@@ -5,6 +5,7 @@
  */
 package ideavideojuego;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -32,7 +33,8 @@ public class EstadoSeleccion extends BasicGameState {
     private IdeaVideojuego p;
     private Personaje personaje;
     private Personaje AlfredoMercurio;
-    private SpriteSheet prueba;
+    private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
+    private Animation anim,alfredoD,alfredoI;
     
     static {
         ALFREDO = new Punto(0,0);
@@ -54,13 +56,23 @@ public class EstadoSeleccion extends BasicGameState {
         puntero = new Sprite("Design/PunteroLoL.png", ALFREDO);
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
+        
+        spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
+        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         Ataque Guitarrazo = new Ataque(30, 20, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10);
         Ataque Mama = new Ataque(65, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 10);
         Ataque DiscoPlatino = new Ataque(80, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 10);
-        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164));
+        
+        alfredoD = new Animation(spriteAlfredoD,100);
+        alfredoI = new Animation(spriteAlfredoI,100);
+        
+        alfredoD.stop();
+        alfredoI.stop();
+        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164), alfredoD, alfredoI);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
+        
     }
         
 

@@ -5,6 +5,8 @@
  */
 package ideavideojuego;
 
+import org.newdawn.slick.Animation;
+
 /**
  *
  * @author Michael Lofer
