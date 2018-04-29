@@ -21,24 +21,23 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class EstadoSeleccion extends BasicGameState {
 
-    private static final Punto ALFREDO;
+    /*private static final Punto ALFREDO;
     private static final Punto MOLDOVA;
-    private static final Punto LUDWIG;
-    private Sprite botonALFREDO;
-    private Sprite botonMOLDOVA;
-    private Sprite botonLUDWIG;
+    private static final Punto LUDWIG;*/
+    private Sprite ALFREDO;
+    private Sprite MOLDOVA;
+    private Sprite LUDWIG;
     private Image fondo;
     private int indicador;
     private Sprite puntero;
     private Personaje AlfredoMercurio,LudwigvanMozart,MoldovaSax;
     private SpriteSheet spriteAlfredoD, spriteAlfredoI,spriteLudwigD,spriteLudwigI,spriteMoldovaD,spriteMoldovaI;
     private Animation alfredoD,alfredoI,ludwigD,ludwigI,moldovaD,moldovaI;
-    
-    static {
+    /*static {
         ALFREDO = new Punto(0,0);
         MOLDOVA = new Punto(300, 0);
         LUDWIG = new Punto(600, 0);
-    }
+    }*/
     
     @Override
     public int getID() {
@@ -47,11 +46,12 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.fondo = new Image("Design/seleccion.jpg");
-        this.botonALFREDO = new Sprite("Design/FreddyStill.png", ALFREDO);
-        this.botonMOLDOVA = new Sprite("Design/SaxoStill.png", MOLDOVA);
-        this.botonLUDWIG = new Sprite("Design/BombinStill.png", LUDWIG);
-        puntero = new Sprite("Design/cursor1.png", ALFREDO);
+        
+        this.fondo = new Image("Design/escenario.jpg");
+        ALFREDO = new Sprite("Design/FreddieStillBIG.png",500,380);
+        MOLDOVA = new Sprite("Design/SaxGuyStillBIG.png", 500,380);
+        LUDWIG = new Sprite("Design/BombinStillBIG.png", 500,380);
+        //puntero = new Sprite("Design/cursor1.png", ALFREDO);
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
         
@@ -105,10 +105,16 @@ public class EstadoSeleccion extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
-        botonALFREDO.draw();
-        botonMOLDOVA.draw();
-        botonLUDWIG.draw();
-        puntero.draw();
+        if(indicador==0){
+            ALFREDO.draw();
+        }
+        else if(indicador==1){
+            MOLDOVA.draw();
+        }
+        else if(indicador==2){
+            LUDWIG.draw();
+        }
+        //puntero.draw();
     }
 
     @Override
@@ -117,27 +123,24 @@ public class EstadoSeleccion extends BasicGameState {
         if(entrada.isKeyPressed(Input.KEY_RIGHT)){
             if (indicador==0){
                 indicador=1;
-                puntero.setPosicion(MOLDOVA);
+                //puntero.setPosicion(MOLDOVA);
             }
             else if(indicador==1){
                 indicador=2;
-                puntero.setPosicion(LUDWIG);
+                //puntero.setPosicion(LUDWIG);
             }
         }else if(entrada.isKeyPressed(Input.KEY_LEFT)){
             if(indicador==1){
                 indicador=0;
-                puntero.setPosicion(ALFREDO);
+                //puntero.setPosicion(ALFREDO);
             }
             else if(indicador==2){
                 indicador=1;
-                puntero.setPosicion(MOLDOVA);
+                //puntero.setPosicion(MOLDOVA);
             }
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
-                //game.enterState(3);
-                //game.addState(new EstadoPasillo1(personaje));
                 ClaseEstatica.setPersonaje(AlfredoMercurio);
-                //System.out.println("NOMBRE DEL PERSONAJE ELEGIDO --> "+ClaseEstatica.getPersonaje().getNombre());
                 game.enterState(2);
             }
             else if(indicador ==1){
