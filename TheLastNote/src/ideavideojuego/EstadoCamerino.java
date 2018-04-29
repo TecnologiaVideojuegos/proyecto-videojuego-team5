@@ -22,46 +22,48 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoCamerino extends BasicGameState{
+public class EstadoCamerino extends BasicGameState {
+
     private AppGameContainer contenedor;
-    private float x,y;
+    private float x, y;
     private String texto;
     private int tiempo;
-    private Animation anim,alfredoD,alfredoI;
+    private Animation anim, alfredoD, alfredoI;
     private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
     private float ang;
     private Image fondo;
-    private int cX = 1080,cY=607;
-    private Music music;
+    private int cX = 1080, cY = 607;
+    private Music musicRock, musicSaxo, musicClasic;
     private Sound step;
     private boolean derecha;
     private Personaje personaje/* = ClaseEstatica.getPersonaje()*/;
-    
+
     @Override
     public int getID() {
         return 2;
     }
-    
+
     /*public EstadoPasillo1(Personaje personaje){
         this.personaje=personaje;
-    */
-
+     */
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 571; //Coordenadas donde empieza el personaje
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/rock_hall.ogg", false);
+        musicRock = new Music("Musica/rock_hall.ogg");
+        musicClasic = new Music("Musica/classic_hall.ogg");
+        //musicSaxo = new Music("Musica/sax_hall.ogg", false);
         step = new Sound("Musica/step.ogg");
-        spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
-        alfredoD = new Animation(spriteAlfredoD,100);
-        alfredoI = new Animation(spriteAlfredoI,100);
-        derecha=true;
+        /*spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
+        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
+        alfredoD = new Animation(spriteAlfredoD, 100);
+        alfredoI = new Animation(spriteAlfredoI, 100);*/
+        derecha = true;
         ang = 200f;
-        
-        System.out.println("ESTADO DEL PERSONAJE -----> "+personaje);
+
+        System.out.println("ESTADO DEL PERSONAJE -----> " + personaje);
         //System.out.println("NOMBRE DEL PERSONAJE ELEGIO --> "+personaje.getNombre());
         //contenedor.getGraphics().setBackground(Color.gray);
         //anim.stop();
@@ -74,12 +76,11 @@ public class EstadoCamerino extends BasicGameState{
         //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
-        if(derecha){
+        if (derecha) {
             //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
-        }
-        else{
+            
+        } else {
             //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
@@ -90,72 +91,80 @@ public class EstadoCamerino extends BasicGameState{
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
-	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();                       
-                        //music.resume();
-                        
-                        
+        if (container.getInput().isKeyDown(Input.KEY_M)) {
+            //music.play();
+            //music.resume();
+
         }
-        if (container.getInput().isKeyDown(Input.KEY_N)){
-			music.pause();
+        if (container.getInput().isKeyDown(Input.KEY_N)) {
+            //music.pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
-            if(x>0){
+            if (x > 0) {
                 x -= delta * 0.4f;
-                derecha=false;
-                if(!step.playing())
+                derecha = false;
+                if (!step.playing()) {
                     step.play();
+                }
             }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
+        } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if(x<1018){
+            if (x < 1018) {
                 x += delta * 0.4f;
-                derecha=true;
-                if(!step.playing())
+                derecha = true;
+                if (!step.playing()) {
                     step.play();
-            }else{
+                }
+            } else {
                 game.enterState(3);
-
             }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
+        } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y>257){
+            if (y > 257) {
                 y -= delta * 0.4f;
-                derecha=true;
-                if(!step.playing())
+                derecha = true;
+                if (!step.playing()) {
                     step.play();
+                }
             }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
+        } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y<354){
+            if (y < 354) {
                 y += delta * 0.4f;
-                derecha=true;
-                if(!step.playing())
+                derecha = true;
+                if (!step.playing()) {
                     step.play();
+                }
             }
-	}
-        else{
-            if (derecha){
+        } else {
+            if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-            }
-            else{
+            } else {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
                 ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
             }
-        }            
+        }
     }
+
     @Override
-       public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        if (ClaseEstatica.getPersonaje().getNombre() == "Alfredo Mercurio") {
+            musicRock.play();
+        }
+        else if(ClaseEstatica.getPersonaje().getNombre() == "Ludwin van Mozart"){
+            musicClasic.play();
+        }
+        else if(ClaseEstatica.getPersonaje().getNombre() == "Moldova Sax"){
+            //musicSaxo.play();
+            musicRock.play();
+            //musicClasic.play();
+        }
     }
-    
+
 }
