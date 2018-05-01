@@ -52,7 +52,6 @@ public class EstadoPasillo1 extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/rock_hall.ogg", false);
         step = new Sound("Musica/step.ogg");
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
@@ -93,13 +92,12 @@ public class EstadoPasillo1 extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
 	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();                       
-                        //music.resume();
+            ClaseEstatica.getPersonaje().getMusicH().play();        
                         
                         
         }
         if (container.getInput().isKeyDown(Input.KEY_N)){
-			music.pause();
+            ClaseEstatica.getPersonaje().getMusicH().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -157,7 +155,7 @@ public class EstadoPasillo1 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
+            ClaseEstatica.getPersonaje().getMusicH().play();
     }
     
 }
