@@ -92,12 +92,11 @@ public class EstadoCamerino extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            //music.play();
-            //music.resume();
+            ClaseEstatica.getPersonaje().getMusicH().play();;
 
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            //music.pause();
+            ClaseEstatica.getPersonaje().getMusicH().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -154,17 +153,7 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        if (ClaseEstatica.getPersonaje().getNombre() == "Alfredo Mercurio") {
-            musicRock.play();
-        }
-        else if(ClaseEstatica.getPersonaje().getNombre() == "Ludwin van Mozart"){
-            musicClasic.play();
-        }
-        else if(ClaseEstatica.getPersonaje().getNombre() == "Moldova Sax"){
-            //musicSaxo.play();
-            musicRock.play();
-            //musicClasic.play();
-        }
+        ClaseEstatica.getPersonaje().getMusicH().play();
     }
 
 }
