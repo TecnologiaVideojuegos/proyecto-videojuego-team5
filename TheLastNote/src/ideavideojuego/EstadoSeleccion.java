@@ -141,15 +141,15 @@ public class EstadoSeleccion extends BasicGameState {
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
                 ClaseEstatica.setPersonaje(AlfredoMercurio);
-                game.enterState(2);
+                game.enterState(8);
             }
             else if(indicador ==1){
                 ClaseEstatica.setPersonaje(MoldovaSax);
-                game.enterState(2);
+                game.enterState(8);
             }
             else if (indicador ==2){
                 ClaseEstatica.setPersonaje(LudwigvanMozart);
-                game.enterState(2);
+                game.enterState(8);
             }
         } 
     }
