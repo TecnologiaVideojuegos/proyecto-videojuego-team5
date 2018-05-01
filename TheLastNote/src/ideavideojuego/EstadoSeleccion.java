@@ -94,7 +94,7 @@ public class EstadoSeleccion extends BasicGameState {
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
        
-        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
+        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
@@ -145,15 +145,15 @@ public class EstadoSeleccion extends BasicGameState {
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
                 ClaseEstatica.setPersonaje(AlfredoMercurio);
-                game.enterState(8);
+                game.enterState(2);
             }
             else if(indicador ==1){
                 ClaseEstatica.setPersonaje(MoldovaSax);
-                game.enterState(8);
+                game.enterState(2);
             }
             else if (indicador ==2){
                 ClaseEstatica.setPersonaje(LudwigvanMozart);
-                game.enterState(8);
+                game.enterState(2);
             }
         } 
     }

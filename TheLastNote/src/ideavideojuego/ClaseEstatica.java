@@ -12,7 +12,7 @@ import org.newdawn.slick.Animation;
  * @author Michael Lofer
  */
 public final class ClaseEstatica {
-    private static Personaje personaje;
+    private static Personaje personaje, enemigo;
     
     public ClaseEstatica(){
     }
@@ -23,5 +23,13 @@ public final class ClaseEstatica {
 
     public static void setPersonaje(Personaje personaje) {
         ClaseEstatica.personaje = personaje;
+    }
+
+    public static Personaje getEnemigo() {
+        return enemigo;
+    }
+
+    public static void setEnemigo(Personaje enemigo) {
+        ClaseEstatica.enemigo = enemigo;
     }
 }
