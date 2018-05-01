@@ -8,6 +8,7 @@ package ideavideojuego;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SpriteSheet;
 
 /**
@@ -20,8 +21,9 @@ public class Personaje{
     private ArrayList<Ataque> ataques;
     private SpriteSheet spritePJ;
     private Animation animD, animI;
+    private Music musicB, musicH; //la b se refiere a batalla y la h al pasillo
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH) {
         this.vidaMax=vida;
         this.vida=vida;
         this.nombre = nombre;
@@ -29,6 +31,24 @@ public class Personaje{
         spritePJ=sprite;
         this.animD=animD;
         this.animI=animI;
+        this.musicB=musicB;
+        this.musicH=musicH;
+    }
+
+    public Music getMusicB() {
+        return musicB;
+    }
+
+    public void setMusicB(Music musicB) {
+        this.musicB = musicB;
+    }
+
+    public Music getMusicH() {
+        return musicH;
+    }
+
+    public void setMusicH(Music musicH) {
+        this.musicH = musicH;
     }
 
     public Animation getAnimD() {

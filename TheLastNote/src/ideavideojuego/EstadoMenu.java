@@ -9,7 +9,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,7 +23,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class EstadoMenu extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
-    private static final Punto JUGAR = new Punto(450, 200);
+    //private Sound click;
+    private static final Punto JUGAR = new Punto(450, 180);
     private static final Punto SALIR = new Punto(450, 400);
     
     private int indicador;
@@ -34,7 +37,8 @@ public class EstadoMenu extends BasicGameState{
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/menuTekken.jpg");
-        puntero = new Sprite("Design/PunteroLoL.png", JUGAR);
+        puntero = new Sprite("Design/cursor1.png", JUGAR);
+        //click = new Sound("Musica/menuClick.wav");
         indicador=0;
     }
 
@@ -50,11 +54,17 @@ public class EstadoMenu extends BasicGameState{
         if(entrada.isKeyPressed(Input.KEY_UP)){
             indicador=0;
             puntero.setPosicion(JUGAR);
+            /*if(!click.playing())
+                    click.play();*/
         }else if(entrada.isKeyPressed(Input.KEY_DOWN)){
             indicador=1;
             puntero.setPosicion(SALIR);
+            /*if(!click.playing())
+                    click.play();*/
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
+                /*if(!click.playing())
+                    click.play();*/
                 game.enterState(1);
             }else{
                 System.exit(0);

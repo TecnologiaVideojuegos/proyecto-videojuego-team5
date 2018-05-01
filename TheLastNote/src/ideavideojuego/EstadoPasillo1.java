@@ -27,15 +27,15 @@ public class EstadoPasillo1 extends BasicGameState{
     private float x,y;
     private String texto;
     private int tiempo;
-    private Animation anim,alfredoD,alfredoI;
-    private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
+    private Animation fonsiD,fonsiI;
+    private SpriteSheet spriteFonsiD, spriteFonsiI;
     private float ang;
     private Image fondo;
     private int cX = 1080,cY=607;
     private Music music;
     private Sound step;
     private boolean derecha;
-    private Personaje personaje;
+    private Personaje LuisFonsi;
     
     @Override
     public int getID() {
@@ -52,23 +52,23 @@ public class EstadoPasillo1 extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/rock_hall.ogg", false);
         step = new Sound("Musica/step.ogg");
-        spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
-        alfredoD = new Animation(spriteAlfredoD,100);
-        alfredoI = new Animation(spriteAlfredoI,100);
         derecha=true;
         ang = 200f;
         
-        //System.out.println("NOMBRE DEL PERSONAJE ELEGIDO --> "+ClaseEstatica.getPersonaje().getNombre());
-        //personaje = ClaseEstatica.getPersonaje();
-        //System.out.println(""+personaje.getNombre());
-        //prueba = personaje.getSpritePJ();
-        //contenedor.getGraphics().setBackground(Color.gray);
-        //anim.stop();
-        //anim.setAutoUpdate(true);
+        spriteFonsiD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        spriteFonsiI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
+        fonsiD = new Animation(spriteFonsiD,100);
+        fonsiI = new Animation(spriteFonsiI,100);
 
+        Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
+        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
+        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 10);
+        Personaje LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), fonsiD, fonsiI, null, null);
+        LuisFonsi.getAtaques().add(Microfonazo);
+        LuisFonsi.getAtaques().add(Flow);
+        LuisFonsi.getAtaques().add(Despacito);
+        ClaseEstatica.setEnemigo(LuisFonsi);
     }
 
     @Override
@@ -93,13 +93,12 @@ public class EstadoPasillo1 extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
 	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();                       
-                        //music.resume();
+            ClaseEstatica.getPersonaje().getMusicH().play();        
                         
                         
         }
         if (container.getInput().isKeyDown(Input.KEY_N)){
-			music.pause();
+            ClaseEstatica.getPersonaje().getMusicH().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -120,7 +119,8 @@ public class EstadoPasillo1 extends BasicGameState{
                 if(!step.playing())
                     step.play();
             }else{
-                game.enterState(3);
+                //ClaseEstatica.setEnemigo(LuisFonsi);
+                game.enterState(9); //CAMBIARLO POR EL 3
 
             }
 	}
@@ -157,7 +157,7 @@ public class EstadoPasillo1 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
+            ClaseEstatica.getPersonaje().getMusicH().play();
     }
     
 }
