@@ -32,9 +32,6 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
     private Image fondo;
     private Music music;
     private boolean derecha;
-    private Personaje LudwigvanMozart;
-    private Personaje personaje;
-    private Sound step;
     private Rectangle perR,perE;
     private boolean colision;
     
@@ -54,9 +51,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
         
         this.enemigox = 100;
         this.enemigoy=257;
-        fondo = new Image("Design/hallway1.png"); //Imagen de fondo
+        fondo = new Image("Design/scenario1.png"); //Imagen de fondo
         music = new Music("Musica/rock_hall.ogg", false);
-        step = new Sound("Musica/step.ogg");
         derecha=true;
         colision = false;
         ang = 200f;
@@ -122,8 +118,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
                 personajex-= delta * 0.4f;
                 perR.setX(personajex);
                 derecha=false;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
@@ -133,8 +129,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
                 personajex += delta * 0.4f;
                 perR.setX(personajex);
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }else{
                 //game.enterState(9);
 
@@ -147,8 +143,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
                 personajey -= delta * 0.4f;
                 perR.setY(personajey);
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
@@ -158,8 +154,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
                 personajey += delta * 0.4f;
                 perR.setY(personajey);
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }
 	}
         else{

@@ -55,7 +55,8 @@ public class EstadoCamerino extends BasicGameState {
         musicRock = new Music("Musica/rock_hall.ogg");
         musicClasic = new Music("Musica/classic_hall.ogg");
         //musicSaxo = new Music("Musica/sax_hall.ogg", false);
-        step = new Sound("Musica/step.ogg");
+        ClaseEstatica.setSonidoPaso(new Sound("Musica/paso.ogg"));
+        //step = new Sound("Musica/paso.ogg");
         /*spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
         alfredoD = new Animation(spriteAlfredoD, 100);
@@ -104,8 +105,8 @@ public class EstadoCamerino extends BasicGameState {
             if (x > 0) {
                 x -= delta * 0.4f;
                 derecha = false;
-                if (!step.playing()) {
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) {
+                    ClaseEstatica.getSonidoPaso().play();
                 }
             }
         } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
@@ -114,8 +115,8 @@ public class EstadoCamerino extends BasicGameState {
             if (x < 1018) {
                 x += delta * 0.4f;
                 derecha = true;
-                if (!step.playing()) {
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) {
+                    ClaseEstatica.getSonidoPaso().play();
                 }
             } else {
                 game.enterState(3);
@@ -126,8 +127,8 @@ public class EstadoCamerino extends BasicGameState {
             if (y > 257) {
                 y -= delta * 0.4f;
                 derecha = true;
-                if (!step.playing()) {
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) {
+                    ClaseEstatica.getSonidoPaso().play();
                 }
             }
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
@@ -136,8 +137,8 @@ public class EstadoCamerino extends BasicGameState {
             if (y < 354) {
                 y += delta * 0.4f;
                 derecha = true;
-                if (!step.playing()) {
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) {
+                    ClaseEstatica.getSonidoPaso().play();
                 }
             }
         } else {

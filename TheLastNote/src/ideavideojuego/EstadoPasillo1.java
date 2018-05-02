@@ -52,7 +52,6 @@ public class EstadoPasillo1 extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        step = new Sound("Musica/step.ogg");
         derecha=true;
         ang = 200f;
         
@@ -106,9 +105,9 @@ public class EstadoPasillo1 extends BasicGameState{
             if(x>0){
                 x -= delta * 0.4f;
                 derecha=false;
-                if(!step.playing())
-                    step.play();
-            }
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
+           }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
@@ -116,8 +115,8 @@ public class EstadoPasillo1 extends BasicGameState{
             if(x<1018){
                 x += delta * 0.4f;
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }else{
                 //ClaseEstatica.setEnemigo(LuisFonsi);
                 game.enterState(9); //CAMBIARLO POR EL 3
@@ -130,8 +129,8 @@ public class EstadoPasillo1 extends BasicGameState{
             if(y>257){
                 y -= delta * 0.4f;
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
@@ -140,8 +139,8 @@ public class EstadoPasillo1 extends BasicGameState{
             if(y<354){
                 y += delta * 0.4f;
                 derecha=true;
-                if(!step.playing())
-                    step.play();
+                if (!ClaseEstatica.getSonidoPaso().playing()) 
+                    ClaseEstatica.getSonidoPaso().play();
             }
 	}
         else{

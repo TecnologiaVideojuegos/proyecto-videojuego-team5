@@ -36,7 +36,7 @@ public class EstadoBatalla extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/hallway1.png");
+        fondo = new Image("Design/scenario1.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
         texto="";
         textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
