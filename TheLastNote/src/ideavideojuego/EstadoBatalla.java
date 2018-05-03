@@ -66,53 +66,83 @@ public class EstadoBatalla extends BasicGameState{
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
-        if(entrada.isKeyPressed(Input.KEY_UP) && indicador<2){
-            indicador=0;
-            puntero.setPosicion(atacar);
-            texto=textoAtaque;
-        }else if(entrada.isKeyPressed(Input.KEY_DOWN) && indicador<2){
-            indicador=1;
-            puntero.setPosicion(huir);
-        }else if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
-            if(indicador<5){
-                indicador++;
-                if (indicador==2){
+        if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
+            if(entrada.isKeyPressed(Input.KEY_UP) && indicador<2){
+                indicador=0;
+                puntero.setPosicion(atacar);
+                texto=textoAtaque;
+            }else if(entrada.isKeyPressed(Input.KEY_DOWN) && indicador<2){
+                indicador=1;
+                puntero.setPosicion(huir);
+            }else if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
+                if(indicador<5){
+                    indicador++;
+                    if (indicador==2){
+                        puntero.setPosicion(a1);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
+                    }else if(indicador==3){
+                        puntero.setPosicion(a2);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
+                    }else if(indicador==4){
+                        puntero.setPosicion(a3);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
+                    }
+                }
+
+            }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
+                if(indicador>2){
+                    indicador--;
+                    if (indicador==2){
+                        puntero.setPosicion(a1);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
+                    }else if(indicador==3){
+                        puntero.setPosicion(a2);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
+                    }else if(indicador==4){
+                        puntero.setPosicion(a3);
+                        texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
+                    }
+                }
+            }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
+                indicador=0;
+                puntero.setPosicion(atacar);
+                texto="";
+            }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
+                if(indicador==0){
+                    indicador=2;
                     puntero.setPosicion(a1);
                     texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
+                }else if(indicador==1){
+                    texto=textoHuir;
+                }else if(indicador==2){
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                 }else if(indicador==3){
-                    puntero.setPosicion(a2);
-                    texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                 }else if(indicador==4){
-                    puntero.setPosicion(a3);
-                    texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
-                }
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                }/*else if((indicador==2) && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                }else if((indicador==3)  && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                }else if((indicador==4)  && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
+                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
+                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                }*/
             }
-            
-        }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
-            if(indicador>2){
-                indicador--;
-                if (indicador==2){
-                    puntero.setPosicion(a1);
-                    texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
-                }else if(indicador==3){
-                    puntero.setPosicion(a2);
-                    texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
-                }else if(indicador==4){
-                    puntero.setPosicion(a3);
-                    texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
-                }
-            }
-        }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
-            indicador=0;
-            puntero.setPosicion(atacar);
-            texto="";
-        }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
-            if(indicador==0){
-                indicador=2;
-                puntero.setPosicion(a1);
-                texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
-            }else if(indicador==1){
-                texto=textoHuir;
+        }else{
+            if(ClaseEstatica.getPersonaje().getVida()>0){
+                System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
+                game.enterState(5);
+            }else{
+                System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
+                ClaseEstatica.getPersonaje().restaurarTodo();
+                ClaseEstatica.getEnemigo().restaurarTodo();
+                game.enterState(2);
             }
         }
     } 

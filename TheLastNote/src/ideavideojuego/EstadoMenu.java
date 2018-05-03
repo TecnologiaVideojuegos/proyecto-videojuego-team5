@@ -23,6 +23,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class EstadoMenu extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
+    private Music musica;
     //private Sound click;
     private static final Punto JUGAR = new Punto(450, 180);
     private static final Punto SALIR = new Punto(450, 400);
@@ -38,6 +39,7 @@ public class EstadoMenu extends BasicGameState{
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/menuTekken.jpg");
         puntero = new Sprite("Design/cursor1.png", JUGAR);
+        musica = new Music("Musica/musicaFinal.ogg");
         //click = new Sound("Musica/menuClick.wav");
         indicador=0;
     }
@@ -70,5 +72,10 @@ public class EstadoMenu extends BasicGameState{
                 System.exit(0);
             }
         } 
+    }
+    
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        musica.play();
     }
 }

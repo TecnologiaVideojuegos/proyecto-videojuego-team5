@@ -74,6 +74,7 @@ public class EstadoPasillo1 extends BasicGameState{
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
+        g.drawString("Pasillo 1", 50, 600);
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
             //alfredoD.draw(x,y);
@@ -156,7 +157,7 @@ public class EstadoPasillo1 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+            //ClaseEstatica.getPersonaje().getMusicH().play();
     }
     
 }
