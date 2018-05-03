@@ -5,6 +5,7 @@
  */
 package ideavideojuego;
 
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.newdawn.slick.Animation;
@@ -115,25 +116,36 @@ public class Personaje{
         return "Personaje{" + "vida=" + vida + ", nombre=" + nombre + ", ataques=" + ataques + '}';
     }
     
-    public void atacar(Personaje penemigo, int seleccion){
+    public String atacar(Personaje penemigo, int seleccion){
+        String texto="";
         if(this.getVida()>0){
             if(this.getAtaques().get(seleccion).getUsos()!=0){ //si aún tiene usos disponibles del ataque elegido
                 this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos()-1); //le restamos un uso a ese ataque
                 if(this.getAtaques().get(seleccion).isAcertado()){
                     penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
                     System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
+                    texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre();;
+                    texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                    texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
                 }
             }else{
                 System.out.println("NO TE QUEDAN USOS");
+                texto = "NO TE QUEDAN USOS";
             }
         }else{
             System.out.println("¡HAS MUERTO!");
+            texto = "¡HAS MUERTO!";
         }
+        return texto;
     }
     
-    public void ataqueEnemigo(Personaje personajeBueno){
+    public String ataqueEnemigo(Personaje personajeBueno){
+        String texto="";
+        /*try{
+            sleep(4000);
+        }catch(InterruptedException ie){}*/
         int ataqueEnemigo=0;
         boolean usosSufiecientes=false;
         if(this.getVida()>0){
@@ -147,10 +159,14 @@ public class Personaje{
                 personajeBueno.setVida(personajeBueno.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
+                texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre();
+                texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
                 System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
             }
         }
+        return texto;
     }
     /*public void atacarTexto(Personaje penemigo){
         if(this.getVida()>0){

@@ -48,7 +48,7 @@ public class EstadoCamerino extends BasicGameState {
      */
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 571; //Coordenadas donde empieza el personaje
+        this.x = 30; //Coordenadas donde empieza el personaje
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo

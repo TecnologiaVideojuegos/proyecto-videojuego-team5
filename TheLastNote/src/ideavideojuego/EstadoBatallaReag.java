@@ -5,12 +5,17 @@
  */
 package ideavideojuego;
 
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,7 +23,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoBatalla extends BasicGameState{
+public class EstadoBatallaReag extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
     private static final Punto atacar = new Punto(925, 580);
@@ -27,7 +32,8 @@ public class EstadoBatalla extends BasicGameState{
     private static final Punto a2 = new Punto(300, 620);
     private static final Punto a3 = new Punto(550, 620);
     private int indicador;
-    private String texto, textoAtaque, textoHuir;
+    private String texto, textoAtaque, textoHuir, textoAccionP, textoAccionM;
+    private UnicodeFont fuente;
     
     @Override
     public int getID() {
@@ -38,7 +44,11 @@ public class EstadoBatalla extends BasicGameState{
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/scenario1.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
+        //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
+        
         texto="";
+        textoAccionP="";
+        textoAccionM="";
         textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
@@ -61,6 +71,8 @@ public class EstadoBatalla extends BasicGameState{
         }else{
             g.drawString(texto, 20, 700);  
         }
+        g.drawString(textoAccionP, 50, 100);
+        g.drawString(textoAccionM, 50, 150);
     }
 
     @Override
@@ -88,7 +100,6 @@ public class EstadoBatalla extends BasicGameState{
                         texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
                     }
                 }
-
             }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
                 if(indicador>2){
                     indicador--;
@@ -115,24 +126,16 @@ public class EstadoBatalla extends BasicGameState{
                 }else if(indicador==1){
                     texto=textoHuir;
                 }else if(indicador==2){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
+                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                 }else if(indicador==3){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    
+                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
+                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                 }else if(indicador==4){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                }/*else if((indicador==2) && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                }else if((indicador==3)  && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                }else if((indicador==4)  && (ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0)){
-                    ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
-                    ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                }*/
+                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
+                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                }
             }
         }else{
             if(ClaseEstatica.getPersonaje().getVida()>0){
