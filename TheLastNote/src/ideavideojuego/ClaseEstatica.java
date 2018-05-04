@@ -6,6 +6,7 @@
 package ideavideojuego;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.Sound;
 
 /**
@@ -15,6 +16,7 @@ import org.newdawn.slick.Sound;
 public final class ClaseEstatica {
     private static Personaje personaje, enemigo;
     private static Sound sonidoPaso;
+    private static Music musicaMenu;
     
     public ClaseEstatica(){
     }
@@ -42,4 +44,14 @@ public final class ClaseEstatica {
     public static void setEnemigo(Personaje enemigo) {
         ClaseEstatica.enemigo = enemigo;
     }
+
+    public static Music getMusicaMenu() {
+        return musicaMenu;
+    }
+
+    public static void setMusicaMenu(Music musicaMenu) {
+        ClaseEstatica.musicaMenu = musicaMenu;
+    }
+    
+    
 }

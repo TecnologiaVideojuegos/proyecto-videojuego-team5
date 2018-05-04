@@ -39,7 +39,7 @@ public class EstadoMenu extends BasicGameState{
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/menuTekken.jpg");
         puntero = new Sprite("Design/cursor1.png", JUGAR);
-        musica = new Music("Musica/musicaFinal.ogg");
+        ClaseEstatica.setMusicaMenu(new Music("Musica/musicaFinal.ogg"));
         //click = new Sound("Musica/menuClick.wav");
         indicador=0;
     }
@@ -48,6 +48,8 @@ public class EstadoMenu extends BasicGameState{
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();;
         puntero.draw();
+        if(!ClaseEstatica.getMusicaMenu().playing())
+            ClaseEstatica.getMusicaMenu().play();
     }
 
     @Override
@@ -76,6 +78,6 @@ public class EstadoMenu extends BasicGameState{
     
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        musica.play();
+        ClaseEstatica.getMusicaMenu().play();
     }
 }

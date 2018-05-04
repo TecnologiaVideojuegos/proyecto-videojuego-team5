@@ -36,39 +36,23 @@ public class EstadoCamerino extends BasicGameState {
     private Music musicRock, musicSaxo, musicClasic;
     private Sound step;
     private boolean derecha;
-    private Personaje personaje/* = ClaseEstatica.getPersonaje()*/;
 
     @Override
     public int getID() {
         return 2;
     }
 
-    /*public EstadoPasillo1(Personaje personaje){
-        this.personaje=personaje;
-     */
+  
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 30; //Coordenadas donde empieza el personaje
         this.y = 257;
-        //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         musicRock = new Music("Musica/rock_hall.ogg");
         musicClasic = new Music("Musica/classic_hall.ogg");
-        //musicSaxo = new Music("Musica/sax_hall.ogg", false);
         ClaseEstatica.setSonidoPaso(new Sound("Musica/paso.ogg"));
-        //step = new Sound("Musica/paso.ogg");
-        /*spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
-        alfredoD = new Animation(spriteAlfredoD, 100);
-        alfredoI = new Animation(spriteAlfredoI, 100);*/
         derecha = true;
         ang = 200f;
-
-        System.out.println("ESTADO DEL PERSONAJE -----> " + personaje);
-        //System.out.println("NOMBRE DEL PERSONAJE ELEGIO --> "+personaje.getNombre());
-        //contenedor.getGraphics().setBackground(Color.gray);
-        //anim.stop();
-        //anim.setAutoUpdate(true);
 
     }
 

@@ -34,6 +34,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Personaje AlfredoMercurio,LudwigvanMozart,MoldovaSax;
     private SpriteSheet spriteAlfredoD, spriteAlfredoI,spriteLudwigD,spriteLudwigI,spriteMoldovaD,spriteMoldovaI;
     private Animation alfredoD,alfredoI,ludwigD,ludwigI,moldovaD,moldovaI;
+    private Music seleccionAlfredo;
     /*static {
         ALFREDO = new Punto(0,0);
         MOLDOVA = new Punto(300, 0);
@@ -47,6 +48,7 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        seleccionAlfredo = new Music("Musica/seleccionRock.ogg");
         
         this.fondo = new Image("Design/escenario.jpg");
         ALFREDO = new Sprite("Design/FreddieStillBIG.png",500,380);
@@ -109,6 +111,8 @@ public class EstadoSeleccion extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
+        if(!ClaseEstatica.getMusicaMenu().playing())
+            ClaseEstatica.getMusicaMenu().play();
         if(indicador==0){
             ALFREDO.draw();
         }
@@ -118,12 +122,17 @@ public class EstadoSeleccion extends BasicGameState {
         else if(indicador==2){
             LUDWIG.draw();
         }
+        /*if(indicador==0 && !seleccionAlfredo.playing()){
+            seleccionAlfredo.play();
+        }*/
         //puntero.draw();
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
+        
+        
         if(entrada.isKeyPressed(Input.KEY_RIGHT)){
             if (indicador==0){
                 indicador=1;
