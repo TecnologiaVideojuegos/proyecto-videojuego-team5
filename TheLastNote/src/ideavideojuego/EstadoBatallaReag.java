@@ -73,6 +73,8 @@ public class EstadoBatallaReag extends BasicGameState{
         }
         g.drawString(textoAccionP, 50, 100);
         g.drawString(textoAccionM, 50, 150);
+        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 290, 305);
+        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 610, 305);
     }
 
     @Override

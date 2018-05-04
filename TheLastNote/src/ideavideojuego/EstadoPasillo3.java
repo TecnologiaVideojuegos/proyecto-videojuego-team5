@@ -52,7 +52,7 @@ public class EstadoPasillo3 extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/rock_hall.ogg", false);
+        music = new Music("Musica/pasilloBoss.ogg", false);
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
