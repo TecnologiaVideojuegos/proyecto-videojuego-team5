@@ -61,13 +61,13 @@ public class EstadoPasillo1 extends BasicGameState{
         fonsiI = new Animation(spriteFonsiI,100);
 
         Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
-        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
-        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 10);
-        Personaje LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), fonsiD, fonsiI, null, null);
+        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30);
+        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 60);
+        LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), fonsiD, fonsiI, null, null);
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
-        ClaseEstatica.setEnemigo(LuisFonsi);
+        //ClaseEstatica.setEnemigo(LuisFonsi);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class EstadoPasillo1 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                //ClaseEstatica.setEnemigo(LuisFonsi);
+                ClaseEstatica.setEnemigo(LuisFonsi);
                 game.enterState(9); //CAMBIARLO POR EL 3
 
             }
