@@ -70,15 +70,12 @@ public class EstadoMenu extends BasicGameState{
                     ClaseEstatica.getClick().play();
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
-<<<<<<< HEAD
                 if(!ClaseEstatica.getClick().playing())
                     ClaseEstatica.getClick().play();
                 game.enterState(1);
-=======
                 /*if(!click.playing())
                     click.play();*/
                 game.enterState(1,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
->>>>>>> 064ea8e39a9899ddb91f6e1224cde5292f59db5a
             }else{
                 System.exit(0);
             }

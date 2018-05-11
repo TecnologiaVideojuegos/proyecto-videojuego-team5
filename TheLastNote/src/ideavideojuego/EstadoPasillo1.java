@@ -29,7 +29,6 @@ public class EstadoPasillo1 extends BasicGameState{
     private AppGameContainer contenedor;
     private float x,y;
     private String texto;
-    private int tiempo;
     private Animation fonsiD,fonsiI;
     private SpriteSheet spriteFonsiD, spriteFonsiI;
     private float ang;
@@ -128,7 +127,7 @@ public class EstadoPasillo1 extends BasicGameState{
             }else{
                 ClaseEstatica.setEnemigo(LuisFonsi);
                 //game.enterState(9); //Prueba
-                game.enterState(4,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                game.enterState(9,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
