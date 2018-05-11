@@ -6,6 +6,7 @@
 package ideavideojuego;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,15 +17,17 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+
+
 /**
  *
  * @author Álvaro Zamorano
  */
 public class EstadoSeleccion extends BasicGameState {
 
-    /*private static final Punto ALFREDO;
-    private static final Punto MOLDOVA;
-    private static final Punto LUDWIG;*/
+
     private Sprite ALFREDO;
     private Sprite MOLDOVA;
     private Sprite LUDWIG;
@@ -35,11 +38,7 @@ public class EstadoSeleccion extends BasicGameState {
     private SpriteSheet spriteAlfredoD, spriteAlfredoI,spriteLudwigD,spriteLudwigI,spriteMoldovaD,spriteMoldovaI;
     private Animation alfredoD,alfredoI,ludwigD,ludwigI,moldovaD,moldovaI;
     private Music seleccionAlfredo;
-    /*static {
-        ALFREDO = new Punto(0,0);
-        MOLDOVA = new Punto(300, 0);
-        LUDWIG = new Punto(600, 0);
-    }*/
+
     
     @Override
     public int getID() {
@@ -113,19 +112,19 @@ public class EstadoSeleccion extends BasicGameState {
         fondo.draw();
         if(!ClaseEstatica.getMusicaMenu().playing())
             ClaseEstatica.getMusicaMenu().play();
-        if(indicador==0){
-            ALFREDO.draw();
+        switch (indicador) {
+            case 0:
+                ALFREDO.draw();
+                break;
+            case 1:
+                MOLDOVA.draw();
+                break;
+            case 2:
+                LUDWIG.draw();
+                break;
+            default:
+                break;
         }
-        else if(indicador==1){
-            MOLDOVA.draw();
-        }
-        else if(indicador==2){
-            LUDWIG.draw();
-        }
-        /*if(indicador==0 && !seleccionAlfredo.playing()){
-            seleccionAlfredo.play();
-        }*/
-        //puntero.draw();
     }
 
     @Override
@@ -136,33 +135,33 @@ public class EstadoSeleccion extends BasicGameState {
         if(entrada.isKeyPressed(Input.KEY_RIGHT)){
             if (indicador==0){
                 indicador=1;
-                //puntero.setPosicion(MOLDOVA);
             }
             else if(indicador==1){
                 indicador=2;
-                //puntero.setPosicion(LUDWIG);
             }
         }else if(entrada.isKeyPressed(Input.KEY_LEFT)){
             if(indicador==1){
                 indicador=0;
-                //puntero.setPosicion(ALFREDO);
             }
             else if(indicador==2){
                 indicador=1;
-                //puntero.setPosicion(MOLDOVA);
             }
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
-            if(indicador==0){
-                ClaseEstatica.setPersonaje(AlfredoMercurio);
-                game.enterState(2);
-            }
-            else if(indicador ==1){
-                ClaseEstatica.setPersonaje(MoldovaSax);
-                game.enterState(2);
-            }
-            else if (indicador ==2){
-                ClaseEstatica.setPersonaje(LudwigvanMozart);
-                game.enterState(2);
+            switch (indicador) {
+                case 0:
+                    ClaseEstatica.setPersonaje(AlfredoMercurio);
+                    game.enterState(2,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    break;
+                case 1:
+                    ClaseEstatica.setPersonaje(MoldovaSax);
+                    game.enterState(2,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    break;
+                case 2:
+                    ClaseEstatica.setPersonaje(LudwigvanMozart);
+                    game.enterState(2,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    break;
+                default:
+                    break;
             }
         } 
     }
