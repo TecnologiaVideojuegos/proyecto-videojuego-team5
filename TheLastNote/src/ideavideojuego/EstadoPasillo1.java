@@ -7,6 +7,7 @@ package ideavideojuego;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -17,6 +18,8 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 /**
  *
@@ -48,8 +51,8 @@ public class EstadoPasillo1 extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 571; //Coordenadas donde empieza el personaje
-        this.y = 257;
+        this.x = 343; //Coordenadas donde empieza el personaje
+        this.y = 293;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha=true;
@@ -124,8 +127,8 @@ public class EstadoPasillo1 extends BasicGameState{
                     ClaseEstatica.getSonidoPaso().play();
             }else{
                 ClaseEstatica.setEnemigo(LuisFonsi);
-                game.enterState(9); //CAMBIARLO POR EL 3
-
+                //game.enterState(9); //Prueba
+                game.enterState(4,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
