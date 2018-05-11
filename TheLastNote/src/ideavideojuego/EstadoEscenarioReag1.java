@@ -73,6 +73,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
+        colision = false;
 
         //Creación ENEMIGO
         /*Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
@@ -108,7 +109,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 puntero.draw(150, 600);
             }
             else if (estado == 1) {
-                puntero.draw(600, 500);
+                puntero.draw(600, 600);
             }
 
         }
@@ -130,6 +131,10 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         if (perR.intersects(perE)) {
             colision = true;
+            //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
+        }
+        if (!perR.intersects(perE)) {
+            colision = false;
             //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
         }
         if (!colision) {
@@ -199,7 +204,10 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 if (estado == 0) {
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
-                    game.enterState(4);
+                    this.personajex = 343; //Coordenadas donde empieza el personaje
+                    this.personajey = 349;
+                    perR.setX(personajex);
+                    perR.setY(personajey);
                 }
             }
         }
