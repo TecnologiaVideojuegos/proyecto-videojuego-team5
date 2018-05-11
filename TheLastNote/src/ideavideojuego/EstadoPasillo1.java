@@ -51,8 +51,8 @@ public class EstadoPasillo1 extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 343; //Coordenadas donde empieza el personaje
-        this.y = 293;
+        this.x = 571; //Coordenadas donde empieza el personaje
+        this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha=true;
@@ -60,8 +60,8 @@ public class EstadoPasillo1 extends BasicGameState{
         
         spriteFonsiD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteFonsiI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
-        fonsiD = new Animation(spriteFonsiD,100);
-        fonsiI = new Animation(spriteFonsiI,100);
+        fonsiD = new Animation(spriteFonsiD,150);
+        fonsiI = new Animation(spriteFonsiI,150);
 
         Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
         Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30);
