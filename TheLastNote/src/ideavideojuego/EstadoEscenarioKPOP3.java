@@ -63,7 +63,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
         ludwigI = new Animation(spriteLudwigI,100);
 //        LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI);
         //Creación EN   EMIGO
-        Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10);
+        /*Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10);
         Ataque Kpop = new Ataque(30, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 10);
         Ataque Nuclear = new Ataque(40, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 10);
         /*KimJongDos = new Personaje(250, "Kim Jong-Dos");

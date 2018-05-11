@@ -54,15 +54,16 @@ public class EstadoPasillo1 extends BasicGameState{
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha=true;
         ang = 200f;
-        
+        Sound laser = new Sound(("Musica/laser.ogg"));
+                
         spriteFonsiD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteFonsiI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
         fonsiD = new Animation(spriteFonsiD,100);
         fonsiI = new Animation(spriteFonsiI,100);
 
-        Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
-        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30);
-        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 60);
+        Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10, laser);
+        Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, laser);
+        Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 60, laser);
         LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), fonsiD, fonsiI, null, null);
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
@@ -87,6 +88,9 @@ public class EstadoPasillo1 extends BasicGameState{
         }
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        if(!ClaseEstatica.getPersonaje().getMusicH().playing()){
+            ClaseEstatica.getPersonaje().getMusicH().play();
+        }
     }
 
     @Override

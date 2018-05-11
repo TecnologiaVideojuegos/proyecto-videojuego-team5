@@ -75,6 +75,9 @@ public class EstadoBatallaReag extends BasicGameState{
         g.drawString(textoAccionM, 50, 150);
         g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 290, 305);
         g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 610, 305);
+        if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
+            ClaseEstatica.getPersonaje().getMusicB().play();
+        }
     }
 
     @Override
@@ -85,10 +88,16 @@ public class EstadoBatallaReag extends BasicGameState{
                 indicador=0;
                 puntero.setPosicion(atacar);
                 texto=textoAtaque;
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
             }else if(entrada.isKeyPressed(Input.KEY_DOWN) && indicador<2){
                 indicador=1;
                 puntero.setPosicion(huir);
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
             }else if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador<5){
                     indicador++;
                     if (indicador==2){
@@ -103,6 +112,8 @@ public class EstadoBatallaReag extends BasicGameState{
                     }
                 }
             }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador>2){
                     indicador--;
                     if (indicador==2){
@@ -117,10 +128,14 @@ public class EstadoBatallaReag extends BasicGameState{
                     }
                 }
             }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 indicador=0;
                 puntero.setPosicion(atacar);
                 texto="";
             }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador==0){
                     indicador=2;
                     puntero.setPosicion(a1);

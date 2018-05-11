@@ -67,7 +67,7 @@ public class EstadoEscenarioReag1 extends BasicGameState{
         //anim.setAutoUpdate(true);
         
         //Creación ENEMIGO
-        Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
+        /*Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
         Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
         Ataque Despacito = new Ataque(40, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 10);
         //LuisFonsi = new Personaje(250,"Ludis Fonsi", new SpriteSheet("Design/SaxoStill.png", 170, 410));

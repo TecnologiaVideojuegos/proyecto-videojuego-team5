@@ -5,6 +5,8 @@
  */
 package ideavideojuego;
 
+import org.newdawn.slick.Sound;
+
 /**
  *
  * @author Michael Lofer
@@ -12,14 +14,16 @@ package ideavideojuego;
 public class Ataque {
     private int dmg, usos, probabilidadFallo, usosMax;
     private String nombre, descripcion;
+    private Sound efecto;
 
-    public Ataque(int dmg, int usos, String nombre, String descripcion, int probabilidadFallo) {
+    public Ataque(int dmg, int usos, String nombre, String descripcion, int probabilidadFallo, Sound efecto) {
         this.usosMax=usos;
         this.dmg = dmg;
         this.usos = usos;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.probabilidadFallo=probabilidadFallo;
+        this.efecto=efecto;
     }
 
     public String getNombre() {
@@ -68,6 +72,14 @@ public class Ataque {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Sound getEfecto() {
+        return efecto;
+    }
+
+    public void setEfecto(Sound efecto) {
+        this.efecto = efecto;
     }
     
     public boolean isAcertado(){  //devuelve si hacierta el ataque o no
