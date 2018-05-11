@@ -70,7 +70,6 @@ public class EstadoPasillo1 extends BasicGameState{
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
-        //ClaseEstatica.setEnemigo(LuisFonsi);
     }
 
     @Override

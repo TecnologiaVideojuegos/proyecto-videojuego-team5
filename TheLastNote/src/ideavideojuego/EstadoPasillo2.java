@@ -34,8 +34,9 @@ public class EstadoPasillo2 extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
-    private Personaje personaje;
-    private Sound step;
+    private Personaje DonaldTrap;
+    private Animation DonaldD, DonaldI;
+    private SpriteSheet spriteDolandD, spriteDonaldI;
     
     @Override
     public int getID() {
@@ -63,7 +64,21 @@ public class EstadoPasillo2 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
+        Sound laser = new Sound(("Musica/laser.ogg"));
+        
+        spriteDolandD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        spriteDonaldI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
+        DonaldD = new Animation(spriteDolandD,100);
+        DonaldI = new Animation(spriteDonaldI,100);
 
+        //Creación ENEMIGO
+        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, laser);
+        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, laser);
+        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, laser);
+        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null);
+        DonaldTrap.getAtaques().add(Peluquin);
+        DonaldTrap.getAtaques().add(Trap);
+        DonaldTrap.getAtaques().add(Muro);
     }
 
     @Override
@@ -116,6 +131,7 @@ public class EstadoPasillo2 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
+                ClaseEstatica.setEnemigo(DonaldTrap);
                 game.enterState(6);
 
             }

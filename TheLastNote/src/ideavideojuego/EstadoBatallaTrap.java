@@ -168,6 +168,7 @@ public class EstadoBatallaTrap extends BasicGameState{
                     if(turno){
                         textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
                         turno=false;
+                        dato=0;
                     }
                 }else if(indicador==4){
                     if(turno){
