@@ -88,20 +88,17 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
-        g.draw(perE);
-        g.draw(perR);
         if (derecha) {
             //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
-            ClaseEstatica.getPersonaje().getAnimD().stop();
         } else {
             //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
-            ClaseEstatica.getPersonaje().getAnimI().stop();
         }
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
 
         if (colision) {
+            ClaseEstatica.getPersonaje().getAnimD().stop();
             g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);
             g.drawString("Si, no tengo miedo", 50, 700);
             g.drawString("Nooo, no estoy preparado", 500, 700);
@@ -204,8 +201,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 if (estado == 0) {
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
-                    this.personajex = 343; //Coordenadas donde empieza el personaje
-                    this.personajey = 349;
+                    this.personajex = 595; //Coordenadas donde empieza el personaje
+                    this.personajey = 356;
                     perR.setX(personajex);
                     perR.setY(personajey);
                 }
