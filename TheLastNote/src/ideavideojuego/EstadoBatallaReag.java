@@ -63,6 +63,9 @@ public class EstadoBatallaReag extends BasicGameState{
         puntero.draw();
         ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
         ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
+        if(ClaseEstatica.getPersonaje().getAnimD().isStopped()){
+            ClaseEstatica.getPersonaje().getAnimD().start();
+        }
         //ClaseEstatica.getPersonaje().getAnimI().draw(300, 150);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(0).getNombre(), 50, 600);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(1).getNombre(), 300, 600);
@@ -168,6 +171,7 @@ public class EstadoBatallaReag extends BasicGameState{
                     if(turno){
                         textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
                         turno=false;
+                        dato=0;
                     }
                 }else if(indicador==4){
                     if(turno){

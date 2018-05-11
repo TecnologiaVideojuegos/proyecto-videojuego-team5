@@ -36,7 +36,6 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
     private Sound step;
     private boolean derecha;
     private Personaje DonaldTrap;
-    private Personaje personaje;
     private Animation DonaldD, DonaldI;
     private SpriteSheet spriteDolandD, spriteDonaldI;
     
@@ -68,7 +67,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-        Sound laser = new Sound(("Musica/laser.ogg"));
+        /*Sound laser = new Sound(("Musica/laser.ogg"));
         
         spriteDolandD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteDonaldI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
@@ -82,7 +81,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
         DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null);
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
-        DonaldTrap.getAtaques().add(Muro);
+        DonaldTrap.getAtaques().add(Muro);*/
     }
 
     @Override
@@ -135,7 +134,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                ClaseEstatica.setEnemigo(DonaldTrap);
+                //ClaseEstatica.setEnemigo(DonaldTrap);
                 game.enterState(10);
             }
 	}
