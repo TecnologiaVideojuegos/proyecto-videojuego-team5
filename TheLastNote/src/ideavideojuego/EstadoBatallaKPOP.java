@@ -23,7 +23,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoBatallaReag extends BasicGameState{
+public class EstadoBatallaKPOP extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
     private static final Punto atacar = new Punto(925, 580);
@@ -38,7 +38,7 @@ public class EstadoBatallaReag extends BasicGameState{
     
     @Override
     public int getID() {
-       return 9;
+       return 11;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class EstadoBatallaReag extends BasicGameState{
         texto="";
         textoAccionP="";
         textoAccionM="";
-        textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
+        textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A DONALD TRAP, PODRÁS ESQUIVAR SUS MISILES DE LARGO ALCANZE?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
         dato=0;

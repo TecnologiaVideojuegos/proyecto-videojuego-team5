@@ -34,6 +34,9 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
     private boolean derecha;
     private Rectangle perR,perE;
     private boolean colision;
+    private Personaje KimJongDos;
+    private Animation KimD, KimI;
+    private SpriteSheet spriteKimD, spriteKimI;
     
     @Override
     public int getID() {
@@ -63,13 +66,20 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
         ludwigI = new Animation(spriteLudwigI,100);
 //        LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI);
         //Creación EN   EMIGO
-        /*Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10);
-        Ataque Kpop = new Ataque(30, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 10);
-        Ataque Nuclear = new Ataque(40, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 10);
-        /*KimJongDos = new Personaje(250, "Kim Jong-Dos");
+        Sound laser = new Sound(("Musica/laser.ogg"));
+        
+        spriteKimD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        spriteKimI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
+        KimD = new Animation(spriteKimD,100);
+        KimI = new Animation(spriteKimI,100);
+        
+        Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10, laser);
+        Ataque Kpop = new Ataque(30, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 10, laser);
+        Ataque Nuclear = new Ataque(40, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 10, laser);
+        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD,KimI, null, null);
         KimJongDos.getAtaques().add(Misilazo);
         KimJongDos.getAtaques().add(Kpop);
-        KimJongDos.getAtaques().add(Nuclear);*/
+        KimJongDos.getAtaques().add(Nuclear);
     }
 
     @Override
@@ -132,7 +142,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                //game.enterState(9);
+                ClaseEstatica.setEnemigo(KimJongDos);
+                game.enterState(11);
 
             }
 	}
