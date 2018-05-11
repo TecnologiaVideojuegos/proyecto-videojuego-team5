@@ -84,7 +84,6 @@ public class EstadoEscenarioReag1 extends BasicGameState{
         if(derecha){
             //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
         }
         else{
             //alfredoI.draw(x,y);
@@ -124,15 +123,12 @@ public class EstadoEscenarioReag1 extends BasicGameState{
                 derecha=true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
-            }else{
-                game.enterState(5);
-
             }
 	}
         else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y>257){
+            if(y>293){
                 y -= delta * 0.4f;
                 derecha=true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
@@ -142,7 +138,7 @@ public class EstadoEscenarioReag1 extends BasicGameState{
         else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y<354){
+            if(y<380){
                 y += delta * 0.4f;
                 derecha=true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
