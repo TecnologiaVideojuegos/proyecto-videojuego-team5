@@ -15,7 +15,7 @@ import org.newdawn.slick.Sound;
  */
 public final class ClaseEstatica {
     private static Personaje personaje, enemigo;
-    private static Sound sonidoPaso;
+    private static Sound sonidoPaso, click;
     private static Music musicaMenu;
     
     public ClaseEstatica(){
@@ -27,6 +27,14 @@ public final class ClaseEstatica {
 
     public static void setSonidoPaso(Sound sonidoPaso) {
         ClaseEstatica.sonidoPaso = sonidoPaso;
+    }
+
+    public static Sound getClick() {
+        return click;
+    }
+
+    public static void setClick(Sound click) {
+        ClaseEstatica.click = click;
     }
     
     public static Personaje getPersonaje() {

@@ -122,6 +122,8 @@ public class Personaje{
             if(this.getAtaques().get(seleccion).getUsos()!=0){ //si aún tiene usos disponibles del ataque elegido
                 this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos()-1); //le restamos un uso a ese ataque
                 if(this.getAtaques().get(seleccion).isAcertado()){
+                    if(!this.getAtaques().get(seleccion).getEfecto().playing())
+                        this.getAtaques().get(seleccion).getEfecto().play();
                     penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
                     System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
                     texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre();;

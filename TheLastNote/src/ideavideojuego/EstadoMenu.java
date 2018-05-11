@@ -27,7 +27,6 @@ public class EstadoMenu extends BasicGameState{
     private Image fondo;
     private Sprite puntero;
     private Music musica;
-    //private Sound click;
     private static final Punto JUGAR = new Punto(450, 180);
     private static final Punto SALIR = new Punto(450, 400);
     
@@ -42,7 +41,8 @@ public class EstadoMenu extends BasicGameState{
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/menuTekken.jpg");
         puntero = new Sprite("Design/cursor1.png", JUGAR);
-        ClaseEstatica.setMusicaMenu(new Music("Musica/musicaFinal.ogg"));
+        ClaseEstatica.setMusicaMenu(new Music("Musica/mainTheme.ogg"));
+        ClaseEstatica.setClick(new Sound("Musica/menuClick.ogg"));
         //click = new Sound("Musica/menuClick.wav");
         indicador=0;
     }
@@ -61,15 +61,18 @@ public class EstadoMenu extends BasicGameState{
         if(entrada.isKeyPressed(Input.KEY_UP)){
             indicador=0;
             puntero.setPosicion(JUGAR);
-            /*if(!click.playing())
-                    click.play();*/
+            if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
         }else if(entrada.isKeyPressed(Input.KEY_DOWN)){
             indicador=1;
             puntero.setPosicion(SALIR);
-            /*if(!click.playing())
-                    click.play();*/
+            if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
         }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
             if(indicador==0){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
+                game.enterState(1);
                 /*if(!click.playing())
                     click.play();*/
                 game.enterState(1,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));

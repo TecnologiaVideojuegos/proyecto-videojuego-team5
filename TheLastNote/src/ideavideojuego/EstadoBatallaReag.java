@@ -31,9 +31,10 @@ public class EstadoBatallaReag extends BasicGameState{
     private static final Punto a1 = new Punto(50, 620);
     private static final Punto a2 = new Punto(300, 620);
     private static final Punto a3 = new Punto(550, 620);
-    private int indicador;
+    private int indicador, dato;
     private String texto, textoAtaque, textoHuir, textoAccionP, textoAccionM;
     private UnicodeFont fuente;
+    private boolean turno; //si es true nosotros atacamos, sino --> la maquina
     
     @Override
     public int getID() {
@@ -44,6 +45,7 @@ public class EstadoBatallaReag extends BasicGameState{
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/scenario1.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
+        turno=true;
         //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
         
         texto="";
@@ -52,6 +54,7 @@ public class EstadoBatallaReag extends BasicGameState{
         textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
+        dato=0;
     }
 
     @Override
@@ -75,20 +78,42 @@ public class EstadoBatallaReag extends BasicGameState{
         g.drawString(textoAccionM, 50, 150);
         g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 290, 305);
         g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 610, 305);
+        if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
+            ClaseEstatica.getPersonaje().getMusicB().play();
+        }
+        g.drawString("El DELTA ES --> "+dato, 20, 20);
+        if(turno){
+            g.drawString("ES TU TURNO", 20, 40);
+        }else{
+            g.drawString("NO ES TU TURNO", 20, 40);
+        }
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
+        dato+=delta;
         if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
+            if((!turno) &&(dato>1500)){ //<-------------------------------------------------------------------------- AQUI
+                        textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                        dato=0;
+                        turno=true;
+                        ClaseEstatica.getClick().play();
+                }
             if(entrada.isKeyPressed(Input.KEY_UP) && indicador<2){
                 indicador=0;
                 puntero.setPosicion(atacar);
                 texto=textoAtaque;
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
             }else if(entrada.isKeyPressed(Input.KEY_DOWN) && indicador<2){
                 indicador=1;
                 puntero.setPosicion(huir);
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
             }else if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador<5){
                     indicador++;
                     if (indicador==2){
@@ -103,6 +128,8 @@ public class EstadoBatallaReag extends BasicGameState{
                     }
                 }
             }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador>2){
                     indicador--;
                     if (indicador==2){
@@ -117,10 +144,14 @@ public class EstadoBatallaReag extends BasicGameState{
                     }
                 }
             }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 indicador=0;
                 puntero.setPosicion(atacar);
                 texto="";
             }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
+                if(!ClaseEstatica.getClick().playing())
+                    ClaseEstatica.getClick().play();
                 if(indicador==0){
                     indicador=2;
                     puntero.setPosicion(a1);
@@ -128,15 +159,22 @@ public class EstadoBatallaReag extends BasicGameState{
                 }else if(indicador==1){
                     texto=textoHuir;
                 }else if(indicador==2){
-                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
-                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    if(turno){
+                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
+                        turno=false;
+                        dato=0;
+                    }
                 }else if(indicador==3){
-                    
-                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
-                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    if(turno){
+                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
+                        turno=false;
+                    }
                 }else if(indicador==4){
-                    textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
-                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    if(turno){
+                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
+                        turno=false;
+                        dato=0;
+                    }
                 }
             }
         }else{
