@@ -7,6 +7,7 @@ package ideavideojuego;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,163 +16,198 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.state.transition.RotateTransition;
+import org.newdawn.slick.state.transition.SelectTransition;
 
 /**
  *
  * @author Álvaro Zamorano
  */
-public class EstadoEscenarioTrap2 extends BasicGameState{
+public class EstadoEscenarioTrap2 extends BasicGameState {
+
     private AppGameContainer contenedor;
-    private float x,y;
+    private float personajex, personajey, enemigox, enemigoy;
+    private Sprite puntero;
     private String texto;
     private int tiempo;
-    private Animation anim,alfredoD,alfredoI;
-    private SpriteSheet sprite,spriteAlfredoD,spriteAlfredoI;
+    private Animation anim, alfredoD, alfredoI;
+    private SpriteSheet sprite, spriteAlfredoD, spriteAlfredoI;
     private float ang;
     private Image fondo;
-    private int cX = 1080,cY=607;
+    private int cX = 1080, cY = 607;
     private Music music;
-    private Sound step;
     private boolean derecha;
-    private Personaje DonaldTrap;
-    private Animation DonaldD, DonaldI;
-    private SpriteSheet spriteDolandD, spriteDonaldI;
-    
+    private Personaje LuisFonsi;
+    private Personaje personaje;
+    private Sound step;
+    private Rectangle perR, perE;
+    private boolean colision;
+    private int estado;
+
     @Override
     public int getID() {
         return 6;
     }
-    
+
     /*public PantallaInicio(Personaje personaje){
         this.personaje=personaje;
     }*/
-
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 20; //Coordenadas donde empieza el personaje
-        this.y = 257;
-        //texto = "Hello World";
+        this.personajex = 343; //Coordenadas donde empieza el personaje
+        this.personajey = 349;
+        this.enemigox = 681;
+        this.enemigoy = 349;
+        estado = 0;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
-        //sprite = new SpriteSheet("testdata/DudeWalking.png",28,49);//Sprites del personaje
-        //anim = new Animation(sprite,100);//Animation del personaje
         music = new Music("Musica/rock_hall.ogg", false);
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
-        alfredoD = new Animation(spriteAlfredoD,100);
-        alfredoI = new Animation(spriteAlfredoI,100);
-        derecha=true;
+        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
+        alfredoD = new Animation(spriteAlfredoD, 100);
+        alfredoI = new Animation(spriteAlfredoI, 100);
+        derecha = true;
         ang = 200f;
-        //contenedor.getGraphics().setBackground(Color.gray);
-        //anim.stop();
-        //anim.setAutoUpdate(true);
-        
-        /*Sound laser = new Sound(("Musica/laser.ogg"));
-        
-        spriteDolandD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
-        spriteDonaldI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
-        DonaldD = new Animation(spriteDolandD,100);
-        DonaldI = new Animation(spriteDonaldI,100);
+        puntero = new Sprite("Design/cursor1.png");
+        colision = false;
 
-        //Creación ENEMIGO
-        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, laser);
-        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, laser);
-        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, laser);
-        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null);
-        DonaldTrap.getAtaques().add(Peluquin);
-        DonaldTrap.getAtaques().add(Trap);
-        DonaldTrap.getAtaques().add(Muro);*/
+        
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
-        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
-        if(derecha){
+        if (derecha) {
             //alfredoD.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
-        }
-        else{
+            ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
+        } else {
             //alfredoI.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
+
+        if (colision) {
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE DONALD TRAP?", 50, 620);
+            g.drawString("Si, no tengo miedo", 50, 700);
+            g.drawString("Nooo, no estoy preparado", 500, 700);
+            if (estado == 0) {
+                puntero.draw(150, 600);
+            }
+            else if (estado == 1) {
+                puntero.draw(600, 600);
+            }
+
+        }
+
+        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
-    
-    
+
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
-	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();                       
-                        //music.resume();
-                        
-                        
+        if (container.getInput().isKeyDown(Input.KEY_M)) {
+            music.play();
+            //music.resume();
+
         }
-        if (container.getInput().isKeyDown(Input.KEY_N)){
-			music.pause();
+        if (container.getInput().isKeyDown(Input.KEY_N)) {
+            music.pause();
         }
-        if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            ClaseEstatica.getPersonaje().getAnimI().start();
-            if(x>0){
-                x -= delta * 0.4f;
-                derecha=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) 
-                    ClaseEstatica.getSonidoPaso().play();
-            }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if(x<1018){
-                x += delta * 0.4f;
-                derecha=true;
-                if (!ClaseEstatica.getSonidoPaso().playing()) 
-                    ClaseEstatica.getSonidoPaso().play();
-            }else{
-                //ClaseEstatica.setEnemigo(DonaldTrap);
-                game.enterState(10);
-            }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y>257){
-                y -= delta * 0.4f;
-                derecha=true;
-                if (!ClaseEstatica.getSonidoPaso().playing()) 
-                    ClaseEstatica.getSonidoPaso().play();
-            }
-	}
-        else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S) ) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if(y<354){
-                y += delta * 0.4f;
-                derecha=true;
-                if (!ClaseEstatica.getSonidoPaso().playing()) 
-                    ClaseEstatica.getSonidoPaso().play();
-            }
-	}
-        else{
-            if (derecha){
+        if (perR.intersects(perE)) {
+            colision = true;
+            //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
+        }
+        if (!perR.intersects(perE)) {
+            colision = false;
+            //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
+        }
+        if (!colision) {
+            if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-            }
-            else{
+                ClaseEstatica.getPersonaje().getAnimI().start();
+                if (personajex > 0) {
+                    personajex -= delta * 0.4f;
+                    perR.setX(personajex);
+                    derecha = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (personajex < 1018) {
+                    personajex += delta * 0.4f;
+                    perR.setX(personajex);
+                    derecha = true;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (personajey > 293) {
+                    personajey -= delta * 0.4f;
+                    perR.setY(personajey);
+                    derecha = true;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (personajey < 380) {
+                    personajey += delta * 0.4f;
+                    perR.setY(personajey);
+                    derecha = true;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else {
+                if (derecha) {
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                } else {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                }
             }
-        }            
+        } else {
+            if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+                if (estado == 0) {
+                    estado = 1;
+                }
+            } else if (container.getInput().isKeyPressed(Input.KEY_LEFT)) {
+                if (estado == 1) {
+                    estado = 0;
+                }
+            } else if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
+                if (estado == 0) {
+                    game.enterState(10, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                } else if (estado == 1) {
+                    this.personajex = 595; //Coordenadas donde empieza el personaje
+                    this.personajey = 356;
+                    perR.setX(personajex);
+                    perR.setY(personajey);
+                }
+            }
+        }
+
     }
-    
+
     @Override
-       public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        music.play();
+        perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
     }
 }

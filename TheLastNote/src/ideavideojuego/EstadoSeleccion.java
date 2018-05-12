@@ -97,7 +97,7 @@ public class EstadoSeleccion extends BasicGameState {
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
        
-        AlfredoMercurio = new Personaje(200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
+        AlfredoMercurio = new Personaje(11200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);

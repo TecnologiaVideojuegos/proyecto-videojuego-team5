@@ -65,12 +65,15 @@ public class EstadoBatallaKPOP extends BasicGameState{
         ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
         //ClaseEstatica.getPersonaje().getAnimI().draw(300, 150);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(0).getNombre(), 50, 600);
+        g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos(), 50, 580);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(1).getNombre(), 300, 600);
+        g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 300, 580);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(2).getNombre(), 550, 600);
+        g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 550, 580);
         g.drawString("ATACAR", 850, 600);
         g.drawString("HUIR", 860, 650);
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
-            g.drawString(texto, 400, 700);
+            g.drawString(texto, 250, 700);
         }else{
             g.drawString(texto, 20, 700);  
         }

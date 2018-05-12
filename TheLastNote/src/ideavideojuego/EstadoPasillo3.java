@@ -34,8 +34,9 @@ public class EstadoPasillo3 extends BasicGameState{
     private int cX = 1080,cY=607;
     private Music music;
     private boolean derecha;
-    private Personaje personaje;
-    private Sound step;
+    private Personaje KimJongDos;
+    private Animation KimD, KimI;
+    private SpriteSheet spriteKimD, spriteKimI;
     
     @Override
     public int getID() {
@@ -63,7 +64,20 @@ public class EstadoPasillo3 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-
+        Sound laser = new Sound(("Musica/laser.ogg"));
+        
+        spriteKimD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        spriteKimI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
+        KimD = new Animation(spriteKimD,100);
+        KimI = new Animation(spriteKimI,100);
+        
+        Ataque Misilazo = new Ataque(10, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 10, laser);
+        Ataque Kpop = new Ataque(30, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 10, laser);
+        Ataque Nuclear = new Ataque(40, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 10, laser);
+        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD,KimI, null, null);
+        KimJongDos.getAtaques().add(Misilazo);
+        KimJongDos.getAtaques().add(Kpop);
+        KimJongDos.getAtaques().add(Nuclear);
     }
 
     @Override
@@ -116,6 +130,7 @@ public class EstadoPasillo3 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
+                ClaseEstatica.setEnemigo(KimJongDos);
                 game.enterState(8);
 
             }
