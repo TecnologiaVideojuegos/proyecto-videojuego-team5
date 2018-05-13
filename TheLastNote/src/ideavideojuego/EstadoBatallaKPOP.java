@@ -31,7 +31,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
     private static final Punto a1 = new Punto(50, 620);
     private static final Punto a2 = new Punto(300, 620);
     private static final Punto a3 = new Punto(550, 620);
-    private int indicador, dato;
+    private int indicador, dato, tEspera;
     private String texto, textoAtaque, textoHuir, textoAccionP, textoAccionM;
     private UnicodeFont fuente;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
@@ -55,6 +55,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
         dato=0;
+        tEspera=3000;
     }
 
     @Override
@@ -97,7 +98,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         Input entrada = container.getInput();
         dato+=delta;
         if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
-            if((!turno) &&(dato>1500)){ //<-------------------------------------------------------------------------- AQUI
+            if((!turno) &&(dato>tEspera)){ //<-------------------------------------------------------------------------- AQUI
                         textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                         dato=0;
                         turno=true;
