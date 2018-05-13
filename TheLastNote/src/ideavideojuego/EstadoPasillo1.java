@@ -56,7 +56,7 @@ public class EstadoPasillo1 extends BasicGameState{
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha=true;
         ang = 200f;
-        Sound laser = new Sound(("Musica/laser.ogg"));
+        Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
                 
         spriteFonsiD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteFonsiI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
@@ -126,6 +126,8 @@ public class EstadoPasillo1 extends BasicGameState{
             }else{
                 ClaseEstatica.setEnemigo(LuisFonsi);
                 //game.enterState(9); //Prueba
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(4,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
 	}

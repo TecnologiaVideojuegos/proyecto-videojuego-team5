@@ -53,7 +53,7 @@ public class EstadoCamerino extends BasicGameState {
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         musicRock = new Music("Musica/rock_hall.ogg");
         musicClasic = new Music("Musica/classic_hall.ogg");
-        ClaseEstatica.setSonidoPaso(new Sound("Musica/paso.ogg"));
+        ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
         ang = 200f;
     }
@@ -108,6 +108,8 @@ public class EstadoCamerino extends BasicGameState {
                     ClaseEstatica.getSonidoPaso().play();
                 }
             } else {
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {

@@ -67,7 +67,7 @@ public class EstadoPasillo2 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-        Sound laser = new Sound(("Musica/laser.ogg"));
+        Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
         
         spriteDolandD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteDonaldI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
@@ -135,6 +135,8 @@ public class EstadoPasillo2 extends BasicGameState{
                     ClaseEstatica.getSonidoPaso().play();
             }else{
                 ClaseEstatica.setEnemigo(DonaldTrap);
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(6,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 
             }

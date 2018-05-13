@@ -42,7 +42,7 @@ public class EstadoMenu extends BasicGameState{
         fondo = new Image("Design/menuTekken.jpg");
         puntero = new Sprite("Design/cursor1.png", JUGAR);
         ClaseEstatica.setMusicaMenu(new Music("Musica/mainTheme.ogg"));
-        ClaseEstatica.setClick(new Sound("Musica/menuClick.ogg"));
+        ClaseEstatica.setClick(new Sound("Musica/Sonidos/fx_menuClick.ogg"));
         //click = new Sound("Musica/menuClick.wav");
         indicador=0;
     }

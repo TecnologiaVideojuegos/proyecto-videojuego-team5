@@ -56,7 +56,7 @@ public class EstadoPasillo3 extends BasicGameState{
         this.y = 257;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/pasilloBoss.ogg", false);
+        music = new Music("Musica/maintheme.ogg", false);
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
@@ -67,7 +67,7 @@ public class EstadoPasillo3 extends BasicGameState{
         //anim.stop();
         //anim.setAutoUpdate(true);
         
-        Sound laser = new Sound(("Musica/laser.ogg"));
+        Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
         
         spriteKimD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteKimI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
@@ -134,6 +134,8 @@ public class EstadoPasillo3 extends BasicGameState{
                     ClaseEstatica.getSonidoPaso().play();
             }else{
                 ClaseEstatica.setEnemigo(KimJongDos);
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(8,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 
             }
