@@ -56,7 +56,6 @@ public class EstadoCamerino extends BasicGameState {
         ClaseEstatica.setSonidoPaso(new Sound("Musica/paso.ogg"));
         derecha = true;
         ang = 200f;
-
     }
 
     @Override
@@ -145,6 +144,8 @@ public class EstadoCamerino extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.getPersonaje().getMusicH().play();
+        this.x = 30; //Coordenadas donde empieza el personaje
+        this.y = 257;
     }
 
 }

@@ -80,24 +80,24 @@ public class EstadoSeleccion extends BasicGameState {
         Music musicMoldovaB = new Music("Musica/classic_8bit.ogg", false);
         Music musicMoldovaH = new Music("Musica/classic_8hit.ogg", false);
         
-        Ataque Guitarrazo = new Ataque(30, 20, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, laser);
-        Ataque Mama = new Ataque(65, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, laser);
-        Ataque DiscoPlatino = new Ataque(80, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, laser);
+        Ataque Guitarrazo = new Ataque(30, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, laser);
+        Ataque Mama = new Ataque(65, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, laser);
+        Ataque DiscoPlatino = new Ataque(80, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, laser);
         
-        Ataque Saxofonazo = new Ataque(35, 20, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 10, laser);
-        Ataque BaileCadera = new Ataque(50, 10, "Baile de cadera", "Usará la mítica canción de Eurovisión para causar un daño bestial!!", 10, laser);
-        Ataque SaxGuy = new Ataque(60, 5, "TrumpetGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 30, laser);
+        Ataque Saxofonazo = new Ataque(35, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 10, laser);
+        Ataque BaileCadera = new Ataque(50, 15, "Baile de cadera", "Usará la mítica canción de Eurovisión para causar un daño bestial!!", 10, laser);
+        Ataque SaxGuy = new Ataque(60, 7, "TrumpetGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 30, laser);
         
-        Ataque Pianazo = new Ataque(15, 20, "Pianazo", "Lanzará un piano para causar un daño leve", 10, laser);
-        Ataque MetricaExacta = new Ataque(20, 10, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, laser);
-        Ataque PelucoVictoriano = new Ataque(35, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 60, laser);
+        Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, laser);
+        Ataque MetricaExacta = new Ataque(20, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, laser);
+        Ataque PelucoVictoriano = new Ataque(35, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 60, laser);
         
         LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI, musicLudwigB, musicLudwigH);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
        
-        AlfredoMercurio = new Personaje(11200, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
+        AlfredoMercurio = new Personaje(10, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);

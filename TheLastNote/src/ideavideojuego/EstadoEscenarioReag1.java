@@ -216,5 +216,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         music.play();
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        this.personajex = 343; //Coordenadas donde empieza el personaje
+        this.personajey = 349;
     }
 }

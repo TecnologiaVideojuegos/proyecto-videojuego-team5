@@ -192,6 +192,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                 }
             } else if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
                 if (estado == 0) {
+                    ClaseEstatica.getPersonaje().restaurarTodo(); //LE SUBIMOS TODOS LOS STATS
                     game.enterState(11, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
                     this.personajex = 595; //Coordenadas donde empieza el personaje
@@ -209,5 +210,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         music.play();
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        this.personajex = 343; //Coordenadas donde empieza el personaje
+        this.personajey = 349;
     }
 }
