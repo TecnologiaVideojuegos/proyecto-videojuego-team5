@@ -7,6 +7,7 @@ package ideavideojuego;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -17,6 +18,8 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 /**
  *
@@ -132,7 +135,7 @@ public class EstadoPasillo2 extends BasicGameState{
                     ClaseEstatica.getSonidoPaso().play();
             }else{
                 ClaseEstatica.setEnemigo(DonaldTrap);
-                game.enterState(6);
+                game.enterState(6,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 
             }
 	}

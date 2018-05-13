@@ -121,11 +121,16 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         }
         if (perR.intersects(perE)) {
             colision = true;
-            //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
+            if(derecha){
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+            }else{
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+            }
         }
         if (!perR.intersects(perE)) {
             colision = false;
-            //game.enterState(9,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
         }
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -195,10 +200,17 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     ClaseEstatica.getPersonaje().restaurarTodo(); //LE SUBIMOS TODOS LOS STATS
                     game.enterState(11, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
-                    this.personajex = 595; //Coordenadas donde empieza el personaje
-                    this.personajey = 356;
-                    perR.setX(personajex);
-                    perR.setY(personajey);
+                    if(derecha) {
+                        this.personajex = 595; //Coordenadas donde empieza el personaje
+                        this.personajey = 359;
+                        perR.setX(personajex);
+                        perR.setY(personajey);
+                    }else{
+                        this.personajex = 799;
+                        this.personajey = 359;
+                        perR.setX(personajex);
+                        perR.setY(personajey);
+                    }                    
                 }
             }
         }
