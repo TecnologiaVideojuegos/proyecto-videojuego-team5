@@ -84,7 +84,7 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque DiscoPlatino = new Ataque(80, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, new Sound("Musica/Sonidos/fx_arock3.ogg"));
         
         Ataque Saxofonazo = new Ataque(35, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 10, laser);
-        Ataque BaileCadera = new Ataque(50, 15, "Baile de cadera", "Usará la mítica canción de Eurovisión para causar un daño bestial!!", 10, laser);
+        Ataque BaileSwing = new Ataque(50, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 10, laser);
         Ataque SaxGuy = new Ataque(60, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 30, laser);
         
         Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, laser);
@@ -103,7 +103,7 @@ public class EstadoSeleccion extends BasicGameState {
         
         MoldovaSax = new Personaje(300, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH);
         MoldovaSax.getAtaques().add(Saxofonazo);
-        MoldovaSax.getAtaques().add(BaileCadera);
+        MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);
     }
         
