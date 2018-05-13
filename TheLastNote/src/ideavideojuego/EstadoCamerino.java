@@ -38,7 +38,7 @@ public class EstadoCamerino extends BasicGameState {
     private int cX = 1080, cY = 607;
     private Music musicRock, musicSaxo, musicClasic;
     private Sound step;
-    private boolean derecha;
+    private boolean derecha, mover;
 
     @Override
     public int getID() {
@@ -48,13 +48,14 @@ public class EstadoCamerino extends BasicGameState {
   
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 30; //Coordenadas donde empieza el personaje
+        this.x = 220; //Coordenadas donde empieza el personaje
         this.y = 257;
-        fondo = new Image("Design/hallway1.png"); //Imagen de fondo
+        fondo = new Image("Design/camerino.png"); //Imagen de fondo
         musicRock = new Music("Musica/rock_hall.ogg");
         musicClasic = new Music("Musica/classic_hall.ogg");
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
+        mover=false;
         ang = 200f;
     }
 
@@ -63,19 +64,22 @@ public class EstadoCamerino extends BasicGameState {
         //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
-        if (derecha) {
-            //alfredoD.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            
-        } else {
-            //alfredoI.draw(x,y);
-            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+        if(mover){
+            if (!derecha){
+                //alfredoD.draw(x,y);
+                ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+
+            } else {
+                //alfredoI.draw(x,y);
+                ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            }
         }
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if(!ClaseEstatica.getPersonaje().getMusicH().playing()){
             ClaseEstatica.getPersonaje().getMusicH().play();
         }
+        mover=true;
     }
 
     @Override
@@ -91,7 +95,7 @@ public class EstadoCamerino extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
-            if (x > 0) {
+            if (x > 217) {
                 x -= delta * 0.4f;
                 derecha = false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -101,17 +105,17 @@ public class EstadoCamerino extends BasicGameState {
         } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if (x < 1018) {
+            if (x < 800) {
                 x += delta * 0.4f;
                 derecha = true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-            } else {
+            }/* else {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }
+            }*/
         } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
@@ -125,12 +129,16 @@ public class EstadoCamerino extends BasicGameState {
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y < 354) {
+            if (y < 480) {
                 y += delta * 0.4f;
                 derecha = true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
+            }else if((y>=480) && (x>=495) && (x<=520)){
+                ClaseEstatica.getPersonaje().getAnimD().stop();
+                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else {
             if (derecha) {
@@ -146,7 +154,7 @@ public class EstadoCamerino extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.getPersonaje().getMusicH().play();
-        this.x = 30; //Coordenadas donde empieza el personaje
+        this.x = 220; //Coordenadas donde empieza el personaje
         this.y = 257;
     }
 

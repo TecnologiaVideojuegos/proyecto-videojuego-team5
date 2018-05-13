@@ -165,7 +165,7 @@ public class EstadoPasillo1 extends BasicGameState{
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
             //ClaseEstatica.getPersonaje().getMusicH().play();
-            this.x = 30; //Coordenadas donde empieza el personaje
+            this.x = 571; //Coordenadas donde empieza el personaje
             this.y = 257;
     }
     
