@@ -17,6 +17,7 @@ public final class ClaseEstatica {
     private static Personaje personaje, enemigo;
     private static Sound sonidoPaso, click;
     private static Music musicaMenu;
+    private static String ultimoAtaque;
     
     public ClaseEstatica(){
     }
@@ -29,6 +30,14 @@ public final class ClaseEstatica {
         ClaseEstatica.sonidoPaso = sonidoPaso;
     }
 
+    public static String getUltimoAtaque() {
+        return ultimoAtaque;
+    }
+
+    public static void setUltimoAtaque(String ultimoAtaque) {
+        ClaseEstatica.ultimoAtaque = ultimoAtaque;
+    }
+  
     public static Sound getClick() {
         return click;
     }

@@ -124,10 +124,11 @@ public class Personaje{
                 if(this.getAtaques().get(seleccion).isAcertado()){
                     if(!this.getAtaques().get(seleccion).getEfecto().playing())
                         this.getAtaques().get(seleccion).getEfecto().play();
-                    penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
-                    System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
-                    texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre();;
-                    //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
+                        ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
+                        penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
+                        System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
+                        texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre();;
+                        //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                     texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
@@ -168,6 +169,7 @@ public class Personaje{
                 texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
             }
         }
+        ClaseEstatica.setUltimoAtaque("");
         return texto;
     }
     /*public void atacarTexto(Personaje penemigo){

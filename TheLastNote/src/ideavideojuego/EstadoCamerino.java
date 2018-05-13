@@ -65,7 +65,7 @@ public class EstadoCamerino extends BasicGameState {
         fondo.draw();
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(mover){
-            if (!derecha){
+            if (derecha){
                 //alfredoD.draw(x,y);
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
@@ -135,7 +135,7 @@ public class EstadoCamerino extends BasicGameState {
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-            }else if((y>=480) && (x>=495) && (x<=520)){
+            }else if((y>=480) && (x>=485) && (x<=530)){
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));

@@ -32,8 +32,7 @@ public class EstadoBatallaReag extends BasicGameState{
     private static final Punto a2 = new Punto(300, 620);
     private static final Punto a3 = new Punto(550, 620);
     private int indicador, dato, tEspera;
-    private String texto, textoAtaque, textoHuir, textoAccionP, textoAccionM;
-    private UnicodeFont fuente;
+    private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
     
     @Override
@@ -49,6 +48,7 @@ public class EstadoBatallaReag extends BasicGameState{
         //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
         
         texto="";
+        ataque="";
         textoAccionP="";
         textoAccionM="";
         textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
@@ -100,6 +100,11 @@ public class EstadoBatallaReag extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
         dato+=delta;
+        /*if(ataque.equals("SaxGuy")){
+            tEspera=6000;
+        }else{
+            tEspera=3000;
+        }*/
         if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
             if((!turno)&&(dato>tEspera)){ //<-------------------------------------------------------------------------- AQUI
                         textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
@@ -184,6 +189,7 @@ public class EstadoBatallaReag extends BasicGameState{
                         dato=0;
                     }
                 }
+                ataque=ClaseEstatica.getUltimoAtaque();
             }
         }else{
             if(ClaseEstatica.getPersonaje().getVida()>0){
