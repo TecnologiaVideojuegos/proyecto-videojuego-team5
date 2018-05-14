@@ -30,7 +30,7 @@ import org.newdawn.slick.util.ResourceLoader;
  * @author Álvaro Zamorano
  */
 public class EstadoBatallaReag extends BasicGameState{
-    private Image fondo;
+    private Image fondo, hud;
     private Sprite puntero;
     private static final Punto atacar = new Punto(925, 580);
     private static final Punto huir = new Punto(925, 630);
@@ -38,7 +38,7 @@ public class EstadoBatallaReag extends BasicGameState{
     private static final Punto a2 = new Punto(300, 620);
     private static final Punto a3 = new Punto(550, 620);
     private int indicador, dato, tEspera;
-    private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM;
+    private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
 
     @Override
@@ -48,12 +48,14 @@ public class EstadoBatallaReag extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/scenario1.png");
+        fondo = new Image("Design/battlev1background.png");
+        hud = new Image("Design/battlev1menu.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
         turno=true;
         //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
         
         texto="";
+        message="";
         ataque="";
         textoAccionP="";
         textoAccionM="";
@@ -70,24 +72,31 @@ public class EstadoBatallaReag extends BasicGameState{
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         g.setColor(org.newdawn.slick.Color.orange);
         fondo.draw();
+        hud.draw();
         puntero.draw();
         ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
         ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
+        g.drawString(message, 10, 10);
         if(ClaseEstatica.getPersonaje().getAnimD().isStopped()){
             ClaseEstatica.getPersonaje().getAnimD().start();
         }
         //ClaseEstatica.getPersonaje().getAnimI().draw(300, 150);
-        g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(0).getNombre(), 50, 600);
+        /*g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(0).getNombre(), 50, 600);
         g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos(), 50, 580);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(1).getNombre(), 300, 600);
         g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 300, 580);
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(2).getNombre(), 550, 600);
         g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 550, 580);
         g.drawString("ATACAR", 850, 600);
+<<<<<<< HEAD
         g.drawString("HUIR", 860, 650);
 
+=======
+        g.drawString("HUIR", 860, 650);*/
+        
+>>>>>>> 85bced8a00071d1cd260a9e48ee5670b9e7f4169
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
-            g.drawString(texto, 400, 700);
+            g.drawString(texto, 840, 604);
         }else{
             g.drawString(texto, 20, 700);  
         }
@@ -223,5 +232,14 @@ public class EstadoBatallaReag extends BasicGameState{
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
            ClaseEstatica.getPersonaje().getMusicB().play();
     }
+       
+       public void mouseClicked(int button, int x, int y, int clickCount) {
+		if (clickCount == 1) {
+			message = "Single Click: "+button+" "+x+","+y;
+		}
+		if (clickCount == 2) {
+			message = "Double Click: "+button+" "+x+","+y;
+		}
+	}
     
 }
