@@ -152,9 +152,12 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        ClaseEstatica.getPersonaje().getMusicH().play();
+        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+            ClaseEstatica.getPersonaje().getMusicH().play();
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;
+        ClaseEstatica.getPersonaje().getAnimD().stop();
+        ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
     }
 
 }
