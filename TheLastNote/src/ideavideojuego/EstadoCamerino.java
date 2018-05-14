@@ -48,11 +48,7 @@ public class EstadoCamerino extends BasicGameState {
   
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.x = 220; //Coordenadas donde empieza el personaje
-        this.y = 257;
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
-        musicRock = new Music("Musica/rock_hall.ogg");
-        musicClasic = new Music("Musica/classic_hall.ogg");
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
         mover=false;
@@ -105,7 +101,7 @@ public class EstadoCamerino extends BasicGameState {
         } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if (x < 800) {
+            if (x < 796) {
                 x += delta * 0.4f;
                 derecha = true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -119,7 +115,7 @@ public class EstadoCamerino extends BasicGameState {
         } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y > 257) {
+            if (y > 271) {
                 y -= delta * 0.4f;
                 derecha = true;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -154,8 +150,8 @@ public class EstadoCamerino extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.getPersonaje().getMusicH().play();
-        this.x = 220; //Coordenadas donde empieza el personaje
-        this.y = 257;
+        this.x = 354; //Coordenadas donde empieza el personaje
+        this.y = 270;
     }
 
 }

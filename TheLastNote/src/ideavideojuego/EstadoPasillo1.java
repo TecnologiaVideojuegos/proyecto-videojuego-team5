@@ -81,7 +81,6 @@ public class EstadoPasillo1 extends BasicGameState{
         if(derecha){
             //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
         }
         else{
             //alfredoI.draw(x,y);
