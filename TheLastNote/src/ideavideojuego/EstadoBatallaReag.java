@@ -10,6 +10,7 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.paint.Color;
+import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -40,7 +41,8 @@ public class EstadoBatallaReag extends BasicGameState{
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
-
+    private static UnicodeFont font;
+    
     @Override
     public int getID() {
        return 9;
@@ -52,13 +54,19 @@ public class EstadoBatallaReag extends BasicGameState{
         hud = new Image("Design/battlev1menu.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
         turno=true;
+        java.awt.Font fuenteAWT = new java.awt.Font("Comic Sans MS", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.MAGENTA);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
         //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
         
         texto="";
         message="";
         ataque="";
-        textoAccionP="";
-        textoAccionM="";
+        textoAccionP=""; //ataque del aliado
+        textoAccionM=""; //ataque del enemigo
         textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A LUIS FONSI, PODRÁS CONTRA SU FLOW?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
@@ -88,10 +96,7 @@ public class EstadoBatallaReag extends BasicGameState{
         g.drawString(ClaseEstatica.getPersonaje().getAtaques().get(2).getNombre(), 550, 600);
         g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 550, 580);
         g.drawString("ATACAR", 850, 600);
-<<<<<<< HEAD
         g.drawString("HUIR", 860, 650);
-
-=======
         g.drawString("HUIR", 860, 650);*/
 
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
@@ -99,8 +104,24 @@ public class EstadoBatallaReag extends BasicGameState{
         }else{
             g.drawString(texto, 20, 700);  
         }
-        g.drawString(textoAccionP, 833, 550);
-        g.drawString(textoAccionM, 833, 610);
+        /*g.drawString(textoAccionP, 833, 550);
+        g.drawString(textoAccionM, 833, 610);*/
+        if(indicador==2){
+            font.drawString(825, 550, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
+            font.drawString(825, 580, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
+            font.drawString(825, 610, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo())+"%");
+        }else if(indicador==3){
+            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg(), 833, 550);
+            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 833, 565);
+            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo())+"%", 833, 580);
+        }else if(indicador==4){
+            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg(), 833, 550);
+            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 833, 565);
+            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo())+"%", 833, 580);
+        }else{
+            g.drawString("", 833, 550);
+            g.drawString("", 833, 565);
+        }
         g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 833, 510);
         g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 833, 530);
         if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
@@ -130,56 +151,61 @@ public class EstadoBatallaReag extends BasicGameState{
                         turno=true;
                         ClaseEstatica.getClick().play();
                 }
-            if(entrada.isKeyPressed(Input.KEY_UP) && indicador<2){
-                indicador=0;
-                puntero.setPosicion(atacar);
-                texto=textoAtaque;
-                if(!ClaseEstatica.getClick().playing())
-                    ClaseEstatica.getClick().play();
-            }else if(entrada.isKeyPressed(Input.KEY_DOWN) && indicador<2){
-                indicador=1;
-                puntero.setPosicion(huir);
-                if(!ClaseEstatica.getClick().playing())
-                    ClaseEstatica.getClick().play();
-            }else if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
-                if(!ClaseEstatica.getClick().playing())
-                    ClaseEstatica.getClick().play();
-                if(indicador<5){
-                    indicador++;
-                    if (indicador==2){
-                        puntero.setPosicion(a1);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
-                    }else if(indicador==3){
-                        puntero.setPosicion(a2);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
-                    }else if(indicador==4){
-                        puntero.setPosicion(a3);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
-                    }
+            if(indicador<2){
+                if(entrada.isKeyPressed(Input.KEY_LEFT)){
+                    indicador=0;
+                    puntero.setPosicion(atacar);
+                    texto=textoAtaque;
+                    if(!ClaseEstatica.getClick().playing())
+                        ClaseEstatica.getClick().play();
+                }else if(entrada.isKeyPressed(Input.KEY_RIGHT)){
+                    indicador=1;
+                    puntero.setPosicion(huir);
+                    if(!ClaseEstatica.getClick().playing())
+                        ClaseEstatica.getClick().play();
                 }
-            }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
-                if(!ClaseEstatica.getClick().playing())
-                    ClaseEstatica.getClick().play();
-                if(indicador>2){
-                    indicador--;
-                    if (indicador==2){
-                        puntero.setPosicion(a1);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
-                    }else if(indicador==3){
-                        puntero.setPosicion(a2);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
-                    }else if(indicador==4){
-                        puntero.setPosicion(a3);
-                        texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
+            }else{
+                if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
+                    if(!ClaseEstatica.getClick().playing())
+                        ClaseEstatica.getClick().play();
+                    if(indicador<5){
+                        indicador++;
+                        if (indicador==2){
+                            puntero.setPosicion(a1);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
+                        }else if(indicador==3){
+                            puntero.setPosicion(a2);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
+                        }else if(indicador==4){
+                            puntero.setPosicion(a3);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
+                        }
                     }
+                }else if(entrada.isKeyPressed(Input.KEY_LEFT) && indicador>=2){
+                    if(!ClaseEstatica.getClick().playing())
+                        ClaseEstatica.getClick().play();
+                    if(indicador>2){
+                        indicador--;
+                        if (indicador==2){
+                            puntero.setPosicion(a1);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
+                        }else if(indicador==3){
+                            puntero.setPosicion(a2);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(1).getDescripcion();
+                        }else if(indicador==4){
+                            puntero.setPosicion(a3);
+                            texto=ClaseEstatica.getPersonaje().getAtaques().get(2).getDescripcion();
+                        }
+                    }
+                }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
+                    if(!ClaseEstatica.getClick().playing())
+                        ClaseEstatica.getClick().play();
+                    indicador=0;
+                    puntero.setPosicion(atacar);
+                    texto="";
                 }
-            }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
-                if(!ClaseEstatica.getClick().playing())
-                    ClaseEstatica.getClick().play();
-                indicador=0;
-                puntero.setPosicion(atacar);
-                texto="";
-            }else if(entrada.isKeyPressed(Input.KEY_ENTER)){
+            }
+            if(entrada.isKeyPressed(Input.KEY_ENTER)){
                 if(!ClaseEstatica.getClick().playing())
                     ClaseEstatica.getClick().play();
                 if(indicador==0){
@@ -209,8 +235,7 @@ public class EstadoBatallaReag extends BasicGameState{
                         dato=0;
                         ataque=ClaseEstatica.getUltimoAtaque();
                     }
-                }      
-                //System.out.println("Ultimo ataque -->"+ataque);
+                }     
             }
         }else{
             if(ClaseEstatica.getPersonaje().getVida()>0){
