@@ -5,9 +5,11 @@
  */
 package ideavideojuego;
 
+import java.io.InputStream;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.paint.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -15,9 +17,13 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.ResourceLoader;
+
 
 /**
  *
@@ -34,7 +40,7 @@ public class EstadoBatallaReag extends BasicGameState{
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
-    
+
     @Override
     public int getID() {
        return 9;
@@ -57,10 +63,12 @@ public class EstadoBatallaReag extends BasicGameState{
         dato=0;
         tEspera=3000;
         System.out.println("Ultimo ataque -->"+ataque);
+
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        g.setColor(org.newdawn.slick.Color.orange);
         fondo.draw();
         puntero.draw();
         ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
@@ -77,6 +85,7 @@ public class EstadoBatallaReag extends BasicGameState{
         g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 550, 580);
         g.drawString("ATACAR", 850, 600);
         g.drawString("HUIR", 860, 650);
+
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
             g.drawString(texto, 400, 700);
         }else{

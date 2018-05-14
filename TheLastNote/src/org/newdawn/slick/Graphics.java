@@ -1777,4 +1777,8 @@ public class Graphics {
 	public void destroy() {
 		
 	}
+
+    public void setColor(javafx.scene.paint.Color LIGHTSKYBLUE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

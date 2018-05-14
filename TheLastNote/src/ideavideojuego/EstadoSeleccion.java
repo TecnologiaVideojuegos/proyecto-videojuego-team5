@@ -69,15 +69,15 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
         ludwigD = new Animation(spriteLudwigD,100);
         ludwigI = new Animation(spriteLudwigI,100);
-        Music musicLudwigB = new Music("Musica/classic_8bit.ogg", false);
-        Music musicLudwigH = new Music("Musica/classic_8hit.ogg", false);
+        Music musicLudwigB = new Music("Musica/classic_battle.ogg", false);
+        Music musicLudwigH = new Music("Musica/classic_hall.ogg", false);
         
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
         moldovaD = new Animation(spriteMoldovaD,100);
         moldovaI = new Animation(spriteMoldovaI,100);
         Music musicMoldovaB = new Music("Musica/classic_8bit.ogg", false);
-        Music musicMoldovaH = new Music("Musica/classic_8hit.ogg", false);
+        Music musicMoldovaH = new Music("Musica/jazz_hall.ogg", false);
         
         Ataque Guitarrazo = new Ataque(30, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_arock1.ogg"));
         Ataque Mama = new Ataque(65, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
