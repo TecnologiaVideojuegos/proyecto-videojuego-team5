@@ -129,12 +129,12 @@ public class Personaje{
                         //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
                         penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
                         System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
-                        texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+ "(Daño: "+this.getAtaques().get(seleccion).getDmg()+")";
+                        texto = this.getNombre()+" usó: \n"+this.getAtaques().get(seleccion).getNombre()+ "\n(Daño: "+this.getAtaques().get(seleccion).getDmg()+")";
                         //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
-                    System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                    System.out.println("OHHH que pena!!! "+this.getNombre()+"\nha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
-                    texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
+                    texto = "OHHH que pena!!!\n"+this.getNombre()+"\nha FALLADO EL ATAQUE!!!";
                 }
             }else{
                 System.out.println("NO TE QUEDAN USOS");
@@ -166,12 +166,12 @@ public class Personaje{
                 ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(ataqueEnemigo).isAcertado());
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
-                texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+ "(Daño: "+this.getAtaques().get(ataqueEnemigo).getDmg()+")";
+                texto = this.getNombre()+" usó: \n"+this.getAtaques().get(ataqueEnemigo).getNombre()+ "\n(Daño: "+this.getAtaques().get(ataqueEnemigo).getDmg()+")";
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
-                System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                System.out.println("OHHH que pena!!! \n"+this.getNombre()+"\nha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");
-                texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
+                texto = "OHHH que pena\n!!! "+this.getNombre()+"\nha FALLADO EL ATAQUE!!!";
             }
         }
         ClaseEstatica.setUltimoAtaque("");

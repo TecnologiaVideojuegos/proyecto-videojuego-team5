@@ -70,7 +70,7 @@ public class EstadoBatallaReag extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.setColor(org.newdawn.slick.Color.red);
+        g.setColor(org.newdawn.slick.Color.cyan);
         fondo.draw();
         hud.draw();
         puntero.draw();
@@ -99,10 +99,10 @@ public class EstadoBatallaReag extends BasicGameState{
         }else{
             g.drawString(texto, 20, 700);  
         }
-        g.drawString(textoAccionP, 50, 100);
-        g.drawString(textoAccionM, 50, 150);
-        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 290, 305);
-        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 610, 305);
+        g.drawString(textoAccionP, 833, 550);
+        g.drawString(textoAccionM, 833, 610);
+        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 833, 510);
+        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 833, 530);
         if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
             ClaseEstatica.getPersonaje().getMusicB().play();
         }
