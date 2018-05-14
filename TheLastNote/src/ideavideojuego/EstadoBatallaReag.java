@@ -32,11 +32,11 @@ import org.newdawn.slick.util.ResourceLoader;
 public class EstadoBatallaReag extends BasicGameState{
     private Image fondo, hud;
     private Sprite puntero;
-    private static final Punto atacar = new Punto(925, 580);
-    private static final Punto huir = new Punto(925, 630);
-    private static final Punto a1 = new Punto(50, 620);
-    private static final Punto a2 = new Punto(300, 620);
-    private static final Punto a3 = new Punto(550, 620);
+    private static final Punto atacar = new Punto(378, 614);
+    private static final Punto huir = new Punto(731, 607);
+    private static final Punto a1 = new Punto(236, 514);
+    private static final Punto a2 = new Punto(474, 513);
+    private static final Punto a3 = new Punto(787, 511);
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
@@ -70,7 +70,7 @@ public class EstadoBatallaReag extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.setColor(org.newdawn.slick.Color.orange);
+        g.setColor(org.newdawn.slick.Color.red);
         fondo.draw();
         hud.draw();
         puntero.draw();
@@ -93,8 +93,7 @@ public class EstadoBatallaReag extends BasicGameState{
 
 =======
         g.drawString("HUIR", 860, 650);*/
-        
->>>>>>> 85bced8a00071d1cd260a9e48ee5670b9e7f4169
+
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
             g.drawString(texto, 840, 604);
         }else{
