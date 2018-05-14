@@ -141,7 +141,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimI().start();
-                if (personajex > 0) {
+                if (personajex > 172) {
                     personajex -= delta * 0.4f;
                     perR.setX(personajex);
                     derecha = false;
@@ -152,7 +152,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
                 ClaseEstatica.getPersonaje().getAnimD().start();
-                if (personajex < 1018) {
+                if (personajex < 839) {
                     personajex += delta * 0.4f;
                     perR.setX(personajex);
                     derecha = true;

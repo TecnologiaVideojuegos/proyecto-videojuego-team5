@@ -65,17 +65,10 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         this.enemigoy = 349;
         estado = 0;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
-        music = new Music("Musica/rock_hall.ogg", false);
-        spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
-        alfredoD = new Animation(spriteAlfredoD, 100);
-        alfredoI = new Animation(spriteAlfredoI, 100);
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
-        colision = false;
-
-        
+        colision = false;        
     }
 
     @Override
@@ -101,7 +94,6 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             else if (estado == 1) {
                 puntero.draw(600, 600);
             }
-
         }
 
         g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
@@ -136,7 +128,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimI().start();
-                if (personajex > 0) {
+                if (personajex > 172) {
                     personajex -= delta * 0.4f;
                     perR.setX(personajex);
                     derecha = false;
@@ -147,7 +139,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
                 ClaseEstatica.getPersonaje().getAnimD().start();
-                if (personajex < 1018) {
+                if (personajex < 839) {
                     personajex += delta * 0.4f;
                     perR.setX(personajex);
                     derecha = true;
@@ -218,7 +210,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        music.play();
+        //music.play();
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         this.personajex = 343; //Coordenadas donde empieza el personaje
