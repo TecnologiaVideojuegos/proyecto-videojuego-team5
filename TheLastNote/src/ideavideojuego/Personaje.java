@@ -127,7 +127,7 @@ public class Personaje{
                         ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
                         penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
                         System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
-                        texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre();;
+                        texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+ "(Daño: "+this.getAtaques().get(seleccion).getDmg()+")";
                         //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
@@ -162,7 +162,7 @@ public class Personaje{
                 personajeBueno.setVida(personajeBueno.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
-                texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre();
+                texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+ "(Daño: "+this.getAtaques().get(ataqueEnemigo).getDmg()+")";
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
                 System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");

@@ -184,8 +184,10 @@ public class EstadoBatallaKPOP extends BasicGameState{
             }
         }else{
             if(ClaseEstatica.getPersonaje().getVida()>0){
-                System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
-                game.enterState(2);
+                if(dato>tEspera){
+                    System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
+                    game.enterState(2);
+                }
             }else{
                 System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
                 ClaseEstatica.getPersonaje().restaurarTodo();
