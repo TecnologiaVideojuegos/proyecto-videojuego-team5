@@ -133,6 +133,7 @@ public class Personaje{
                         //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                    ClaseEstatica.setUltimoAtaque("fallado");
                     texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
                 }
             }else{
@@ -169,6 +170,7 @@ public class Personaje{
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
                 System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                ClaseEstatica.setUltimoAtaque("fallado");
                 texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
             }
         }
