@@ -125,6 +125,8 @@ public class Personaje{
                     if(!this.getAtaques().get(seleccion).getEfecto().playing())
                         this.getAtaques().get(seleccion).getEfecto().play();
                         ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
+                        ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(seleccion).isAcertado());
+                        //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
                         penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
                         System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
                         texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+ "(Daño: "+this.getAtaques().get(seleccion).getDmg()+")";
@@ -160,6 +162,7 @@ public class Personaje{
             }
             if(this.getAtaques().get(ataqueEnemigo).isAcertado()){ //si acierta el ataque
                 personajeBueno.setVida(personajeBueno.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
+                ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(ataqueEnemigo).isAcertado());
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
                 texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+ "(Daño: "+this.getAtaques().get(ataqueEnemigo).getDmg()+")";
@@ -170,6 +173,7 @@ public class Personaje{
             }
         }
         ClaseEstatica.setUltimoAtaque("");
+        //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
         return texto;
     }
     /*public void atacarTexto(Personaje penemigo){

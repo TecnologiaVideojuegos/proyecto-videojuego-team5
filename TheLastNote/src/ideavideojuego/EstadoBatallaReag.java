@@ -56,6 +56,7 @@ public class EstadoBatallaReag extends BasicGameState{
         indicador=0;
         dato=0;
         tEspera=3000;
+        System.out.println("Ultimo ataque -->"+ataque);
     }
 
     @Override
@@ -100,11 +101,11 @@ public class EstadoBatallaReag extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
         dato+=delta;
-        /*if(ataque.equals("SaxGuy")){
+        if(ataque.equals("SaxGuy") && ClaseEstatica.isAtaqueAcertado()){
             tEspera=6000;
         }else{
             tEspera=3000;
-        }*/
+        }
         if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
             if((!turno)&&(dato>tEspera)){ //<-------------------------------------------------------------------------- AQUI
                         textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
@@ -175,21 +176,24 @@ public class EstadoBatallaReag extends BasicGameState{
                         textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
                         turno=false;
                         dato=0;
+                        ataque=ClaseEstatica.getUltimoAtaque();
                     }
                 }else if(indicador==3){
                     if(turno){
                         textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
                         turno=false;
                         dato=0;
+                        ataque=ClaseEstatica.getUltimoAtaque();
                     }
                 }else if(indicador==4){
                     if(turno){
                         textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
                         turno=false;
                         dato=0;
+                        ataque=ClaseEstatica.getUltimoAtaque();
                     }
-                }
-                ataque=ClaseEstatica.getUltimoAtaque();
+                }      
+                //System.out.println("Ultimo ataque -->"+ataque);
             }
         }else{
             if(ClaseEstatica.getPersonaje().getVida()>0){

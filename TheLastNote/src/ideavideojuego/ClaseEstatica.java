@@ -18,6 +18,7 @@ public final class ClaseEstatica {
     private static Sound sonidoPaso, click;
     private static Music musicaMenu;
     private static String ultimoAtaque;
+    private static boolean ataqueAcertado;
     
     public ClaseEstatica(){
     }
@@ -37,7 +38,15 @@ public final class ClaseEstatica {
     public static void setUltimoAtaque(String ultimoAtaque) {
         ClaseEstatica.ultimoAtaque = ultimoAtaque;
     }
-  
+
+    public static boolean isAtaqueAcertado() {
+        return ataqueAcertado;
+    }
+
+    public static void setAtaqueAcertado(boolean ataqueAcertado) {
+        ClaseEstatica.ataqueAcertado = ataqueAcertado;
+    }
+    
     public static Sound getClick() {
         return click;
     }
