@@ -30,7 +30,7 @@ import org.newdawn.slick.util.ResourceLoader;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoBatallaReag extends BasicGameState{
+public class EstadoBatallaReaggeton extends BasicGameState{
     private Image fondo, hud;
     private Sprite puntero;
     private static final Punto atacar = new Punto(345, 529);
@@ -231,7 +231,7 @@ public class EstadoBatallaReag extends BasicGameState{
                 }     
             }
         }else{
-            /*if(ClaseEstatica.getPersonaje().getVida()>0){
+            if(ClaseEstatica.getPersonaje().getVida()>0){
                 if(dato>tEspera){
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
                     game.enterState(5);
@@ -241,7 +241,7 @@ public class EstadoBatallaReag extends BasicGameState{
                 ClaseEstatica.getPersonaje().restaurarTodo();
                 ClaseEstatica.getEnemigo().restaurarTodo();
                 game.enterState(2);
-            }*/
+            }
             System.out.println("HOLA");
         }
     } 

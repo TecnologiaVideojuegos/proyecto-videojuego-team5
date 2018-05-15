@@ -41,7 +41,7 @@ public class EstadoMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/menuTekken.jpg");
+        fondo = new Image("Design/mainmenu.png");
         puntero = new Sprite("Design/cursor1.png", JUGAR);
         ClaseEstatica.setMusicaMenu(new Music("Musica/mainTheme.ogg"));
         ClaseEstatica.setClick(new Sound("Musica/Sonidos/fx_menuClick.ogg"));

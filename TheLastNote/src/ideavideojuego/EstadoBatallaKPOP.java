@@ -45,7 +45,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
     
     @Override
     public int getID() {
-       return 9;
+       return 11;
     }
 
     @Override
@@ -159,8 +159,9 @@ public class EstadoBatallaKPOP extends BasicGameState{
                 if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
                     if(!ClaseEstatica.getClick().playing())
                         ClaseEstatica.getClick().play();
-                    if(indicador<5){
-                        indicador++;
+                    if(indicador<=4){
+                        if (indicador<=3)
+                            indicador++;
                         if (indicador==2){
                             puntero.setPosicion(a1);
                             texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
