@@ -86,13 +86,13 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         if (colision) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE DONALD TRAP?", 50, 620);
-            g.drawString("Si, no tengo miedo", 50, 700);
-            g.drawString("Nooo, no estoy preparado", 500, 700);
+            g.drawString("Si, no tengo miedo", 50, 654);
+            g.drawString("Nooo, no estoy preparado", 500, 654);
             if (estado == 0) {
-                puntero.draw(150, 600);
+                puntero.draw(221, 654);
             }
             else if (estado == 1) {
-                puntero.draw(600, 600);
+                puntero.draw(723, 654);
             }
         }
 
