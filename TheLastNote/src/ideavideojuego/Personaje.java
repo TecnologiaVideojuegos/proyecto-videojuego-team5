@@ -24,9 +24,9 @@ public class Personaje{
     private SpriteSheet spritePJ;
     private Animation animD, animI;
     private Music musicB, musicH; //la b se refiere a batalla y la h al pasillo
-    private Image HUD;
+    private Image HUD, PJBatalla;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH, Image HUD) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH, Image HUD, Image PJBatalla) {
         this.vidaMax=vida;
         this.vida=vida;
         this.nombre = nombre;
@@ -37,6 +37,15 @@ public class Personaje{
         this.musicB=musicB;
         this.musicH=musicH;
         this.HUD=HUD;
+        this.PJBatalla=PJBatalla;
+    }
+
+    public Image getPJBatalla() {
+        return PJBatalla;
+    }
+
+    public void setPJBatalla(Image PJBatalla) {
+        this.PJBatalla = PJBatalla;
     }
 
     public Image getHUD() {

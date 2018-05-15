@@ -33,11 +33,11 @@ import org.newdawn.slick.util.ResourceLoader;
 public class EstadoBatallaReag extends BasicGameState{
     private Image fondo, hud;
     private Sprite puntero;
-    private static final Punto atacar = new Punto(378, 614);
-    private static final Punto huir = new Punto(731, 607);
-    private static final Punto a1 = new Punto(236, 514);
-    private static final Punto a2 = new Punto(474, 513);
-    private static final Punto a3 = new Punto(787, 511);
+    private static final Punto atacar = new Punto(345, 529);
+    private static final Punto huir = new Punto(709, 529);
+    private static final Punto a1 = new Punto(254, 435);
+    private static final Punto a2 = new Punto(475, 435);
+    private static final Punto a3 = new Punto(789, 435);
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
@@ -82,8 +82,10 @@ public class EstadoBatallaReag extends BasicGameState{
         fondo.draw();
         hud.draw();
         puntero.draw();
-        ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
-        ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
+        //ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
+        //ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
+        ClaseEstatica.getPersonaje().getPJBatalla().draw();
+        ClaseEstatica.getEnemigo().getPJBatalla().draw();
         g.drawString(message, 10, 10);
         if(ClaseEstatica.getPersonaje().getAnimD().isStopped()){
             ClaseEstatica.getPersonaje().getAnimD().start();
@@ -107,27 +109,27 @@ public class EstadoBatallaReag extends BasicGameState{
         /*g.drawString(textoAccionP, 833, 550);
         g.drawString(textoAccionM, 833, 610);*/
         if(indicador==2){
-            font.drawString(825, 550, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
-            font.drawString(825, 580, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
-            font.drawString(825, 610, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo())+"%");
+            font.drawString(825, 485, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
+            font.drawString(825, 510, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
+            font.drawString(825, 540, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo())+"%");
         }else if(indicador==3){
-            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg(), 833, 550);
-            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 833, 565);
-            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo())+"%", 833, 580);
+            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg(), 833, 485);
+            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 833, 500);
+            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo())+"%", 833, 515);
         }else if(indicador==4){
-            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg(), 833, 550);
-            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 833, 565);
-            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo())+"%", 833, 580);
+            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg(), 833, 485);
+            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 833, 500);
+            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo())+"%", 833, 515);
         }else{
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
         }
-        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 833, 510);
-        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 833, 530);
+        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 833, 445);
+        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 833, 465);
         if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
             ClaseEstatica.getPersonaje().getMusicB().play();
         }
-        g.drawString("El DELTA ES --> "+dato, 20, 20);
+        g.drawString("El DELTA ES --> "+dato, 400, 20);
         if(turno){
             g.drawString("ES TU TURNO", 20, 40);
         }else{

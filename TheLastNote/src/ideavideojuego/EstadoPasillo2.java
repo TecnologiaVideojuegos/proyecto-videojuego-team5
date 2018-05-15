@@ -78,7 +78,7 @@ public class EstadoPasillo2 extends BasicGameState{
         Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, laser);
         Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, laser);
         Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, laser);
-        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null, null);
+        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleKimJong.png"));
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
         DonaldTrap.getAtaques().add(Muro);
