@@ -28,9 +28,9 @@ public class EstadoMenu extends BasicGameState {
     private Image fondo;
     private Sprite puntero;
     private Music musica;
-    private static final Punto JUGAR = new Punto(450, 180);
-    private static final Punto INFO = new Punto(450, 300);
-    private static final Punto SALIR = new Punto(450, 400);
+    private static final Punto JUGAR = new Punto(1000, 320);
+    private static final Punto INFO = new Punto(1000, 410);
+    private static final Punto SALIR = new Punto(1000, 500);
 
     private int indicador;
 
