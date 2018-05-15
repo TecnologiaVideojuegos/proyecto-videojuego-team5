@@ -23,6 +23,8 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.ResourceLoader;
 
 
@@ -65,7 +67,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         ataque="";
         textoAccionP=""; //ataque del aliado
         textoAccionM=""; //ataque del enemigo
-        textoAtaque="¡ADVERTENCIA!, TE ENRENTAS A KIM JONG-UN, PODRÁS ESQUIVAR SUS MISILES DE LARGO ALCANCE?";
+        textoAtaque="¡ADVERTENCIA!, TE ENFRENTAS A KIM JONG-UN, PODRÁS ESQUIVAR SUS MISILES DE LARGO ALCANCE?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
         dato=0;
@@ -76,7 +78,6 @@ public class EstadoBatallaKPOP extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.setColor(org.newdawn.slick.Color.cyan);
         fondo.draw();
         hud.draw();
         puntero.draw();
@@ -131,7 +132,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
         dato+=delta;
-        if(ataque.equals("SaxGuy") && ClaseEstatica.isAtaqueAcertado()){
+        if((ataque.equals("SaxGuy")|| ataque.equals("Al ritmo del Swing") || ataque.equals("Misilazo")||ataque.equals("Ataque nuclear")) && ClaseEstatica.isAtaqueAcertado()){
             tEspera=8500;
         }else{
             tEspera=3000;
@@ -235,13 +236,13 @@ public class EstadoBatallaKPOP extends BasicGameState{
             if(ClaseEstatica.getPersonaje().getVida()>0){
                 if(dato>tEspera){
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
-                    game.enterState(2);
+                    game.enterState(2,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
                 }
             }else{
                 System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
                 ClaseEstatica.getPersonaje().restaurarTodo();
                 ClaseEstatica.getEnemigo().restaurarTodo();
-                game.enterState(2);
+                game.enterState(2,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
             }
         }
     } 
