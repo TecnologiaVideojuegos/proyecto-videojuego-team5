@@ -184,6 +184,7 @@ public class Personaje{
             if(this.getAtaques().get(ataqueEnemigo).isAcertado()){ //si acierta el ataque
                 personajeBueno.setVida(personajeBueno.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
                 ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(ataqueEnemigo).isAcertado());
+                ClaseEstatica.getEnemigo().getAtaques().get(ataqueEnemigo).getEfecto().play();
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
                 texto = this.getNombre()+" usó: \n"+this.getAtaques().get(ataqueEnemigo).getNombre()+ "\n(Daño: "+this.getAtaques().get(ataqueEnemigo).getDmg()+")";
