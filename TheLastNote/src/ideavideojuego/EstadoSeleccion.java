@@ -57,7 +57,7 @@ public class EstadoSeleccion extends BasicGameState {
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
         Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
-        hud = new Image("Design/battlev1menu.png");
+        hud = new Image("Design/battlev1UI.png");
         
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
