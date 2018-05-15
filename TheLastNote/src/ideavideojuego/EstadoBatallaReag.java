@@ -54,10 +54,10 @@ public class EstadoBatallaReag extends BasicGameState{
         //hud = new Image("Design/battlev1menu.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
         turno=true;
-        java.awt.Font fuenteAWT = new java.awt.Font("Comic Sans MS", 0, 24);
+        java.awt.Font fuenteAWT = new java.awt.Font("Magneto", 0, 20);
         font = new UnicodeFont(fuenteAWT);
         font.addAsciiGlyphs();
-        ColorEffect colorFuente = new ColorEffect(java.awt.Color.MAGENTA);
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.YELLOW);
         font.getEffects().add(colorFuente);
         font.loadGlyphs();
         //java.awt.Font fuente = new java.awt.Font("Comic Sans MS", Font.PLAIN, 24):
@@ -102,38 +102,39 @@ public class EstadoBatallaReag extends BasicGameState{
         g.drawString("HUIR", 860, 650);*/
 
         if((texto.equals(textoAtaque)) || (texto.equals(textoHuir))){
-            g.drawString(texto, 840, 604);
+            g.drawString(texto, 80, 640);
         }else{
-            g.drawString(texto, 20, 700);  
+            //g.drawString(texto, 80, 640);  
         }
-        /*g.drawString(textoAccionP, 833, 550);
-        g.drawString(textoAccionM, 833, 610);*/
+        
         if(indicador==2){
             font.drawString(825, 485, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
             font.drawString(825, 510, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
             font.drawString(825, 540, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo())+"%");
         }else if(indicador==3){
-            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg(), 833, 485);
-            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos(), 833, 500);
-            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo())+"%", 833, 515);
+            font.drawString(833, 485, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
+            font.drawString(833, 500, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
+            font.drawString(833, 515, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo())+"%");
         }else if(indicador==4){
-            g.drawString("Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg(), 833, 485);
-            g.drawString("Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos(), 833, 500);
-            g.drawString("Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo())+"%", 833, 515);
+            font.drawString(833, 485, "Daño: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
+            font.drawString(833, 500, "Usos: "+ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
+            font.drawString(833, 515, "Probabilidad: "+(100-ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo())+"%");
         }else{
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
         }
-        g.drawString("Vida: "+ClaseEstatica.getPersonaje().getVida(), 833, 445);
-        g.drawString("Vida: "+ClaseEstatica.getEnemigo().getVida(), 833, 465);
+        font.drawString(170, 30, "Vida: "+ClaseEstatica.getPersonaje().getVida());
+        font.drawString(760, 60, "Vida: "+ClaseEstatica.getEnemigo().getVida());
         if(!ClaseEstatica.getPersonaje().getMusicB().playing()){
             ClaseEstatica.getPersonaje().getMusicB().play();
         }
         g.drawString("El DELTA ES --> "+dato, 400, 20);
         if(turno){
-            g.drawString("ES TU TURNO", 20, 40);
+            g.drawString("ES TU TURNO", 832, 457);
+            g.drawString(textoAccionM, 80, 640);
         }else{
-            g.drawString("NO ES TU TURNO", 20, 40);
+            g.drawString("NO ES TU TURNO", 832, 457);
+            g.drawString(textoAccionP, 80, 640);
         }
     }
 

@@ -93,9 +93,9 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque BaileSwing = new Ataque(50, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, laser);
         Ataque SaxGuy = new Ataque(60, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 40, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
         
-        Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, laser);
-        Ataque MetricaExacta = new Ataque(20, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, laser);
-        Ataque PelucoVictoriano = new Ataque(35, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, laser);
+        Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));
+        Ataque MetricaExacta = new Ataque(20, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
+        Ataque PelucoVictoriano = new Ataque(35, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
         
         LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI, musicLudwigB, musicLudwigH, hudMozart, backMozart);
         LudwigvanMozart.getAtaques().add(Pianazo);
