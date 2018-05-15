@@ -57,12 +57,16 @@ public class EstadoSeleccion extends BasicGameState {
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
         Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
+<<<<<<< HEAD
         hudAlfredo = new Image("Design/battlev1UI.png");
         hudMoldova = new Image("Design/battlev2UI.png");
         hudMozart = new Image("Design/battlev3UI.png");
         backMozart = new Image("Design/battlebombin1.png");
         backAlfredo = new Image("Design/battlebombin1.png");
         backMoldova = new Image("Design/battlebombin1.png");
+=======
+        hud = new Image("Design/battlev1UI.png");
+>>>>>>> 5f90a089f9306be871d9c20ade7872046932188b
         
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
