@@ -60,8 +60,8 @@ public class EstadoPasillo1 extends BasicGameState{
         Sound fx_flow = new Sound(("Musica/Sonidos/fx_luis2.ogg"));
         Sound fx_despacito = new Sound(("Musica/Sonidos/fx_luis3.ogg"));
                 
-        spriteFonsiD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
-        spriteFonsiI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
+        spriteFonsiD = new SpriteSheet("Design/LuisFonsiSprite1.png", 68, 180);
+        spriteFonsiI = new SpriteSheet("Design/LuisFonsiSprite1.png", 68, 180);
         fonsiD = new Animation(spriteFonsiD,150);
         fonsiI = new Animation(spriteFonsiI,150);
 

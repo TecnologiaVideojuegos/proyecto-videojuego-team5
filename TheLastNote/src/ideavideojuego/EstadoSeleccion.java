@@ -55,8 +55,6 @@ public class EstadoSeleccion extends BasicGameState {
         LUDWIG = new Sprite("Design/BombinStillBIG.png", 500,380);
         //puntero = new Sprite("Design/cursor1.png", ALFREDO);
         this.indicador = 0;
-        //personaje = new Personaje(200, "Alfredo Mercurio");
-        Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
         hudAlfredo = new Image("Design/battlev1UI.png");
         hudMoldova = new Image("Design/battlev2UI.png");
         hudMozart = new Image("Design/battlev3UI.png");
@@ -75,22 +73,22 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
         ludwigD = new Animation(spriteLudwigD,100);
         ludwigI = new Animation(spriteLudwigI,100);
-        Music musicLudwigB = new Music("Musica/classic_battle.ogg", false);
-        Music musicLudwigH = new Music("Musica/classic_hall.ogg", false);
+        Music musicLudwigB = new Music("Musica/classic_8bit.ogg", false);
+        Music musicLudwigH = new Music("Musica/classic_8hit.ogg", false);
         
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
         moldovaD = new Animation(spriteMoldovaD,100);
         moldovaI = new Animation(spriteMoldovaI,100);
-        Music musicMoldovaB = new Music("Musica/classic_8bit.ogg", false);
-        Music musicMoldovaH = new Music("Musica/jazz_hall.ogg", false);
+        Music musicMoldovaB = new Music("Musica/jazz_8bit.ogg", false);
+        Music musicMoldovaH = new Music("Musica/jazz_8hit.ogg", false);
         
         Ataque Guitarrazo = new Ataque(3000, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_arock1.ogg"));
         Ataque Mama = new Ataque(65, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
         Ataque DiscoPlatino = new Ataque(80, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 90, new Sound("Musica/Sonidos/fx_arock3.ogg"));
         
         Ataque Saxofonazo = new Ataque(35, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
-        Ataque BaileSwing = new Ataque(50, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, laser);
+        Ataque BaileSwing = new Ataque(50, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
         Ataque SaxGuy = new Ataque(60, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 40, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
         
         Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));

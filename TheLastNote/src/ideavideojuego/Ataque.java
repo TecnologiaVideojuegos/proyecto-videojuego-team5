@@ -88,7 +88,7 @@ public class Ataque {
         for (int i = 0; i < 10; i++) {
             int valor=(int)(Math.floor(Math.random()*2)); //suma 0 o 1
             contador +=valor;
-            System.out.println("Contador posibilidad -->"+contador);
+            //System.out.println("Contador posibilidad -->"+contador);
         }
         contador = contador*10; //lo multiplica por 10 para compararlo con la probablidad de fallo
         if(contador>=probabilidadFallo){ //si el contador es mayor que la probabilidad de fallo el ataque acierta

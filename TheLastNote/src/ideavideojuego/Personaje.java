@@ -186,6 +186,7 @@ public class Personaje{
                 ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(ataqueEnemigo).isAcertado());
                 ClaseEstatica.getEnemigo().getAtaques().get(ataqueEnemigo).getEfecto().play();
                 System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
+                ClaseEstatica.setUltimoAtaque(this.getAtaques().get(ataqueEnemigo).getNombre());
                 System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
                 texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+" y causó: "+this.getAtaques().get(ataqueEnemigo).getDmg()+" de daño";;
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
@@ -195,7 +196,6 @@ public class Personaje{
                 texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
             }
         }
-        ClaseEstatica.setUltimoAtaque("");
         //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
         return texto;
     }

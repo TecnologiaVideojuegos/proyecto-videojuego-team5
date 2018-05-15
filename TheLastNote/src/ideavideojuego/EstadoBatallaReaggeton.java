@@ -70,8 +70,6 @@ public class EstadoBatallaReaggeton extends BasicGameState{
         indicador=0;
         dato=0;
         tEspera=3000;
-        System.out.println("Ultimo ataque -->"+ataque);
-
     }
 
     @Override
@@ -80,8 +78,9 @@ public class EstadoBatallaReaggeton extends BasicGameState{
         fondo.draw();
         hud.draw();
         puntero.draw();
+        System.out.println("Ultimo ataque -->"+ataque);
         //ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
-        //ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
+        //ClaseEstatica.getEnemigo().getAnimI().draw();
         ClaseEstatica.getPersonaje().getPJBatalla().draw();
         ClaseEstatica.getEnemigo().getPJBatalla().draw();
         font.drawString(10, 10, message);
@@ -141,6 +140,7 @@ public class EstadoBatallaReaggeton extends BasicGameState{
                     dato=0;
                     turno=true;
                     ClaseEstatica.getClick().play();
+                    ataque=ClaseEstatica.getUltimoAtaque();
                 }
             if(indicador<2){
                 if(entrada.isKeyPressed(Input.KEY_LEFT)){

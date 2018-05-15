@@ -68,7 +68,7 @@ public class EstadoPasillo3 extends BasicGameState{
         //anim.setAutoUpdate(true);
         
         
-        spriteKimD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        spriteKimD = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
         spriteKimI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
         KimD = new Animation(spriteKimD,100);
         KimI = new Animation(spriteKimI,100);
