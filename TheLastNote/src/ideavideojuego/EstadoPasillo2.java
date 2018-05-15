@@ -69,16 +69,16 @@ public class EstadoPasillo2 extends BasicGameState{
         
         Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
         
-        spriteDolandD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
-        spriteDonaldI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
-        DonaldD = new Animation(spriteDolandD,100);
-        DonaldI = new Animation(spriteDonaldI,100);
+        spriteDolandD = new SpriteSheet("Design/DonaldTrapSprite1.png", 67, 176);
+        spriteDonaldI = new SpriteSheet("Design/DonaldTrapSprite1.png", 112, 180);
+        DonaldD = new Animation(spriteDolandD,150);
+        DonaldI = new Animation(spriteDonaldI,150);
 
         //Creación ENEMIGO
-        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, laser);
-        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, laser);
-        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, laser);
-        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleKimJong.png"));
+        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
+        Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
+        Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
+        DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleDonaldTrap.png"));
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
         DonaldTrap.getAtaques().add(Muro);

@@ -33,7 +33,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private AppGameContainer contenedor;
     private float personajex, personajey, enemigox, enemigoy;
     private Sprite puntero;
-    private String texto;
+    private String message;
     private int tiempo;
     private Animation anim, alfredoD, alfredoI;
     private SpriteSheet sprite, spriteAlfredoD, spriteAlfredoI;
@@ -74,7 +74,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
         colision = false;
-
+        message="";
         //Creación ENEMIGO
         /*Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
         Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
@@ -98,17 +98,17 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         if (colision) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);
-            g.drawString("Si, no tengo miedo", 50, 700);
-            g.drawString("Nooo, no estoy preparado", 500, 700);
+            g.drawString("Si, no tengo miedo", 50, 654);
+            g.drawString("Nooo, no estoy preparado", 500, 654);
             if (estado == 0) {
-                puntero.draw(150, 600);
+                puntero.draw(221, 654);
             }
             else if (estado == 1) {
-                puntero.draw(600, 600);
+                puntero.draw(723, 654);
             }
 
         }
-
+        g.drawString(message, 10, 10);
         g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
@@ -229,4 +229,13 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth() , 50);
     }
+    
+    public void mouseClicked(int button, int x, int y, int clickCount) {
+		if (clickCount == 1) {
+			message = "Single Click: "+button+" "+x+","+y;
+		}
+		if (clickCount == 2) {
+			message = "Double Click: "+button+" "+x+","+y;
+		}
+	}
 }
