@@ -80,6 +80,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         fondo.draw();
         hud.draw();
         puntero.draw();
+        System.out.println("Ultimo ataque --> "+ataque);
         //ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
         //ClaseEstatica.getEnemigo().getAnimI().draw(600, 330);
         ClaseEstatica.getPersonaje().getPJBatalla().draw();
@@ -141,6 +142,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
                     dato=0;
                     turno=true;
                     ClaseEstatica.getClick().play();
+                    ataque=ClaseEstatica.getUltimoAtaque();
                 }
             if(indicador<2){
                 if(entrada.isKeyPressed(Input.KEY_LEFT)){
