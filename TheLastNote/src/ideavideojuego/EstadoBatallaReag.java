@@ -159,8 +159,10 @@ public class EstadoBatallaReag extends BasicGameState{
                 if(entrada.isKeyPressed(Input.KEY_RIGHT) && indicador>=2){
                     if(!ClaseEstatica.getClick().playing())
                         ClaseEstatica.getClick().play();
-                    if(indicador<5){
-                        indicador++;
+                    if(indicador<=4){
+                        if (indicador<=3)
+                            indicador++;
+                        System.out.println("Indicador --> "+indicador);
                         if (indicador==2){
                             puntero.setPosicion(a1);
                             texto=ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
@@ -229,7 +231,7 @@ public class EstadoBatallaReag extends BasicGameState{
                 }     
             }
         }else{
-            if(ClaseEstatica.getPersonaje().getVida()>0){
+            /*if(ClaseEstatica.getPersonaje().getVida()>0){
                 if(dato>tEspera){
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
                     game.enterState(5);
@@ -239,7 +241,8 @@ public class EstadoBatallaReag extends BasicGameState{
                 ClaseEstatica.getPersonaje().restaurarTodo();
                 ClaseEstatica.getEnemigo().restaurarTodo();
                 game.enterState(2);
-            }
+            }*/
+            System.out.println("HOLA");
         }
     } 
     

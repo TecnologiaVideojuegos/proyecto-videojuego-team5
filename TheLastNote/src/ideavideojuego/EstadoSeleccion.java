@@ -85,7 +85,7 @@ public class EstadoSeleccion extends BasicGameState {
         Music musicMoldovaB = new Music("Musica/classic_8bit.ogg", false);
         Music musicMoldovaH = new Music("Musica/jazz_hall.ogg", false);
         
-        Ataque Guitarrazo = new Ataque(30, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_arock1.ogg"));
+        Ataque Guitarrazo = new Ataque(3000, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_arock1.ogg"));
         Ataque Mama = new Ataque(65, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
         Ataque DiscoPlatino = new Ataque(80, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 90, new Sound("Musica/Sonidos/fx_arock3.ogg"));
         
