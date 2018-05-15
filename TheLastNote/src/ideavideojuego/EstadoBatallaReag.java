@@ -142,7 +142,7 @@ public class EstadoBatallaReag extends BasicGameState{
         Input entrada = container.getInput();
         dato+=delta;
         if(ataque.equals("SaxGuy") && ClaseEstatica.isAtaqueAcertado()){
-            tEspera=6000;
+            tEspera=8500;
         }else{
             tEspera=3000;
         }

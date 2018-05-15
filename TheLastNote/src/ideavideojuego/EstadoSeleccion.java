@@ -57,16 +57,12 @@ public class EstadoSeleccion extends BasicGameState {
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
         Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
-<<<<<<< HEAD
         hudAlfredo = new Image("Design/battlev1UI.png");
         hudMoldova = new Image("Design/battlev2UI.png");
         hudMozart = new Image("Design/battlev3UI.png");
         backMozart = new Image("Design/battlebombin1.png");
         backAlfredo = new Image("Design/battlebombin1.png");
         backMoldova = new Image("Design/battlebombin1.png");
-=======
-        hud = new Image("Design/battlev1UI.png");
->>>>>>> 5f90a089f9306be871d9c20ade7872046932188b
         
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
@@ -95,7 +91,7 @@ public class EstadoSeleccion extends BasicGameState {
         
         Ataque Saxofonazo = new Ataque(35, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
         Ataque BaileSwing = new Ataque(50, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, laser);
-        Ataque SaxGuy = new Ataque(60, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 40, laser);
+        Ataque SaxGuy = new Ataque(60, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 40, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
         
         Ataque Pianazo = new Ataque(15, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, laser);
         Ataque MetricaExacta = new Ataque(20, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, laser);
