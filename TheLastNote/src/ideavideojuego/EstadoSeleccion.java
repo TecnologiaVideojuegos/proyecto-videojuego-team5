@@ -59,8 +59,8 @@ public class EstadoSeleccion extends BasicGameState {
         hudMoldova = new Image("Design/battlev2UI.png");
         hudMozart = new Image("Design/battlev3UI.png");
         backMozart = new Image("Design/battlebombin1.png");
-        backAlfredo = new Image("Design/battlebombin1.png");
-        backMoldova = new Image("Design/battlebombin1.png");
+        backAlfredo = new Image("Design/battleFreddie1.png");
+        backMoldova = new Image("Design/battleSax1.png");
         
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
