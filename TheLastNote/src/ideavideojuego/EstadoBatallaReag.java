@@ -51,7 +51,7 @@ public class EstadoBatallaReag extends BasicGameState{
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/battlev1background.png");
-        hud = new Image("Design/battlev1menu.png");
+        //hud = new Image("Design/battlev1menu.png");
         puntero = new Sprite("Design/cursor1.png", atacar);
         turno=true;
         java.awt.Font fuenteAWT = new java.awt.Font("Comic Sans MS", 0, 24);
@@ -255,7 +255,8 @@ public class EstadoBatallaReag extends BasicGameState{
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
            ClaseEstatica.getPersonaje().getMusicB().play();
-    }
+           hud=ClaseEstatica.getPersonaje().getHUD();
+        }
        
        public void mouseClicked(int button, int x, int y, int clickCount) {
 		if (clickCount == 1) {

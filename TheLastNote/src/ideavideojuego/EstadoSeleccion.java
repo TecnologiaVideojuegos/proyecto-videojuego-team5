@@ -32,7 +32,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Sprite ALFREDO;
     private Sprite MOLDOVA;
     private Sprite LUDWIG;
-    private Image fondo;
+    private Image fondo, hud;
     private int indicador;
     private Sprite puntero;
     private Personaje AlfredoMercurio,LudwigvanMozart,MoldovaSax;
@@ -57,6 +57,7 @@ public class EstadoSeleccion extends BasicGameState {
         this.indicador = 0;
         //personaje = new Personaje(200, "Alfredo Mercurio");
         Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
+        hud = new Image("Design/battlev1menu.png");
         
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
@@ -91,17 +92,17 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque MetricaExacta = new Ataque(20, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 30, laser);
         Ataque PelucoVictoriano = new Ataque(35, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, laser);
         
-        LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI, musicLudwigB, musicLudwigH);
+        LudwigvanMozart = new Personaje(400,"Ludwin van Mozart",new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167),ludwigD,ludwigI, musicLudwigB, musicLudwigH, hud);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
        
-        AlfredoMercurio = new Personaje(10000, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH);
+        AlfredoMercurio = new Personaje(10000, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, hud);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
         
-        MoldovaSax = new Personaje(300, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH);
+        MoldovaSax = new Personaje(300, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, hud);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);

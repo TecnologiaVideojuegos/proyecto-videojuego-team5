@@ -9,6 +9,7 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SpriteSheet;
 
@@ -23,8 +24,9 @@ public class Personaje{
     private SpriteSheet spritePJ;
     private Animation animD, animI;
     private Music musicB, musicH; //la b se refiere a batalla y la h al pasillo
+    private Image HUD;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH, Image HUD) {
         this.vidaMax=vida;
         this.vida=vida;
         this.nombre = nombre;
@@ -34,6 +36,15 @@ public class Personaje{
         this.animI=animI;
         this.musicB=musicB;
         this.musicH=musicH;
+        this.HUD=HUD;
+    }
+
+    public Image getHUD() {
+        return HUD;
+    }
+
+    public void setHUD(Image HUD) {
+        this.HUD = HUD;
     }
 
     public Music getMusicB() {
