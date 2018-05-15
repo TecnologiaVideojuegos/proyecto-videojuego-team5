@@ -37,7 +37,7 @@ public class EstadoCamerino extends BasicGameState {
     private Image fondo;
     private int cX = 1080, cY = 607;
     private Music musicRock, musicSaxo, musicClasic;
-    private Sound step;
+    private Sound fail;
     private boolean derecha, mover;
 
     @Override
@@ -53,6 +53,8 @@ public class EstadoCamerino extends BasicGameState {
         derecha = true;
         mover=false;
         ang = 200f;
+        fail = new Sound("Musica/Sonidos/fx_fail.ogg");
+        ClaseEstatica.setFail(fail);
     }
 
     @Override

@@ -245,7 +245,6 @@ public class EstadoBatallaReaggeton extends BasicGameState{
                 ClaseEstatica.getEnemigo().restaurarTodo();
                 game.enterState(2,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
             }
-            System.out.println("HOLA");
         }
     } 
     

@@ -8,9 +8,13 @@ package ideavideojuego;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 /**
@@ -138,6 +142,7 @@ public class Personaje{
     
     public String atacar(Personaje penemigo, int seleccion){
         String texto="";
+
         if(this.getVida()>0){
             if(this.getAtaques().get(seleccion).getUsos()!=0){ //si aún tiene usos disponibles del ataque elegido
                 this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos()-1); //le restamos un uso a ese ataque
@@ -152,6 +157,8 @@ public class Personaje{
                         texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+" y causó: "+this.getAtaques().get(seleccion).getDmg()+" de daño";
                         //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
+                    if(!ClaseEstatica.getFail().playing())
+                        ClaseEstatica.getFail().play();
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
                     texto = "OHHH que pena!!!"+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
@@ -191,6 +198,8 @@ public class Personaje{
                 texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+" y causó: "+this.getAtaques().get(ataqueEnemigo).getDmg()+" de daño";;
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
+                if(!ClaseEstatica.getFail().playing())
+                        ClaseEstatica.getFail().play();
                 System.out.println("OHHH que pena!!!"+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");
                 texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";

@@ -82,7 +82,7 @@ public class Ataque {
         this.efecto = efecto;
     }
     
-    public boolean isAcertado(){  //devuelve si hacierta el ataque o no
+    public boolean isAcertado(){  //devuelve si acierta el ataque o no
         boolean acertado;
         int contador=0;
         for (int i = 0; i < 10; i++) {
