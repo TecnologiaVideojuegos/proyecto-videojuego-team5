@@ -73,7 +73,6 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
-        colision = false;
         message="";
         //Creación ENEMIGO
         /*Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
@@ -154,7 +153,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
                 ClaseEstatica.getPersonaje().getAnimD().start();
-                if (personajex < 1016) {
+                if ((personajex < 1016)) {
                     personajex += delta * 0.4f;
                     perR.setX(personajex);
                     derecha = true;
@@ -230,6 +229,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.personajey = 349;
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth() , 50);
+        colision = false;
     }
     
     public void mouseClicked(int button, int x, int y, int clickCount) {

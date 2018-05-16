@@ -165,7 +165,7 @@ public class Personaje{
                 }
             }else{
                 System.out.println("NO TE QUEDAN USOS");
-                texto = "NO TE QUEDAN USOS";
+                texto = "NO TE QUEDAN USOS. PIERDES TU TURNO";
             }
         }else{
             System.out.println("¡HAS MUERTO!");
