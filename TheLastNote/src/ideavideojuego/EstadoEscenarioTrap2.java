@@ -124,6 +124,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         if (!perR.intersects(perE)) {
             colision = false;
         }
+        
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -216,5 +217,8 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
         colision = false;
+    }
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException{
+        colision=false;
     }
 }

@@ -157,7 +157,7 @@ public class Personaje{
                         texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+" y causó: "+this.getAtaques().get(seleccion).getDmg()+" de daño";
                         //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 }else{
-                    if(!ClaseEstatica.getFail().playing())
+                    //if(!ClaseEstatica.getFail().playing())
                         ClaseEstatica.getFail().play();
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
@@ -198,7 +198,7 @@ public class Personaje{
                 texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+" y causó: "+this.getAtaques().get(ataqueEnemigo).getDmg()+" de daño";;
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             }else{
-                if(!ClaseEstatica.getFail().playing())
+                //if(!ClaseEstatica.getFail().playing())
                         ClaseEstatica.getFail().play();
                 System.out.println("OHHH que pena!!!  "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");

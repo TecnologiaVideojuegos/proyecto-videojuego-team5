@@ -232,6 +232,10 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         colision = false;
     }
     
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException{
+        colision=false;
+    }
+    
     public void mouseClicked(int button, int x, int y, int clickCount) {
 		if (clickCount == 1) {
 			message = "Single Click: "+button+" "+x+","+y;

@@ -209,4 +209,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         this.personajey = 349;
         colision = false;
     }
+    
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException{
+        colision=false;
+    }
 }

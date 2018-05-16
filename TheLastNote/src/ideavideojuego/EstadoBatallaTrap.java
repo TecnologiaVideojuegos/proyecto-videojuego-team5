@@ -238,11 +238,13 @@ public class EstadoBatallaTrap extends BasicGameState{
                     game.enterState(7,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
                 }
             }else{
+                if(dato>tEspera){
                 System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
                 ClaseEstatica.getPersonaje().restaurarTodo();
                 ClaseEstatica.getEnemigo().restaurarTodo();
                 game.enterState(2,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
-            }
+                }
+                }
         }
     } 
     
