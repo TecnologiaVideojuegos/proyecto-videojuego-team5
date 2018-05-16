@@ -108,6 +108,8 @@ public class EstadoMenu extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        ClaseEstatica.getMusicaMenu().play();
+        if (!ClaseEstatica.getMusicaMenu().playing()) {
+            ClaseEstatica.getMusicaMenu().play();
+        }
     }
 }

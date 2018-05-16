@@ -59,10 +59,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
         derecha = true;
         ang = 200f;
-        puntero = new Sprite("Design/cursor1.png");
-        colision = false;
-
-        
+        puntero = new Sprite("Design/cursor1.png");        
     }
 
     @Override
@@ -71,10 +68,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         if (derecha) {
-            //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
         } else {
-            //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
         }
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
@@ -93,8 +88,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
 
         }
 
-        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override
@@ -212,5 +207,6 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
+        colision = false;
     }
 }
