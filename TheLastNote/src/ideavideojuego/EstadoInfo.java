@@ -20,10 +20,11 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoInfo extends BasicGameState{
+public class EstadoInfo extends BasicGameState {
 
-    private Image fondoClassic,fondoJazz,fondoRock;
+    private Image fondoClassic, fondoJazz, fondoRock;
     private int indicador;
+
     @Override
     public int getID() {
         return 20;
@@ -34,7 +35,7 @@ public class EstadoInfo extends BasicGameState{
         fondoClassic = new Image("Design/InfoClassic.PNG");
         fondoJazz = new Image("Design/InfoJazz.PNG");
         fondoRock = new Image("Design/InfoRock.PNG");
-        
+
         indicador = 0;
     }
 
@@ -59,32 +60,32 @@ public class EstadoInfo extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
         if (entrada.isKeyPressed(Input.KEY_RIGHT)) {
-            if(indicador==0){
-                indicador=1;
+            if (indicador == 0) {
+                indicador = 1;
                 if (!ClaseEstatica.getClick().playing()) {
                     ClaseEstatica.getClick().play();
                 }
-            }else if(indicador==1){
-                indicador=2;
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
-                }
-            }
-        }else if(entrada.isKeyPressed(Input.KEY_LEFT)){
-            if(indicador==1){
-                indicador=0;
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
-                }
-            }else if(indicador==2){
-                indicador=1;
+            } else if (indicador == 1) {
+                indicador = 2;
                 if (!ClaseEstatica.getClick().playing()) {
                     ClaseEstatica.getClick().play();
                 }
             }
-        }else if(entrada.isKeyPressed(Input.KEY_ESCAPE)){
+        } else if (entrada.isKeyPressed(Input.KEY_LEFT)) {
+            if (indicador == 1) {
+                indicador = 0;
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
+            } else if (indicador == 2) {
+                indicador = 1;
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
+            }
+        } else if (entrada.isKeyPressed(Input.KEY_ESCAPE)) {
             game.enterState(0, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
     }
-    
+
 }

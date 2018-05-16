@@ -21,7 +21,8 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author Michael Lofer
  */
-public class Personaje{
+public class Personaje {
+
     private int vida, vidaMax;
     private String nombre;
     private ArrayList<Ataque> ataques;
@@ -31,17 +32,17 @@ public class Personaje{
     private Image HUD, PJBatalla;
 
     public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH, Image HUD, Image PJBatalla) {
-        this.vidaMax=vida;
-        this.vida=vida;
+        this.vidaMax = vida;
+        this.vida = vida;
         this.nombre = nombre;
         ataques = new ArrayList<>();
-        spritePJ=sprite;
-        this.animD=animD;
-        this.animI=animI;
-        this.musicB=musicB;
-        this.musicH=musicH;
-        this.HUD=HUD;
-        this.PJBatalla=PJBatalla;
+        spritePJ = sprite;
+        this.animD = animD;
+        this.animI = animI;
+        this.musicB = musicB;
+        this.musicH = musicH;
+        this.HUD = HUD;
+        this.PJBatalla = PJBatalla;
     }
 
     public Image getPJBatalla() {
@@ -92,9 +93,10 @@ public class Personaje{
         this.animI = animI;
     }
 
-    public Personaje(){
-        
+    public Personaje() {
+
     }
+
     public int getVidaMax() {
         return vidaMax;
     }
@@ -139,75 +141,77 @@ public class Personaje{
     public String toString() {
         return "Personaje{" + "vida=" + vida + ", nombre=" + nombre + ", ataques=" + ataques + '}';
     }
-    
-    public String atacar(Personaje penemigo, int seleccion){
-        String texto="";
 
-        if(this.getVida()>0){
-            if(this.getAtaques().get(seleccion).getUsos()!=0){ //si aún tiene usos disponibles del ataque elegido
-                this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos()-1); //le restamos un uso a ese ataque
-                if(this.getAtaques().get(seleccion).isAcertado()){
-                    if(!this.getAtaques().get(seleccion).getEfecto().playing())
+    public String atacar(Personaje penemigo, int seleccion) {
+        String texto = "";
+
+        if (this.getVida() > 0) {
+            if (this.getAtaques().get(seleccion).getUsos() != 0) { //si aún tiene usos disponibles del ataque elegido
+                this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos() - 1); //le restamos un uso a ese ataque
+                if (this.getAtaques().get(seleccion).isAcertado()) {
+                    if (!this.getAtaques().get(seleccion).getEfecto().playing()) {
                         this.getAtaques().get(seleccion).getEfecto().play();
-                        ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
-                        ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(seleccion).isAcertado());
-                        //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
-                        penemigo.setVida(penemigo.getVida()-this.getAtaques().get(seleccion).getDmg());
-                        System.out.println("Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida");
-                        texto = this.getNombre()+" usó: "+this.getAtaques().get(seleccion).getNombre()+" y causó: "+this.getAtaques().get(seleccion).getDmg()+" de daño";
-                        //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
-                }else{
+                    }
+                    ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
+                    ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(seleccion).isAcertado());
+                    //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
+                    penemigo.setVida(penemigo.getVida() - this.getAtaques().get(seleccion).getDmg());
+                    System.out.println("Ahora " + penemigo.getNombre() + " tiene: " + penemigo.getVida() + " vida");
+                    texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó: " + this.getAtaques().get(seleccion).getDmg() + " de daño";
+                    //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
+                } else {
                     //if(!ClaseEstatica.getFail().playing())
-                        ClaseEstatica.getFail().play();
-                    System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                    ClaseEstatica.getFail().play();
+                    System.out.println("OHHH que pena!!! " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
-                    texto = "OHHH que pena!!!  "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
+                    texto = "OHHH que pena!!!  " + this.getNombre() + " ha FALLADO EL ATAQUE!!!";
                 }
-            }else{
+            } else {
                 System.out.println("NO TE QUEDAN USOS");
                 texto = "NO TE QUEDAN USOS. PIERDES TU TURNO";
             }
-        }else{
+        } else {
             System.out.println("¡HAS MUERTO!");
             texto = "¡HAS MUERTO!";
         }
         return texto;
     }
-    
-    public String ataqueEnemigo(Personaje personajeBueno){
-        String texto="";
+
+    public String ataqueEnemigo(Personaje personajeBueno) {
+        String texto = "";
         /*try{
             sleep(4000);
         }catch(InterruptedException ie){}*/
-        int ataqueEnemigo=0;
-        boolean usosSufiecientes=false;
-        if(this.getVida()>0){
-            while(!usosSufiecientes){
-                ataqueEnemigo = (int)Math.floor(Math.random()*3);
-                if(this.getAtaques().get(ataqueEnemigo).getUsos()>0){
-                    usosSufiecientes=true;
+        int ataqueEnemigo = 0;
+        boolean usosSufiecientes = false;
+        if (this.getVida() > 0) {
+            while (!usosSufiecientes) {
+                ataqueEnemigo = (int) Math.floor(Math.random() * 3);
+                if (this.getAtaques().get(ataqueEnemigo).getUsos() > 0) {
+                    usosSufiecientes = true;
                 }
             }
-            if(this.getAtaques().get(ataqueEnemigo).isAcertado()){ //si acierta el ataque
-                personajeBueno.setVida(personajeBueno.getVida()-this.getAtaques().get(ataqueEnemigo).getDmg());
+            if (this.getAtaques().get(ataqueEnemigo).isAcertado()) { //si acierta el ataque
+                personajeBueno.setVida(personajeBueno.getVida() - this.getAtaques().get(ataqueEnemigo).getDmg());
                 ClaseEstatica.setAtaqueAcertado(this.getAtaques().get(ataqueEnemigo).isAcertado());
                 ClaseEstatica.getEnemigo().getAtaques().get(ataqueEnemigo).getEfecto().play();
-                System.out.println(this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre());
+                System.out.println(this.getNombre() + " usó: " + this.getAtaques().get(ataqueEnemigo).getNombre());
                 ClaseEstatica.setUltimoAtaque(this.getAtaques().get(ataqueEnemigo).getNombre());
-                System.out.println("Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida");
-                texto = this.getNombre()+" usó: "+this.getAtaques().get(ataqueEnemigo).getNombre()+" y causó: "+this.getAtaques().get(ataqueEnemigo).getDmg()+" de daño";;
+                System.out.println("Ahora " + personajeBueno.getNombre() + " tiene: " + personajeBueno.getVida() + " vida");
+                texto = this.getNombre() + " usó: " + this.getAtaques().get(ataqueEnemigo).getNombre() + " y causó: " + this.getAtaques().get(ataqueEnemigo).getDmg() + " de daño";;
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
-            }else{
+            } else {
                 //if(!ClaseEstatica.getFail().playing())
-                        ClaseEstatica.getFail().play();
-                System.out.println("OHHH que pena!!!  "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                ClaseEstatica.getFail().play();
+                System.out.println("OHHH que pena!!!  " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");
-                texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
+                texto = "OHHH que pena!!! " + this.getNombre() + " ha FALLADO EL ATAQUE!!!";
             }
         }
         //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
         return texto;
     }
+
     /*public void atacarTexto(Personaje penemigo){
         if(this.getVida()>0){
             Scanner scanner = new Scanner(System.in);
@@ -231,8 +235,8 @@ public class Personaje{
             System.out.println("¡HAS MUERTO!");
         }
     }*/
-    
-    /*public void ataqueEnemigoTexto(Personaje personajeBueno){
+
+ /*public void ataqueEnemigoTexto(Personaje personajeBueno){
         int ataqueEnemigo=0;
         boolean usosSufiecientes=false;
         if(this.getVida()>0){
@@ -251,10 +255,9 @@ public class Personaje{
             }
         }
     }*/
-    
-    public void restaurarTodo(){ //restaurará todos los stats del personaje
-        vida=vidaMax;
-        for(int i=0; i<ataques.size(); i++){
+    public void restaurarTodo() { //restaurará todos los stats del personaje
+        vida = vidaMax;
+        for (int i = 0; i < ataques.size(); i++) {
             ataques.get(i).setUsos(ataques.get(i).getUsosMax());
         }
     }

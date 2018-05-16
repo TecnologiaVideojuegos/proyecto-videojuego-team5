@@ -10,6 +10,7 @@ package ideavideojuego;
  * @author Michael Lofer
  */
 public class Punto {
+
     private float f0x;
     private float f1y;
 

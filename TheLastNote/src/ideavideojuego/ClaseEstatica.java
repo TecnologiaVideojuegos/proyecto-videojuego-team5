@@ -14,13 +14,14 @@ import org.newdawn.slick.Sound;
  * @author Michael Lofer
  */
 public final class ClaseEstatica {
+
     private static Personaje personaje, enemigo;
     private static Sound sonidoPaso, click, fail;
     private static Music musicaMenu;
     private static String ultimoAtaque;
     private static boolean ataqueAcertado;
-    
-    public ClaseEstatica(){
+
+    public ClaseEstatica() {
     }
 
     public static Sound getSonidoPaso() {
@@ -54,7 +55,7 @@ public final class ClaseEstatica {
     public static void setAtaqueAcertado(boolean ataqueAcertado) {
         ClaseEstatica.ataqueAcertado = ataqueAcertado;
     }
-    
+
     public static Sound getClick() {
         return click;
     }
@@ -62,7 +63,7 @@ public final class ClaseEstatica {
     public static void setClick(Sound click) {
         ClaseEstatica.click = click;
     }
-    
+
     public static Personaje getPersonaje() {
         return personaje;
     }
@@ -86,6 +87,5 @@ public final class ClaseEstatica {
     public static void setMusicaMenu(Music musicaMenu) {
         ClaseEstatica.musicaMenu = musicaMenu;
     }
-    
-    
+
 }

@@ -12,18 +12,19 @@ import org.newdawn.slick.Sound;
  * @author Michael Lofer
  */
 public class Ataque {
+
     private int dmg, usos, probabilidadFallo, usosMax;
     private String nombre, descripcion;
     private Sound efecto;
 
     public Ataque(int dmg, int usos, String nombre, String descripcion, int probabilidadFallo, Sound efecto) {
-        this.usosMax=usos;
+        this.usosMax = usos;
         this.dmg = dmg;
         this.usos = usos;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.probabilidadFallo=probabilidadFallo;
-        this.efecto=efecto;
+        this.probabilidadFallo = probabilidadFallo;
+        this.efecto = efecto;
     }
 
     public String getNombre() {
@@ -41,7 +42,7 @@ public class Ataque {
     public void setUsosMax(int usosMax) {
         this.usosMax = usosMax;
     }
-    
+
     public int getProbabilidadFallo() {
         return probabilidadFallo;
     }
@@ -49,7 +50,7 @@ public class Ataque {
     public void setProbabilidadFallo(int probabilidadFallo) {
         this.probabilidadFallo = probabilidadFallo;
     }
-    
+
     public int getDmg() {
         return dmg;
     }
@@ -81,20 +82,20 @@ public class Ataque {
     public void setEfecto(Sound efecto) {
         this.efecto = efecto;
     }
-    
-    public boolean isAcertado(){  //devuelve si acierta el ataque o no
+
+    public boolean isAcertado() {  //devuelve si acierta el ataque o no
         boolean acertado;
-        int contador=0;
+        int contador = 0;
         for (int i = 0; i < 10; i++) {
-            int valor=(int)(Math.floor(Math.random()*2)); //suma 0 o 1
-            contador +=valor;
+            int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
+            contador += valor;
             //System.out.println("Contador posibilidad -->"+contador);
         }
-        contador = contador*10; //lo multiplica por 10 para compararlo con la probablidad de fallo
-        if(contador>=probabilidadFallo){ //si el contador es mayor que la probabilidad de fallo el ataque acierta
-            acertado=true;
-        }else{
-            acertado=false;
+        contador = contador * 10; //lo multiplica por 10 para compararlo con la probablidad de fallo
+        if (contador >= probabilidadFallo) { //si el contador es mayor que la probabilidad de fallo el ataque acierta
+            acertado = true;
+        } else {
+            acertado = false;
         }
         return acertado;
     }

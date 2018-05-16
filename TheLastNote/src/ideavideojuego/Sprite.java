@@ -13,6 +13,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class Sprite extends Image {
+
     protected Punto posicion;
 
     public Sprite(String ruta) throws SlickException {

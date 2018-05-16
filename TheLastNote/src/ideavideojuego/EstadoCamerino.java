@@ -27,16 +27,9 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
  */
 public class EstadoCamerino extends BasicGameState {
 
-    private AppGameContainer contenedor;
     private float x, y;
-    private String texto;
-    private int tiempo;
-    private Animation anim, alfredoD, alfredoI;
-    private SpriteSheet prueba, spriteAlfredoD, spriteAlfredoI;
     private float ang;
     private Image fondo;
-    private int cX = 1080, cY = 607;
-    private Music musicRock, musicSaxo, musicClasic;
     private Sound fail;
     private boolean derecha, mover;
 
@@ -45,13 +38,12 @@ public class EstadoCamerino extends BasicGameState {
         return 2;
     }
 
-  
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
-        mover=false;
+        mover = false;
         ang = 200f;
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         ClaseEstatica.setFail(fail);
@@ -59,28 +51,24 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        //music = new Music("Musica/rock_hall.ogg", false);
         fondo.draw();
-        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
-        if(mover){
-            if (derecha){
-                //alfredoD.draw(x,y);
+        if (mover) {
+            if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
             } else {
-                //alfredoI.draw(x,y);
                 ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
             }
-        }else{
+        } else {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
-        if(!ClaseEstatica.getPersonaje().getMusicH().playing()){
+        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
             ClaseEstatica.getPersonaje().getMusicH().play();
         }
-        mover=true;
+        mover = true;
     }
 
     @Override
@@ -112,11 +100,7 @@ public class EstadoCamerino extends BasicGameState {
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-            }/* else {
-                ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }*/
+            }
         } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().start();
@@ -136,10 +120,10 @@ public class EstadoCamerino extends BasicGameState {
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-            }else if((y>=480) && (x>=485) && (x<=530)){
+            } else if ((y >= 480) && (x >= 485) && (x <= 530)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                game.enterState(3,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else {
             if (derecha) {
@@ -154,8 +138,9 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
             ClaseEstatica.getPersonaje().getMusicH().play();
+        }
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;
         ClaseEstatica.getPersonaje().getAnimD().stop();

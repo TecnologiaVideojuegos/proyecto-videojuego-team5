@@ -116,7 +116,7 @@ public class EstadoBatallaTrap extends BasicGameState {
         /*
         font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
         font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
-        */
+         */
         vidaPersonaje();
         if (!ClaseEstatica.getPersonaje().getMusicB().playing()) {
             ClaseEstatica.getPersonaje().getMusicB().play();

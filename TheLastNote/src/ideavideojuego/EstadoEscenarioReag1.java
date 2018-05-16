@@ -73,7 +73,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
-        message="";
+        message = "";
         //Creación ENEMIGO
         /*Ataque Microfonazo = new Ataque(10, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 10);
         Ataque Flow = new Ataque(30, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 10);
@@ -86,8 +86,9 @@ public class EstadoEscenarioReag1 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
             ClaseEstatica.getPersonaje().getMusicH().play();
+        }
         fondo.draw();
         if (derecha) {
             ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
@@ -103,8 +104,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             g.drawString("Nooo, no estoy preparado", 500, 654);
             if (estado == 0) {
                 puntero.draw(221, 654);
-            }
-            else if (estado == 1) {
+            } else if (estado == 1) {
                 puntero.draw(723, 654);
             }
 
@@ -127,13 +127,13 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         if (perR.intersects(perE)) {
             colision = true;
-            if(derecha){
+            if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-            }else{
+            } else {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
                 ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
-            }           
+            }
         }
         if (!perR.intersects(perE)) {
             colision = false;
@@ -205,17 +205,17 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 if (estado == 0) {
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
-                    if(derecha) {
+                    if (derecha) {
                         this.personajex = 595; //Coordenadas donde empieza el personaje
                         this.personajey = 359;
                         perR.setX(personajex);
                         perR.setY(personajey);
-                    }else{
+                    } else {
                         this.personajex = 799;
                         this.personajey = 359;
                         perR.setX(personajex);
                         perR.setY(personajey);
-                    }                   
+                    }
                 }
             }
         }
@@ -228,19 +228,18 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth() , 50);
+        perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         perR.setY(personajey);
         perR.setX(personajex);
         colision = false;
     }
-    
 
     public void mouseClicked(int button, int x, int y, int clickCount) {
-		if (clickCount == 1) {
-			message = "Single Click: "+button+" "+x+","+y;
-		}
-		if (clickCount == 2) {
-			message = "Double Click: "+button+" "+x+","+y;
-		}
-	}
+        if (clickCount == 1) {
+            message = "Single Click: " + button + " " + x + "," + y;
+        }
+        if (clickCount == 2) {
+            message = "Double Click: " + button + " " + x + "," + y;
+        }
+    }
 }

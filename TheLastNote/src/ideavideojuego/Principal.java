@@ -14,22 +14,22 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class Principal extends StateBasedGame{
+public class Principal extends StateBasedGame {
 
     private AppGameContainer contenedor;
     Personaje personaje = new Personaje();
-    
-    public Principal() throws SlickException{
+
+    public Principal() throws SlickException {
         super("Pantalla Principal");
         contenedor = new AppGameContainer(this);
         contenedor.setDisplayMode(1080, 720, false);
         contenedor.setShowFPS(false);
         contenedor.start();
     }
-    
+
     /**
-    * Inicializar la lista de estados(Pantallas,niveles) del juego
-    */
+     * Inicializar la lista de estados(Pantallas,niveles) del juego
+     */
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         this.addState(new EstadoMenu());
@@ -47,13 +47,13 @@ public class Principal extends StateBasedGame{
         this.addState(new EstadoBatallaReaggeton());
         this.addState(new EstadoVictoria());
     }
-    
-    public static void main(String[] args){
-        try{
+
+    public static void main(String[] args) {
+        try {
             new Principal();
-        }catch(SlickException slick){
+        } catch (SlickException slick) {
             slick.printStackTrace();
         }
     }
-    
+
 }

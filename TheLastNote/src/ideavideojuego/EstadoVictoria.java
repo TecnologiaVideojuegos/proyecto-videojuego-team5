@@ -19,12 +19,13 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoVictoria extends BasicGameState{
+public class EstadoVictoria extends BasicGameState {
+
     private Image fondo;
     private SpriteSheet Alfredo, Mozart, Moldova;
     private Animation AlfredoDance, MozartDance, MoldovaDance;
     private Music musicaVictoria;
-    
+
     @Override
     public int getID() {
         return 12;
@@ -35,36 +36,37 @@ public class EstadoVictoria extends BasicGameState{
         fondo = new Image("Design/escenario.jpg");
         musicaVictoria = new Music("Musica/maintheme.ogg");
         Alfredo = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
-        AlfredoDance = new Animation(Alfredo,100);
-        
+        AlfredoDance = new Animation(Alfredo, 100);
+
         Mozart = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
-        MozartDance = new Animation(Mozart,100);
-        
+        MozartDance = new Animation(Mozart, 100);
+
         Moldova = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
-        MoldovaDance = new Animation(Moldova,100);
+        MoldovaDance = new Animation(Moldova, 100);
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
-        if(!musicaVictoria.playing())
+        if (!musicaVictoria.playing()) {
             musicaVictoria.play();
-        
+        }
+
         AlfredoDance.draw(380, 380);
         AlfredoDance.start();
-        
+
         MozartDance.draw(620, 380);
         MozartDance.start();
-        
+
         MoldovaDance.draw(500, 380);
         MoldovaDance.start();
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-       
+
     }
-    
+
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         musicaVictoria.play();
