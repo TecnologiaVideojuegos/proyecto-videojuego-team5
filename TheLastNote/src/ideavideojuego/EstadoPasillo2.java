@@ -89,12 +89,9 @@ public class EstadoPasillo2 extends BasicGameState{
         g.drawString("Pasillo 2", 50, 600);
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
-            //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-            ;
         }
         else{
-            //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
