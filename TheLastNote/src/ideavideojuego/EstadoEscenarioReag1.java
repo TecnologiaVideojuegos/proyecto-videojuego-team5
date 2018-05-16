@@ -229,13 +229,12 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.personajey = 349;
         perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth() , 50);
+        perR.setY(personajey);
+        perR.setX(personajex);
         colision = false;
     }
     
-    public void leave(GameContainer container, StateBasedGame game) throws SlickException{
-        colision=false;
-    }
-    
+
     public void mouseClicked(int button, int x, int y, int clickCount) {
 		if (clickCount == 1) {
 			message = "Single Click: "+button+" "+x+","+y;

@@ -106,7 +106,6 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             music.play();
             //music.resume();
-
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
             music.pause();
@@ -216,9 +215,9 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
+        perR.setY(personajey);
+        perR.setX(personajex);
         colision = false;
     }
-    public void leave(GameContainer container, StateBasedGame game) throws SlickException{
-        colision=false;
-    }
+    
 }

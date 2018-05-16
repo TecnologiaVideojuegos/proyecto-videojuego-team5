@@ -72,7 +72,7 @@ public class EstadoPasillo2 extends BasicGameState{
         DonaldI = new Animation(spriteDonaldI,150);
 
         //Creación ENEMIGO
-        Ataque Peluquin = new Ataque(10000, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
+        Ataque Peluquin = new Ataque(30, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
         Ataque Trap = new Ataque(60, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 30, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
         Ataque Muro = new Ataque(90, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 60, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
         DonaldTrap = new Personaje(500,"Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleDonaldTrap.png"));
