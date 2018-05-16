@@ -35,7 +35,6 @@ public class EstadoPasillo3 extends BasicGameState{
     private float ang;
     private Image fondo;
     private int cX = 1080,cY=607;
-    private Music music;
     private boolean derecha;
     private Personaje KimJongDos;
     private Animation KimD, KimI;
@@ -45,18 +44,12 @@ public class EstadoPasillo3 extends BasicGameState{
     public int getID() {
         return 7;
     }
-    
-    /*public EstadoPasillo1(Personaje personaje){
-        this.personaje=personaje;
-    */
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 571; //Coordenadas donde empieza el personaje
         this.y = 257;
-        //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
-        music = new Music("Musica/maintheme.ogg", false);
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67 ,164);
         alfredoD = new Animation(spriteAlfredoD,100);
@@ -84,7 +77,8 @@ public class EstadoPasillo3 extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        //music = new Music("Musica/rock_hall.ogg", false);
+        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+            ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         g.drawString("Pasillo 3", 50, 600);
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
@@ -105,13 +99,12 @@ public class EstadoPasillo3 extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
 	if (container.getInput().isKeyDown(Input.KEY_M)){
-			music.play();                       
-                        //music.resume();
+            ClaseEstatica.getPersonaje().getMusicH().play();        
                         
                         
         }
         if (container.getInput().isKeyDown(Input.KEY_N)){
-			music.pause();
+            ClaseEstatica.getPersonaje().getMusicH().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -172,7 +165,7 @@ public class EstadoPasillo3 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-       music.play();
+       //music.play();
        this.x = 30; //Coordenadas donde empieza el personaje
        this.y = 257;
     }
