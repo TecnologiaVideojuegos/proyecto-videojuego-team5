@@ -89,17 +89,17 @@ public class EstadoSeleccion extends BasicGameState {
         Music musicMoldovaBN = new Music("Musica/jazz_battle.ogg", false);
         Music musicMoldovaHN = new Music("Musica/jazz_hall.ogg", false);
 
-        Ataque Guitarrazo = new Ataque(4000, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
+        Ataque Guitarrazo = new Ataque(40, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
         Ataque Mama = new Ataque(70, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
-        Ataque DiscoPlatino = new Ataque(100, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, new Sound("Musica/Sonidos/fx_arock3.ogg"));
+        Ataque DiscoPlatino = new Ataque(100, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, new Sound("Musica/Sonidos/fx_arock3.ogg"));
 
-        Ataque Saxofonazo = new Ataque(4000, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
-        Ataque BaileSwing = new Ataque(60, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
-        Ataque SaxGuy = new Ataque(80, 7, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 50, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
+        Ataque Saxofonazo = new Ataque(30, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
+        Ataque BaileSwing = new Ataque(55, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
+        Ataque SaxGuy = new Ataque(80, 5, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 50, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
 
         Ataque Pianazo = new Ataque(30, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));
         Ataque MetricaExacta = new Ataque(50, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
-        Ataque PelucoVictoriano = new Ataque(70, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
+        Ataque PelucoVictoriano = new Ataque(70, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
 
         LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC);
         LudwigvanMozart.getAtaques().add(Pianazo);

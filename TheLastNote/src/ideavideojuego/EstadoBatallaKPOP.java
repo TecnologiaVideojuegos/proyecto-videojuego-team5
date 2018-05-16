@@ -80,7 +80,7 @@ public class EstadoBatallaKPOP extends BasicGameState {
         fondo.draw();
         hud.draw();
         puntero.draw();
-        System.out.println("Tiempo espera --> "+tEspera+" --- Ultimo ataque --> "+ataque+" --- ACERTADO --> "+ClaseEstatica.isAtaqueAcertado());
+        //System.out.println("Tiempo espera --> "+tEspera+" --- Ultimo ataque --> "+ataque+" --- ACERTADO --> "+ClaseEstatica.isAtaqueAcertado());
         ClaseEstatica.getPersonaje().getAnimC().draw(170, 63);
         ClaseEstatica.getEnemigo().getAnimC().draw(700, 87);
         font.drawString(10, 10, message);
@@ -118,7 +118,7 @@ public class EstadoBatallaKPOP extends BasicGameState {
         if (!ClaseEstatica.getPersonaje().getMusicBnormal().playing()) {
             ClaseEstatica.getPersonaje().getMusicBnormal().play();
         }
-        font.drawString(400, 20, "El DELTA ES --> " + dato);
+        //font.drawString(400, 20, "El DELTA ES --> " + dato);
         if ((turno) && (dato > tEspera)) {
             font.drawString(832, 457, "ES TU TURNO", org.newdawn.slick.Color.green);
         } else {
