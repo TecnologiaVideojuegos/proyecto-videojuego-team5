@@ -72,7 +72,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigC = new SpriteSheet("Design/battleBombinSprite.png", 198, 345);
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
-        spriteLudwigB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
+        spriteLudwigB = new SpriteSheet("Design/BombinDance1.png", 91, 175);
         ludwigC = new Animation(spriteLudwigC, 100);
         ludwigD = new Animation(spriteLudwigD, 100);
         ludwigI = new Animation(spriteLudwigI, 100);
@@ -85,7 +85,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteMoldovaC = new SpriteSheet("Design/battleSaxSprite.png", 174, 345);
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
-        spriteMoldovaB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
+        spriteMoldovaB = new SpriteSheet("Design/SaxGuyDance1.png", 90, 175);
         moldovaC = new Animation(spriteMoldovaC, 100);
         moldovaD = new Animation(spriteMoldovaD, 100);
         moldovaI = new Animation(spriteMoldovaI, 100);
@@ -95,29 +95,29 @@ public class EstadoSeleccion extends BasicGameState {
         Music musicMoldovaBN = new Music("Musica/jazz_battle.ogg", false);
         Music musicMoldovaHN = new Music("Musica/jazz_hall.ogg", false);
 
-        Ataque Guitarrazo = new Ataque(40, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
-        Ataque Mama = new Ataque(70, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
-        Ataque DiscoPlatino = new Ataque(100, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, new Sound("Musica/Sonidos/fx_arock3.ogg"));
+        Ataque Guitarrazo = new Ataque(50, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
+        Ataque Mama = new Ataque(70, 10, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
+        Ataque DiscoPlatino = new Ataque(100, 5, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 50, new Sound("Musica/Sonidos/fx_arock3.ogg"));
 
-        Ataque Saxofonazo = new Ataque(30, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
-        Ataque BaileSwing = new Ataque(55, 15, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
+        Ataque Saxofonazo = new Ataque(40, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
+        Ataque BaileSwing = new Ataque(60, 10, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
         Ataque SaxGuy = new Ataque(80, 5, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 50, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
 
-        Ataque Pianazo = new Ataque(30, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));
-        Ataque MetricaExacta = new Ataque(50, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
-        Ataque PelucoVictoriano = new Ataque(70, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
+        Ataque Pianazo = new Ataque(35, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));
+        Ataque MetricaExacta = new Ataque(55, 10, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
+        Ataque PelucoVictoriano = new Ataque(75, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
 
-        LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC,ludwigB);
+        LudwigvanMozart = new Personaje(1000, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC,ludwigB);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
 
-        AlfredoMercurio = new Personaje(650, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, alfredoC,alfredoB);
+        AlfredoMercurio = new Personaje(700, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, alfredoC,alfredoB);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
 
-        MoldovaSax = new Personaje(750, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB);
+        MoldovaSax = new Personaje(800, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);

@@ -91,6 +91,8 @@ public class EstadoCamerino extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
         }
+        if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
+            game.enterState(1);
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
@@ -158,6 +160,7 @@ public class EstadoCamerino extends BasicGameState {
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;
         mover=false;
+        baile=false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
     }
