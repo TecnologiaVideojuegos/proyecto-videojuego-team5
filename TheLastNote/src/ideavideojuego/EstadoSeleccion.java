@@ -59,7 +59,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
         spriteAlfredoC = new SpriteSheet("Design/battleFreddieSprite.png", 181, 345);
-        spriteAlfredoB = new SpriteSheet("Design/FreddieDance1.png", 104, 171);
+        spriteAlfredoB = new SpriteSheet("Design/FreddieDance1.png", 105, 171);
         alfredoD = new Animation(spriteAlfredoD, 100);
         alfredoI = new Animation(spriteAlfredoI, 100);
         alfredoC = new Animation(spriteAlfredoC, 100);
@@ -72,7 +72,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigC = new SpriteSheet("Design/battleBombinSprite.png", 198, 345);
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
-        spriteLudwigB = new SpriteSheet("Design/BombinDance1.png", 91, 145);
+        spriteLudwigB = new SpriteSheet("Design/BombinDance1.png", 107, 171);
         ludwigC = new Animation(spriteLudwigC, 100);
         ludwigD = new Animation(spriteLudwigD, 100);
         ludwigI = new Animation(spriteLudwigI, 100);
@@ -85,7 +85,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteMoldovaC = new SpriteSheet("Design/battleSaxSprite.png", 174, 345);
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
-        spriteMoldovaB = new SpriteSheet("Design/SaxGuyDance1.png", 90, 147);
+        spriteMoldovaB = new SpriteSheet("Design/SaxGuyDance1.png", 106, 171);
         moldovaC = new Animation(spriteMoldovaC, 100);
         moldovaD = new Animation(spriteMoldovaD, 100);
         moldovaI = new Animation(spriteMoldovaI, 100);

@@ -139,7 +139,7 @@ public class EstadoCamerino extends BasicGameState {
             } else if ((y >= 480) && (x >= 485) && (x <= 530)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                game.enterState(12, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else {
             if (derecha) {

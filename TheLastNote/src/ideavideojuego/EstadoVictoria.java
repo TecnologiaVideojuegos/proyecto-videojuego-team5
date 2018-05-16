@@ -39,13 +39,13 @@ public class EstadoVictoria extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/escenario.jpg");
         musicaVictoria = new Music("Musica/winning.ogg");
-        Alfredo = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
+        Alfredo = new SpriteSheet("Design/FreddieDance1.png", 105, 171);
         AlfredoDance = new Animation(Alfredo, 100);
 
-        Mozart = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
+        Mozart = new SpriteSheet("Design/BombinDance1.png", 107, 171);
         MozartDance = new Animation(Mozart, 100);
 
-        Moldova = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
+        Moldova = new SpriteSheet("Design/SaxGuyDance1.png", 106, 171);
         MoldovaDance = new Animation(Moldova, 100);
     }
 
@@ -56,14 +56,15 @@ public class EstadoVictoria extends BasicGameState {
             musicaVictoria.play();
         }
 
-        AlfredoDance.draw(380, 380);
+        AlfredoDance.draw(340, 380);
         AlfredoDance.start();
 
+        MoldovaDance.draw(490, 380);
+        MoldovaDance.start();
+        
+        
         MozartDance.draw(620, 380);
         MozartDance.start();
-
-        MoldovaDance.draw(500, 380);
-        MoldovaDance.start();
     }
 
     @Override
