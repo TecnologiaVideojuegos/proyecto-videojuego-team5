@@ -78,11 +78,10 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         fondo.draw();
         hud.draw();
         puntero.draw();
-        System.out.println("Ultimo ataque -->" + ataque);
-        //ClaseEstatica.getPersonaje().getAnimD().draw(300, 330);
-        //ClaseEstatica.getEnemigo().getAnimI().draw();
-        ClaseEstatica.getPersonaje().getPJBatalla().draw();
-        ClaseEstatica.getEnemigo().getPJBatalla().draw();
+        System.out.println("Tiempo espera --> "+tEspera+" --- Ultimo ataque --> "+ataque+" --- ACERTADO --> "+ClaseEstatica.isAtaqueAcertado());
+        ClaseEstatica.getPersonaje().getAnimC().draw(170, 63);
+        ClaseEstatica.getEnemigo().getAnimC().draw(700, 87);
+        
         font.drawString(10, 10, message);
         if (ClaseEstatica.getPersonaje().getAnimD().isStopped()) {
             ClaseEstatica.getPersonaje().getAnimD().start();
@@ -133,9 +132,11 @@ public class EstadoBatallaReaggeton extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
         dato += delta;
-        if ((ataque.equals("SaxGuy") || ataque.equals("Al ritmo del Swing")) && ClaseEstatica.isAtaqueAcertado()) {
+        if ((ataque.equals("SaxGuy") && ClaseEstatica.isAtaqueAcertado())) {
             tEspera = 8500;
-        } else {
+        }else if ((ataque.equals("Al ritmo del Swing") && ClaseEstatica.isAtaqueAcertado())){
+            tEspera = 6000;
+        }else {
             tEspera = 3000;
         }
         if (ClaseEstatica.getPersonaje().getVida() > 0 && ClaseEstatica.getEnemigo().getVida() > 0) {

@@ -33,8 +33,8 @@ public class EstadoPasillo3 extends BasicGameState {
     private int cX = 1080, cY = 607;
     private boolean derecha;
     private Personaje KimJongDos;
-    private Animation KimD, KimI;
-    private SpriteSheet spriteKimD, spriteKimI;
+    private Animation KimD, KimI, KimC;
+    private SpriteSheet spriteKimD, spriteKimI, spriteKimC;
 
     @Override
     public int getID() {
@@ -49,15 +49,17 @@ public class EstadoPasillo3 extends BasicGameState {
         derecha = true;
         ang = 200f;
 
+        spriteKimC = new SpriteSheet("Design/battleKimJongSprite.png", 301, 322);
         spriteKimD = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
         spriteKimI = new SpriteSheet("Design/KimJong2Sprite1.png", 112, 180);
+        KimC = new Animation(spriteKimC, 150);
         KimD = new Animation(spriteKimD, 150);
         KimI = new Animation(spriteKimI, 150);
 
         Ataque Misilazo = new Ataque(40, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_kim1.ogg")));
         Ataque Kpop = new Ataque(80, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 40, new Sound(("Musica/Sonidos/fx_kim2.ogg")));
         Ataque Nuclear = new Ataque(120, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 60, new Sound(("Musica/Sonidos/fx_kim3.ogg")));
-        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null,null,null, new Image("Design/battleKimJong.png"));
+        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null,null,null,KimC);
         KimJongDos.getAtaques().add(Misilazo);
         KimJongDos.getAtaques().add(Kpop);
         KimJongDos.getAtaques().add(Nuclear);
@@ -69,7 +71,7 @@ public class EstadoPasillo3 extends BasicGameState {
             ClaseEstatica.getMusicSilence().play();
         }
         fondo.draw();
-        g.drawString("Pasillo 3", 50, 600);
+        //g.drawString("Pasillo 3", 50, 600);
         if (derecha) {
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
         } else {

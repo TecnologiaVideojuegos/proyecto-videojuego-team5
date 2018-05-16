@@ -28,8 +28,8 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class EstadoPasillo1 extends BasicGameState {
 
     private float x, y;
-    private Animation fonsiD, fonsiI;
-    private SpriteSheet spriteFonsiD, spriteFonsiI;
+    private Animation fonsiD, fonsiI, fonsiC;
+    private SpriteSheet spriteFonsiD, spriteFonsiI, spriteFonsiC;
     private float ang;
     private Image fondo;
     private boolean derecha;
@@ -52,15 +52,17 @@ public class EstadoPasillo1 extends BasicGameState {
         Sound fx_flow = new Sound(("Musica/Sonidos/fx_luis2.ogg"));
         Sound fx_despacito = new Sound(("Musica/Sonidos/fx_luis3.ogg"));
 
+        spriteFonsiC = new SpriteSheet("Design/battleLuisFonsiSprite.png", 301, 322);
         spriteFonsiD = new SpriteSheet("Design/LuisFonsiSprite1.png", 68, 180);
         spriteFonsiI = new SpriteSheet("Design/LuisFonsiSprite1.png", 68, 180);
+        fonsiC = new Animation(spriteFonsiC, 150);
         fonsiD = new Animation(spriteFonsiD, 150);
         fonsiI = new Animation(spriteFonsiI, 150);
 
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);
         Ataque Despacito = new Ataque(70, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 50, fx_despacito);
-        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null,null,null,new Image("Design/battleLuisFonsi.png"));;
+        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null,null,null,fonsiC);
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
@@ -72,7 +74,7 @@ public class EstadoPasillo1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
-        g.drawString("Pasillo 1", 50, 600);
+        //g.drawString("Pasillo 1", 50, 600);
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
 
         if (derecha) {
