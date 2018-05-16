@@ -33,8 +33,8 @@ public class EstadoSeleccion extends BasicGameState {
     private Image fondo, hudAlfredo, hudMoldova, hudMozart, backAlfredo, backMoldova, backMozart;
     private int indicador;
     private Personaje AlfredoMercurio, LudwigvanMozart, MoldovaSax;
-    private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC;
-    private Animation alfredoD, alfredoI, ludwigD, ludwigI, moldovaD, moldovaI, alfredoC, ludwigC, moldovaC;
+    private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC,spriteAlfredoB,spriteMoldovaB,spriteLudwigB;
+    private Animation alfredoD, alfredoI, ludwigD, ludwigI, moldovaD, moldovaI, alfredoC, ludwigC, moldovaC,alfredoB,moldovaB,ludwigB;
 
     @Override
     public int getID() {
@@ -59,9 +59,11 @@ public class EstadoSeleccion extends BasicGameState {
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
         spriteAlfredoC = new SpriteSheet("Design/battleFreddieSprite.png", 181, 345);
+        spriteAlfredoB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
         alfredoD = new Animation(spriteAlfredoD, 100);
         alfredoI = new Animation(spriteAlfredoI, 100);
         alfredoC = new Animation(spriteAlfredoC, 100);
+        alfredoB = new Animation(spriteAlfredoB,100);
         Music musicAlfredoB = new Music("Musica/rock_8bit.ogg", false);
         Music musicAlfredoH = new Music("Musica/rock_8hit.ogg", false);
         Music musicAlfredoBN = new Music("Musica/rock_battle.ogg", false);
@@ -70,9 +72,11 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigC = new SpriteSheet("Design/battleBombinSprite.png", 198, 345);
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
+        spriteLudwigB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
         ludwigC = new Animation(spriteLudwigC, 100);
         ludwigD = new Animation(spriteLudwigD, 100);
         ludwigI = new Animation(spriteLudwigI, 100);
+        ludwigB = new Animation(spriteLudwigB,100);
         Music musicLudwigB = new Music("Musica/classic_8bit.ogg", false);
         Music musicLudwigH = new Music("Musica/classic_8hit.ogg", false);
         Music musicLudwigBN = new Music("Musica/classic_battle.ogg", false);
@@ -81,9 +85,11 @@ public class EstadoSeleccion extends BasicGameState {
         spriteMoldovaC = new SpriteSheet("Design/battleSaxSprite.png", 174, 345);
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
+        spriteMoldovaB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
         moldovaC = new Animation(spriteMoldovaC, 100);
         moldovaD = new Animation(spriteMoldovaD, 100);
         moldovaI = new Animation(spriteMoldovaI, 100);
+        moldovaB = new Animation(spriteMoldovaB,100);
         Music musicMoldovaB = new Music("Musica/jazz_8bit.ogg", false);
         Music musicMoldovaH = new Music("Musica/jazz_8hit.ogg", false);
         Music musicMoldovaBN = new Music("Musica/jazz_battle.ogg", false);
@@ -101,17 +107,17 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque MetricaExacta = new Ataque(50, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
         Ataque PelucoVictoriano = new Ataque(70, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
 
-        LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC);
+        LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC,ludwigB);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
 
-        AlfredoMercurio = new Personaje(650, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, alfredoC);
+        AlfredoMercurio = new Personaje(650, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, alfredoC,alfredoB);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
 
-        MoldovaSax = new Personaje(750, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC);
+        MoldovaSax = new Personaje(750, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);

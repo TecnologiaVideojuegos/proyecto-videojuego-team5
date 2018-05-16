@@ -31,7 +31,7 @@ public class EstadoCamerino extends BasicGameState {
     private float ang;
     private Image fondo;
     private Sound fail;
-    private boolean derecha, mover;
+    private boolean derecha, mover,baile;
 
     @Override
     public int getID() {
@@ -44,6 +44,7 @@ public class EstadoCamerino extends BasicGameState {
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
         mover = false;
+        baile=false;
         ang = 200f;
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         ClaseEstatica.setFail(fail);
@@ -56,7 +57,9 @@ public class EstadoCamerino extends BasicGameState {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
-            } else {
+            }else  if(baile){
+                ClaseEstatica.getPersonaje().getBaile().draw(x, y);
+            }else {
                 ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
             }
         } else {
@@ -81,12 +84,20 @@ public class EstadoCamerino extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_N)) {
             ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
+        if (container.getInput().isKeyDown(Input.KEY_B)) {
+            derecha=false;
+            baile=true;
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getBaile().start();
+        }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
             if (x > 217) {
                 x -= delta * 0.4f;
                 derecha = false;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -97,6 +108,7 @@ public class EstadoCamerino extends BasicGameState {
             if (x < 796) {
                 x += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -107,6 +119,7 @@ public class EstadoCamerino extends BasicGameState {
             if (y > 271) {
                 y -= delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -117,6 +130,7 @@ public class EstadoCamerino extends BasicGameState {
             if (y < 480) {
                 y += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }

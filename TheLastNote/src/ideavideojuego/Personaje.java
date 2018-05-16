@@ -27,11 +27,11 @@ public class Personaje {
     private String nombre;
     private ArrayList<Ataque> ataques;
     private SpriteSheet spritePJ;
-    private Animation animD, animI, animC; //animD y animI --> movimineto derecha e izquierda, animC -->combate
+    private Animation animD, animI, animC,baile; //animD y animI --> movimineto derecha e izquierda, animC -->combate
     private Music musicB8, musicH8,musicBnormal,musicHnormal; //la b se refiere a batalla y la h al pasillo
     private Image HUD;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8,Music musicBnormal,Music musicHnormal ,Image HUD, Animation animC) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8,Music musicBnormal,Music musicHnormal ,Image HUD, Animation animC,Animation baile) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -45,6 +45,7 @@ public class Personaje {
         this.musicHnormal = musicHnormal;
         this.HUD = HUD;
         this.animC=animC;
+        this.baile=baile;
     }
 
     public Animation getAnimC() {
@@ -145,6 +146,14 @@ public class Personaje {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Animation getBaile() {
+        return baile;
+    }
+
+    public void setBaile(Animation baile) {
+        this.baile = baile;
     }
 
     public ArrayList<Ataque> getAtaques() {
