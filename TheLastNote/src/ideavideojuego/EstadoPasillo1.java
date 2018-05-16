@@ -90,8 +90,8 @@ public class EstadoPasillo1 extends BasicGameState{
             //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if(!ClaseEstatica.getPersonaje().getMusicH().playing()){
             ClaseEstatica.getPersonaje().getMusicH().play();
         }

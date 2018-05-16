@@ -77,10 +77,8 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         if (derecha) {
-            //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
         } else {
-            //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
         }
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
@@ -98,8 +96,8 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             }
         }
 
-        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override

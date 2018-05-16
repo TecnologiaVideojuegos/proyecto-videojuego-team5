@@ -75,8 +75,8 @@ public class EstadoCamerino extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if(!ClaseEstatica.getPersonaje().getMusicH().playing()){
             ClaseEstatica.getPersonaje().getMusicH().play();
         }

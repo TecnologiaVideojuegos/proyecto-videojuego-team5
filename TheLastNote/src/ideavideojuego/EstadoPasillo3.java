@@ -81,18 +81,15 @@ public class EstadoPasillo3 extends BasicGameState{
             ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         g.drawString("Pasillo 3", 50, 600);
-        //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         if(derecha){
-            //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
             ;
         }
         else{
-            //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override

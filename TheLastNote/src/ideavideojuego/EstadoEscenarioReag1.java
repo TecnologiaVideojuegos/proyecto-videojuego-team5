@@ -110,8 +110,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
 
         }
         g.drawString(message, 10, 10);
-        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override
