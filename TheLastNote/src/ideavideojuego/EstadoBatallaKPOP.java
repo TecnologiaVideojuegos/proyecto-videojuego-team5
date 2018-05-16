@@ -234,7 +234,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
             if(ClaseEstatica.getPersonaje().getVida()>0){
                 if(dato>tEspera){
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
-                    game.enterState(2,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
+                    game.enterState(12,new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
                 }
             }else{
                 System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
