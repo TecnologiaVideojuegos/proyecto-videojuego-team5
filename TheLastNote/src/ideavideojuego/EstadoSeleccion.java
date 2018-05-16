@@ -141,15 +141,27 @@ public class EstadoSeleccion extends BasicGameState {
         if(entrada.isKeyPressed(Input.KEY_RIGHT)){
             if (indicador==0){
                 indicador=1;
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
             }
             else if(indicador==1){
                 indicador=2;
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
             }
         }else if(entrada.isKeyPressed(Input.KEY_LEFT)){
             if(indicador==1){
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
                 indicador=0;
             }
             else if(indicador==2){
+                if (!ClaseEstatica.getClick().playing()) {
+                    ClaseEstatica.getClick().play();
+                }
                 indicador=1;
             }
             

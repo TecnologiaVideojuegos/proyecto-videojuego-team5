@@ -83,11 +83,9 @@ public class EstadoPasillo1 extends BasicGameState{
         //System.out.println("ESTADO EN EL REDNER --> "+ ClaseEstatica.getPersonaje().getNombre());
         
         if(derecha){
-            //alfredoD.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
         }
         else{
-            //alfredoI.draw(x,y);
             ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
@@ -101,9 +99,7 @@ public class EstadoPasillo1 extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
 	if (container.getInput().isKeyDown(Input.KEY_M)){
-            ClaseEstatica.getPersonaje().getMusicH().play();        
-                        
-                        
+            ClaseEstatica.getPersonaje().getMusicH().play();                                
         }
         if (container.getInput().isKeyDown(Input.KEY_N)){
             ClaseEstatica.getPersonaje().getMusicH().pause();
