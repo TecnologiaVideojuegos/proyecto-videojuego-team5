@@ -67,6 +67,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+            ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         if (derecha) {
             //alfredoD.draw(x,y);

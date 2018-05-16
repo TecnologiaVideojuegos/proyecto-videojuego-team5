@@ -87,6 +87,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        if(!ClaseEstatica.getPersonaje().getMusicH().playing())
+            ClaseEstatica.getPersonaje().getMusicH().play();
         fondo.draw();
         if (derecha) {
             ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
