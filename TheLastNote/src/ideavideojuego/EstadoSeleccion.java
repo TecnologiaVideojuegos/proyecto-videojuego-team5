@@ -101,7 +101,7 @@ public class EstadoSeleccion extends BasicGameState {
 
         Ataque Saxofonazo = new Ataque(40, 30, "Saxofonazo", "Lanzará un saxofón para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_ajazz1.ogg"));
         Ataque BaileSwing = new Ataque(60, 10, "Al ritmo del Swing", "Te romperá las caderas con solo mirarle bailar!!", 30, new Sound("Musica/Sonidos/fx_ajazz2.ogg"));
-        Ataque SaxGuy = new Ataque(80, 5, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 50, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
+        Ataque SaxGuy = new Ataque(90, 5, "SaxGuy", "Usará la mítica canción de Eurovisión para causar un daño LETAL!!", 40, new Sound("Musica/Sonidos/fx_ajazz3.ogg"));
 
         Ataque Pianazo = new Ataque(35, 30, "Pianazo", "Lanzará un piano para causar un daño leve", 10, new Sound("Musica/Sonidos/fx_aclassic1.ogg"));
         Ataque MetricaExacta = new Ataque(55, 10, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
@@ -117,7 +117,7 @@ public class EstadoSeleccion extends BasicGameState {
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
 
-        MoldovaSax = new Personaje(800, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB);
+        MoldovaSax = new Personaje(900, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);
