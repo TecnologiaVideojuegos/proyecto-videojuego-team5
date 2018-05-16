@@ -157,6 +157,7 @@ public class EstadoCamerino extends BasicGameState {
         }
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;
+        mover=false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
     }

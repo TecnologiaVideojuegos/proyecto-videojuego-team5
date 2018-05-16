@@ -36,7 +36,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private float ang;
     private Image fondo;
     private Music music;
-    private boolean derecha;
+    private boolean derecha, mover, baile;
     private Rectangle perR, perE;
     private boolean colision;
     private int estado;
@@ -52,6 +52,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.personajey = 349;
         this.enemigox = 681;
         this.enemigoy = 349;
+        mover=false;
+        baile=false;
         estado = 0;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
         derecha = true;
@@ -66,11 +68,20 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
-        if (derecha) {
-            ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
+        if (mover) {
+            if (derecha) {
+                ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
+
+            }else  if(baile){
+                ClaseEstatica.getPersonaje().getBaile().draw(personajex, personajey);
+            }else {
+                ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
+            }
         } else {
-            ClaseEstatica.getPersonaje().getAnimI().draw(personajex, personajey);
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
+        mover=true;
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
 
         if (colision) {
@@ -100,6 +111,13 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_N)) {
             music.pause();
         }
+        if (container.getInput().isKeyDown(Input.KEY_B)) {
+            derecha=false;
+            baile=true;
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getBaile().start();
+        }
         if (perR.intersects(perE)) {
             colision = true;
             if (derecha) {
@@ -121,6 +139,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     personajex -= delta * 0.4f;
                     perR.setX(personajex);
                     derecha = false;
+                    baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -132,6 +151,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     personajex += delta * 0.4f;
                     perR.setX(personajex);
                     derecha = true;
+                    baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -143,6 +163,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     personajey -= delta * 0.4f;
                     perR.setY(personajey);
                     derecha = true;
+                    baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -154,6 +175,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     personajey += delta * 0.4f;
                     perR.setY(personajey);
                     derecha = true;
+                    baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -206,6 +228,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         perR.setY(personajey);
         perR.setX(personajex);
         colision = false;
+        mover=false;
+        baile=false;
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {

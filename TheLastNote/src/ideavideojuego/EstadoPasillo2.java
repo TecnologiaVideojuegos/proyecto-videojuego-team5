@@ -30,7 +30,7 @@ public class EstadoPasillo2 extends BasicGameState {
     private float x, y;
     private float ang;
     private Image fondo;
-    private boolean derecha;
+    private boolean derecha, mover, baile;
     private Personaje DonaldTrap;
     private Animation DonaldD, DonaldI, DonaldC;
     private SpriteSheet spriteDolandD, spriteDonaldI, spriteDonaldC;
@@ -46,6 +46,8 @@ public class EstadoPasillo2 extends BasicGameState {
         this.y = 257;
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha = true;
+        mover=false;
+        baile=false;
         ang = 200f;
 
         spriteDonaldC = new SpriteSheet("Design/battleDonaldTrapSprite.png", 301, 322);
@@ -67,18 +69,26 @@ public class EstadoPasillo2 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH8().play();
-        }
         fondo.draw();
-        //g.drawString("Pasillo 2", 50, 600);
-        if (derecha) {
-            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+        if (mover) {
+            if (derecha) {
+                ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+
+            }else  if(baile){
+                ClaseEstatica.getPersonaje().getBaile().draw(x, y);
+            }else {
+                ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            }
         } else {
-            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
+        }
+        mover = true;
     }
 
     @Override
@@ -90,12 +100,20 @@ public class EstadoPasillo2 extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_N)) {
             ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
+        if (container.getInput().isKeyDown(Input.KEY_B)) {
+            derecha=false;
+            baile=true;
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getBaile().start();
+        }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
             if (x > 0) {
                 x -= delta * 0.4f;
                 derecha = false;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -106,6 +124,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (x < 1018) {
                 x += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -122,6 +141,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (y > 257) {
                 y -= delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -132,6 +152,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (y < 354) {
                 y += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -150,6 +171,8 @@ public class EstadoPasillo2 extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(DonaldTrap);
+        mover=false;
+        baile=false;
         this.x = 30; //Coordenadas donde empieza el personaje
         this.y = 257;
     }

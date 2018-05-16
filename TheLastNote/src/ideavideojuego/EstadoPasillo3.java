@@ -31,7 +31,7 @@ public class EstadoPasillo3 extends BasicGameState {
     private float ang;
     private Image fondo;
     private int cX = 1080, cY = 607;
-    private boolean derecha;
+    private boolean derecha, mover, baile;
     private Personaje KimJongDos;
     private Animation KimD, KimI, KimC;
     private SpriteSheet spriteKimD, spriteKimI, spriteKimC;
@@ -47,6 +47,8 @@ public class EstadoPasillo3 extends BasicGameState {
         this.y = 257;
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha = true;
+        mover=false;
+        baile=false;
         ang = 200f;
 
         spriteKimC = new SpriteSheet("Design/battleKimJongSprite.png", 301, 322);
@@ -67,18 +69,26 @@ public class EstadoPasillo3 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getMusicSilence().playing()) {
-            ClaseEstatica.getMusicSilence().play();
-        }
         fondo.draw();
-        //g.drawString("Pasillo 3", 50, 600);
-        if (derecha) {
-            ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+        if (mover) {
+            if (derecha) {
+                ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
+
+            }else  if(baile){
+                ClaseEstatica.getPersonaje().getBaile().draw(x, y);
+            }else {
+                ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            }
         } else {
-            ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
+        }
+        mover = true;
     }
 
     @Override
@@ -91,12 +101,20 @@ public class EstadoPasillo3 extends BasicGameState {
         if (container.getInput().isKeyDown(Input.KEY_N)) {
             ClaseEstatica.getMusicSilence().pause();
         }
+        if (container.getInput().isKeyDown(Input.KEY_B)) {
+            derecha=false;
+            baile=true;
+            ClaseEstatica.getPersonaje().getAnimI().stop();
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getBaile().start();
+        }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimI().start();
             if (x > 0) {
                 x -= delta * 0.4f;
                 derecha = false;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -107,6 +125,7 @@ public class EstadoPasillo3 extends BasicGameState {
             if (x < 1018) {
                 x += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -124,6 +143,7 @@ public class EstadoPasillo3 extends BasicGameState {
             if (y > 257) {
                 y -= delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -134,6 +154,7 @@ public class EstadoPasillo3 extends BasicGameState {
             if (y < 354) {
                 y += delta * 0.4f;
                 derecha = true;
+                baile=false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -152,6 +173,8 @@ public class EstadoPasillo3 extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(KimJongDos);
+        mover=true;
+        baile=false;
         this.x = 30; //Coordenadas donde empieza el personaje
         this.y = 257;
     }

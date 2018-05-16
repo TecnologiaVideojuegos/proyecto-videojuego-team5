@@ -59,7 +59,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
         spriteAlfredoC = new SpriteSheet("Design/battleFreddieSprite.png", 181, 345);
-        spriteAlfredoB = new SpriteSheet("Design/FreddieDance1.png", 102, 167);
+        spriteAlfredoB = new SpriteSheet("Design/FreddieDance1.png", 104, 171);
         alfredoD = new Animation(spriteAlfredoD, 100);
         alfredoI = new Animation(spriteAlfredoI, 100);
         alfredoC = new Animation(spriteAlfredoC, 100);
