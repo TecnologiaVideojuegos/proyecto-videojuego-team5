@@ -112,8 +112,11 @@ public class EstadoBatallaKPOP extends BasicGameState {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
         }
-        font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
+        
+        /*font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
         font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
+        */       
+        vidaPersonaje();
         if (!ClaseEstatica.getPersonaje().getMusicB().playing()) {
             ClaseEstatica.getPersonaje().getMusicB().play();
         }
@@ -262,6 +265,19 @@ public class EstadoBatallaKPOP extends BasicGameState {
         textoAccion = "";
         texto = "";
         indicador = 0;
+    }
+
+    public void vidaPersonaje() throws SlickException {
+        if (ClaseEstatica.getPersonaje().getVida() < 0) {
+            font.drawString(170, 25, "Vida: 0");
+        } else {
+            font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
+        }
+        if (ClaseEstatica.getEnemigo().getVida() < 0) {
+            font.drawString(760, 55, "Vida: 0");
+        } else {
+            font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
+        }
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {

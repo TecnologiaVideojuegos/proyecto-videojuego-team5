@@ -110,8 +110,11 @@ public class EstadoBatallaReaggeton extends BasicGameState {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
         }
-        font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
-        font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
+        
+        /*font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
+        font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());*/
+        vidaPersonaje();
+        
         if (!ClaseEstatica.getPersonaje().getMusicB().playing()) {
             ClaseEstatica.getPersonaje().getMusicB().play();
         }
@@ -255,6 +258,20 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         }
     }
 
+    public void vidaPersonaje() throws SlickException {
+        if(ClaseEstatica.getPersonaje().getVida()<0){
+            font.drawString(170, 25, "Vida: 0" );
+        }
+        else{
+            font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
+        }
+        if(ClaseEstatica.getEnemigo().getVida()<0){
+            font.drawString(760, 55, "Vida: 0");
+        }
+        else{
+            font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
+        } 
+    }
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.getPersonaje().getMusicB().play();
