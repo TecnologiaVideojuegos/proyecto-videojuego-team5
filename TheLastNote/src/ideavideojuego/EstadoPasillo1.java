@@ -60,7 +60,7 @@ public class EstadoPasillo1 extends BasicGameState {
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);
         Ataque Despacito = new Ataque(70, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 50, fx_despacito);
-        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null, new Image("Design/battleLuisFonsi.png"));;
+        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null,null,null,new Image("Design/battleLuisFonsi.png"));;
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
@@ -68,8 +68,8 @@ public class EstadoPasillo1 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
         g.drawString("Pasillo 1", 50, 600);
@@ -82,8 +82,8 @@ public class EstadoPasillo1 extends BasicGameState {
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
     }
 
@@ -91,10 +91,10 @@ public class EstadoPasillo1 extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            ClaseEstatica.getPersonaje().getMusicH().pause();
+            ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();

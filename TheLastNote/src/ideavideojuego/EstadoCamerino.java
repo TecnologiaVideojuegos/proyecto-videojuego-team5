@@ -65,8 +65,8 @@ public class EstadoCamerino extends BasicGameState {
         }
         //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         g.drawString("UNTIL THE LAST NOTE", 30, 30);
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         mover = true;
     }
@@ -75,11 +75,11 @@ public class EstadoCamerino extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            ClaseEstatica.getPersonaje().getMusicH().play();;
+            ClaseEstatica.getPersonaje().getMusicH8().play();;
 
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            ClaseEstatica.getPersonaje().getMusicH().pause();
+            ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -138,8 +138,8 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;

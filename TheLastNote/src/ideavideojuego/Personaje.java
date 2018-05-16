@@ -28,10 +28,10 @@ public class Personaje {
     private ArrayList<Ataque> ataques;
     private SpriteSheet spritePJ;
     private Animation animD, animI;
-    private Music musicB, musicH; //la b se refiere a batalla y la h al pasillo
+    private Music musicB8, musicH8,musicBnormal,musicHnormal; //la b se refiere a batalla y la h al pasillo
     private Image HUD, PJBatalla;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB, Music musicH, Image HUD, Image PJBatalla) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8,Music musicBnormal,Music musicHnormal ,Image HUD, Image PJBatalla) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -39,14 +39,32 @@ public class Personaje {
         spritePJ = sprite;
         this.animD = animD;
         this.animI = animI;
-        this.musicB = musicB;
-        this.musicH = musicH;
+        this.musicB8 = musicB8;
+        this.musicH8 = musicH8;
+        this.musicBnormal = musicBnormal;
+        this.musicHnormal = musicHnormal;
         this.HUD = HUD;
         this.PJBatalla = PJBatalla;
     }
 
     public Image getPJBatalla() {
         return PJBatalla;
+    }
+
+    public Music getMusicBnormal() {
+        return musicBnormal;
+    }
+
+    public void setMusicBnormal(Music musicBnormal) {
+        this.musicBnormal = musicBnormal;
+    }
+
+    public Music getMusicHnormal() {
+        return musicHnormal;
+    }
+
+    public void setMusicHnormal(Music musicHnormal) {
+        this.musicHnormal = musicHnormal;
     }
 
     public void setPJBatalla(Image PJBatalla) {
@@ -61,20 +79,20 @@ public class Personaje {
         this.HUD = HUD;
     }
 
-    public Music getMusicB() {
-        return musicB;
+    public Music getMusicB8() {
+        return musicB8;
     }
 
-    public void setMusicB(Music musicB) {
-        this.musicB = musicB;
+    public void setMusicB8(Music musicB) {
+        this.musicB8 = musicB;
     }
 
-    public Music getMusicH() {
-        return musicH;
+    public Music getMusicH8() {
+        return musicH8;
     }
 
-    public void setMusicH(Music musicH) {
-        this.musicH = musicH;
+    public void setMusicH8(Music musicH) {
+        this.musicH8 = musicH;
     }
 
     public Animation getAnimD() {

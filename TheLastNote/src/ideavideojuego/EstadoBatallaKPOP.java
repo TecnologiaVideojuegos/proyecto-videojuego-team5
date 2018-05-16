@@ -117,8 +117,8 @@ public class EstadoBatallaKPOP extends BasicGameState {
         font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
          */
         vidaPersonaje();
-        if (!ClaseEstatica.getPersonaje().getMusicB().playing()) {
-            ClaseEstatica.getPersonaje().getMusicB().play();
+        if (!ClaseEstatica.getPersonaje().getMusicBnormal().playing()) {
+            ClaseEstatica.getPersonaje().getMusicBnormal().play();
         }
         font.drawString(400, 20, "El DELTA ES --> " + dato);
         if ((turno) && (dato > tEspera)) {
@@ -259,7 +259,7 @@ public class EstadoBatallaKPOP extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        ClaseEstatica.getPersonaje().getMusicB().play();
+        ClaseEstatica.getPersonaje().getMusicBnormal().play();
         hud = ClaseEstatica.getPersonaje().getHUD();
         turno = true;
         textoAccion = "";

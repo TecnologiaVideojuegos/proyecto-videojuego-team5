@@ -73,8 +73,8 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
         if (derecha) {

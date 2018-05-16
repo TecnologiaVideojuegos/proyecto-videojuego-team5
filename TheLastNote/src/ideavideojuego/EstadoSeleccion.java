@@ -62,6 +62,8 @@ public class EstadoSeleccion extends BasicGameState {
         alfredoI = new Animation(spriteAlfredoI, 100);
         Music musicAlfredoB = new Music("Musica/rock_8bit.ogg", false);
         Music musicAlfredoH = new Music("Musica/rock_8hit.ogg", false);
+        Music musicAlfredoBN = new Music("Musica/rock_battle.ogg", false);
+        Music musicAlfredoHN = new Music("Musica/rock_hall.ogg", false);
 
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
@@ -69,6 +71,8 @@ public class EstadoSeleccion extends BasicGameState {
         ludwigI = new Animation(spriteLudwigI, 100);
         Music musicLudwigB = new Music("Musica/classic_8bit.ogg", false);
         Music musicLudwigH = new Music("Musica/classic_8hit.ogg", false);
+        Music musicLudwigBN = new Music("Musica/classic_battle.ogg", false);
+        Music musicLudwigHN = new Music("Musica/classic_hall.ogg", false);
 
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
@@ -76,8 +80,10 @@ public class EstadoSeleccion extends BasicGameState {
         moldovaI = new Animation(spriteMoldovaI, 100);
         Music musicMoldovaB = new Music("Musica/jazz_8bit.ogg", false);
         Music musicMoldovaH = new Music("Musica/jazz_8hit.ogg", false);
+        Music musicMoldovaBN = new Music("Musica/jazz_battle.ogg", false);
+        Music musicMoldovaHN = new Music("Musica/jazz_hall.ogg", false);
 
-        Ataque Guitarrazo = new Ataque(40, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
+        Ataque Guitarrazo = new Ataque(4000, 30, "Guitarrazo", "Lanzará su guitarra para causar un daño leve", 20, new Sound("Musica/Sonidos/fx_arock1.ogg"));
         Ataque Mama = new Ataque(70, 15, "Mama", "Inflingirá un daño brutal en los tímpanos del enemigo", 30, new Sound("Musica/Sonidos/fx_arock2.ogg"));
         Ataque DiscoPlatino = new Ataque(100, 7, "Disco de platino", "Lanzará uno de sus discos de platino a la yugular para causar un daño LETAL!!!", 60, new Sound("Musica/Sonidos/fx_arock3.ogg"));
 
@@ -89,21 +95,22 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque MetricaExacta = new Ataque(50, 15, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
         Ataque PelucoVictoriano = new Ataque(70, 7, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
 
-        LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, hudMozart, backMozart);
+        LudwigvanMozart = new Personaje(900, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, backMozart);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
 
-        AlfredoMercurio = new Personaje(650, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, hudAlfredo, backAlfredo);
+        AlfredoMercurio = new Personaje(650, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, backAlfredo);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
 
-        MoldovaSax = new Personaje(750, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, hudMoldova, backMoldova);
+        MoldovaSax = new Personaje(750, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, backMoldova);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);
         ClaseEstatica.setAtaqueAcertado(true);
+        ClaseEstatica.setMusicSilence(new Music("Musica/silence.ogg", false));   
     }
 
     @Override

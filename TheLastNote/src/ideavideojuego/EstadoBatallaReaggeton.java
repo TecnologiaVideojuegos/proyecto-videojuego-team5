@@ -115,8 +115,8 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());*/
         vidaPersonaje();
 
-        if (!ClaseEstatica.getPersonaje().getMusicB().playing()) {
-            ClaseEstatica.getPersonaje().getMusicB().play();
+        if (!ClaseEstatica.getPersonaje().getMusicB8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicB8().play();
         }
         font.drawString(400, 20, "El DELTA ES --> " + dato);
         if ((turno) && (dato > tEspera)) {
@@ -273,7 +273,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        ClaseEstatica.getPersonaje().getMusicB().play();
+        ClaseEstatica.getPersonaje().getMusicB8().play();
         hud = ClaseEstatica.getPersonaje().getHUD();
         turno = true;
         textoAccion = "";

@@ -17,10 +17,10 @@ public final class ClaseEstatica {
 
     private static Personaje personaje, enemigo;
     private static Sound sonidoPaso, click, fail;
-    private static Music musicaMenu;
+    private static Music musicaMenu,musicSilence;
     private static String ultimoAtaque;
     private static boolean ataqueAcertado;
-
+    
     public ClaseEstatica() {
     }
 
@@ -87,5 +87,14 @@ public final class ClaseEstatica {
     public static void setMusicaMenu(Music musicaMenu) {
         ClaseEstatica.musicaMenu = musicaMenu;
     }
+
+    public static Music getMusicSilence() {
+        return musicSilence;
+    }
+
+    public static void setMusicSilence(Music musicSilence) {
+        ClaseEstatica.musicSilence = musicSilence;
+    }
+    
 
 }

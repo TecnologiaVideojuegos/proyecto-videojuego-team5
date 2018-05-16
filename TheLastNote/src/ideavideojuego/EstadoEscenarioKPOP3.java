@@ -34,8 +34,6 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     private Sprite puntero;
     private float ang;
     private Image fondo;
-    private int cX = 1080, cY = 607;
-    private Music music;
     private boolean derecha;
     private Rectangle perR, perE;
     private boolean colision;
@@ -64,8 +62,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getMusicSilence().playing()) {
+            ClaseEstatica.getMusicSilence().play();
         }
         fondo.draw();
         if (derecha) {
@@ -96,12 +94,12 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            music.play();
+            ClaseEstatica.getMusicSilence().play();
             //music.resume();
 
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            music.pause();
+            ClaseEstatica.getMusicSilence().pause();
         }
         if (perR.intersects(perE)) {
             colision = true;

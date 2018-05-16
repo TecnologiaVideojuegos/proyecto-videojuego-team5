@@ -48,8 +48,6 @@ public class EstadoPasillo2 extends BasicGameState {
         derecha = true;
         ang = 200f;
 
-        Sound laser = new Sound(("Musica/Sonidos/fx_laser.ogg"));
-
         spriteDolandD = new SpriteSheet("Design/DonaldTrapSprite1.png", 67, 176);
         spriteDonaldI = new SpriteSheet("Design/DonaldTrapSprite1.png", 112, 180);
         DonaldD = new Animation(spriteDolandD, 150);
@@ -59,7 +57,7 @@ public class EstadoPasillo2 extends BasicGameState {
         Ataque Peluquin = new Ataque(30, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
         Ataque Trap = new Ataque(60, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 30, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
         Ataque Muro = new Ataque(90, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 60, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
-        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleDonaldTrap.png"));
+        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null,null,null,new Image("Design/battleDonaldTrap.png"));
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
         DonaldTrap.getAtaques().add(Muro);
@@ -67,8 +65,8 @@ public class EstadoPasillo2 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
         g.drawString("Pasillo 2", 50, 600);
@@ -85,10 +83,10 @@ public class EstadoPasillo2 extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+            ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            ClaseEstatica.getPersonaje().getMusicH().pause();
+            ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();

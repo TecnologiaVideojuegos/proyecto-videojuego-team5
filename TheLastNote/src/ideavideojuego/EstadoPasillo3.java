@@ -57,7 +57,7 @@ public class EstadoPasillo3 extends BasicGameState {
         Ataque Misilazo = new Ataque(40, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_kim1.ogg")));
         Ataque Kpop = new Ataque(80, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 40, new Sound(("Musica/Sonidos/fx_kim2.ogg")));
         Ataque Nuclear = new Ataque(120, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 60, new Sound(("Musica/Sonidos/fx_kim3.ogg")));
-        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null, new Image("Design/battleKimJong.png"));
+        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null,null,null, new Image("Design/battleKimJong.png"));
         KimJongDos.getAtaques().add(Misilazo);
         KimJongDos.getAtaques().add(Kpop);
         KimJongDos.getAtaques().add(Nuclear);
@@ -65,8 +65,8 @@ public class EstadoPasillo3 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getPersonaje().getMusicH().playing()) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+        if (!ClaseEstatica.getMusicSilence().playing()) {
+            ClaseEstatica.getMusicSilence().play();
         }
         fondo.draw();
         g.drawString("Pasillo 3", 50, 600);
@@ -83,11 +83,11 @@ public class EstadoPasillo3 extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
-            ClaseEstatica.getPersonaje().getMusicH().play();
+            ClaseEstatica.getMusicSilence().play();
 
         }
         if (container.getInput().isKeyDown(Input.KEY_N)) {
-            ClaseEstatica.getPersonaje().getMusicH().pause();
+            ClaseEstatica.getMusicSilence().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
             ClaseEstatica.getPersonaje().getAnimD().stop();
