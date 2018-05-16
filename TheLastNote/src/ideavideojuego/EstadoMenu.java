@@ -101,7 +101,8 @@ public class EstadoMenu extends BasicGameState {
                 }
                 game.enterState(20, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             } else {
-                System.exit(0);
+                //System.exit(0);
+                game.enterState(12);
             }
         }
     }
