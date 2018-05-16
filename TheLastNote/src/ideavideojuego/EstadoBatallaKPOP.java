@@ -41,7 +41,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
     private static final Punto a2 = new Punto(410, 465);
     private static final Punto a3 = new Punto(675, 465);
     private int indicador, dato, tEspera;
-    private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message;
+    private String texto, ataque, textoAtaque, textoHuir, message, textoAccion;
     private boolean turno; //si es true nosotros atacamos, sino --> la maquina
     private static UnicodeFont font;
     
@@ -65,8 +65,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         texto="";
         message="";
         ataque="";
-        textoAccionP=""; //ataque del aliado
-        textoAccionM=""; //ataque del enemigo
+        textoAccion="";
         textoAtaque="¡ADVERTENCIA!, TE ENFRENTAS A KIM JONG-UN, PODRÁS ESQUIVAR SUS MISILES DE LARGO ALCANCE?";
         textoHuir="¿ESCAPAR? ¡JÁ!";
         indicador=0;
@@ -121,11 +120,10 @@ public class EstadoBatallaKPOP extends BasicGameState{
         font.drawString(400, 20, "El DELTA ES --> "+dato);
         if((turno) && (dato>tEspera)){
             font.drawString(832, 457, "ES TU TURNO", org.newdawn.slick.Color.green);
-            font.drawString(80, 630, textoAccionM);
         }else{
             font.drawString(832, 457, "NO ES TU TURNO", org.newdawn.slick.Color.red);
-            font.drawString(80, 630, textoAccionP);
         }
+        font.drawString(80, 630, textoAccion);
     }
 
     @Override
@@ -139,7 +137,7 @@ public class EstadoBatallaKPOP extends BasicGameState{
         }
         if(ClaseEstatica.getPersonaje().getVida()>0 && ClaseEstatica.getEnemigo().getVida()>0){
             if((!turno)&&(dato>tEspera)){ //<-------------------------------------------------------------------------- AQUI
-                    textoAccionM=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    textoAccion=ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
                     dato=0;
                     turno=true;
                     ClaseEstatica.getClick().play();
@@ -211,21 +209,21 @@ public class EstadoBatallaKPOP extends BasicGameState{
                     texto=textoHuir;
                 }else if(indicador==2){
                     if((turno) && (dato>tEspera)){
-                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
+                        textoAccion=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 0);
                         turno=false;
                         dato=0;
                         ataque=ClaseEstatica.getUltimoAtaque();
                     }
                 }else if(indicador==3){
                     if((turno) && (dato>tEspera)){
-                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
+                        textoAccion=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 1);
                         turno=false;
                         dato=0;
                         ataque=ClaseEstatica.getUltimoAtaque();
                     }
                 }else if(indicador==4){
                     if((turno) && (dato>tEspera)){
-                        textoAccionP=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
+                        textoAccion=ClaseEstatica.getPersonaje().atacar(ClaseEstatica.getEnemigo(), 2);
                         turno=false;
                         dato=0;
                         ataque=ClaseEstatica.getUltimoAtaque();
@@ -251,6 +249,10 @@ public class EstadoBatallaKPOP extends BasicGameState{
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
            ClaseEstatica.getPersonaje().getMusicB().play();
            hud=ClaseEstatica.getPersonaje().getHUD();
+           turno=true;
+           textoAccion="";
+           texto="";
+           indicador=0;
         }
        
        public void mouseClicked(int button, int x, int y, int clickCount) {

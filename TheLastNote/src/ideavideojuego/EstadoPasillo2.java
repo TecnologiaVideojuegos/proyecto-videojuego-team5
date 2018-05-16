@@ -72,7 +72,7 @@ public class EstadoPasillo2 extends BasicGameState{
         DonaldI = new Animation(spriteDonaldI,150);
 
         //Creación ENEMIGO
-        Ataque Peluquin = new Ataque(10, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
+        Ataque Peluquin = new Ataque(20000, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 10, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
         Ataque Trap = new Ataque(30, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 10, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
         Ataque Muro = new Ataque(40, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 10, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
         DonaldTrap = new Personaje(650,"Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, new Image("Design/battleDonaldTrap.png"));
@@ -129,7 +129,8 @@ public class EstadoPasillo2 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                ClaseEstatica.setEnemigo(DonaldTrap);
+                ClaseEstatica.getEnemigo().restaurarTodo();
+                //ClaseEstatica.setEnemigo(DonaldTrap);
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(6,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
@@ -169,6 +170,7 @@ public class EstadoPasillo2 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+       ClaseEstatica.setEnemigo(DonaldTrap);
        //music.play();
        this.x = 30; //Coordenadas donde empieza el personaje
        this.y = 257;

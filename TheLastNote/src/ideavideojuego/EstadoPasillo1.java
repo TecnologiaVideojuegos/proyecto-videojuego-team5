@@ -127,7 +127,8 @@ public class EstadoPasillo1 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                ClaseEstatica.setEnemigo(LuisFonsi);
+                //ClaseEstatica.setEnemigo(LuisFonsi);
+                ClaseEstatica.getEnemigo().restaurarTodo();
                 //game.enterState(9); //Prueba
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
@@ -169,6 +170,7 @@ public class EstadoPasillo1 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+            ClaseEstatica.setEnemigo(LuisFonsi);
             //ClaseEstatica.getPersonaje().getMusicH().play();
             this.x = 571; //Coordenadas donde empieza el personaje
             this.y = 257;

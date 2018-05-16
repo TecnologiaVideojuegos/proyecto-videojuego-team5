@@ -161,7 +161,7 @@ public class Personaje{
                         ClaseEstatica.getFail().play();
                     System.out.println("OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
-                    texto = "OHHH que pena!!!"+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
+                    texto = "OHHH que pena!!!  "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
                 }
             }else{
                 System.out.println("NO TE QUEDAN USOS");
@@ -200,7 +200,7 @@ public class Personaje{
             }else{
                 if(!ClaseEstatica.getFail().playing())
                         ClaseEstatica.getFail().play();
-                System.out.println("OHHH que pena!!!"+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
+                System.out.println("OHHH que pena!!!  "+this.getNombre()+" ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");
                 texto = "OHHH que pena!!! "+this.getNombre()+" ha FALLADO EL ATAQUE!!!";
             }

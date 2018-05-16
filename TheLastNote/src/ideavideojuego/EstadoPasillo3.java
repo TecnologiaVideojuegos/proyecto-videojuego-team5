@@ -125,7 +125,8 @@ public class EstadoPasillo3 extends BasicGameState{
                 if (!ClaseEstatica.getSonidoPaso().playing()) 
                     ClaseEstatica.getSonidoPaso().play();
             }else{
-                ClaseEstatica.setEnemigo(KimJongDos);
+                ClaseEstatica.getEnemigo().restaurarTodo();
+                //ClaseEstatica.setEnemigo(KimJongDos);
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
                 game.enterState(8,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
@@ -165,6 +166,7 @@ public class EstadoPasillo3 extends BasicGameState{
     }
     @Override
        public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+       ClaseEstatica.setEnemigo(KimJongDos);
        //music.play();
        this.x = 30; //Coordenadas donde empieza el personaje
        this.y = 257;
