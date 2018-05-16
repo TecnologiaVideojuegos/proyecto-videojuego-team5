@@ -38,15 +38,13 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     private Rectangle perR, perE;
     private boolean colision;
     private int estado;
-
+    private Sound sonido;
+    
     @Override
     public int getID() {
         return 8;
     }
 
-    /*public PantallaInicio(Personaje personaje){
-        this.personaje=personaje;
-    }*/
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.personajex = 343; //Coordenadas donde empieza el personaje
@@ -58,12 +56,13 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
+        sonido = new Sound("Musica/Sonidos/fx_audience.ogg");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        if (!ClaseEstatica.getMusicSilence().playing()) {
-            ClaseEstatica.getMusicSilence().play();
+        if (!sonido.playing()) {
+            sonido.play();
         }
         fondo.draw();
         if (derecha) {
@@ -210,4 +209,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         colision = false;
     }
 
+     @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        sonido.stop();
+    }
 }

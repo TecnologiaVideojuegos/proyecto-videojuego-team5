@@ -30,21 +30,13 @@ import org.newdawn.slick.state.transition.SelectTransition;
  */
 public class EstadoEscenarioTrap2 extends BasicGameState {
 
-    private AppGameContainer contenedor;
     private float personajex, personajey, enemigox, enemigoy;
     private Sprite puntero;
-    private String texto;
-    private int tiempo;
-    private Animation anim, alfredoD, alfredoI;
-    private SpriteSheet sprite, spriteAlfredoD, spriteAlfredoI;
     private float ang;
     private Image fondo;
-    private int cX = 1080, cY = 607;
+    ;
     private Music music;
     private boolean derecha;
-    private Personaje LuisFonsi;
-    private Personaje personaje;
-    private Sound step;
     private Rectangle perR, perE;
     private boolean colision;
     private int estado;
@@ -54,9 +46,6 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         return 6;
     }
 
-    /*public PantallaInicio(Personaje personaje){
-        this.personaje=personaje;
-    }*/
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.personajex = 343; //Coordenadas donde empieza el personaje
@@ -219,5 +208,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         perR.setX(personajex);
         colision = false;
     }
+    
+   
 
 }
