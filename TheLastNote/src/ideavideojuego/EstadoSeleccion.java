@@ -72,7 +72,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteLudwigC = new SpriteSheet("Design/battleBombinSprite.png", 198, 345);
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
-        spriteLudwigB = new SpriteSheet("Design/BombinDance1.png", 91, 175);
+        spriteLudwigB = new SpriteSheet("Design/BombinDance1.png", 91, 145);
         ludwigC = new Animation(spriteLudwigC, 100);
         ludwigD = new Animation(spriteLudwigD, 100);
         ludwigI = new Animation(spriteLudwigI, 100);
@@ -85,7 +85,7 @@ public class EstadoSeleccion extends BasicGameState {
         spriteMoldovaC = new SpriteSheet("Design/battleSaxSprite.png", 174, 345);
         spriteMoldovaD = new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 67, 176);
         spriteMoldovaI = new SpriteSheet("Design/SaxGuyWalkSprite_V3.png", 67, 176);
-        spriteMoldovaB = new SpriteSheet("Design/SaxGuyDance1.png", 90, 175);
+        spriteMoldovaB = new SpriteSheet("Design/SaxGuyDance1.png", 90, 147);
         moldovaC = new Animation(spriteMoldovaC, 100);
         moldovaD = new Animation(spriteMoldovaD, 100);
         moldovaI = new Animation(spriteMoldovaI, 100);
@@ -195,5 +195,10 @@ public class EstadoSeleccion extends BasicGameState {
                     break;
             }
         }
+    }
+    
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        indicador=0;
     }
 }
