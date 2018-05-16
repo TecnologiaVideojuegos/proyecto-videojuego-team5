@@ -61,7 +61,7 @@ public class EstadoSeleccion extends BasicGameState {
         alfredoD = new Animation(spriteAlfredoD, 100);
         alfredoI = new Animation(spriteAlfredoI, 100);
         Music musicAlfredoB = new Music("Musica/rock_8bit.ogg", false);
-        Music musicAlfredoH = new Music("Musica/rock_hall.ogg", false);
+        Music musicAlfredoH = new Music("Musica/rock_8hit.ogg", false);
 
         spriteLudwigD = new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167);
         spriteLudwigI = new SpriteSheet("Design/BombinWalkSprite_V3.png", 71, 167);
