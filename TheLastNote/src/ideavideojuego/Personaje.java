@@ -49,6 +49,10 @@ public class Personaje {
         this.dial = dial;
     }
 
+    public Image getDial() {
+        return dial;
+    }
+
     public Animation getAnimC() {
         return animC;
     }
