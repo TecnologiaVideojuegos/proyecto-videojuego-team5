@@ -29,7 +29,7 @@ public class EstadoPasillo2 extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo;
+    private Image fondo,dialDonald;
     private boolean derecha, mover, baile;
     private Personaje DonaldTrap;
     private Animation DonaldD, DonaldI, DonaldC;
@@ -56,12 +56,13 @@ public class EstadoPasillo2 extends BasicGameState {
         DonaldC = new Animation(spriteDonaldC, 150);
         DonaldD = new Animation(spriteDolandD, 150);
         DonaldI = new Animation(spriteDonaldI, 150);
+        dialDonald =  new Image("Design/DialPrueba.png");
 
         //Creación ENEMIGO
         Ataque Peluquin = new Ataque(45, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
         Ataque Trap = new Ataque(65, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 30, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
         Ataque Muro = new Ataque(100, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 50, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
-        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null,null,null,DonaldC,null);
+        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null,null,null,DonaldC,null,dialDonald);
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
         DonaldTrap.getAtaques().add(Muro);

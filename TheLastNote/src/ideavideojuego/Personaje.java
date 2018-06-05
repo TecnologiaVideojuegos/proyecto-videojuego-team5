@@ -27,11 +27,11 @@ public class Personaje {
     private String nombre;
     private ArrayList<Ataque> ataques;
     private SpriteSheet spritePJ;
-    private Animation animD, animI, animC,baile; //animD y animI --> movimineto derecha e izquierda, animC -->combate
-    private Music musicB8, musicH8,musicBnormal,musicHnormal; //la b se refiere a batalla y la h al pasillo
-    private Image HUD;
+    private Animation animD, animI, animC, baile; //animD y animI --> movimineto derecha e izquierda, animC -->combate
+    private Music musicB8, musicH8, musicBnormal, musicHnormal; //la b se refiere a batalla y la h al pasillo
+    private Image HUD, dial;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8,Music musicBnormal,Music musicHnormal ,Image HUD, Animation animC,Animation baile) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -44,8 +44,9 @@ public class Personaje {
         this.musicBnormal = musicBnormal;
         this.musicHnormal = musicHnormal;
         this.HUD = HUD;
-        this.animC=animC;
-        this.baile=baile;
+        this.animC = animC;
+        this.baile = baile;
+        this.dial = dial;
     }
 
     public Animation getAnimC() {
@@ -177,7 +178,7 @@ public class Personaje {
                 this.getAtaques().get(seleccion).setUsos(this.getAtaques().get(seleccion).getUsos() - 1); //le restamos un uso a ese ataque
                 if (this.getAtaques().get(seleccion).isAcertado()) {
                     //if (!this.getAtaques().get(seleccion).getEfecto().playing()) {
-                        this.getAtaques().get(seleccion).getEfecto().play();
+                    this.getAtaques().get(seleccion).getEfecto().play();
                     //}
                     ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
                     ClaseEstatica.setAtaqueAcertado(true);
