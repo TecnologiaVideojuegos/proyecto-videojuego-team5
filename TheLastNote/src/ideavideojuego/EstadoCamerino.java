@@ -59,7 +59,7 @@ public class EstadoCamerino extends BasicGameState {
         fondo.draw();
         if (introduccion) {
             ClaseEstatica.getPersonaje().getDial().draw(216, 537);
-            g.drawString(texto, 350, 560);
+            g.drawString(texto, 330, 560);
         }
         if (mover) {
             if (derecha) {
