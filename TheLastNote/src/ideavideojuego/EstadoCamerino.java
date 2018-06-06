@@ -32,7 +32,7 @@ public class EstadoCamerino extends BasicGameState {
     private Image fondo;
     private Sound fail;
     private boolean derecha, mover, baile, introduccion;
-    private int frase,dato;
+    private int dato;
     private String texto;
 
     @Override
@@ -51,7 +51,6 @@ public class EstadoCamerino extends BasicGameState {
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         ClaseEstatica.setFail(fail);
         introduccion = true;
-        frase = 0;
         texto = "";
     }
 
@@ -85,8 +84,8 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        ang += delta * 0.4f;       
-        dato +=delta;
+        ang += delta * 0.4f;
+        dato += delta;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             ClaseEstatica.getPersonaje().getMusicH8().play();;
 
@@ -104,36 +103,30 @@ public class EstadoCamerino extends BasicGameState {
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
         if (introduccion) {
-            if (dato==2000) {
-                texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                frase = 1;
-            } else if (dato==6000) {
-                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+            switch (dato) {
+                case 2000:
+                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    break;
+                case 6000:
                     texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                    frase = 2;
-                //}
-            } else if (dato==10000) {
-                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    break;
+                case 10000:
                     texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
-                    frase = 3;
-                //}
-            } else if (dato == 15000) {
-                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    break;
+                case 15000:
                     texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                    frase = 4;
-                //}
-            } else if (dato == 20000) {
-                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    break;
+                case 20000:
                     texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                    frase = 5;
-                //}
-            } else if (dato == 24000) {
-                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    break;
+                case 24000:
                     texto = "En unos días empezamos la gira.";
-                    frase = 6;
-                //}
-            }else if(dato == 26000){
-                introduccion = false;
+                    break;
+                case 26000:
+                    introduccion = false;
+                    break;
+                default:
+                    break;
             }
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
