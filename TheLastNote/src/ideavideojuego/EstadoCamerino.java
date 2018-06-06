@@ -32,7 +32,7 @@ public class EstadoCamerino extends BasicGameState {
     private Image fondo;
     private Sound fail;
     private boolean derecha, mover, baile, introduccion;
-    private int frase;
+    private int frase,dato;
     private String texto;
 
     @Override
@@ -50,7 +50,7 @@ public class EstadoCamerino extends BasicGameState {
         ang = 200f;
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         ClaseEstatica.setFail(fail);
-        introduccion = false;
+        introduccion = true;
         frase = 0;
         texto = "";
     }
@@ -58,6 +58,10 @@ public class EstadoCamerino extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
+        if (introduccion) {
+            ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+            g.drawString(texto, 350, 560);
+        }
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
@@ -71,8 +75,8 @@ public class EstadoCamerino extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
@@ -81,7 +85,8 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        ang += delta * 0.4f;
+        ang += delta * 0.4f;       
+        dato +=delta;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             ClaseEstatica.getPersonaje().getMusicH8().play();;
 
@@ -99,24 +104,35 @@ public class EstadoCamerino extends BasicGameState {
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
         if (introduccion) {
-            if (frase == 0) {
+            if (dato==2000) {
                 texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                frase += 1;
-            } else if (frase == 1) {
-                texto = "No es un simple papel que no lleva a ninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                frase += 1;
-            } else if (frase == 2) {
-                texto = "Ya te veo ahí, brillando,una estrella sobre el escenario, gente eufórica animándote hasta conseguir ese orgasmo musical";
-                frase += 1;
-            } else if (frase == 3) {
-                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién, lo importante es que el DESTINO nos ha puesto aquí. ";
-                frase += 1;
-            } else if (frase == 4) {
-                texto = "Así que venga, sin rechistar, metete en el camerino  algo de ropa.";
-                frase += 1;
-            } else if (frase == 5) {
-                texto = "En unos días empezamos la gira.";
-                frase += 1;
+                frase = 1;
+            } else if (dato==6000) {
+                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    frase = 2;
+                //}
+            } else if (dato==10000) {
+                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    frase = 3;
+                //}
+            } else if (dato == 15000) {
+                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    frase = 4;
+                //}
+            } else if (dato == 20000) {
+                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    frase = 5;
+                //}
+            } else if (dato == 24000) {
+                //if (container.getInput().isKeyDown(Input.KEY_ENTER)) {
+                    texto = "En unos días empezamos la gira.";
+                    frase = 6;
+                //}
+            }else if(dato == 26000){
                 introduccion = false;
             }
         } else {
