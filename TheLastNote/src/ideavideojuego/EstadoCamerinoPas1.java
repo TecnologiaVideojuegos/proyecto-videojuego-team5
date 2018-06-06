@@ -47,11 +47,21 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         ang = 200f;
         ClaseEstatica.setFail(fail);
         texto = "";
+        introduccion1 = false;
+        introduccion2 = false;
+        introduccion3 = false;
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         //fondo1.draw();
+        if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+            fondo1.draw();
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+            fondo2.draw();
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
+            fondo3.draw();
+        }
         if (introduccion1 || introduccion2 || introduccion3) {
             ClaseEstatica.getPersonaje().getDial().draw(216, 537);
             g.drawString(texto, 330, 560);
@@ -59,7 +69,6 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
-
             } else if (baile) {
                 ClaseEstatica.getPersonaje().getBaile().draw(x, y);
             } else {
@@ -176,9 +185,17 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                         ClaseEstatica.getSonidoPaso().play();
                     }
                 } else if ((y >= 480) && (x >= 485) && (x <= 530)) {
+
                     ClaseEstatica.getPersonaje().getAnimD().stop();
                     ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                    game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+
+                    if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+                        game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+                        game.enterState(5, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+                        game.enterState(7, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    }
                 }
             } else {
                 if (derecha) {
@@ -204,20 +221,26 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
-            fondo1.draw();
             introduccion1 = true;
             texto = "";
-            ClaseEstatica.setUltimoEstado("EstadoCamerinoPas1");
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
-            fondo2.draw();
             introduccion2 = true;
             texto = "";
-        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
-            fondo3.draw();
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             introduccion3 = true;
             texto = "";
         }
+    }
 
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+            ClaseEstatica.setUltimoEstado("EstadoCamerinoPas1");
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+            ClaseEstatica.setUltimoEstado("EstadoCamerinoPas2");
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
+            ClaseEstatica.setUltimoEstado("EstadoCamerinoPas3");
+        }
     }
 
 }

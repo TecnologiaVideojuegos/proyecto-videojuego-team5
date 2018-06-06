@@ -29,7 +29,7 @@ public class EstadoPasillo2 extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo,dialDonald;
+    private Image fondo, dialDonald;
     private boolean derecha, mover, baile;
     private Personaje DonaldTrap;
     private Animation DonaldD, DonaldI, DonaldC;
@@ -46,8 +46,8 @@ public class EstadoPasillo2 extends BasicGameState {
         this.y = 257;
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha = true;
-        mover=false;
-        baile=false;
+        mover = false;
+        baile = false;
         ang = 200f;
 
         spriteDonaldC = new SpriteSheet("Design/battleDonaldTrapSprite.png", 301, 322);
@@ -56,13 +56,13 @@ public class EstadoPasillo2 extends BasicGameState {
         DonaldC = new Animation(spriteDonaldC, 150);
         DonaldD = new Animation(spriteDolandD, 150);
         DonaldI = new Animation(spriteDonaldI, 150);
-        dialDonald =  new Image("Design/DialPrueba.png");
+        dialDonald = new Image("Design/DialPrueba.png");
 
         //Creación ENEMIGO
         Ataque Peluquin = new Ataque(45, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
         Ataque Trap = new Ataque(65, 10, "Bad Bunny", "Cantará una canción de su amigo Bad Bunny para causar un daño brutal a su enemigo", 30, new Sound(("Musica/Sonidos/fx_trap2.ogg")));
         Ataque Muro = new Ataque(100, 5, "Muro", "Lanzará un muro pagado por todos causando un daño LETAL!!!", 50, new Sound(("Musica/Sonidos/fx_trap3.ogg")));
-        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null,null,null,DonaldC,null,dialDonald);
+        DonaldTrap = new Personaje(500, "Donald Trap", new SpriteSheet("Design/DonaldTrapSprite1.png", 70, 176), DonaldD, DonaldI, null, null, null, null, null, DonaldC, null, dialDonald);
         DonaldTrap.getAtaques().add(Peluquin);
         DonaldTrap.getAtaques().add(Trap);
         DonaldTrap.getAtaques().add(Muro);
@@ -75,9 +75,9 @@ public class EstadoPasillo2 extends BasicGameState {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
-            }else  if(baile){
+            } else if (baile) {
                 ClaseEstatica.getPersonaje().getBaile().draw(x, y);
-            }else {
+            } else {
                 ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
             }
         } else {
@@ -102,8 +102,8 @@ public class EstadoPasillo2 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_B)) {
-            derecha=false;
-            baile=true;
+            derecha = false;
+            baile = true;
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
@@ -114,7 +114,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (x > 0) {
                 x -= delta * 0.4f;
                 derecha = false;
-                baile=false;
+                baile = false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -125,7 +125,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (x < 1018) {
                 x += delta * 0.4f;
                 derecha = true;
-                baile=false;
+                baile = false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -142,9 +142,12 @@ public class EstadoPasillo2 extends BasicGameState {
             if (y > 257) {
                 y -= delta * 0.4f;
                 derecha = true;
-                baile=false;
+                baile = false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
+                }
+                if ((y >= 257) && (x >= 70) && (x <= 180)) {
+                    game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
             }
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
@@ -153,7 +156,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (y < 354) {
                 y += delta * 0.4f;
                 derecha = true;
-                baile=false;
+                baile = false;
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
@@ -172,10 +175,16 @@ public class EstadoPasillo2 extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(DonaldTrap);
-        mover=false;
-        baile=false;
-        this.x = 30; //Coordenadas donde empieza el personaje
-        this.y = 257;
+        mover = false;
+        baile = false;
+        if (ClaseEstatica.getUltimoEstado() == "EstadoCamerino2") {
+            this.x = 128;
+            this.y = 257;
+        } else {
+            this.x = 30;
+            this.y = 257;
+        }
+        ClaseEstatica.setUltimoEstado("EstadoPasillo2");
     }
 
 }

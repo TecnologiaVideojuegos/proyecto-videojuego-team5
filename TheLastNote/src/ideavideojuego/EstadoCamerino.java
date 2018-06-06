@@ -30,7 +30,6 @@ public class EstadoCamerino extends BasicGameState {
     private float x, y;
     private float ang;
     private Image fondo;
-    private Sound fail;
     private boolean derecha, mover, baile, introduccion;
     private int dato;
     private String texto;
@@ -48,8 +47,7 @@ public class EstadoCamerino extends BasicGameState {
         mover = false;
         baile = false;
         ang = 200f;
-        ClaseEstatica.setFail(fail);
-        introduccion = true;
+        introduccion = false;
         texto = "";
     }
 
