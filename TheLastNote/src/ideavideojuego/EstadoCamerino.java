@@ -103,25 +103,25 @@ public class EstadoCamerino extends BasicGameState {
             game.enterState(1);*/
         if (introduccion) {
             switch (dato) {
-                case 2000:
+                case 1000:
                     texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
                     break;
-                case 6000:
+                case 5000:
                     texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
                     break;
-                case 10000:
+                case 9000:
                     texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
                     break;
-                case 15000:
+                case 14000:
                     texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
                     break;
-                case 20000:
+                case 19000:
                     texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
                     break;
-                case 24000:
+                case 23000:
                     texto = "En unos días empezamos la gira.";
                     break;
-                case 26000:
+                case 25000:
                     introduccion = false;
                     break;
                 default:
@@ -199,6 +199,7 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+        ClaseEstatica.setUltimoEstado("EstadoCamerino");
     }
 
 }
