@@ -87,8 +87,8 @@ public class EstadoPasillo1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
@@ -152,6 +152,8 @@ public class EstadoPasillo1 extends BasicGameState {
                 }
             } else if ((y >= 257) && (x >= 530) && (x <= 625)) {
                 game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+            }else if ((y >= 257) && (x >= 70) && (x <= 180)) {
+                game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
             ClaseEstatica.getPersonaje().getAnimI().stop();
@@ -179,6 +181,10 @@ public class EstadoPasillo1 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(LuisFonsi);
         mover=false;
+        if(ClaseEstatica.getUltimoEstado()=="EstadoCamerinoPas1"){
+            this.x = 128;
+            this.y = 257;
+        }
         this.x = 571; //Coordenadas donde empieza el personaje
         this.y = 257;
     }

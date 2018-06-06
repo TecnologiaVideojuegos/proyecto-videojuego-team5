@@ -5,17 +5,13 @@
  */
 package ideavideojuego;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
-import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -25,7 +21,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoCamerino extends BasicGameState {
+public class EstadoCamerinoPas1 extends BasicGameState{
 
     private float x, y;
     private float ang;
@@ -37,19 +33,18 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public int getID() {
-        return 2;
+        return 13;
     }
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
-        ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
         mover = false;
         baile = false;
         ang = 200f;
         ClaseEstatica.setFail(fail);
-        introduccion = false;
+        introduccion = true;
         texto = "";
     }
 
@@ -104,28 +99,16 @@ public class EstadoCamerino extends BasicGameState {
         if (introduccion) {
             switch (dato) {
                 case 2000:
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
                     break;
                 case 6000:
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    texto = "¿De quién sería este camerino?.\n OHHH. Ahí hay algo";
                     break;
                 case 10000:
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
                     break;
-                case 15000:
-                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                    break;
-                case 20000:
-                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                    break;
-                case 24000:
-                    texto = "En unos días empezamos la gira.";
-                    break;
-                case 26000:
+                case 14000:
                     introduccion = false;
-                    break;
-                default:
-                    break;
             }
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -199,6 +182,7 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+        ClaseEstatica.setUltimoEstado("EstadoCamerinoPas1");
     }
-
+    
 }
