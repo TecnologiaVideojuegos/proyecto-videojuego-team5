@@ -27,7 +27,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
     private float ang;
     private Image fondo1, fondo2, fondo3, fondo4;
     private Sound fail;
-    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3;
+    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3,vez1,vez2,vez3;
     private int dato, pasillo;
     private String texto;
 
@@ -50,6 +50,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         introduccion1 = false;
         introduccion2 = false;
         introduccion3 = false;
+        vez1 = true;
+        vez2 = true;
+        vez3 = true;
     }
 
     @Override
@@ -57,14 +60,22 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         //fondo1.draw();
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             fondo1.draw();
+            if(introduccion1){
+                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                g.drawString(texto, 330, 560);
+            }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             fondo2.draw();
+            if(introduccion2){
+                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                g.drawString(texto, 330, 560);
+            }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
-        }
-        if (introduccion1 || introduccion2 || introduccion3) {
-            ClaseEstatica.getPersonaje().getDial().draw(216, 537);
-            g.drawString(texto, 330, 560);
+            if(introduccion3){
+                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                g.drawString(texto, 330, 560);
+            }
         }
         if (mover) {
             if (derecha) {
@@ -106,7 +117,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         }
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
-        if (introduccion1) {
+        if (introduccion1 && vez1) {
             switch (dato) {
                 case 500:
                     texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
@@ -119,11 +130,12 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     break;
                 case 10000:
                     introduccion1 = false;
+                    vez1 = false;
                     break;
                 default:
                     break;
             }
-        } else if (introduccion2) {
+        } else if (introduccion2 && vez2) {
             switch (dato) {
                 case 500:
                     texto = "Dios mio!! Casi muero ahí dento. Ese\n Luis Fonsi y su reggeaton...";
@@ -142,6 +154,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     break;
                 case 17000:
                     introduccion2 = false;
+                    vez2 = false;
                     break;
                 default:
                     break;
