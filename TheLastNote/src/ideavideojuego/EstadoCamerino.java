@@ -31,7 +31,9 @@ public class EstadoCamerino extends BasicGameState {
     private float ang;
     private Image fondo;
     private Sound fail;
-    private boolean derecha, mover,baile;
+    private boolean derecha, mover, baile, introduccion;
+    private int frase;
+    private String texto;
 
     @Override
     public int getID() {
@@ -44,10 +46,13 @@ public class EstadoCamerino extends BasicGameState {
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
         mover = false;
-        baile=false;
+        baile = false;
         ang = 200f;
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         ClaseEstatica.setFail(fail);
+        introduccion = false;
+        frase = 0;
+        texto = "";
     }
 
     @Override
@@ -57,9 +62,9 @@ public class EstadoCamerino extends BasicGameState {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
-            }else  if(baile){
+            } else if (baile) {
                 ClaseEstatica.getPersonaje().getBaile().draw(x, y);
-            }else {
+            } else {
                 ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
             }
         } else {
@@ -85,69 +90,92 @@ public class EstadoCamerino extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_B)) {
-            derecha=false;
-            baile=true;
+            derecha = false;
+            baile = true;
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
         }
-        if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
-            game.enterState(1);
-        if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            ClaseEstatica.getPersonaje().getAnimI().start();
-            if (x > 217) {
-                x -= delta * 0.4f;
-                derecha = false;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (x < 796) {
-                x += delta * 0.4f;
-                derecha = true;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y > 271) {
-                y -= delta * 0.4f;
-                derecha = true;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y < 480) {
-                y += delta * 0.4f;
-                derecha = true;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            } else if ((y >= 480) && (x >= 485) && (x <= 530)) {
-                ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+        /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
+            game.enterState(1);*/
+        if (introduccion) {
+            if (frase == 0) {
+                texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                frase += 1;
+            } else if (frase == 1) {
+                texto = "No es un simple papel que no lleva a ninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                frase += 1;
+            } else if (frase == 2) {
+                texto = "Ya te veo ahí, brillando,una estrella sobre el escenario, gente eufórica animándote hasta conseguir ese orgasmo musical";
+                frase += 1;
+            } else if (frase == 3) {
+                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién, lo importante es que el DESTINO nos ha puesto aquí. ";
+                frase += 1;
+            } else if (frase == 4) {
+                texto = "Así que venga, sin rechistar, metete en el camerino  algo de ropa.";
+                frase += 1;
+            } else if (frase == 5) {
+                texto = "En unos días empezamos la gira.";
+                frase += 1;
+                introduccion = false;
             }
         } else {
-            if (derecha) {
+            if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-            } else {
+                ClaseEstatica.getPersonaje().getAnimI().start();
+                if (x > 217) {
+                    x -= delta * 0.4f;
+                    derecha = false;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (x < 796) {
+                    x += delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (y > 271) {
+                    y -= delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (y < 480) {
+                    y += delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                } else if ((y >= 480) && (x >= 485) && (x <= 530)) {
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                    game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+            } else {
+                if (derecha) {
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                } else {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                }
             }
         }
     }
@@ -159,8 +187,8 @@ public class EstadoCamerino extends BasicGameState {
         }
         this.x = 354; //Coordenadas donde empieza el personaje
         this.y = 270;
-        mover=false;
-        baile=false;
+        mover = false;
+        baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
     }
