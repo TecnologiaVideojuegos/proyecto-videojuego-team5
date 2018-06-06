@@ -181,12 +181,14 @@ public class EstadoPasillo1 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(LuisFonsi);
         mover=false;
-        if(ClaseEstatica.getUltimoEstado()=="EstadoCamerinoPas1"){
+        if("EstadoCamerinoPas1".equals(ClaseEstatica.getUltimoEstado())){
             this.x = 128;
             this.y = 257;
         }
-        this.x = 571; //Coordenadas donde empieza el personaje
-        this.y = 257;
+        else{
+            this.x = 571;
+            this.y = 257;
+        } 
     }
 
 }

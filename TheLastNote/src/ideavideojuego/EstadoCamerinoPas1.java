@@ -98,16 +98,16 @@ public class EstadoCamerinoPas1 extends BasicGameState{
             game.enterState(1);*/
         if (introduccion) {
             switch (dato) {
-                case 2000:
+                case 500:
                     texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
                     break;
-                case 6000:
+                case 4000:
                     texto = "¿De quién sería este camerino?.\n OHHH. Ahí hay algo";
                     break;
-                case 10000:
+                case 7000:
                     texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
                     break;
-                case 14000:
+                case 1000:
                     introduccion = false;
             }
         } else {
@@ -176,8 +176,8 @@ public class EstadoCamerinoPas1 extends BasicGameState{
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
-        this.x = 354; //Coordenadas donde empieza el personaje
-        this.y = 270;
+        this.x = 500; //Coordenadas donde empieza el personaje
+        this.y = 367;
         mover = false;
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
