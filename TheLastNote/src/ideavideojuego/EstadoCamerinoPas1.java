@@ -119,6 +119,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     break;
                 case 10000:
                     introduccion1 = false;
+                    break;
+                default:
+                    break;
             }
         } else if (introduccion2) {
             switch (dato) {
@@ -139,6 +142,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     break;
                 case 17000:
                     introduccion2 = false;
+                    break;
+                default:
+                    break;
             }
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -193,7 +199,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                         game.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                     } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
                         game.enterState(5, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                    } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+                    } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
                         game.enterState(7, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                     }
                 }
