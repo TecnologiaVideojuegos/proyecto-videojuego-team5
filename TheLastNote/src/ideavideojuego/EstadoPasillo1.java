@@ -150,9 +150,9 @@ public class EstadoPasillo1 extends BasicGameState {
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-            }if ((y == 257) && (x >= 530) && (x <= 625)) {
+            }if ((y <= 257) && (x >= 530) && (x <= 625)) {
                 game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }if ((y == 257) && (x >= 70) && (x <= 180)) {
+            }if ((y <= 257) && (x >= 70) && (x <= 180)) {
                 game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {

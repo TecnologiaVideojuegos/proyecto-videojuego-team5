@@ -60,19 +60,19 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         //fondo1.draw();
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             fondo1.draw();
-            if(introduccion1){
+            if(vez1){
                 ClaseEstatica.getPersonaje().getDial().draw(216, 537);
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             fondo2.draw();
-            if(introduccion2){
+            if(vez2){
                 ClaseEstatica.getPersonaje().getDial().draw(216, 537);
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
-            if(introduccion3){
+            if(vez3){
                 ClaseEstatica.getPersonaje().getDial().draw(216, 537);
                 g.drawString(texto, 330, 560);
             }

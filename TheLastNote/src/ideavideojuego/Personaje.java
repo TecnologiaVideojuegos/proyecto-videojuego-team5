@@ -194,7 +194,7 @@ public class Personaje {
                 } else {
                     //if(!ClaseEstatica.getFail().playing())
                     ClaseEstatica.setAtaqueAcertado(false);
-                    ClaseEstatica.getFail().play();
+                    //ClaseEstatica.getFail().play();
                     System.out.println("OHHH que pena!!! " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
                     texto = "OHHH que pena!!!  " + this.getNombre() + " ha FALLADO EL ATAQUE!!!";
@@ -235,7 +235,7 @@ public class Personaje {
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             } else {
                 //if(!ClaseEstatica.getFail().playing())
-                ClaseEstatica.getFail().play();
+                //ClaseEstatica.getFail().play();
                 ClaseEstatica.setAtaqueAcertado(false);
                 System.out.println("OHHH que pena!!!  " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");

@@ -146,7 +146,7 @@ public class EstadoPasillo2 extends BasicGameState {
                 if (!ClaseEstatica.getSonidoPaso().playing()) {
                     ClaseEstatica.getSonidoPaso().play();
                 }
-                if ((y >= 257) && (x >= 70) && (x <= 180)) {
+                if ((y <= 257) && (x >= 70) && (x <= 180)) {
                     game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
             }

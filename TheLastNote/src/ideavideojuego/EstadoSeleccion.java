@@ -126,8 +126,7 @@ public class EstadoSeleccion extends BasicGameState {
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);
         ClaseEstatica.setAtaqueAcertado(true);
-        ClaseEstatica.setMusicSilence(new Music("Musica/silence.ogg", false));   
-        ClaseEstatica.setFail(new Sound("Musica/Sonidos/fx_fail.ogg"));
+        ClaseEstatica.setMusicSilence(new Music("Musica/silence.ogg", false));  
     }
 
     @Override

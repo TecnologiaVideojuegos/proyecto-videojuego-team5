@@ -43,6 +43,7 @@ public class EstadoCamerino extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
+        //ClaseEstatica.setFail(new Sound("Musica/Sonidos/fx_fail.ogg"));
         derecha = true;
         mover = false;
         baile = false;
