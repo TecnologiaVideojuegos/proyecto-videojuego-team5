@@ -188,7 +188,8 @@ public class EstadoPasillo1 extends BasicGameState {
         else{
             this.x = 571;
             this.y = 257;
-        } 
+        }
+        ClaseEstatica.setUltimoEstado("EstadoPasillo1");
     }
 
 }

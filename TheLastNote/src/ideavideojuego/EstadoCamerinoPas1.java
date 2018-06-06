@@ -21,14 +21,14 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
  *
  * @author Álvaro Zamorano
  */
-public class EstadoCamerinoPas1 extends BasicGameState{
+public class EstadoCamerinoPas1 extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo;
+    private Image fondo1, fondo2, fondo3, fondo4;
     private Sound fail;
-    private boolean derecha, mover, baile, introduccion;
-    private int dato;
+    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3;
+    private int dato, pasillo;
     private String texto;
 
     @Override
@@ -38,20 +38,21 @@ public class EstadoCamerinoPas1 extends BasicGameState{
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/camerino.png"); //Imagen de fondo
+        fondo1 = new Image("Design/camerino.png"); //Imagen de fondo
+        fondo2 = new Image("Design/camerino.png");
+        fondo3 = new Image("Design/camerino.png");
         derecha = true;
         mover = false;
         baile = false;
         ang = 200f;
         ClaseEstatica.setFail(fail);
-        introduccion = true;
         texto = "";
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        fondo.draw();
-        if (introduccion) {
+        //fondo1.draw();
+        if (introduccion1 || introduccion2 || introduccion3) {
             ClaseEstatica.getPersonaje().getDial().draw(216, 537);
             g.drawString(texto, 330, 560);
         }
@@ -96,7 +97,7 @@ public class EstadoCamerinoPas1 extends BasicGameState{
         }
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
-        if (introduccion) {
+        if (introduccion1) {
             switch (dato) {
                 case 500:
                     texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
@@ -108,7 +109,27 @@ public class EstadoCamerinoPas1 extends BasicGameState{
                     texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
                     break;
                 case 10000:
-                    introduccion = false;
+                    introduccion1 = false;
+            }
+        } else if (introduccion2) {
+            switch (dato) {
+                case 500:
+                    texto = "Dios mio!! Casi muero ahí dento. Ese\n Luis Fonsi y su reggeaton...";
+                    break;
+                case 4000:
+                    texto = "¡¡¡No destruirán la MÚSICA!!!";
+                    break;
+                case 7000:
+                    texto = "Ha sido una batalla muy dura y\nnecesito fuerzas";
+                    break;
+                case 10000:
+                    texto = "Esperaaa. ¿¿Qué es eso que hay ahí??\nSeguro que me dará más fuerzas...";
+                    break;
+                case 14000:
+                    texto = "...¡¡¡Contra aquellos que quieren\n retar mi RITMO!!!";
+                    break;
+                case 17000:
+                    introduccion2 = false;
             }
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -182,7 +203,21 @@ public class EstadoCamerinoPas1 extends BasicGameState{
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-        ClaseEstatica.setUltimoEstado("EstadoCamerinoPas1");
+        if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+            fondo1.draw();
+            introduccion1 = true;
+            texto = "";
+            ClaseEstatica.setUltimoEstado("EstadoCamerinoPas1");
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+            fondo2.draw();
+            introduccion2 = true;
+            texto = "";
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+            fondo3.draw();
+            introduccion3 = true;
+            texto = "";
+        }
+
     }
-    
+
 }
