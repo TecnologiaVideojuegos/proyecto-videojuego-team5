@@ -107,7 +107,7 @@ public class EstadoCamerinoPas1 extends BasicGameState{
                 case 7000:
                     texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
                     break;
-                case 1000:
+                case 10000:
                     introduccion = false;
             }
         } else {

@@ -49,7 +49,7 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         ang = 200f;
         ClaseEstatica.setFail(fail);
-        introduccion = false;
+        introduccion = true;
         texto = "";
     }
 
