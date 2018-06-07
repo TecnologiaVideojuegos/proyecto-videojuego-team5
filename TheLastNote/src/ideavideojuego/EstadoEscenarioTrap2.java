@@ -34,12 +34,12 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     private Sprite puntero;
     private float ang;
     private Image fondo;
-    ;
     private Music music;
     private boolean derecha, mover, baile;
     private Rectangle perR, perE;
-    private boolean colision;
-    private int estado;
+    private boolean colision,dialpersonaje, dialmalo;
+    private int estado,dato;
+    private String texto;
 
     @Override
     public int getID() {
@@ -60,6 +60,9 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         colision = false;
         mover=false;
         baile=false;
+        dialpersonaje=false;
+        dialmalo=false;
+        texto="";
     }
 
     @Override
@@ -85,15 +88,23 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
 
         if (colision) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE DONALD TRAP?", 50, 620);
+            if (dialpersonaje) {
+                ClaseEstatica.getPersonaje().getDial().draw();
+                g.drawString(texto, 330, 560);
+            }
+            else{
+                ClaseEstatica.getEnemigo().getDial().draw(216, 537);
+                g.drawString(texto, 330, 560);
+            }
+            /*ClaseEstatica.getPersonaje().getAnimD().stop();
+            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);
             g.drawString("Si, no tengo miedo", 50, 654);
             g.drawString("Nooo, no estoy preparado", 500, 654);
             if (estado == 0) {
                 puntero.draw(221, 654);
             } else if (estado == 1) {
                 puntero.draw(723, 654);
-            }
+            }*/
         }
 
         //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
@@ -103,6 +114,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
+        dato+=delta;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             music.play();
             //music.resume();
@@ -190,7 +202,43 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 }
             }
         } else {
-            if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+            switch (dato) {
+                    case 1000:
+                        dialpersonaje=true;
+                        texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                        break;
+                    case 5000:
+                        dialpersonaje=false;
+                        dialmalo=true;
+                        texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                        break;
+                    case 9000:
+                        dialpersonaje=true;
+                        dialmalo=false;
+                        texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                        break;
+                    case 14000:
+                        dialpersonaje=false;
+                        dialmalo=true;
+                        texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                        break;
+                    case 19000:
+                        dialpersonaje=true;
+                        dialmalo=false;
+                        texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                        break;
+                    case 23000:
+                        dialpersonaje=false;
+                        dialmalo=true;
+                        texto = "En unos días empezamos la gira.";
+                        break;
+                    case 25000:
+                        game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                        break;
+                    default:
+                        break;
+                }
+            /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
                 if (estado == 0) {
                     estado = 1;
                 }
@@ -214,7 +262,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                         perR.setY(personajey);
                     }
                 }
-            }
+            }*/
         }
 
     }
