@@ -61,19 +61,19 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             fondo1.draw();
             if (vez1) {
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             fondo2.draw();
             if (vez2) {
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
             if (vez3) {
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         }
@@ -141,7 +141,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 texto = "En unos días empezamos la gira.";
                 contadorIntro++;
                 dato = 0;
-            } */else if (contadorIntro == 3) {
+            } */else if (contadorIntro == 3 && (dato > 2000)) {
                 introduccion1 = false;
                 vez1 = false;
             }
@@ -170,7 +170,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 texto = "En unos días empezamos la gira.";
                 contadorIntro++;
                 dato = 0;
-            }*/ else if (contadorIntro == 5) {
+            }*/ else if (contadorIntro == 5 && (dato > 2000)) {
                 introduccion2 = false;
                 vez2 = false;
             }

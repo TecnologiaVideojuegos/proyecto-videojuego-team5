@@ -243,7 +243,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     texto = "En unos días empezamos la gira.";
                     contadorIntro++;
                     dato=0;
-                }else if(contadorIntro==6){
+                }else if(contadorIntro==6 && (dato > 2000)){
                     dialpersonaje = false;
                     dialpersonaje = false;
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));

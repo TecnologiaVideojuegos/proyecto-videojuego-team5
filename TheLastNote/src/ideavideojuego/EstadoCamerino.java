@@ -130,7 +130,7 @@ public class EstadoCamerino extends BasicGameState {
                     texto = "En unos días empezamos la gira.";
                     contadorIntro++;
                     dato=0;
-                }else if(contadorIntro==6)
+                }else if(contadorIntro==6 && (dato > 2000))
                     introduccion = false;
         
         } else {
