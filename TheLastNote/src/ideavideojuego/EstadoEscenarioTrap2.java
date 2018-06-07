@@ -38,7 +38,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     private boolean derecha, mover, baile;
     private Rectangle perR, perE;
     private boolean colision,dialpersonaje, dialmalo;
-    private int estado,dato;
+    private int estado,dato,contadorIntro;
     private String texto;
 
     @Override
@@ -63,6 +63,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         dialpersonaje=false;
         dialmalo=false;
         texto="";
+        contadorIntro=0;
     }
 
     @Override
@@ -202,42 +203,53 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 }
             }
         } else {
-            switch (dato) {
-                    case 1000:
-                        dialpersonaje=true;
-                        texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                        break;
-                    case 5000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                        break;
-                    case 9000:
-                        dialpersonaje=true;
-                        dialmalo=false;
-                        texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
-                        break;
-                    case 14000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                        break;
-                    case 19000:
-                        dialpersonaje=true;
-                        dialmalo=false;
-                        texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                        break;
-                    case 23000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "En unos días empezamos la gira.";
-                        break;
-                    case 25000:
-                        game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                        break;
-                    default:
-                        break;
+            if(contadorIntro==0){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    contadorIntro++;
                 }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "En unos días empezamos la gira.";
+                    contadorIntro++;
+                    dato=0;
+                }else if(contadorIntro==6){
+                    dialpersonaje = false;
+                    dialpersonaje = false;
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+            
+
             /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
                 if (estado == 0) {
                     estado = 1;
@@ -248,7 +260,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 }
             } else if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
                 if (estado == 0) {
-                    game.enterState(10, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
                     if (derecha) {
                         this.personajex = 595; //Coordenadas donde empieza el personaje

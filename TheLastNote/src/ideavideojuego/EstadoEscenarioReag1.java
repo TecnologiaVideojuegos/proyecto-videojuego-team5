@@ -39,7 +39,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private boolean derecha, mover, baile;
     private Rectangle perR, perE;
     private boolean colision, dialpersonaje, dialmalo;
-    private int estado, dato;
+    private int estado, dato,contadorIntro;
 
     @Override
     public int getID() {
@@ -94,7 +94,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 g.drawString(texto, 330, 560);
             }
             else{
-                ClaseEstatica.getEnemigo().getDial().draw(216, 537);
+                ClaseEstatica.getEnemigo().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
             /*ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -202,43 +202,51 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 }
             }
         } else {
-            //dato = 0;
-            
-                switch (dato) {
-                    case 1000:
-                        dialpersonaje=true;
-                        texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                        break;
-                    case 5000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                        break;
-                    case 9000:
-                        dialpersonaje=true;
-                        dialmalo=false;
-                        texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
-                        break;
-                    case 14000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                        break;
-                    case 19000:
-                        dialpersonaje=true;
-                        dialmalo=false;
-                        texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                        break;
-                    case 23000:
-                        dialpersonaje=false;
-                        dialmalo=true;
-                        texto = "En unos días empezamos la gira.";
-                        break;
-                    case 25000:
-                        game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                        break;
-                    default:
-                        break;
+            //dato = 0;           
+                if(contadorIntro==0){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    contadorIntro++;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "En unos días empezamos la gira.";
+                    contadorIntro++;
+                    dato=0;
+                }else if(contadorIntro==6){
+                    dialpersonaje = false;
+                    dialpersonaje = false;
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
             
 
@@ -282,6 +290,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         colision = false;
         mover = false;
         baile = false;
+        contadorIntro=0;
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {
