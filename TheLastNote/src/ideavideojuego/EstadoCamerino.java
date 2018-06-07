@@ -31,7 +31,7 @@ public class EstadoCamerino extends BasicGameState {
     private float ang;
     private Image fondo;
     private boolean derecha, mover, baile, introduccion;
-    private int dato;
+    private int dato,contadorIntro;
     private String texto;
 
     @Override
@@ -48,15 +48,16 @@ public class EstadoCamerino extends BasicGameState {
         mover = false;
         baile = false;
         ang = 200f;
-        introduccion = false;
+        introduccion = true;
         texto = "";
+        contadorIntro = 0;
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
         if (introduccion) {
-            ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+            ClaseEstatica.getPersonaje().getDial().draw();
             g.drawString(texto, 330, 560);
         }
         if (mover) {
@@ -101,31 +102,37 @@ public class EstadoCamerino extends BasicGameState {
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
         if (introduccion) {
-            switch (dato) {
-                case 1000:
+                if(contadorIntro==0){
                     texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                    break;
-                case 5000:
+                    contadorIntro++;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
                     texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                    break;
-                case 9000:
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
                     texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
-                    break;
-                case 14000:
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
                     texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                    break;
-                case 19000:
+                        contadorIntro++;
+                        dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
                     texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                    break;
-                case 23000:
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
                     texto = "En unos días empezamos la gira.";
-                    break;
-                case 25000:
+                    contadorIntro++;
+                    dato=0;
+                }else if(contadorIntro==6)
                     introduccion = false;
-                    break;
-                default:
-                    break;
-            }
+        
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
