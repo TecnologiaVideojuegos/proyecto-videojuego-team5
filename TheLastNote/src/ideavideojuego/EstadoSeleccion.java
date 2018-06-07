@@ -55,9 +55,9 @@ public class EstadoSeleccion extends BasicGameState {
         backMozart = new Image("Design/battlebombin1.png");
         backAlfredo = new Image("Design/battleFreddie1.png");
         backMoldova = new Image("Design/battleSax1.png");
-        dialAlfredo = new Image("Design/DialPrueba.png");
-        dialLudwig = new Image("Design/DialPrueba.png");
-        dialMoldova = new Image("Design/DialPrueba.png");
+        dialAlfredo = new Image("Design/dialogoFreddie1.png");
+        dialLudwig = new Image("Design/dialogoBombin1.png");
+        dialMoldova = new Image("Design/dialogoSax1.png");
         
 
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);

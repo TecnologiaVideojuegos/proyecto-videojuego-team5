@@ -31,7 +31,7 @@ public class EstadoPasillo1 extends BasicGameState {
     private Animation fonsiD, fonsiI, fonsiC;
     private SpriteSheet spriteFonsiD, spriteFonsiI, spriteFonsiC;
     private float ang;
-    private Image fondo,dialFonsi;
+    private Image fondo,dialFonsi,potion;
     private boolean derecha, mover, baile;
     private Personaje LuisFonsi;
 
@@ -69,6 +69,8 @@ public class EstadoPasillo1 extends BasicGameState {
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
+        
+        potion = new Image("Design/potions/pt1.png");
     }
 
     @Override
@@ -93,6 +95,7 @@ public class EstadoPasillo1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         mover = true;
+        //potion.draw(500, 367);
     }
 
     @Override
