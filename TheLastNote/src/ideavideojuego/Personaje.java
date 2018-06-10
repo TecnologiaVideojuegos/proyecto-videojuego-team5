@@ -30,8 +30,9 @@ public class Personaje {
     private Animation animD, animI, animC, baile; //animD y animI --> movimineto derecha e izquierda, animC -->combate
     private Music musicB8, musicH8, musicBnormal, musicHnormal; //la b se refiere a batalla y la h al pasillo
     private Image HUD, dial;
+    private int HealthPotion, DmgPotion;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial, int HPotion, int DPotion) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -47,6 +48,24 @@ public class Personaje {
         this.animC = animC;
         this.baile = baile;
         this.dial = dial;
+        this.HealthPotion=HPotion;
+        this.DmgPotion=DPotion;
+    }
+
+    public int getHealthPotion() {
+        return HealthPotion;
+    }
+
+    public void setHealthPotion(int HealthPotion) {
+        this.HealthPotion = HealthPotion;
+    }
+
+    public int getDmgPotion() {
+        return DmgPotion;
+    }
+
+    public void setDmgPotion(int DmgPotion) {
+        this.DmgPotion = DmgPotion;
     }
 
     public Image getDial() {
@@ -172,6 +191,27 @@ public class Personaje {
     @Override
     public String toString() {
         return "Personaje{" + "vida=" + vida + ", nombre=" + nombre + ", ataques=" + ataques + '}';
+    }
+    
+    public boolean useHealthPotion(){
+        System.out.println("Pociones de vida --> "+HealthPotion);
+        if(HealthPotion>0){
+            this.setVida(vida+75);
+            HealthPotion--;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean useDmgPotion(){
+        if(DmgPotion>0){
+            for(int i=0; i<ataques.size(); i++){
+                ataques.get(i).setDmg(ataques.get(i).getDmg()+15);
+            }
+            DmgPotion--;
+            return true;
+        }
+        return false;
     }
 
     public String atacar(Personaje penemigo, int seleccion) {

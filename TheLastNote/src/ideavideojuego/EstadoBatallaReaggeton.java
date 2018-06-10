@@ -42,7 +42,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
     private static final Punto a3 = new Punto(675, 465);
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, message, textoAccion;
-    private boolean turno; //si es true nosotros atacamos, sino --> la maquina
+    private boolean turno, HPotion; //si es true nosotros atacamos, sino --> la maquina
     private static UnicodeFont font;
 
     @Override
@@ -71,6 +71,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         indicador = 0;
         dato = 0;
         tEspera = 3000;
+        HPotion=false;
     }
 
     @Override
@@ -92,6 +93,8 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         } else {
             //g.drawString(texto, 80, 640);  
         }
+        if(indicador>=2)
+            font.drawString(80, 630, textoAccion);
 
         if (indicador == 2) {
             font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
@@ -125,7 +128,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
             font.drawString(832, 457, "NO ES TU TURNO", org.newdawn.slick.Color.red);
             //font.drawString(80, 630, textoAccionP);
         }
-        font.drawString(80, 630, textoAccion);
+        
     }
 
     @Override
@@ -209,6 +212,18 @@ public class EstadoBatallaReaggeton extends BasicGameState {
                     texto = "";
                 }
             }
+            if (entrada.isKeyPressed(Input.KEY_V)  && (dato > tEspera)){                    //USO DE POCIONES
+                    HPotion=ClaseEstatica.getPersonaje().useHealthPotion();
+                    if (HPotion){
+                        System.out.println("HAS RESTAURADO 75 PUNTOS DE VIDA");
+                        textoAccion="Has retaurado 75 puntos de vida";
+                    }else{
+                        System.out.println("No tienes pociones");
+                        textoAccion="No tienes pociones, pierdes turno";
+                    }
+                    turno=false;
+                    dato=0;
+            }
             if (entrada.isKeyPressed(Input.KEY_ENTER)) {
                 if (!ClaseEstatica.getClick().playing()) {
                     ClaseEstatica.getClick().play();
@@ -280,6 +295,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         textoAccion = "";
         texto = "";
         indicador = 0;
+        ClaseEstatica.getPersonaje().setHealthPotion(2);
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {
