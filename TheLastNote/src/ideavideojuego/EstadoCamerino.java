@@ -31,11 +31,9 @@ public class EstadoCamerino extends BasicGameState {
     private float ang;
     private Image fondo;
     private boolean derecha, mover, baile, introduccion;
-<<<<<<< HEAD
+
     private int dato, contadorIntro;
-=======
-    private int dato,contadorIntro;
->>>>>>> ed7086eeacd993f09aaacf23e7f9df9fe4fe56db
+
     private String texto;
 
     @Override
@@ -137,14 +135,10 @@ public class EstadoCamerino extends BasicGameState {
                     texto = "En unos días empezamos la gira.";
                     contadorIntro++;
                     dato=0;
-<<<<<<< HEAD
-                }else if(contadorIntro==6)
-                    introduccion = false;
-=======
+
                 }else if(contadorIntro==6 && (dato > 2000))
-                    introduccion = false;
-        
->>>>>>> ed7086eeacd993f09aaacf23e7f9df9fe4fe56db
+                    introduccion = false;       
+
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
