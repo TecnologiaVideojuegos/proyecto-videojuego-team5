@@ -34,12 +34,12 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     private Sprite puntero;
     private float ang;
     private Image fondo;
-    ;
     private Music music;
     private boolean derecha, mover, baile;
     private Rectangle perR, perE;
-    private boolean colision;
-    private int estado;
+    private boolean colision,dialpersonaje, dialmalo;
+    private int estado,dato,contadorIntro;
+    private String texto;
 
     @Override
     public int getID() {
@@ -60,6 +60,10 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         colision = false;
         mover=false;
         baile=false;
+        dialpersonaje=false;
+        dialmalo=false;
+        texto="";
+        contadorIntro=0;
     }
 
     @Override
@@ -85,15 +89,23 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
 
         if (colision) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE DONALD TRAP?", 50, 620);
+            if (dialpersonaje) {
+                ClaseEstatica.getPersonaje().getDial().draw();
+                g.drawString(texto, 330, 560);
+            }
+            else{
+                ClaseEstatica.getEnemigo().getDial().draw(216, 537);
+                g.drawString(texto, 330, 560);
+            }
+            /*ClaseEstatica.getPersonaje().getAnimD().stop();
+            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);
             g.drawString("Si, no tengo miedo", 50, 654);
             g.drawString("Nooo, no estoy preparado", 500, 654);
             if (estado == 0) {
                 puntero.draw(221, 654);
             } else if (estado == 1) {
                 puntero.draw(723, 654);
-            }
+            }*/
         }
 
         //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
@@ -103,6 +115,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
+        dato+=delta;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             music.play();
             //music.resume();
@@ -190,7 +203,54 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 }
             }
         } else {
-            if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+            if(contadorIntro==0){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    contadorIntro++;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
+                    dialpersonaje = false;
+                    dialpersonaje = true;
+                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    contadorIntro++;
+                    dato=0;
+                }
+                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialpersonaje = false;
+                    texto = "En unos días empezamos la gira.";
+                    contadorIntro++;
+                    dato=0;
+                }else if(contadorIntro==6 && (dato > 2000)){
+                    dialpersonaje = false;
+                    dialpersonaje = false;
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+            
+
+            /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
                 if (estado == 0) {
                     estado = 1;
                 }
@@ -200,7 +260,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 }
             } else if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
                 if (estado == 0) {
-                    game.enterState(10, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 } else if (estado == 1) {
                     if (derecha) {
                         this.personajex = 595; //Coordenadas donde empieza el personaje
@@ -214,7 +274,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                         perR.setY(personajey);
                     }
                 }
-            }
+            }*/
         }
 
     }

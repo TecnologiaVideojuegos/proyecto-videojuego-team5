@@ -31,7 +31,7 @@ public class EstadoPasillo1 extends BasicGameState {
     private Animation fonsiD, fonsiI, fonsiC;
     private SpriteSheet spriteFonsiD, spriteFonsiI, spriteFonsiC;
     private float ang;
-    private Image fondo,dialFonsi;
+    private Image fondo,dialFonsi,potion;
     private boolean derecha, mover, baile;
     private Personaje LuisFonsi;
 
@@ -60,7 +60,7 @@ public class EstadoPasillo1 extends BasicGameState {
         fonsiC = new Animation(spriteFonsiC, 150);
         fonsiD = new Animation(spriteFonsiD, 150);
         fonsiI = new Animation(spriteFonsiI, 150);
-        dialFonsi = new Image("Design/DialPrueba.png");
+        dialFonsi = new Image("Design/dialogoBombin1.png");
 
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);
@@ -69,6 +69,8 @@ public class EstadoPasillo1 extends BasicGameState {
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
+        
+        potion = new Image("Design/potions/pt1.png");
     }
 
     @Override
@@ -93,6 +95,7 @@ public class EstadoPasillo1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         mover = true;
+        //potion.draw(500, 367);
     }
 
     @Override

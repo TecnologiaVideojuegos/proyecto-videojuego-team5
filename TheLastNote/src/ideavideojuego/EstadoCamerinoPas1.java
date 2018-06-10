@@ -27,8 +27,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
     private float ang;
     private Image fondo1, fondo2, fondo3, fondo4;
     private Sound fail;
-    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3,vez1,vez2,vez3;
-    private int dato, pasillo;
+    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3;
+    private int dato, pasillo,contadorIntro;
     private String texto;
 
     @Override
@@ -60,20 +60,20 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         //fondo1.draw();
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             fondo1.draw();
-            if(vez1){
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+            if (vez1) {
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             fondo2.draw();
-            if(vez2){
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+            if (vez2) {
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
-            if(vez3){
-                ClaseEstatica.getPersonaje().getDial().draw(216, 537);
+            if (vez3) {
+                ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
             }
         }
@@ -118,46 +118,61 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
             game.enterState(1);*/
         if (introduccion1 && vez1) {
-            switch (dato) {
-                case 500:
-                    texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
-                    break;
-                case 4000:
-                    texto = "¿De quién sería este camerino?.\n OHHH. Ahí hay algo";
-                    break;
-                case 7000:
-                    texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
-                    break;
-                case 10000:
-                    introduccion1 = false;
-                    vez1 = false;
-                    break;
-                default:
-                    break;
+            if (contadorIntro == 0) {
+                texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                texto = "¿De quién sería este camerino?.\n OHHH. Ahí hay algo";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
+                contadorIntro++;
+                dato = 0;
+            } /*else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                texto = "En unos días empezamos la gira.";
+                contadorIntro++;
+                dato = 0;
+            } */else if (contadorIntro == 3 && (dato > 2000)) {
+                introduccion1 = false;
+                vez1 = false;
             }
+
         } else if (introduccion2 && vez2) {
-            switch (dato) {
-                case 500:
-                    texto = "Dios mio!! Casi muero ahí dento. Ese\n Luis Fonsi y su reggeaton...";
-                    break;
-                case 4000:
-                    texto = "¡¡¡No destruirán la MÚSICA!!!";
-                    break;
-                case 7000:
-                    texto = "Ha sido una batalla muy dura y\nnecesito fuerzas";
-                    break;
-                case 10000:
-                    texto = "Esperaaa. ¿¿Qué es eso que hay ahí??\nSeguro que me dará más fuerzas...";
-                    break;
-                case 14000:
-                    texto = "...¡¡¡Contra aquellos que quieren\n retar mi RITMO!!!";
-                    break;
-                case 17000:
-                    introduccion2 = false;
-                    vez2 = false;
-                    break;
-                default:
-                    break;
+            if (contadorIntro == 0) {
+                texto = "Dios mio!! Casi muero ahí dento. Ese\n Luis Fonsi y su reggeaton...";
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                texto = "¡¡¡No destruirán la MÚSICA!!!";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                texto = "Ha sido una batalla muy dura y\nnecesito fuerzas";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                texto = "Esperaaa. ¿¿Qué es eso que hay ahí??\nSeguro que me dará más fuerzas...";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                texto = "...¡¡¡Contra aquellos que quieren\n retar mi RITMO!!!";
+                contadorIntro++;
+                dato = 0;
+            } /*else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                texto = "En unos días empezamos la gira.";
+                contadorIntro++;
+                dato = 0;
+            }*/ else if (contadorIntro == 5 && (dato > 2000)) {
+                introduccion2 = false;
+                vez2 = false;
             }
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -249,6 +264,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             introduccion3 = true;
             texto = "";
         }
+        contadorIntro = 0;
     }
 
     @Override
