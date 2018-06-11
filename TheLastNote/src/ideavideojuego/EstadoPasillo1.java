@@ -70,7 +70,7 @@ public class EstadoPasillo1 extends BasicGameState {
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
         
-        potion = new Image("Design/potions/pt1.png");
+        //potion = new Image("Design/potions/pt1.png");
     }
 
     @Override
