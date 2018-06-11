@@ -72,6 +72,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         fondo.draw();
+        ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
@@ -86,7 +87,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
         mover=true;
-        ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
+        
 
         if (colision) {
             if (dialpersonaje) {
@@ -174,7 +175,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey > 293) {
                     personajey -= delta * 0.4f;
-                    perR.setY(personajey);
+                    perR.setY(personajey+100);
                     derecha = true;
                     baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -186,7 +187,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey < 556) {
                     personajey += delta * 0.4f;
-                    perR.setY(personajey);
+                    perR.setY(personajey+100);
                     derecha = true;
                     baile=false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -282,11 +283,11 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         //music.play();
-        perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        perE = new Rectangle(enemigox, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        perE = new Rectangle(enemigox, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
-        perR.setY(personajey);
+        perR.setY(personajey+100);
         perR.setX(personajex);
         colision = false;
         mover=false;

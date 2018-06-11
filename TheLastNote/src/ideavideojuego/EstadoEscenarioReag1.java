@@ -173,7 +173,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey > 293) {
                     personajey -= delta * 0.4f;
-                    perR.setY(personajey);
+                    perR.setY(personajey+100);
                     derecha = true;
                     baile = false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -185,7 +185,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey < 556) {
                     personajey += delta * 0.4f;
-                    perR.setY(personajey);
+                    perR.setY(personajey+100);
                     derecha = true;
                     baile = false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -283,9 +283,9 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
-        perR = new Rectangle(personajex, personajey, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        perE = new Rectangle(enemigox + 20, enemigoy, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
-        perR.setY(personajey);
+        perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        perE = new Rectangle(enemigox + 20, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        perR.setY(personajey+100);
         perR.setX(personajex);
         colision = false;
         mover = false;
