@@ -34,11 +34,11 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private Sprite puntero;
     private String message, texto;
     private float ang;
-    private Image fondo;
+    private Image fondo,pociVida;
     private Music music;
     private boolean derecha, mover, baile;
-    private Rectangle perR, perE;
-    private boolean colision, dialpersonaje, dialmalo;
+    private Rectangle perR, perE,rectPoci;
+    private boolean colision, dialpersonaje, dialmalo,life;
     private int estado, dato,contadorIntro;
 
     @Override
@@ -56,6 +56,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         baile = false;
         estado = 0;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
+        pociVida = new Image("Design/HealingPot.png");
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
@@ -63,6 +64,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         dialpersonaje=false;
         dialmalo=false;
         texto="";
+        life = false;
     }
 
     @Override
@@ -72,6 +74,9 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         fondo.draw();
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
+        if(!life){
+            pociVida.draw(912, 530);
+        }
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
@@ -108,8 +113,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             }*/
         }
         g.drawString(message, 10, 10);
-        //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
+        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override
@@ -142,6 +147,9 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         if (!perR.intersects(perE)) {
             colision = false;
+        }
+        if(perR.intersects(rectPoci)){
+            life = true;
         }
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -285,6 +293,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.personajey = 349;
         perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox + 20, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        rectPoci = new Rectangle(912, 530, pociVida.getWidth(), pociVida.getHeight());
         perR.setY(personajey+100);
         perR.setX(personajex);
         colision = false;
