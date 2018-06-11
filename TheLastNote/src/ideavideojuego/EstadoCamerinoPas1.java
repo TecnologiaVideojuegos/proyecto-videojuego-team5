@@ -12,6 +12,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -30,6 +31,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
     private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3,life;
     private int dato, pasillo,contadorIntro;
     private String texto;
+    private Rectangle rectPer, rectPoci;
 
     @Override
     public int getID() {
@@ -264,6 +266,10 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+        rectPer = new Rectangle(x, y+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        rectPoci = new Rectangle(776, 480, pociVida.getWidth(), pociVida.getHeight());
+        rectPer.setY(x);
+        rectPer.setX(y);
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             introduccion1 = true;
             texto = "";
