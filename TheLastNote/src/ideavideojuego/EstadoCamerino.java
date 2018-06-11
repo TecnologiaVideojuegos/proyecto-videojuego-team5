@@ -30,7 +30,7 @@ public class EstadoCamerino extends BasicGameState {
     private float x, y;
     private float ang;
     private Image fondo;
-    private boolean derecha, mover, baile, introduccion;
+    private boolean derecha, mover, baile, introduccion,dialpersonaje,dialnarr;
 
     private int dato, contadorIntro;
 
@@ -54,14 +54,22 @@ public class EstadoCamerino extends BasicGameState {
         introduccion = true;
         texto = "";
         contadorIntro = 0;
+        dialpersonaje = false;
+        dialnarr= false;
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
         if (introduccion) {
-            ClaseEstatica.getPersonaje().getDial().draw();
-            g.drawString(texto, 330, 560);
+            if (dialpersonaje) {
+                ClaseEstatica.getPersonaje().getDial().draw();
+                g.drawString(texto, 330, 560);
+            }
+            else{
+                ClaseEstatica.getEnemigo().getDial().draw();
+                g.drawString(texto, 330, 560);
+            }
         }
         if (mover) {
             if (derecha) {
@@ -108,35 +116,49 @@ public class EstadoCamerino extends BasicGameState {
             game.enterState(1);*/
         if (introduccion) {
                 if(contadorIntro==0){
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    dialpersonaje = false;
+                    dialnarr = true;
+                    texto = "¡TÚ! ¡SI TÚ! ¡Has sido elegido para\nser el héroe que salvará a la buena música\n de su fatídico futuro!";
                     contadorIntro++;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    dialpersonaje = false;
+                    dialnarr = true;
+                    texto = "¡YO! ¡PERO QUE DICES! ¡DONDE ESTOY!\n¡QUE HAGO AQUI! ¡QUIEN ERES TÚ!";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    dialpersonaje = false;
+                    dialnarr = true;
+                    texto = "¿Que clase de sueño es este…? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.\nVoy a ver que quiere la voz esta…";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialnarr = false;
                     texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
                         contadorIntro++;
                         dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialnarr = false;
                     texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
+                    dialpersonaje = true;
+                    dialnarr = false;
                     texto = "En unos días empezamos la gira.";
                     contadorIntro++;
                     dato=0;
 
                 }else if(contadorIntro==6 && (dato > 2000))
+                    dialpersonaje = true;
+                    dialnarr = false;
                     introduccion = false;       
 
         } else {
