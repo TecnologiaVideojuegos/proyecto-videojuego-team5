@@ -96,6 +96,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
+        g.draw(rectPer);
+        g.draw(rectPoci);
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
@@ -122,8 +124,11 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
         }
-        /*if (container.getInput().isKeyDown(Input.KEY_DELETE)) 
-            game.enterState(1);*/
+        
+        if (rectPer.intersects(rectPoci)) {
+            life = true;
+        }
+        
         if (introduccion1 && vez1) {
             if (contadorIntro == 0) {
                 texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
@@ -194,6 +199,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     x -= delta * 0.4f;
                     derecha = false;
                     baile = false;
+                    rectPer.setX(x);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -205,6 +211,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     x += delta * 0.4f;
                     derecha = true;
                     baile = false;
+                    rectPer.setX(x);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -216,6 +223,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     y -= delta * 0.4f;
                     derecha = true;
                     baile = false;
+                    rectPer.setY(y+100);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -227,6 +235,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     y += delta * 0.4f;
                     derecha = true;
                     baile = false;
+                    rectPer.setY(y+100);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -268,8 +277,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         rectPer = new Rectangle(x, y+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         rectPoci = new Rectangle(776, 480, pociVida.getWidth(), pociVida.getHeight());
-        rectPer.setY(x);
-        rectPer.setX(y);
+        rectPer.setY(y+100);
+        rectPer.setX(x);
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             introduccion1 = true;
             texto = "";
