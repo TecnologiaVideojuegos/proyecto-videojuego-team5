@@ -65,10 +65,10 @@ public class EstadoCamerino extends BasicGameState {
         if (introduccion) {
             if (dialpersonaje) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                g.drawString(texto, 370, 530);
             } else {
                 narrador.draw(300, 500);
-                g.drawString(texto, 330, 560);
+                g.drawString(texto, 370, 530);
             }
         }
         if (mover) {
