@@ -25,9 +25,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo1, fondo2, fondo3, fondo4;
+    private Image fondo1, fondo2, fondo3, fondo4,pociVida;
     private Sound fail;
-    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3;
+    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3,life;
     private int dato, pasillo,contadorIntro;
     private String texto;
 
@@ -41,6 +41,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         fondo1 = new Image("Design/camerino.png"); //Imagen de fondo
         fondo2 = new Image("Design/camerino.png");
         fondo3 = new Image("Design/camerino.png");
+        pociVida = new Image("Design/HealingPot.png");
         derecha = true;
         mover = false;
         baile = false;
@@ -53,6 +54,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         vez1 = true;
         vez2 = true;
         vez3 = true;
+        life = false;
     }
 
     @Override
@@ -63,6 +65,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             if (vez1) {
                 ClaseEstatica.getPersonaje().getDial().draw();
                 g.drawString(texto, 330, 560);
+            }
+            if(!life){
+                pociVida.draw(776, 480);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             fondo2.draw();
@@ -175,6 +180,11 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 vez2 = false;
             }
         } else {
+            if(ClaseEstatica.getUltimoEstado() == "EstadoPasillo1"){
+                if(x==776 && y==480){
+                    life = true;
+                }
+            }
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
                 ClaseEstatica.getPersonaje().getAnimI().start();
