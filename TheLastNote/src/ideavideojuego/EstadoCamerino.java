@@ -16,6 +16,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -36,6 +38,7 @@ public class EstadoCamerino extends BasicGameState {
 
     private String texto;
 
+    private static UnicodeFont font;
     @Override
     public int getID() {
         return 2;
@@ -44,7 +47,7 @@ public class EstadoCamerino extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
-        narrador = new Image("Design/DialPrueba.png");
+        narrador = new Image("Design/dialogoBombin1.png");
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         //ClaseEstatica.setFail(new Sound("Musica/Sonidos/fx_fail.ogg"));
         derecha = true;
@@ -57,6 +60,13 @@ public class EstadoCamerino extends BasicGameState {
         contadorIntro = 0;
         dialpersonaje = false;
         dialnarr = false;
+        
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
     }
 
     @Override
@@ -65,10 +75,10 @@ public class EstadoCamerino extends BasicGameState {
         if (introduccion) {
             if (dialpersonaje) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 370, 530);
+                font.drawString(270, 570, texto);
             } else {
-                narrador.draw(300, 500);
-                g.drawString(texto, 370, 530);
+                narrador.draw();
+                font.drawString(270, 570, texto);
             }
         }
         if (mover) {
@@ -133,21 +143,21 @@ public class EstadoCamerino extends BasicGameState {
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                dialpersonaje = false;
-                dialnarr = true;
-                texto = "¿Que clase de sueño es este…? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.\nVoy a ver que quiere la voz esta…";
+                dialpersonaje = true;
+                dialnarr = false;
+                texto = "¿Que clase de sueño es este…? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                 dialpersonaje = true;
                 dialnarr = false;
-                texto = "Señor o señora voz, ¿que tengo que\nhacer para ayudarte?";
+                texto = "Voy a ver que quiere la voz esta…\nSeñor o señora voz, ¿que tengo que\nhacer para ayudarte?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = false;
                 dialnarr = true;
-                texto = "Lo primero sera vestirte adecuadamente segun tus\npoderes. Y despues tendras que salir de este\ncamerino e indagar por los pasillos en busca de tu\nprimer rival, el tirano del reggeaton, ¡Luis Fonsi!,\ny su temible y malsonante despacito.";
+                texto = "Lo primero sera vestirte adecuadamente segun tus\npoderes. Y despues tendras que salir de este\ncamerino e indagar por los pasillos en busca de tu\nprimer rival, el tirano del reggeaton, ¡Luis Fonsi!,y su temible despacito.";
                 contadorIntro++;
                 dato = 0;
 
@@ -168,7 +178,7 @@ public class EstadoCamerino extends BasicGameState {
             }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
                 dialpersonaje = false;
                 dialnarr = true;
-                texto = "¡Me alegra oir eso! Tienes 3 poderes, segun tu\nestilo de musica seran de una manera u otra.\nTú solo tienes que dejarte llevar por el ritmo de la\nbuena musica y los jefes seran pan comido\npara ti.";
+                texto = "¡Me alegra oir eso! Tienes 3 poderes, segun tu\nestilo de musica seran de una manera u otra.\nTú solo tienes que dejarte llevar por el ritmo de la\nbuena musica y los jefes seran pan comido para ti.";
                 contadorIntro++;
                 dato = 0;
 
