@@ -12,6 +12,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -32,6 +34,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
     private int dato, pasillo,contadorIntro;
     private String texto;
     private Rectangle rectPer, rectPoci;
+    private static UnicodeFont font;
 
     @Override
     public int getID() {
@@ -57,6 +60,14 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         vez2 = true;
         vez3 = true;
         life = false;
+        
+        
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
     }
 
     @Override
@@ -66,7 +77,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             fondo1.draw();
             if (vez1) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
             if(!life){
                 pociVida.draw(776, 480);
@@ -75,13 +86,13 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             fondo2.draw();
             if (vez2) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
             if (vez3) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
         }
         if (mover) {
