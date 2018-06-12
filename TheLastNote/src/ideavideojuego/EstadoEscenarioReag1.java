@@ -16,6 +16,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -40,6 +42,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private Rectangle perR, perE,rectPoci;
     private boolean colision, dialpersonaje, dialmalo,life;
     private int estado, dato,contadorIntro;
+    private static UnicodeFont font;
 
     @Override
     public int getID() {
@@ -65,6 +68,13 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         dialmalo=false;
         texto="";
         life = false;
+        
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
     }
 
     @Override
@@ -96,11 +106,11 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         if (colision) {
             if (dialpersonaje) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
             else{
                 ClaseEstatica.getEnemigo().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
             /*ClaseEstatica.getPersonaje().getAnimD().stop();
             g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);

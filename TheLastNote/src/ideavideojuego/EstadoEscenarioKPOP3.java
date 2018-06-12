@@ -16,6 +16,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -40,6 +42,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     private int estado,dato,contadorIntro;
     private Sound sonido;
     private String texto;
+    private static UnicodeFont font;
     
     @Override
     public int getID() {
@@ -64,6 +67,13 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         dialmalo=false;
         texto="";
         contadorIntro=0;
+        
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
     }
 
     @Override
@@ -92,11 +102,11 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
          if (colision) {
             if (dialpersonaje) {
                 ClaseEstatica.getPersonaje().getDial().draw();
-                g.drawString(texto, 330, 560);
+                font.drawString(270, 570, texto);
             }
             else{
-                ClaseEstatica.getEnemigo().getDial().draw(216, 537);
-                g.drawString(texto, 330, 560);
+                ClaseEstatica.getEnemigo().getDial().draw();
+                font.drawString(270, 570, texto);
             }
         }
 
