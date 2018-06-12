@@ -28,12 +28,12 @@ public class EstadoCamerinoPas1 extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo1, fondo2, fondo3, fondo4,pociVida;
+    private Image fondo1, fondo2, fondo3, fondo4, pociVida, pociFuerza;
     private Sound fail;
-    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3,life;
-    private int dato, pasillo,contadorIntro;
+    private boolean derecha, mover, baile, introduccion1, introduccion2, introduccion3, vez1, vez2, vez3, life, force;
+    private int dato, pasillo, contadorIntro;
     private String texto;
-    private Rectangle rectPer, rectPoci;
+    private Rectangle rectPer, rectPoci, rectPociF;
     private static UnicodeFont font;
 
     @Override
@@ -47,6 +47,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         fondo2 = new Image("Design/camerino.png");
         fondo3 = new Image("Design/camerino.png");
         pociVida = new Image("Design/HealingPot.png");
+        pociFuerza = new Image("Design/DmgPot.png");
         derecha = true;
         mover = false;
         baile = false;
@@ -60,8 +61,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         vez2 = true;
         vez3 = true;
         life = false;
-        
-        
+        force = false;
+
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
         font = new UnicodeFont(fuenteAWT);
         font.addAsciiGlyphs();
@@ -79,7 +80,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getDial().draw();
                 font.drawString(270, 570, texto);
             }
-            if(!life){
+            if (!life) {
                 pociVida.draw(776, 480);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
@@ -87,6 +88,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             if (vez2) {
                 ClaseEstatica.getPersonaje().getDial().draw();
                 font.drawString(270, 570, texto);
+            }
+            if (!force) {
+                pociFuerza.draw(226, 480);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             fondo3.draw();
@@ -108,7 +112,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
         g.draw(rectPer);
-        g.draw(rectPoci);
+        //g.draw(rectPoci);
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
@@ -135,11 +139,20 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
         }
-        
-        if (rectPer.intersects(rectPoci)) {
-            life = true;
+
+        if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+            if (rectPer.intersects(rectPoci)) {
+                life = true;
+            }
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
+            if (rectPer.intersects(rectPociF)) {
+                force = true;
+            }
+        } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
+            introduccion3 = true;
+            texto = "";
         }
-        
+
         if (introduccion1 && vez1) {
             if (contadorIntro == 0) {
                 texto = "Buajjj. ¡Qué mal huele aquí!. Hace\n mucho tiempo que no entra nadie aqui";
@@ -164,7 +177,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 texto = "En unos días empezamos la gira.";
                 contadorIntro++;
                 dato = 0;
-            } */else if (contadorIntro == 3 && (dato > 2000)) {
+            } */ else if (contadorIntro == 3 && (dato > 2000)) {
                 introduccion1 = false;
                 vez1 = false;
             }
@@ -198,8 +211,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 vez2 = false;
             }
         } else {
-            if(ClaseEstatica.getUltimoEstado() == "EstadoPasillo1"){
-                if(x==776 && y==480){
+            if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
+                if (x == 776 && y == 480) {
                     life = true;
                 }
             }
@@ -234,7 +247,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     y -= delta * 0.4f;
                     derecha = true;
                     baile = false;
-                    rectPer.setY(y+100);
+                    rectPer.setY(y + 100);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -246,7 +259,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                     y += delta * 0.4f;
                     derecha = true;
                     baile = false;
-                    rectPer.setY(y+100);
+                    rectPer.setY(y + 100);
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
@@ -286,15 +299,17 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-        rectPer = new Rectangle(x, y+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        rectPoci = new Rectangle(776, 480, pociVida.getWidth(), pociVida.getHeight());
-        rectPer.setY(y+100);
+        rectPer = new Rectangle(x, y + 100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        //rectPoci = new Rectangle(776, 480, pociVida.getWidth(), pociVida.getHeight());
+        rectPer.setY(y + 100);
         rectPer.setX(x);
         if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo1") {
             introduccion1 = true;
+            rectPoci = new Rectangle(776, 480, pociVida.getWidth(), pociVida.getHeight());
             texto = "";
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             introduccion2 = true;
+            rectPociF = new Rectangle(226, 480, pociFuerza.getWidth(), pociFuerza.getHeight());
             texto = "";
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             introduccion3 = true;
