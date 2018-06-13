@@ -49,7 +49,6 @@ public class EstadoCamerino extends BasicGameState {
         fondo = new Image("Design/camerino.png"); //Imagen de fondo
         narrador = new Image("Design/dialogoBombin1.png");
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
-        //ClaseEstatica.setFail(new Sound("Musica/Sonidos/fx_fail.ogg"));
         derecha = true;
         mover = false;
         baile = false;
