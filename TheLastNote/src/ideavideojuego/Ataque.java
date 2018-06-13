@@ -99,6 +99,22 @@ public class Ataque {
         }
         return acertado;
     }
+    
+    public boolean isCritico(int x) {  //devuelve si el ataque es critico o no (daño x2), x es la probabilidad de fallo de crítico
+        boolean critico;
+        int contador = 0;
+        for (int i = 0; i < 10; i++) {
+            int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
+            contador += valor;
+            //System.out.println("Contador posibilidad -->"+contador);
+        }
+        if (contador >= x) { //si el contador es mayor o igual que la probabilidad de fallo el ataque es critica
+            critico = true;
+        } else {
+            critico = false;
+        }
+        return critico;
+    }
 
     @Override
     public String toString() {

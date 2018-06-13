@@ -52,7 +52,6 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         mover = false;
         baile = false;
         ang = 200f;
-        ClaseEstatica.setFail(fail);
         texto = "";
         introduccion1 = false;
         introduccion2 = false;
