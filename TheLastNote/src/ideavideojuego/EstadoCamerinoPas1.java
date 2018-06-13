@@ -146,6 +146,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo2") {
             if (rectPer.intersects(rectPociF)) {
                 force = true;
+                ClaseEstatica.getPersonaje().setDmgPotion(1);
             }
         } else if (ClaseEstatica.getUltimoEstado() == "EstadoPasillo3") {
             introduccion3 = true;

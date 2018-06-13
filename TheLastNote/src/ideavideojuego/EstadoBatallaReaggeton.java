@@ -97,17 +97,20 @@ public class EstadoBatallaReaggeton extends BasicGameState {
             font.drawString(80, 630, textoAccion);
 
         if (indicador == 2) {
-            font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
-            font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
-            font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
+            font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
+            font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
+            font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());       
         } else if (indicador == 3) {
-            font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
-            font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
-            font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
+            font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
+            font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
+            font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()); 
         } else if (indicador == 4) {
-            font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
-            font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
-            font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
+            font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
+            font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
+            font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()); 
         } else {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
