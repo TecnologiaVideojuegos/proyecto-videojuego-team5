@@ -160,6 +160,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         if(perR.intersects(rectPoci)){
             life = true;
+            ClaseEstatica.getPersonaje().addPociVida();
         }
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {

@@ -65,6 +65,14 @@ public class Personaje {
     public int getHealthPotion() {
         return HealthPotion;
     }
+    
+    public void addPociVida(){
+        this.HealthPotion++;
+    }
+    
+    public void addPociFuerza(){
+        this.DmgPotion++;
+    }
 
     public void setHealthPotion(int HealthPotion) {
         this.HealthPotion = HealthPotion;
