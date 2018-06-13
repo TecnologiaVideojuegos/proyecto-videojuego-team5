@@ -100,19 +100,19 @@ public class EstadoBatallaTrap extends BasicGameState {
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
             font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: ");
+            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
         } else if (indicador == 3) {
             font.drawString(832, 460, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
             font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: ");
+            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
         } else if (indicador == 4) {
             font.drawString(832, 460, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
             font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: " );
+            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
         } else {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);

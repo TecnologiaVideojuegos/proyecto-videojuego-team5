@@ -248,7 +248,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                 }else if(contadorIntro==6 && (dato > 2000)){
                     dialpersonaje = false;
                     dialmalo = false;
-                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                    game.enterState(11, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
             
 
