@@ -127,9 +127,9 @@ public class EstadoBatallaTrap extends BasicGameState {
         }
         //font.drawString(400, 20, "El DELTA ES --> " + dato);
         if ((turno) && (dato > tEspera)) {
-            font.drawString(832, 430, "ES TU TURNO", org.newdawn.slick.Color.green);
+            font.drawString(832, 440, "ES TU TURNO", org.newdawn.slick.Color.green);
         } else {
-            font.drawString(832, 430, "NO ES TU TURNO", org.newdawn.slick.Color.red);
+            font.drawString(832, 440, "NO ES TU TURNO", org.newdawn.slick.Color.red);
         }
         font.drawString(80, 630, textoAccion);
     }

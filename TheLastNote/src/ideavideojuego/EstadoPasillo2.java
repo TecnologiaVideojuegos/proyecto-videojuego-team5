@@ -56,7 +56,7 @@ public class EstadoPasillo2 extends BasicGameState {
         DonaldC = new Animation(spriteDonaldC, 150);
         DonaldD = new Animation(spriteDolandD, 150);
         DonaldI = new Animation(spriteDonaldI, 150);
-        dialDonald = new Image("Design/DialPrueba.png");
+        dialDonald = new Image("Design/dialogoBombin1.png");
 
         //Creación ENEMIGO
         Ataque Peluquin = new Ataque(45, 20, "Peluquin", "Lanzará su peluquin para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_trap1.ogg")));
