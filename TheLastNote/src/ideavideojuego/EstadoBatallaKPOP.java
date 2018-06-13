@@ -98,14 +98,20 @@ public class EstadoBatallaKPOP extends BasicGameState {
             font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
             font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
             font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
+            font.drawString(832, 550, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
+            font.drawString(832, 565, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion()); 
         } else if (indicador == 3) {
             font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
             font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
             font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
+            font.drawString(832, 550, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
+            font.drawString(832, 565, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());       
         } else if (indicador == 4) {
             font.drawString(832, 485, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
             font.drawString(832, 510, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
             font.drawString(832, 535, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
+            font.drawString(832, 550, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
+            font.drawString(832, 565, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());       
         } else {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
