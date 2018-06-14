@@ -322,6 +322,15 @@ public class Personaje {
             ataques.get(i).setUsos(ataques.get(i).getUsosMax());
         }
     }
+    
+    public boolean PorcentajeVida(int x){ //devuelve true si el porcentaje es menor o igual al indicado
+        if((this.vida*100)/vidaMax<=x){
+            return true;
+            //this.useHealthPotion();
+        }else{
+            return false;
+        }
+    }
 
     Object getPersonaje() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

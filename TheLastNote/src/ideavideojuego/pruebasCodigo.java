@@ -24,9 +24,11 @@ public class pruebasCodigo {
     /*if ((!turno) && (dato > tEspera)) { //<-------------------------------------------------------------------------- AQUI
         if((!turno && PorcentajeVida(30) && ClaseEstatica.getEnemigo().getHealthPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de vida 
             ClaseEstatica.getEnemigo().useHealthPotion();
+            dato=0;
             turno=true;
-        }else if(if((!turno && PorcentajeVida(40) && ClaseEstatica.getEnemigo().getDmgPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
+        }else if(!turno && PorcentajeVida(40) && ClaseEstatica.getEnemigo().getDmgPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
             ClaseEstatica.getEnemigo().useDmgPotion();
+            dato=0;
             turno=true;
         }else if (!turno){
             textoAccion = ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());

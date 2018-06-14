@@ -147,11 +147,28 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         }
         if (ClaseEstatica.getPersonaje().getVida() > 0 && ClaseEstatica.getEnemigo().getVida() > 0) {
             if ((!turno) && (dato > tEspera)) { //<-------------------------------------------------------------------------- AQUI
-                textoAccion = ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                dato = 0;
-                turno = true;
-                ClaseEstatica.getClick().play();
-                ataque = ClaseEstatica.getUltimoAtaque();
+                System.out.println("HEALTH POTIONS LUIS FONSI: "+ClaseEstatica.getEnemigo().getHealthPotion());
+                if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(80) && (ClaseEstatica.getEnemigo().getHealthPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de vida 
+                    System.out.println("USAR POCION DE VIDA");
+                    System.out.println("OPCION 1");
+                    textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE VIDA (+75 HP)";
+                    ClaseEstatica.getEnemigo().useHealthPotion();
+                    dato=0;
+                    turno=true;
+                }else if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(40) && (ClaseEstatica.getEnemigo().getDmgPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
+                    System.out.println("OPCION 2");
+                    textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE DAÑO (+15 AD)";
+                    ClaseEstatica.getEnemigo().useDmgPotion();
+                    dato=0;
+                    turno=true;
+                }else if (!turno){
+                    System.out.println("OPCION 3");
+                    textoAccion = ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    dato = 0;
+                    turno = true;
+                    ClaseEstatica.getClick().play();
+                    ataque = ClaseEstatica.getUltimoAtaque();
+                }
             }
             if (indicador < 2) {
                 if (entrada.isKeyPressed(Input.KEY_LEFT)) {
