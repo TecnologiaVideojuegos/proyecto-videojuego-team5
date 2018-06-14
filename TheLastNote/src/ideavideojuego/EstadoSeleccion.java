@@ -30,7 +30,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Sprite ALFREDO;
     private Sprite MOLDOVA;
     private Sprite LUDWIG;
-    private Image fondo, hudAlfredo, hudMoldova, hudMozart, backAlfredo, backMoldova, backMozart,dialAlfredo,dialMoldova,dialLudwig;
+    private Image fondo, hudAlfredo, hudMoldova, hudMozart, backAlfredo, backMoldova, backMozart,dialAlfredo,dialMoldova,dialLudwig, flechaDer, flechaIzq;
     private int indicador;
     private Personaje AlfredoMercurio, LudwigvanMozart, MoldovaSax;
     private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC,spriteAlfredoB,spriteMoldovaB,spriteLudwigB;
@@ -61,6 +61,8 @@ public class EstadoSeleccion extends BasicGameState {
         dialMoldova = new Image("Design/dialogoSax1.png");
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
         
+        flechaDer = new Image("Design/FlechaDerecha.png");
+        flechaIzq = new Image("Design/FlechaIzquierda.png");
 
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
@@ -140,12 +142,16 @@ public class EstadoSeleccion extends BasicGameState {
         switch (indicador) {
             case 0:
                 ALFREDO.draw();
+                flechaDer.draw(630, 425);
                 break;
             case 1:
                 MOLDOVA.draw();
+                flechaDer.draw(630, 425);
+                flechaIzq.draw(330, 425);
                 break;
             case 2:
                 LUDWIG.draw();
+                flechaIzq.draw(330, 425);
                 break;
             default:
                 break;
