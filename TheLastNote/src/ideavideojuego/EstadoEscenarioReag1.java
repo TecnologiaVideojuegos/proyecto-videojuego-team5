@@ -36,12 +36,12 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private Sprite puntero;
     private String message, texto;
     private float ang;
-    private Image fondo,pociVida;
+    private Image fondo, pociVida;
     private Music music;
     private boolean derecha, mover, baile;
-    private Rectangle perR, perE,rectPoci;
-    private boolean colision, dialpersonaje, dialmalo,life;
-    private int estado, dato,contadorIntro;
+    private Rectangle perR, perE, rectPoci;
+    private boolean colision, dialpersonaje, dialmalo, life;
+    private int estado, dato, contadorIntro;
     private static UnicodeFont font;
 
     @Override
@@ -64,11 +64,11 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
         message = "";
-        dialpersonaje=false;
-        dialmalo=false;
-        texto="";
+        dialpersonaje = false;
+        dialmalo = false;
+        texto = "";
         life = false;
-        
+
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
         font = new UnicodeFont(fuenteAWT);
         font.addAsciiGlyphs();
@@ -84,7 +84,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         fondo.draw();
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
-        if(!life){
+        if (!life) {
             pociVida.draw(912, 530);
         }
         if (mover) {
@@ -107,8 +107,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             if (dialpersonaje) {
                 ClaseEstatica.getPersonaje().getDial().draw();
                 font.drawString(270, 570, texto);
-            }
-            else{
+            } else {
                 ClaseEstatica.getEnemigo().getDial().draw();
                 font.drawString(270, 570, texto);
             }
@@ -158,8 +157,11 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         if (!perR.intersects(perE)) {
             colision = false;
         }
-        if(perR.intersects(rectPoci)){
-            life = true;
+        if (perR.intersects(rectPoci)) {
+            if (!life) {
+                life = true;
+                ClaseEstatica.getPersonaje().addPociVida();
+            }
         }
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -191,7 +193,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey > 293) {
                     personajey -= delta * 0.4f;
-                    perR.setY(personajey+100);
+                    perR.setY(personajey + 100);
                     derecha = true;
                     baile = false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -203,7 +205,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().getAnimD().start();
                 if (personajey < 556) {
                     personajey += delta * 0.4f;
-                    perR.setY(personajey+100);
+                    perR.setY(personajey + 100);
                     derecha = true;
                     baile = false;
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
@@ -221,52 +223,47 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             }
         } else {
             //dato = 0;           
-                if(contadorIntro==0){
-                    dialpersonaje = true;
-                    dialpersonaje = false;
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
-                    contadorIntro++;
-                }
-                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
-                    dialpersonaje = false;
-                    dialpersonaje = true;
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
-                    contadorIntro++;
-                    dato=0;
-                }
-                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
-                    dialpersonaje = true;
-                    dialpersonaje = false;
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
-                    contadorIntro++;
-                    dato=0;
-                }
-                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
-                    dialpersonaje = false;
-                    dialpersonaje = true;
-                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                    contadorIntro++;
-                    dato=0;
-                }
-                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
-                    dialpersonaje = true;
-                    dialpersonaje = false;
-                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                    contadorIntro++;
-                    dato=0;
-                }
-                else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
-                    dialpersonaje = false;
-                    dialpersonaje = true;
-                    texto = "En unos días empezamos la gira.";
-                    contadorIntro++;
-                    dato=0;
-                }else if(contadorIntro==6 && (dato > 2000)){
-                    dialpersonaje = false;
-                    dialpersonaje = false;
-                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                }
-            
+            if (contadorIntro == 0) {
+                dialpersonaje = true;
+                dialpersonaje = false;
+                texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                dialpersonaje = false;
+                dialpersonaje = true;
+                texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                dialpersonaje = true;
+                dialpersonaje = false;
+                texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                dialpersonaje = false;
+                dialpersonaje = true;
+                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+                dialpersonaje = false;
+                texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                dialpersonaje = false;
+                dialpersonaje = true;
+                texto = "En unos días empezamos la gira.";
+                contadorIntro++;
+                dato = 0;
+            } else if (contadorIntro == 6 && (dato > 2000)) {
+                dialpersonaje = false;
+                dialpersonaje = false;
+                game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+            }
+
 
             /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
                 if (estado == 0) {
@@ -301,15 +298,15 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
-        perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        perE = new Rectangle(enemigox + 20, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        perR = new Rectangle(personajex, personajey + 100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        perE = new Rectangle(enemigox + 20, enemigoy + 100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         rectPoci = new Rectangle(912, 530, pociVida.getWidth(), pociVida.getHeight());
-        perR.setY(personajey+100);
+        perR.setY(personajey + 100);
         perR.setX(personajex);
         colision = false;
         mover = false;
         baile = false;
-        contadorIntro=0;
+        contadorIntro = 0;
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {

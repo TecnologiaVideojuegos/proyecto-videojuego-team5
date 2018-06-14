@@ -57,12 +57,12 @@ public class EstadoPasillo3 extends BasicGameState {
         KimC = new Animation(spriteKimC, 150);
         KimD = new Animation(spriteKimD, 150);
         KimI = new Animation(spriteKimI, 150);
-        dialKim =  new Image("Design/DialPrueba.png");
+        dialKim =  new Image("Design/dialogoBombin1.png");
 
         Ataque Misilazo = new Ataque(40, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_kim1.ogg")));
         Ataque Kpop = new Ataque(80, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 40, new Sound(("Musica/Sonidos/fx_kim2.ogg")));
         Ataque Nuclear = new Ataque(120, 5, "Ataque nuclear", "Lanzará un ataque nuclear para causar un daño LETAL!!!", 60, new Sound(("Musica/Sonidos/fx_kim3.ogg")));
-        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null,null,null,KimC,null,dialKim, 0, 0, new Sound("Musica/Sonidos/fx_fail.ogg"));
+        KimJongDos = new Personaje(1000, "Kim Jong-Dos", new SpriteSheet("Design/KimJong2Sprite1.png", 70, 176), KimD, KimI, null, null, null,null,null,KimC,null,dialKim, 0, 0, new Sound("Musica/Sonidos/fx_fail.ogg"),0,0);
         KimJongDos.getAtaques().add(Misilazo);
         KimJongDos.getAtaques().add(Kpop);
         KimJongDos.getAtaques().add(Nuclear);

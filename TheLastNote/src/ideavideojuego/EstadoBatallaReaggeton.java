@@ -298,7 +298,6 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         textoAccion = "";
         texto = "";
         indicador = 0;
-        ClaseEstatica.getPersonaje().setHealthPotion(2);
     }
 
     public void mouseClicked(int button, int x, int y, int clickCount) {

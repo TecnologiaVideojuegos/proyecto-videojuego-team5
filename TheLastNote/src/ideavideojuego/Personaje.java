@@ -33,7 +33,7 @@ public class Personaje {
     private int HealthPotion, DmgPotion;
     private Sound Fail;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial, int HPotion, int DPotion, Sound Fail) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial, int HPotion, int DPotion, Sound Fail,int pociVida,int pociFuerza) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -52,6 +52,8 @@ public class Personaje {
         this.HealthPotion=HPotion;
         this.DmgPotion=DPotion;
         this.Fail=Fail;
+        this.HealthPotion = pociVida;
+        this.DmgPotion = pociFuerza;
     }
 
     public Sound getFail() {
@@ -64,6 +66,14 @@ public class Personaje {
 
     public int getHealthPotion() {
         return HealthPotion;
+    }
+    
+    public void addPociVida(){
+        this.HealthPotion+=1;
+    }
+    
+    public void addPociFuerza(){
+        this.DmgPotion+=1;
     }
 
     public void setHealthPotion(int HealthPotion) {
