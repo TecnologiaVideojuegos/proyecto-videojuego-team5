@@ -35,10 +35,10 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     private float personajex, personajey, enemigox, enemigoy;
     private Sprite puntero;
     private float ang;
-    private Image fondo;
+    private Image fondo,pociVida,pociForce;
     private boolean derecha, mover, baile;
-    private Rectangle perR, perE;
-    private boolean colision, dialpersonaje;
+    private Rectangle perR, perE,rectPoci,rectForce;
+    private boolean colision, dialpersonaje,life,force;
     private int dato,contadorIntro;
     private Sound sonido;
     private String texto;
@@ -62,9 +62,13 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
         sonido = new Sound("Musica/Sonidos/fx_audience.ogg");
+        pociVida = new Image("Design/HealingPot.png");
+        pociForce = new Image("Design/DmgPot.png");
         dialpersonaje=false;
         texto="";
         contadorIntro=0;
+        life = false;
+        force = false;
         
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
         font = new UnicodeFont(fuenteAWT);
@@ -81,6 +85,12 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         }
         fondo.draw();
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
+        if (!life) {
+            pociVida.draw(400, 600);
+        }
+        if (!force) {
+            pociForce.draw(175, 500);
+        }
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(personajex, personajey);
@@ -143,6 +153,18 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         }
         if (!perR.intersects(perE)) {
             colision = false;
+        }
+        if (perR.intersects(rectPoci)) {
+            if (!life) {
+                life = true;
+                ClaseEstatica.getPersonaje().addPociVida();
+            }
+        }
+        if (perR.intersects(rectForce)) {
+            if (!force) {
+                force = true;
+                ClaseEstatica.getPersonaje().addPociFuerza();
+            }
         }
         if (!colision) {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
@@ -275,6 +297,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        rectPoci = new Rectangle(400, 600, pociVida.getWidth(), pociVida.getHeight());
+        rectForce = new Rectangle(175, 500, pociForce.getWidth(), pociForce.getHeight());
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
         perR.setY(personajey+100);

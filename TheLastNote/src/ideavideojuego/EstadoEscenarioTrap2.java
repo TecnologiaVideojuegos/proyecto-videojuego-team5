@@ -84,7 +84,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         fondo.draw();
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
         if (!life) {
-            pociVida.draw(912, 530);
+            pociVida.draw(175, 600);
         }
         if (mover) {
             if (derecha) {
@@ -298,7 +298,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         //music.play();
         perR = new Rectangle(personajex, personajey+100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
         perE = new Rectangle(enemigox, enemigoy+100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
-        rectPoci = new Rectangle(912, 530, pociVida.getWidth(), pociVida.getHeight());
+        rectPoci = new Rectangle(175, 600, pociVida.getWidth(), pociVida.getHeight());
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
         perR.setY(personajey+100);
