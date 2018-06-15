@@ -60,7 +60,7 @@ public class EstadoPasillo1 extends BasicGameState {
         fonsiC = new Animation(spriteFonsiC, 150);
         fonsiD = new Animation(spriteFonsiD, 150);
         fonsiI = new Animation(spriteFonsiI, 150);
-        dialFonsi = new Image("Design/dialogoBombin1.png");
+        dialFonsi = new Image("Design/dialogoLuisFonsi1.png");
 
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);

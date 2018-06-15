@@ -57,7 +57,7 @@ public class EstadoPasillo3 extends BasicGameState {
         KimC = new Animation(spriteKimC, 150);
         KimD = new Animation(spriteKimD, 150);
         KimI = new Animation(spriteKimI, 150);
-        dialKim =  new Image("Design/dialogoBombin1.png");
+        dialKim =  new Image("Design/dialogoKimJong1.png");
 
         Ataque Misilazo = new Ataque(40, 20, "Misilazo", "Lanzará un misil para causar un daño leve", 20, new Sound(("Musica/Sonidos/fx_kim1.ogg")));
         Ataque Kpop = new Ataque(80, 10, "Ritmo K-POP", "Moverá su cuerpo al ritmo de K-POP para causar un daño brutal a su enemigo", 40, new Sound(("Musica/Sonidos/fx_kim2.ogg")));
