@@ -54,7 +54,7 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         contadorIntro = 0;
         ang = 200f;
-        introduccion = false;
+        introduccion = true;
         texto = "";
         contadorIntro = 0;
         dialpersonaje = false;
