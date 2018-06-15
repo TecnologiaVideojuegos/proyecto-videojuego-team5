@@ -317,13 +317,4 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         indicador = 0;
     }
 
-    public void mouseClicked(int button, int x, int y, int clickCount) {
-        if (clickCount == 1) {
-            message = "Single Click: " + button + " " + x + "," + y;
-        }
-        if (clickCount == 2) {
-            message = "Double Click: " + button + " " + x + "," + y;
-        }
-    }
-
 }
