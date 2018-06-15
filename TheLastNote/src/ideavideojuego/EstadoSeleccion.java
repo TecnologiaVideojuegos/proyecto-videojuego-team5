@@ -15,6 +15,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -30,12 +32,15 @@ public class EstadoSeleccion extends BasicGameState {
     private Sprite ALFREDO;
     private Sprite MOLDOVA;
     private Sprite LUDWIG;
-    private Image fondo, hudAlfredo, hudMoldova, hudMozart, backAlfredo, backMoldova, backMozart,dialAlfredo,dialMoldova,dialLudwig, flechaDer, flechaIzq;
-    private int indicador;
+    private Image fondo, narrador,hudAlfredo, hudMoldova, hudMozart, backAlfredo, backMoldova, backMozart, dialAlfredo, dialMoldova, dialLudwig, flechaDer, flechaIzq;
+    private int indicador, contadorIntro,dato;
     private Personaje AlfredoMercurio, LudwigvanMozart, MoldovaSax;
-    private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC,spriteAlfredoB,spriteMoldovaB,spriteLudwigB;
-    private Animation alfredoD, alfredoI, ludwigD, ludwigI, moldovaD, moldovaI, alfredoC, ludwigC, moldovaC,alfredoB,moldovaB,ludwigB;
+    private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC, spriteAlfredoB, spriteMoldovaB, spriteLudwigB;
+    private Animation alfredoD, alfredoI, ludwigD, ludwigI, moldovaD, moldovaI, alfredoC, ludwigC, moldovaC, alfredoB, moldovaB, ludwigB;
     private Sound fail;
+    private boolean introduccion;
+    private String texto;
+    private static UnicodeFont font;
 
     @Override
     public int getID() {
@@ -60,9 +65,17 @@ public class EstadoSeleccion extends BasicGameState {
         dialLudwig = new Image("Design/dialogoBombin1.png");
         dialMoldova = new Image("Design/dialogoSax1.png");
         fail = new Sound("Musica/Sonidos/fx_fail.ogg");
-        
+
         flechaDer = new Image("Design/FlechaDerecha.png");
         flechaIzq = new Image("Design/FlechaIzquierda.png");
+        narrador = new Image("Design/dialogoNarrador1.png");
+
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
 
         spriteAlfredoD = new SpriteSheet("Design/FreddieWalk_V4.png", 69, 164);
         spriteAlfredoI = new SpriteSheet("Design/FreddieWalk_V3.png", 67, 164);
@@ -71,7 +84,7 @@ public class EstadoSeleccion extends BasicGameState {
         alfredoD = new Animation(spriteAlfredoD, 100);
         alfredoI = new Animation(spriteAlfredoI, 100);
         alfredoC = new Animation(spriteAlfredoC, 100);
-        alfredoB = new Animation(spriteAlfredoB,100);
+        alfredoB = new Animation(spriteAlfredoB, 100);
         Music musicAlfredoB = new Music("Musica/rock_8bit.ogg", false);
         Music musicAlfredoH = new Music("Musica/rock_8hit.ogg", false);
         Music musicAlfredoBN = new Music("Musica/rock_battle.ogg", false);
@@ -84,7 +97,7 @@ public class EstadoSeleccion extends BasicGameState {
         ludwigC = new Animation(spriteLudwigC, 100);
         ludwigD = new Animation(spriteLudwigD, 100);
         ludwigI = new Animation(spriteLudwigI, 100);
-        ludwigB = new Animation(spriteLudwigB,100);
+        ludwigB = new Animation(spriteLudwigB, 100);
         Music musicLudwigB = new Music("Musica/classic_8bit.ogg", false);
         Music musicLudwigH = new Music("Musica/classic_8hit.ogg", false);
         Music musicLudwigBN = new Music("Musica/classic_battle.ogg", false);
@@ -97,7 +110,7 @@ public class EstadoSeleccion extends BasicGameState {
         moldovaC = new Animation(spriteMoldovaC, 100);
         moldovaD = new Animation(spriteMoldovaD, 100);
         moldovaI = new Animation(spriteMoldovaI, 100);
-        moldovaB = new Animation(spriteMoldovaB,100);
+        moldovaB = new Animation(spriteMoldovaB, 100);
         Music musicMoldovaB = new Music("Musica/jazz_8bit.ogg", false);
         Music musicMoldovaH = new Music("Musica/jazz_8hit.ogg", false);
         Music musicMoldovaBN = new Music("Musica/jazz_battle.ogg", false);
@@ -115,22 +128,22 @@ public class EstadoSeleccion extends BasicGameState {
         Ataque MetricaExacta = new Ataque(55, 10, "Metrica Exacta", "Regañará al enemigo por no llevar el ritmo acorde e inflingirá daño por humillación", 20, new Sound("Musica/Sonidos/fx_aclassic2.ogg"));
         Ataque PelucoVictoriano = new Ataque(75, 5, "Peluco Victoriano", "Lanzará su tremenda peluca para destrozar los sueños capilares del enemigo, causando un daño LETAL!!!", 40, new Sound("Musica/Sonidos/fx_aclassic3.ogg"));
 
-        LudwigvanMozart = new Personaje(1000, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN,musicLudwigHN,hudMozart, ludwigC,ludwigB,dialLudwig, 0, 0, fail,0,0);
+        LudwigvanMozart = new Personaje(1000, "Ludwin van Mozart", new SpriteSheet("Design/BombinWalkSprite_V4.png", 71, 167), ludwigD, ludwigI, musicLudwigB, musicLudwigH, musicLudwigBN, musicLudwigHN, hudMozart, ludwigC, ludwigB, dialLudwig, 0, 0, fail, 0, 0);
         LudwigvanMozart.getAtaques().add(Pianazo);
         LudwigvanMozart.getAtaques().add(MetricaExacta);
         LudwigvanMozart.getAtaques().add(PelucoVictoriano);
 
-        AlfredoMercurio = new Personaje(700, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN,musicAlfredoHN,hudAlfredo, alfredoC,alfredoB,dialAlfredo, 0, 0, fail,0,0);
+        AlfredoMercurio = new Personaje(700, "Alfredo Mercurio", new SpriteSheet("Design/FreddieStillBIG.png", 69, 164), alfredoD, alfredoI, musicAlfredoB, musicAlfredoH, musicAlfredoBN, musicAlfredoHN, hudAlfredo, alfredoC, alfredoB, dialAlfredo, 0, 0, fail, 0, 0);
         AlfredoMercurio.getAtaques().add(Guitarrazo);
         AlfredoMercurio.getAtaques().add(Mama);
         AlfredoMercurio.getAtaques().add(DiscoPlatino);
 
-        MoldovaSax = new Personaje(900, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN,musicMoldovaHN,hudMoldova, moldovaC,moldovaB,dialMoldova, 0, 0, fail,0,0);
+        MoldovaSax = new Personaje(900, "Moldova Sax", new SpriteSheet("Design/SaxGuyWalkSprite_V4.png", 70, 176), moldovaD, moldovaI, musicMoldovaB, musicMoldovaH, musicMoldovaBN, musicMoldovaHN, hudMoldova, moldovaC, moldovaB, dialMoldova, 0, 0, fail, 0, 0);
         MoldovaSax.getAtaques().add(Saxofonazo);
         MoldovaSax.getAtaques().add(BaileSwing);
         MoldovaSax.getAtaques().add(SaxGuy);
         ClaseEstatica.setAtaqueAcertado(true);
-        ClaseEstatica.setMusicSilence(new Music("Musica/silence.ogg", false));  
+        ClaseEstatica.setMusicSilence(new Music("Musica/silence.ogg", false));
     }
 
     @Override
@@ -138,6 +151,10 @@ public class EstadoSeleccion extends BasicGameState {
         fondo.draw();
         if (!ClaseEstatica.getMusicaMenu().playing()) {
             ClaseEstatica.getMusicaMenu().play();
+        }
+        if (introduccion) {
+            narrador.draw();
+            font.drawString(270, 570, texto);
         }
         switch (indicador) {
             case 0:
@@ -161,56 +178,70 @@ public class EstadoSeleccion extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         Input entrada = container.getInput();
-
-        if (entrada.isKeyPressed(Input.KEY_RIGHT)) {
-            if (indicador == 0) {
-                indicador = 1;
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
-                }
-            } else if (indicador == 1) {
-                indicador = 2;
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
-                }
+        dato += delta;
+        if (introduccion) {
+            if (contadorIntro == 0) {
+                texto = "¡Bienvenidos a la batalla por salvar el futuro de la musica!\n\n¿Cual será el héroe que protagonizará para esta trepidante aventura?";
+                dato  = 0;
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro==1 && (dato > 2000)) {
+                introduccion = false;
+                dato  = 0;
             }
-        } else if (entrada.isKeyPressed(Input.KEY_LEFT)) {
-            if (indicador == 1) {
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
+        } else {
+            if (entrada.isKeyPressed(Input.KEY_RIGHT)) {
+                if (indicador == 0) {
+                    indicador = 1;
+                    if (!ClaseEstatica.getClick().playing()) {
+                        ClaseEstatica.getClick().play();
+                    }
+                } else if (indicador == 1) {
+                    indicador = 2;
+                    if (!ClaseEstatica.getClick().playing()) {
+                        ClaseEstatica.getClick().play();
+                    }
                 }
-                indicador = 0;
-            } else if (indicador == 2) {
-                if (!ClaseEstatica.getClick().playing()) {
-                    ClaseEstatica.getClick().play();
+            } else if (entrada.isKeyPressed(Input.KEY_LEFT)) {
+                if (indicador == 1) {
+                    if (!ClaseEstatica.getClick().playing()) {
+                        ClaseEstatica.getClick().play();
+                    }
+                    indicador = 0;
+                } else if (indicador == 2) {
+                    if (!ClaseEstatica.getClick().playing()) {
+                        ClaseEstatica.getClick().play();
+                    }
+                    indicador = 1;
                 }
-                indicador = 1;
-            }
 
-        } else if (entrada.isKeyPressed(Input.KEY_ESCAPE)) {
-            game.enterState(0, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-        } else if (entrada.isKeyPressed(Input.KEY_ENTER)) {
-            switch (indicador) {
-                case 0:
-                    ClaseEstatica.setPersonaje(AlfredoMercurio);
-                    game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                    break;
-                case 1:
-                    ClaseEstatica.setPersonaje(MoldovaSax);
-                    game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                    break;
-                case 2:
-                    ClaseEstatica.setPersonaje(LudwigvanMozart);
-                    game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                    break;
-                default:
-                    break;
+            } else if (entrada.isKeyPressed(Input.KEY_ESCAPE)) {
+                game.enterState(0, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+            } else if (entrada.isKeyPressed(Input.KEY_ENTER) && (dato > 2000)) {
+                switch (indicador) {
+                    case 0:
+                        ClaseEstatica.setPersonaje(AlfredoMercurio);
+                        game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                        break;
+                    case 1:
+                        ClaseEstatica.setPersonaje(MoldovaSax);
+                        game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                        break;
+                    case 2:
+                        ClaseEstatica.setPersonaje(LudwigvanMozart);
+                        game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
-    
+
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        indicador=0;
+        indicador = 0;
+        introduccion = true;
+        contadorIntro = 0;
+        texto = "";
     }
 }
