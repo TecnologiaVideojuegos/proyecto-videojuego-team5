@@ -38,8 +38,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
     private Image fondo;
     private boolean derecha, mover, baile;
     private Rectangle perR, perE;
-    private boolean colision, dialpersonaje, dialmalo;
-    private int estado,dato,contadorIntro;
+    private boolean colision, dialpersonaje;
+    private int dato,contadorIntro;
     private Sound sonido;
     private String texto;
     private static UnicodeFont font;
@@ -55,7 +55,6 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         this.personajey = 349;
         this.enemigox = 681;
         this.enemigoy = 349;
-        estado = 0;
         mover=false;
         baile=false;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
@@ -64,7 +63,6 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         puntero = new Sprite("Design/cursor1.png");
         sonido = new Sound("Musica/Sonidos/fx_audience.ogg");
         dialpersonaje=false;
-        dialmalo=false;
         texto="";
         contadorIntro=0;
         
@@ -207,47 +205,39 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         } else {
             if(contadorIntro==0){
                     dialpersonaje = true;
-                    dialmalo = false;
                     texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
                     contadorIntro++;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==1) && (dato>1000)){
                     dialpersonaje = false;
-                    dialmalo = true;
                     texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==2) && (dato>1000)){
                     dialpersonaje = true;
-                    dialmalo = false;
                     texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==3) && (dato>1000)){
                     dialpersonaje = false;
-                    dialmalo = true;
                     texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==4) && (dato>1000)){
                     dialpersonaje = true;
-                    dialmalo = false;
                     texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
                     contadorIntro++;
                     dato=0;
                 }
                 else if(container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro==5) && (dato>1000)){
-                    dialpersonaje = true;
-                    dialmalo = false;
+                    dialpersonaje = false;
                     texto = "En unos días empezamos la gira.";
                     contadorIntro++;
                     dato=0;
                 }else if(contadorIntro==6 && (dato > 2000)){
-                    dialpersonaje = false;
-                    dialmalo = false;
                     game.enterState(11, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
             

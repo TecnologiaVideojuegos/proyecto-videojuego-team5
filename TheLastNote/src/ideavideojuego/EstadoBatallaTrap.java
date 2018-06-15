@@ -252,6 +252,7 @@ public class EstadoBatallaTrap extends BasicGameState {
                 if (dato > tEspera) {
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
                     game.enterState(7, new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
+                    ClaseEstatica.getPersonaje().restaurarTodo();
                 }
             } else {
                 if (dato > tEspera) {

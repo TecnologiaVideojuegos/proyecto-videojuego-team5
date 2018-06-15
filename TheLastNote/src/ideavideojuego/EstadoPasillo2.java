@@ -177,7 +177,7 @@ public class EstadoPasillo2 extends BasicGameState {
         ClaseEstatica.setEnemigo(DonaldTrap);
         mover = false;
         baile = false;
-        if (ClaseEstatica.getUltimoEstado() == "EstadoCamerino2") {
+        if (ClaseEstatica.getUltimoEstado() == "EstadoCamerinoPas2") {
             this.x = 128;
             this.y = 257;
         } else {

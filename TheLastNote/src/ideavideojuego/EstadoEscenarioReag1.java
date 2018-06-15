@@ -40,8 +40,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private Music music;
     private boolean derecha, mover, baile;
     private Rectangle perR, perE, rectPoci;
-    private boolean colision, dialpersonaje, dialmalo, life;
-    private int estado, dato, contadorIntro;
+    private boolean colision, dialpersonaje, life;
+    private int dato, contadorIntro;
     private static UnicodeFont font;
 
     @Override
@@ -57,7 +57,6 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         this.enemigoy = 349;
         mover = false;
         baile = false;
-        estado = 0;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
         pociVida = new Image("Design/HealingPot.png");
         derecha = true;
@@ -65,7 +64,6 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         puntero = new Sprite("Design/cursor1.png");
         message = "";
         dialpersonaje = false;
-        dialmalo = false;
         texto = "";
         life = false;
 
@@ -224,43 +222,35 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         } else {
             //dato = 0;           
             if (contadorIntro == 0) {
-                dialpersonaje = true;
                 dialpersonaje = false;
                 texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
-                dialpersonaje = false;
                 dialpersonaje = true;
                 texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = true;
                 dialpersonaje = false;
                 texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                dialpersonaje = false;
                 dialpersonaje = true;
                 texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
-                dialpersonaje = true;
                 dialpersonaje = false;
                 texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
-                dialpersonaje = false;
                 dialpersonaje = true;
                 texto = "En unos días empezamos la gira.";
                 contadorIntro++;
                 dato = 0;
             } else if (contadorIntro == 6 && (dato > 2000)) {
-                dialpersonaje = false;
-                dialpersonaje = false;
                 game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             }
 
