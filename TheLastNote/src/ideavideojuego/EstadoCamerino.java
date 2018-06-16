@@ -31,14 +31,15 @@ public class EstadoCamerino extends BasicGameState {
 
     private float x, y;
     private float ang;
-    private Image fondo,narrador;
-    private boolean derecha, mover, baile, introduccion, dialpersonaje, dialnarr;
+    private Image fondo, narrador;
+    private boolean derecha, mover, baile, introduccion, dialpersonaje, textoPerdido;
 
     private int dato, contadorIntro;
 
     private String texto;
 
     private static UnicodeFont font;
+
     @Override
     public int getID() {
         return 2;
@@ -58,7 +59,7 @@ public class EstadoCamerino extends BasicGameState {
         texto = "";
         contadorIntro = 0;
         dialpersonaje = false;
-        dialnarr = false;
+        textoPerdido = false;
         
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
         font = new UnicodeFont(fuenteAWT);
@@ -79,6 +80,10 @@ public class EstadoCamerino extends BasicGameState {
                 narrador.draw();
                 font.drawString(270, 570, texto);
             }
+        }
+        if(textoPerdido){
+            narrador.draw();
+            font.drawString(270, 570, texto);
         }
         if (mover) {
             if (derecha) {
@@ -126,75 +131,89 @@ public class EstadoCamerino extends BasicGameState {
         if (introduccion) {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
-                dialnarr = true;
+                
                 texto = "¡TÚ! ¡SI TÚ! ¡Has sido elegido para\nser el héroe que salvará a la buena música\nde su fatídico futuro!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+          
                 texto = "¡YO! ¡PERO QUE DICES! ¡DONDE ESTOY!\n¡QUE HAGO AQUI! ¡QUIEN ERES TÚ!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
-                dialnarr = true;
+              
                 texto = "¡Amigo, has sido elegido por la musica\npara ser el heroe de esta aventura!\nYo soy el que te acompañara a lo largo de\ntu camino.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+             
                 texto = "¿Que clase de sueño es este? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+              
                 texto = "Voy a ver que quiere la voz esta…\nSeñor o señora voz, ¿que tengo que\nhacer para ayudarte?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = false;
-                dialnarr = true;
+               
                 texto = "Lo primero sera vestirte adecuadamente segun tus\npoderes. Y despues tendras que salir de este\ncamerino e indagar por los pasillos en busca de tu\nprimer rival, el tirano del reggeaton, ¡Luis Fonsi!,y su temible despacito.";
                 contadorIntro++;
                 dato = 0;
 
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+           
                 texto = "Puff… ¡Como odio esa cancion! Al menos\ntenemos un enemigo en comun. Ayudare a esta voz\ny haré lo que me diga hasta vencer al odioso\nreggeaton y asi podre volver a mi vida.";
                 contadorIntro++;
                 dato = 0;
 
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+           
                 texto = "Esta bien voz, te ayudare, pero…\n¿cómo combato contra ellos?";
                 contadorIntro++;
                 dato = 0;
 
-            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
                 dialpersonaje = false;
-                dialnarr = true;
+  
                 texto = "¡Me alegra oir eso! Tienes 3 poderes, segun tu\nestilo de musica seran de una manera u otra.\nTú solo tienes que dejarte llevar por el ritmo de la\nbuena musica y los jefes seran pan comido para ti.";
                 contadorIntro++;
                 dato = 0;
 
-            }
-            else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 9) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 9) && (dato > 1000)) {
                 dialpersonaje = true;
-                dialnarr = false;
+   
                 texto = "¡Vamos a ello!";
                 contadorIntro++;
                 dato = 0;
 
-            }else if (contadorIntro == 10 && (dato > 2000)) {
+            } else if (contadorIntro == 10 && (dato > 2000)) {
                 dialpersonaje = false;
-                dialnarr = false;
+
+                contadorIntro = 0;
                 introduccion = false;
+                
             }
 
+        }
+        if (ClaseEstatica.getUltimoEstado() == "EstadoBatalla" && textoPerdido) {
+            if (contadorIntro == 0) {
+                dialpersonaje = false;
+                dato = 0;
+                texto = "OHHH. ¡Qué pena! Perdiste contra uno de esos\nque quieren destruir nuestro futuro. Tendrás que empezar de nuevo\n¡¡DEMUÉSTRALES QUIÉN ES EL MEJOR!!";
+                contadorIntro++;
+            }else if (contadorIntro == 1 && (dato > 2000)) {
+                dialpersonaje = false;
+                contadorIntro = 0;
+                textoPerdido = false;                
+            }
+            
         } else {
             if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
@@ -267,7 +286,14 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         ClaseEstatica.getPersonaje().getAnimD().stop();
         ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-        ClaseEstatica.setUltimoEstado("EstadoCamerino");
+        if(ClaseEstatica.getUltimoEstado()=="EstadoBatalla"){
+            textoPerdido = true;
+        }
+
     }
 
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        ClaseEstatica.setUltimoEstado("EstadoCamerino");
+    }
 }

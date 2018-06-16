@@ -110,7 +110,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        g.draw(rectPer);
+        //g.draw(rectPer);
         //g.draw(rectPoci);
         g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
         //g.drawString("UNTIL THE LAST NOTE", 30, 30);

@@ -292,6 +292,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
             if (ClaseEstatica.getPersonaje().getVida() > 0) {
                 if (dato > tEspera) {
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
+                    
                     game.enterState(5, new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
                 }
             } else {
@@ -299,6 +300,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
                     System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
                     ClaseEstatica.getPersonaje().restaurarTodo();
                     ClaseEstatica.getEnemigo().restaurarTodo();
+                    ClaseEstatica.setUltimoEstado("EstadoBatalla");
                     game.enterState(2, new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
                 }
             }
