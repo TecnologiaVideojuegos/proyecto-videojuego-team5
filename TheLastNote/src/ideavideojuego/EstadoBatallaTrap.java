@@ -42,7 +42,7 @@ public class EstadoBatallaTrap extends BasicGameState {
     private static final Punto a3 = new Punto(675, 465);
     private int indicador, dato, tEspera;
     private String texto, ataque, textoAtaque, textoHuir, textoAccionP, textoAccionM, message, textoAccion;
-    private boolean turno; //si es true nosotros atacamos, sino --> la maquina
+    private boolean turno, HPotion, DMGPotion;; //si es true nosotros atacamos, sino --> la maquina
     private static UnicodeFont font;
 
     @Override
@@ -74,7 +74,8 @@ public class EstadoBatallaTrap extends BasicGameState {
         dato = 0;
         tEspera = 3000;
         System.out.println("Ultimo ataque -->" + ataque);
-
+        HPotion=false;
+        DMGPotion=false;
     }
 
     @Override
@@ -82,7 +83,6 @@ public class EstadoBatallaTrap extends BasicGameState {
         fondo.draw();
         hud.draw();
         puntero.draw();
-        //System.out.println("Tiempo espera --> "+tEspera+" --- Ultimo ataque --> "+ataque+" --- ACERTADO --> "+ClaseEstatica.isAtaqueAcertado());
         ClaseEstatica.getPersonaje().getAnimC().draw(170, 63);
         ClaseEstatica.getEnemigo().getAnimC().draw(700, 87);
         font.drawString(10, 10, message);
@@ -99,39 +99,36 @@ public class EstadoBatallaTrap extends BasicGameState {
             font.drawString(832, 460, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
-            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
+            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)");
+            font.drawString(832, 542, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion()+" (F)");
         } else if (indicador == 3) {
             font.drawString(832, 460, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
-            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
+            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)");
+            font.drawString(832, 542, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion()+" (F)");
         } else if (indicador == 4) {
             font.drawString(832, 460, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
             font.drawString(832, 480, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
             font.drawString(832, 500, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
-            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());
-            font.drawString(832, 540, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion());
+            font.drawString(832, 520, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)");
+            font.drawString(832, 542, "Pociones de fuerza: " + ClaseEstatica.getPersonaje().getDmgPotion()+" (F)");
         } else {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
         }
-        /*
-        font.drawString(170, 25, "Vida: " + ClaseEstatica.getPersonaje().getVida());
-        font.drawString(760, 55, "Vida: " + ClaseEstatica.getEnemigo().getVida());
-         */
+
         vidaPersonaje();
         if (!ClaseEstatica.getPersonaje().getMusicB8().playing()) {
             ClaseEstatica.getPersonaje().getMusicB8().play();
         }
-        //font.drawString(400, 20, "El DELTA ES --> " + dato);
         if ((turno) && (dato > tEspera)) {
             font.drawString(832, 440, "ES TU TURNO", org.newdawn.slick.Color.green);
         } else {
             font.drawString(832, 440, "NO ES TU TURNO", org.newdawn.slick.Color.red);
         }
-        font.drawString(80, 630, textoAccion);
+        if(indicador>=2)
+            font.drawString(80, 630, textoAccion);
     }
 
     @Override
@@ -147,11 +144,30 @@ public class EstadoBatallaTrap extends BasicGameState {
         }
         if (ClaseEstatica.getPersonaje().getVida() > 0 && ClaseEstatica.getEnemigo().getVida() > 0) {
             if ((!turno) && (dato > tEspera)) { //<-------------------------------------------------------------------------- AQUI
-                textoAccion = ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
-                dato = 0;
-                turno = true;
-                ClaseEstatica.getClick().play();
-                ataque = ClaseEstatica.getUltimoAtaque();
+                System.out.println("HEALTH POTIONS LUIS FONSI: "+ClaseEstatica.getEnemigo().getHealthPotion());
+                if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(35) && (ClaseEstatica.getEnemigo().getHealthPotion()>0) && ClaseEstatica.getEnemigo().Probabilidad(4)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de vida 
+                    System.out.println("USAR POCION DE VIDA");
+                    System.out.println("OPCION 1");
+                    textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE VIDA (+75 HP)";
+                    ClaseEstatica.getEnemigo().useHealthPotion();
+                    dato=0;
+                    ataque="pocion";
+                    turno=true;
+                }else if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(55) && (ClaseEstatica.getEnemigo().getDmgPotion()>0) && ClaseEstatica.getEnemigo().Probabilidad(4)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
+                    System.out.println("OPCION 2");
+                    textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE DAÑO (+15 AD)";
+                    ClaseEstatica.getEnemigo().useDmgPotion();
+                    dato=0;
+                    ataque="pocion";
+                    turno=true;
+                }else if (!turno){
+                    System.out.println("OPCION 3");
+                    textoAccion = ClaseEstatica.getEnemigo().ataqueEnemigo(ClaseEstatica.getPersonaje());
+                    dato = 0;
+                    turno = true;
+                    ClaseEstatica.getClick().play();
+                    ataque = ClaseEstatica.getUltimoAtaque();
+                }
             }
             if (indicador < 2) {
                 if (entrada.isKeyPressed(Input.KEY_LEFT)) {
@@ -177,6 +193,7 @@ public class EstadoBatallaTrap extends BasicGameState {
                         if (indicador <= 3) {
                             indicador++;
                         }
+                        System.out.println("Indicador --> " + indicador);
                         if (indicador == 2) {
                             puntero.setPosicion(a1);
                             texto = ClaseEstatica.getPersonaje().getAtaques().get(0).getDescripcion();
@@ -213,6 +230,30 @@ public class EstadoBatallaTrap extends BasicGameState {
                     puntero.setPosicion(atacar);
                     texto = "";
                 }
+            }
+            if (entrada.isKeyPressed(Input.KEY_V)  && (dato > tEspera)){                    //USO DE POCIONES DE VIDA
+                HPotion=ClaseEstatica.getPersonaje().useHealthPotion();
+                if (HPotion){
+                    System.out.println("HAS RESTAURADO 75 PUNTOS DE VIDA");
+                    textoAccion="!Has retaurado 75 puntos de vida!";
+                }else{
+                    System.out.println("No tienes pociones de vida");
+                    textoAccion="No tienes pociones, pierdes turno";
+                }
+                turno=false;
+                dato=0;
+            }
+            if (entrada.isKeyPressed(Input.KEY_F)  && (dato > tEspera)){                    //USO DE POCIONES DE DAÑO
+                DMGPotion=ClaseEstatica.getPersonaje().useDmgPotion();
+                if (DMGPotion){
+                    System.out.println("HAS RESTAURADO 75 PUNTOS DE VIDA");
+                    textoAccion="!Has aumentado tu daño en 15 puntos!";
+                }else{
+                    System.out.println("No tienes pociones de daño");
+                    textoAccion="No tienes pociones, pierdes turno";
+                }
+                turno=false;
+                dato=0;
             }
             if (entrada.isKeyPressed(Input.KEY_ENTER)) {
                 if (!ClaseEstatica.getClick().playing()) {
@@ -252,7 +293,6 @@ public class EstadoBatallaTrap extends BasicGameState {
                 if (dato > tEspera) {
                     System.out.println("ENHORABUENA, HAS GANADO EL COMBATE, PASARÁS AL SIGUIENTE PASILLO");
                     game.enterState(7, new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));
-                    ClaseEstatica.getPersonaje().restaurarTodo();
                 }
             } else {
                 if (dato > tEspera) {
@@ -287,5 +327,4 @@ public class EstadoBatallaTrap extends BasicGameState {
         texto = "";
         indicador = 0;
     }
-
 }

@@ -248,7 +248,7 @@ public class Personaje {
                     ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
                     ClaseEstatica.setAtaqueAcertado(true);
                     //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
-                    if(this.getAtaques().get(seleccion).isCritico(8)){  //EL Nº INDICA LA PROBABILIDAD DE SER UN ATAQUE NORMAL
+                    if(this.getAtaques().get(seleccion).isCritico(7)){  //EL Nº INDICA LA PROBABILIDAD DE SER UN ATAQUE NORMAL
                         penemigo.setVida(penemigo.getVida() - this.getAtaques().get(seleccion).getDmg()*2); //GOLPE CRÍTICO
                         texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó GOLPE CRÍTICO: " + this.getAtaques().get(seleccion).getDmg()*2 + " de daño";
                     }else{
