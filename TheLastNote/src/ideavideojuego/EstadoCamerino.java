@@ -127,7 +127,7 @@ public class EstadoCamerino extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
                 dialnarr = true;
-                texto = "¡TÚ! ¡SI TÚ! ¡Has sido elegido para\nser el héroe que salvará a la buena música\n de su fatídico futuro!";
+                texto = "¡TÚ! ¡SI TÚ! ¡Has sido elegido para\nser el héroe que salvará a la buena música\nde su fatídico futuro!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
@@ -144,7 +144,7 @@ public class EstadoCamerino extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
                 dialnarr = false;
-                texto = "¿Que clase de sueño es este…? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.";
+                texto = "¿Que clase de sueño es este? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {

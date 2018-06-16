@@ -62,8 +62,8 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
         sonido = new Sound("Musica/Sonidos/fx_audience.ogg");
-        pociVida = new Image("Design/HealingPot.png");
-        pociForce = new Image("Design/DmgPot.png");
+        pociVida = new Image("Design/Potion_V2.png");
+        pociForce = new Image("Design/Potion_V1.png");
         dialpersonaje=false;
         texto="";
         contadorIntro=0;

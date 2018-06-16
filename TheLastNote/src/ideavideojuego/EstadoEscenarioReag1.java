@@ -58,7 +58,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         mover = false;
         baile = false;
         fondo = new Image("Design/scenario1.png"); //Imagen de fondo
-        pociVida = new Image("Design/HealingPot.png");
+        pociVida = new Image("Design/Potion_V2.png");
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");

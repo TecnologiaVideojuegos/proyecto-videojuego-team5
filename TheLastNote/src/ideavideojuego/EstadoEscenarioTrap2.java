@@ -59,7 +59,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
-        pociVida = new Image("Design/HealingPot.png");
+        pociVida = new Image("Design/Potion_V2.png");
         colision = false;
         mover=false;
         baile=false;

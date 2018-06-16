@@ -46,8 +46,8 @@ public class EstadoCamerinoPas1 extends BasicGameState {
         fondo1 = new Image("Design/camerino.png"); //Imagen de fondo
         fondo2 = new Image("Design/camerino.png");
         fondo3 = new Image("Design/camerino.png");
-        pociVida = new Image("Design/HealingPot.png");
-        pociFuerza = new Image("Design/DmgPot.png");
+        pociVida = new Image("Design/Potion_V2.png");
+        pociFuerza = new Image("Design/Potion_V1.png");
         derecha = true;
         mover = false;
         baile = false;
