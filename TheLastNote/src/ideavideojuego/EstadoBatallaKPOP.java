@@ -296,6 +296,7 @@ public class EstadoBatallaKPOP extends BasicGameState {
             } else {
                 if (dato > tEspera) {
                     System.out.println("OH NOO, HAS PERDIDO, VOLVERÁS AL CAMERINO");
+                    ClaseEstatica.setUltimoEstado("EstadoBatalla");
                     ClaseEstatica.getPersonaje().restaurarTodo();
                     ClaseEstatica.getEnemigo().restaurarTodo();
                     game.enterState(2, new FadeOutTransition(org.newdawn.slick.Color.black), new FadeInTransition(org.newdawn.slick.Color.black));

@@ -208,7 +208,7 @@ public class EstadoCamerino extends BasicGameState {
                 dato = 0;
                 texto = "OHHH. ¡Qué pena! Perdiste contra uno de esos\nque quieren destruir nuestro futuro. Tendrás que empezar de nuevo\n¡¡DEMUÉSTRALES QUIÉN ES EL MEJOR!!";
                 contadorIntro++;
-            }else if (contadorIntro == 1 && (dato > 2000)) {
+            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 1 && (dato > 2000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 textoPerdido = false;                
