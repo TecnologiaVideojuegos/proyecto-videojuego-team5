@@ -100,17 +100,17 @@ public class EstadoBatallaReaggeton extends BasicGameState {
             font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getDmg());
             font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(0).getUsos());
             font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(0).getProbabilidadFallo()) + "%");
-            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion());       
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)");       
         } else if (indicador == 3) {
             font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getDmg());
             font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(1).getUsos());
             font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(1).getProbabilidadFallo()) + "%");
-            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()); 
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)"); 
         } else if (indicador == 4) {
             font.drawString(832, 480, "Daño: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getDmg());
             font.drawString(832, 500, "Usos: " + ClaseEstatica.getPersonaje().getAtaques().get(2).getUsos());
             font.drawString(832, 520, "Probabilidad: " + (100 - ClaseEstatica.getPersonaje().getAtaques().get(2).getProbabilidadFallo()) + "%");
-            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()); 
+            font.drawString(832, 540, "Pociones de vida: " + ClaseEstatica.getPersonaje().getHealthPotion()+" (V)"); 
         } else {
             g.drawString("", 833, 550);
             g.drawString("", 833, 565);
@@ -148,18 +148,20 @@ public class EstadoBatallaReaggeton extends BasicGameState {
         if (ClaseEstatica.getPersonaje().getVida() > 0 && ClaseEstatica.getEnemigo().getVida() > 0) {
             if ((!turno) && (dato > tEspera)) { //<-------------------------------------------------------------------------- AQUI
                 System.out.println("HEALTH POTIONS LUIS FONSI: "+ClaseEstatica.getEnemigo().getHealthPotion());
-                if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(80) && (ClaseEstatica.getEnemigo().getHealthPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de vida 
+                if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(80) && (ClaseEstatica.getEnemigo().getHealthPotion()>0) && ClaseEstatica.getEnemigo().Probabilidad(4)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de vida 
                     System.out.println("USAR POCION DE VIDA");
                     System.out.println("OPCION 1");
                     textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE VIDA (+75 HP)";
                     ClaseEstatica.getEnemigo().useHealthPotion();
                     dato=0;
+                    ataque="pocion";
                     turno=true;
-                }else if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(40) && (ClaseEstatica.getEnemigo().getDmgPotion()>0)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
+                }else if(!turno && ClaseEstatica.getEnemigo().PorcentajeVida(40) && (ClaseEstatica.getEnemigo().getDmgPotion()>0) && ClaseEstatica.getEnemigo().Probabilidad(4)){ //Si el porcentaje de vida es menor o igual que esa cantidad el enemigo utilizará una poción de daño 
                     System.out.println("OPCION 2");
                     textoAccion= ClaseEstatica.getEnemigo().getNombre()+" usó una POCIÓN DE DAÑO (+15 AD)";
                     ClaseEstatica.getEnemigo().useDmgPotion();
                     dato=0;
+                    ataque="pocion";
                     turno=true;
                 }else if (!turno){
                     System.out.println("OPCION 3");
@@ -232,7 +234,7 @@ public class EstadoBatallaReaggeton extends BasicGameState {
                     texto = "";
                 }
             }
-            if (entrada.isKeyPressed(Input.KEY_V)  && (dato > tEspera)){                    //USO DE POCIONES
+            if (entrada.isKeyPressed(Input.KEY_V)  && (dato > tEspera)){                    //USO DE POCIONES DE VIDA
                     HPotion=ClaseEstatica.getPersonaje().useHealthPotion();
                     if (HPotion){
                         System.out.println("HAS RESTAURADO 75 PUNTOS DE VIDA");

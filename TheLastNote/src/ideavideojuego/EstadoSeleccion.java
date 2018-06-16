@@ -37,7 +37,7 @@ public class EstadoSeleccion extends BasicGameState {
     private Personaje AlfredoMercurio, LudwigvanMozart, MoldovaSax;
     private SpriteSheet spriteAlfredoD, spriteAlfredoI, spriteLudwigD, spriteLudwigI, spriteMoldovaD, spriteMoldovaI, spriteAlfredoC, spriteLudwigC, spriteMoldovaC, spriteAlfredoB, spriteMoldovaB, spriteLudwigB;
     private Animation alfredoD, alfredoI, ludwigD, ludwigI, moldovaD, moldovaI, alfredoC, ludwigC, moldovaC, alfredoB, moldovaB, ludwigB;
-    private Sound fail;
+    private Sound fail, potion;
     private boolean introduccion;
     private String texto;
     private static UnicodeFont font;
@@ -49,7 +49,7 @@ public class EstadoSeleccion extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-
+        ClaseEstatica.setFx_potion(new Sound("Musica/Sonidos/fx_pot.ogg"));
         this.fondo = new Image("Design/escenario.jpg");
         ALFREDO = new Sprite("Design/FreddieStillBIG.png", 500, 380);
         MOLDOVA = new Sprite("Design/SaxGuyStillBIG.png", 500, 380);

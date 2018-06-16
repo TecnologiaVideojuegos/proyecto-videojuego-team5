@@ -16,7 +16,7 @@ import org.newdawn.slick.Sound;
 public final class ClaseEstatica {
 
     private static Personaje personaje, enemigo;
-    private static Sound sonidoPaso, click;
+    private static Sound sonidoPaso, click, fx_potion;
     private static Music musicaMenu, musicSilence;
     private static String ultimoAtaque,ultimoEstado;
     private static boolean ataqueAcertado;
@@ -94,5 +94,13 @@ public final class ClaseEstatica {
 
     public static void setUltimoEstado(String ultimoEstado) {
         ClaseEstatica.ultimoEstado = ultimoEstado;
+    }
+
+    public static Sound getFx_potion() {
+        return fx_potion;
+    }
+
+    public static void setFx_potion(Sound fx_potion) {
+        ClaseEstatica.fx_potion = fx_potion;
     }
 }

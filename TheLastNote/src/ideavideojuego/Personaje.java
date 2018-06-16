@@ -218,6 +218,7 @@ public class Personaje {
         if(HealthPotion>0){
             this.setVida(vida+75);
             HealthPotion--;
+            ClaseEstatica.getFx_potion().play();
             return true;
         }
         return false;
@@ -229,6 +230,7 @@ public class Personaje {
                 ataques.get(i).setDmg(ataques.get(i).getDmg()+15);
             }
             DmgPotion--;
+            ClaseEstatica.getFx_potion().play();
             return true;
         }
         return false;
@@ -330,6 +332,23 @@ public class Personaje {
         }else{
             return false;
         }
+    }
+    
+    public boolean Probabilidad(int x){ //x representa la probabilidad de fallo
+    boolean acertado;
+        int contador = 0;
+        for (int i = 0; i < 10; i++) {
+            int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
+            contador += valor;
+            //System.out.println("Contador posibilidad -->"+contador);
+        }
+        if (contador >= x) { //si el contador es mayor que x 
+            acertado = true;
+        } else {
+            acertado = false;
+        }
+        System.out.println("CONTADOR PROBABILIDAD: "+contador+" , BOOLEANO: "+acertado);
+        return acertado;
     }
 
     Object getPersonaje() {
