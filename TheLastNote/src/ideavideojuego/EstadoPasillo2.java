@@ -256,7 +256,7 @@ public class EstadoPasillo2 extends BasicGameState {
         mover = false;
         baile = false;
         if (ClaseEstatica.getUltimoEstado() == "EstadoCamerinoPas2") {
-            this.x = 128;
+            this.x = 565;
             this.y = 257;
         } else {
             this.x = 30;
