@@ -92,6 +92,8 @@ public class EstadoPasillo3 extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
         if (introduccion) {
+            ClaseEstatica.getPersonaje().getAnimD().stop();
+            ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
             if (dialtrap) {
                 trap.draw();
                 font.drawString(270, 570, texto);
