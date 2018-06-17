@@ -181,7 +181,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Riendose en sus pensamientos) ¡Que clase de persona pensaria\nque esto podria ser real? JAJAJAJA. Este aventura me esta empezando a gustar\n- (Hablando a la voz y riendose) Entonces estos personajes son\nmis siguientes rivales, ¿no?";
+                texto = "(Riendose en sus pensamientos) ¡Que clase de persona pensaria que esto\npodria ser real? JAJAJAJA. Este aventura me esta empezando a gustar\n- (Hablando a la voz y riendose) Entonces estos personajes son\nmis siguientes rivales, ¿no?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
