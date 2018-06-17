@@ -16,6 +16,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -31,9 +33,12 @@ public class EstadoPasillo1 extends BasicGameState {
     private Animation fonsiD, fonsiI, fonsiC;
     private SpriteSheet spriteFonsiD, spriteFonsiI, spriteFonsiC;
     private float ang;
-    private Image fondo,dialFonsi,potion;
-    private boolean derecha, mover, baile;
+    private Image fondo, dialFonsi, potion;
+    private boolean derecha, mover, baile, introduccion;
     private Personaje LuisFonsi;
+    private String texto;
+    private static UnicodeFont font;
+    private int contadorIntro,dato;
 
     @Override
     public int getID() {
@@ -44,8 +49,8 @@ public class EstadoPasillo1 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 571; //Coordenadas donde empieza el personaje
         this.y = 257;
-        mover=false;
-        baile=false;
+        mover = false;
+        baile = false;
         //texto = "Hello World";
         fondo = new Image("Design/hallway1.png"); //Imagen de fondo
         derecha = true;
@@ -65,24 +70,36 @@ public class EstadoPasillo1 extends BasicGameState {
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);
         Ataque Despacito = new Ataque(70, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 50, fx_despacito);
-        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null,null,null,fonsiC,null,dialFonsi, 2, 2, new Sound("Musica/Sonidos/fx_fail.ogg"), 2,2);
+        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null, null, null, fonsiC, null, dialFonsi, 2, 2, new Sound("Musica/Sonidos/fx_fail.ogg"), 2, 2);
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);
-        
+
+        introduccion = true;
         //potion = new Image("Design/potions/pt1.png");
+
+        java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
+        font = new UnicodeFont(fuenteAWT);
+        font.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        font.getEffects().add(colorFuente);
+        font.loadGlyphs();
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondo.draw();
+        if (introduccion) {
+            ClaseEstatica.getPersonaje().getDial().draw();
+            font.drawString(270, 570, texto);
+        }
         if (mover) {
             if (derecha) {
                 ClaseEstatica.getPersonaje().getAnimD().draw(x, y);
 
-            }else  if(baile){
+            } else if (baile) {
                 ClaseEstatica.getPersonaje().getBaile().draw(x, y);
-            }else {
+            } else {
                 ClaseEstatica.getPersonaje().getAnimI().draw(x, y);
             }
         } else {
@@ -101,6 +118,7 @@ public class EstadoPasillo1 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         ang += delta * 0.4f;
+        dato += delta;
         if (container.getInput().isKeyDown(Input.KEY_M)) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
@@ -108,74 +126,87 @@ public class EstadoPasillo1 extends BasicGameState {
             ClaseEstatica.getPersonaje().getMusicH8().pause();
         }
         if (container.getInput().isKeyDown(Input.KEY_B)) {
-            derecha=false;
-            baile=true;
+            derecha = false;
+            baile = true;
             ClaseEstatica.getPersonaje().getAnimI().stop();
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getBaile().start();
         }
-        if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-            ClaseEstatica.getPersonaje().getAnimD().stop();
-            ClaseEstatica.getPersonaje().getAnimI().start();
-            if (x > 0) {
-                x -= delta * 0.4f;
-                derecha = false;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (x < 1018) {
-                x += delta * 0.4f;
-                derecha = true;
-                baile = false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            } else {
-                //ClaseEstatica.setEnemigo(LuisFonsi);
-                ClaseEstatica.getEnemigo().restaurarTodo();
-                //game.enterState(9); //Prueba
-                ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                game.enterState(4, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y > 257) {
-                y -= delta * 0.4f;
-                derecha = true;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
-            }if ((y <= 257) && (x >= 530) && (x <= 625)) {
-                game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }if ((y <= 257) && (x >= 70) && (x <= 180)) {
-                game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            }
-        } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
-            ClaseEstatica.getPersonaje().getAnimI().stop();
-            ClaseEstatica.getPersonaje().getAnimD().start();
-            if (y < 354) {
-                y += delta * 0.4f;
-                derecha = true;
-                baile=false;
-                if (!ClaseEstatica.getSonidoPaso().playing()) {
-                    ClaseEstatica.getSonidoPaso().play();
-                }
+        if (introduccion) {
+            if (contadorIntro == 0) {
+                dato = 0;
+                texto = "(Hablando para si mismo) ¿Que ha pasado aqui? ¡¿POR QUE ESTA TODO LLENO\nDE SANGRE Y TAN DESTROZADO?! Tengo miedo…";
+                contadorIntro++;
+            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 1 && (dato > 2000)) {
+                contadorIntro = 0;
+                introduccion = false;                
             }
         } else {
-            if (derecha) {
+            if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
                 ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-            } else {
+                ClaseEstatica.getPersonaje().getAnimI().start();
+                if (x > 0) {
+                    x -= delta * 0.4f;
+                    derecha = false;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
                 ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (x < 1018) {
+                    x += delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                } else {
+                    //ClaseEstatica.setEnemigo(LuisFonsi);
+                    ClaseEstatica.getEnemigo().restaurarTodo();
+                    //game.enterState(9); //Prueba
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                    game.enterState(4, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (y > 257) {
+                    y -= delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+                if ((y <= 257) && (x >= 530) && (x <= 625)) {
+                    game.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+                if ((y <= 257) && (x >= 70) && (x <= 180)) {
+                    game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
+            } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
+                ClaseEstatica.getPersonaje().getAnimI().stop();
+                ClaseEstatica.getPersonaje().getAnimD().start();
+                if (y < 354) {
+                    y += delta * 0.4f;
+                    derecha = true;
+                    baile = false;
+                    if (!ClaseEstatica.getSonidoPaso().playing()) {
+                        ClaseEstatica.getSonidoPaso().play();
+                    }
+                }
+            } else {
+                if (derecha) {
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                } else {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                }
             }
         }
     }
@@ -183,12 +214,11 @@ public class EstadoPasillo1 extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         ClaseEstatica.setEnemigo(LuisFonsi);
-        mover=false;
-        if("EstadoCamerinoPas1".equals(ClaseEstatica.getUltimoEstado())){
+        mover = false;
+        if ("EstadoCamerinoPas1".equals(ClaseEstatica.getUltimoEstado())) {
             this.x = 128;
             this.y = 257;
-        }
-        else{
+        } else {
             this.x = 571;
             this.y = 257;
         }
