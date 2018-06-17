@@ -36,11 +36,11 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     private Sprite puntero;
     private String message, texto;
     private float ang;
-    private Image fondo, pociVida;
+    private Image fondo, pociVida, narrador;
     private Music music;
     private boolean derecha, mover, baile;
     private Rectangle perR, perE, rectPoci;
-    private boolean colision, dialpersonaje, life;
+    private boolean colision, dialpersonaje, life, introduccion;
     private int dato, contadorIntro;
     private static UnicodeFont font;
 
@@ -62,10 +62,12 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         derecha = true;
         ang = 200f;
         puntero = new Sprite("Design/cursor1.png");
+        narrador = new Image("Design/dialogoNarrador1.png");
         message = "";
         dialpersonaje = false;
         texto = "";
         life = false;
+        introduccion = true;
 
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
         font = new UnicodeFont(fuenteAWT);
@@ -84,6 +86,15 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
         if (!life) {
             pociVida.draw(912, 530);
+        }
+        if (introduccion) {
+            if (dialpersonaje) {
+                ClaseEstatica.getPersonaje().getDial().draw();
+                font.drawString(270, 570, texto);
+            } else {
+                narrador.draw();
+                font.drawString(270, 570, texto);
+            }
         }
         if (mover) {
             if (derecha) {
@@ -161,101 +172,131 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 ClaseEstatica.getPersonaje().addPociVida();
             }
         }
-        if (!colision) {
-            if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
-                ClaseEstatica.getPersonaje().getAnimD().stop();
-                ClaseEstatica.getPersonaje().getAnimI().start();
-                if (personajex > 0) {
-                    personajex -= delta * 0.4f;
-                    perR.setX(personajex);
-                    derecha = false;
-                    baile = false;
-                    if (!ClaseEstatica.getSonidoPaso().playing()) {
-                        ClaseEstatica.getSonidoPaso().play();
-                    }
-                }
-            } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
-                ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimD().start();
-                if ((personajex < 1016)) {
-                    personajex += delta * 0.4f;
-                    perR.setX(personajex);
-                    derecha = true;
-                    baile = false;
-                    if (!ClaseEstatica.getSonidoPaso().playing()) {
-                        ClaseEstatica.getSonidoPaso().play();
-                    }
-                }
-            } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
-                ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimD().start();
-                if (personajey > 293) {
-                    personajey -= delta * 0.4f;
-                    perR.setY(personajey + 100);
-                    derecha = true;
-                    baile = false;
-                    if (!ClaseEstatica.getSonidoPaso().playing()) {
-                        ClaseEstatica.getSonidoPaso().play();
-                    }
-                }
-            } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
-                ClaseEstatica.getPersonaje().getAnimI().stop();
-                ClaseEstatica.getPersonaje().getAnimD().start();
-                if (personajey < 556) {
-                    personajey += delta * 0.4f;
-                    perR.setY(personajey + 100);
-                    derecha = true;
-                    baile = false;
-                    if (!ClaseEstatica.getSonidoPaso().playing()) {
-                        ClaseEstatica.getSonidoPaso().play();
-                    }
-                }
-            } else {
-                if (derecha) {
-                    ClaseEstatica.getPersonaje().getAnimD().stop();
-                    ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
-                } else {
-                    ClaseEstatica.getPersonaje().getAnimI().stop();
-                    ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
-                }
-            }
-        } else {
-            //dato = 0;           
+        if (introduccion) {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
-                texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                
+                texto = "¡Heroe! Ha llegado el momento de tu primera\ngran batalla. Tendras que derrotar al malvado Luis Fonsi,\nel cual esta controlando la mente del publico del escenario\ncon su asquerosa musica reggeatonera.";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
-                texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+          
+                texto = "(Asustado) Pero… ¿tu crees que lo voy a poder\nconseguir? ¿Que pasa si muero?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
-                texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+              
+                texto = "Amigo… ¡ERES EL HEROE DE ESTA AVENTURA!\nSal ahi y demuestra todo lo que la buena musica\nte ha enseñado";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
-                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+             
+                texto = "(Cada vez mas asustado) A ver que consigo…";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+            }else if (contadorIntro == 10 && (dato > 2000)) { 
                 dialpersonaje = false;
-                texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                contadorIntro++;
-                dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
-                dialpersonaje = true;
-                texto = "En unos días empezamos la gira.";
-                contadorIntro++;
-                dato = 0;
-            } else if (contadorIntro == 6 && (dato > 2000)) {
-                game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                contadorIntro = 0;
+                introduccion = false;               
             }
+        } else {
+            if (!colision) {
+                if (container.getInput().isKeyDown(Input.KEY_LEFT) || container.getInput().isKeyDown(Input.KEY_A)) {
+                    ClaseEstatica.getPersonaje().getAnimD().stop();
+                    ClaseEstatica.getPersonaje().getAnimI().start();
+                    if (personajex > 0) {
+                        personajex -= delta * 0.4f;
+                        perR.setX(personajex);
+                        derecha = false;
+                        baile = false;
+                        if (!ClaseEstatica.getSonidoPaso().playing()) {
+                            ClaseEstatica.getSonidoPaso().play();
+                        }
+                    }
+                } else if (container.getInput().isKeyDown(Input.KEY_RIGHT) || container.getInput().isKeyDown(Input.KEY_D)) {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().start();
+                    if ((personajex < 1016)) {
+                        personajex += delta * 0.4f;
+                        perR.setX(personajex);
+                        derecha = true;
+                        baile = false;
+                        if (!ClaseEstatica.getSonidoPaso().playing()) {
+                            ClaseEstatica.getSonidoPaso().play();
+                        }
+                    }
+                } else if (container.getInput().isKeyDown(Input.KEY_UP) || container.getInput().isKeyDown(Input.KEY_W)) {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().start();
+                    if (personajey > 293) {
+                        personajey -= delta * 0.4f;
+                        perR.setY(personajey + 100);
+                        derecha = true;
+                        baile = false;
+                        if (!ClaseEstatica.getSonidoPaso().playing()) {
+                            ClaseEstatica.getSonidoPaso().play();
+                        }
+                    }
+                } else if (container.getInput().isKeyDown(Input.KEY_DOWN) || container.getInput().isKeyDown(Input.KEY_S)) {
+                    ClaseEstatica.getPersonaje().getAnimI().stop();
+                    ClaseEstatica.getPersonaje().getAnimD().start();
+                    if (personajey < 556) {
+                        personajey += delta * 0.4f;
+                        perR.setY(personajey + 100);
+                        derecha = true;
+                        baile = false;
+                        if (!ClaseEstatica.getSonidoPaso().playing()) {
+                            ClaseEstatica.getSonidoPaso().play();
+                        }
+                    }
+                } else {
+                    if (derecha) {
+                        ClaseEstatica.getPersonaje().getAnimD().stop();
+                        ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
+                    } else {
+                        ClaseEstatica.getPersonaje().getAnimI().stop();
+                        ClaseEstatica.getPersonaje().getAnimI().setCurrentFrame(0);
+                    }
+                }
+            } else {
+                //dato = 0;           
+                if (contadorIntro == 0) {
+                    dialpersonaje = false;
+                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    contadorIntro++;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "En unos días empezamos la gira.";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (contadorIntro == 6 && (dato > 2000)) {
+                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+                }
 
 
-            /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+                /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
                 if (estado == 0) {
                     estado = 1;
                 }
@@ -280,6 +321,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     }
                 }
             }*/
+            }
         }
 
     }

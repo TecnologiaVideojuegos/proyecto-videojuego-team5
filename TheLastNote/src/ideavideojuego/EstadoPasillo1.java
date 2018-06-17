@@ -76,6 +76,7 @@ public class EstadoPasillo1 extends BasicGameState {
         LuisFonsi.getAtaques().add(Despacito);
 
         introduccion = true;
+        texto = "";
         //potion = new Image("Design/potions/pt1.png");
 
         java.awt.Font fuenteAWT = new java.awt.Font("Rockwell Condensed", 0, 24);
@@ -135,7 +136,7 @@ public class EstadoPasillo1 extends BasicGameState {
         if (introduccion) {
             if (contadorIntro == 0) {
                 dato = 0;
-                texto = "(Hablando para si mismo) ¿Que ha pasado aqui? ¡¿POR QUE ESTA TODO LLENO\nDE SANGRE Y TAN DESTROZADO?! Tengo miedo…";
+                texto = "(Hablando para si mismo) ¿Que ha pasado aqui?\n¡¿POR QUE ESTA TODO LLENO DE SANGRE Y TAN DESTROZADO?!\nTengo miedo…";
                 contadorIntro++;
             }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 1 && (dato > 2000)) {
                 contadorIntro = 0;
