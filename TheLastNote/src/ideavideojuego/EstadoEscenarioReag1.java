@@ -282,13 +282,13 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     texto = "(Con un poco mas de confianza) Preparate para conocer…\n¡PARA CONOCER EL PODER DE LA BUENA MUSICA!";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
                     dialnarrador = false;
                     texto = "(Muy Enfadado) Muy bien, ¡PREPARATE PARA MORIR!\n¡NO TENDRE NADA DE PIEDAD CONTIGO MOSQUITA MUERTA!";
                     contadorIntro++;
                     dato = 0;
-                } else if (contadorIntro == 6 && (dato > 2000)) {
+                } else if (contadorIntro == 5 && (dato > 2000)) {     
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
 
