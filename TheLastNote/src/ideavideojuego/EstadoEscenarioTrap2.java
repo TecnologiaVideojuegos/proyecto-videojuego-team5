@@ -311,6 +311,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
         colision = false;
         mover = false;
         baile = false;
+        contadorIntro = 0;
     }
 
 }
