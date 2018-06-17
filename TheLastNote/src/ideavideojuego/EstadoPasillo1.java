@@ -70,7 +70,7 @@ public class EstadoPasillo1 extends BasicGameState {
         Ataque Microfonazo = new Ataque(30, 20, "Microfonazo", "Lanzará un micrófono para causar un daño leve", 20, fx_microfonazoo);
         Ataque Flow = new Ataque(50, 10, "Flow", "Moverá sus caderas para causar un daño brutal en la vista del enemigo", 30, fx_flow);
         Ataque Despacito = new Ataque(70, 5, "Despacito", "Cantará su mitica canción Despacito para causar daño letal en los oidos del enemigo", 50, fx_despacito);
-        LuisFonsi = new Personaje(450, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null, null, null, fonsiC, null, dialFonsi, 2, 2, new Sound("Musica/Sonidos/fx_fail.ogg"), 2, 2);
+        LuisFonsi = new Personaje(20, "Luis Fonsi", new SpriteSheet("Design/LuisFonsiSprite1.png", 70, 176), fonsiD, fonsiI, null, null, null, null, null, fonsiC, null, dialFonsi, 2, 2, new Sound("Musica/Sonidos/fx_fail.ogg"), 2, 2);
         LuisFonsi.getAtaques().add(Microfonazo);
         LuisFonsi.getAtaques().add(Flow);
         LuisFonsi.getAtaques().add(Despacito);

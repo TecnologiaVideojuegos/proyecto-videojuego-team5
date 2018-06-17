@@ -119,8 +119,8 @@ public class EstadoPasillo2 extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
@@ -148,7 +148,7 @@ public class EstadoPasillo2 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
                 dialfonsi = true;
-                texto = "(Derrotado) ¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA CONTROLAR LAS MENTES!";
+                texto = "(Derrotado) ¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
@@ -223,7 +223,7 @@ public class EstadoPasillo2 extends BasicGameState {
                     if (!ClaseEstatica.getSonidoPaso().playing()) {
                         ClaseEstatica.getSonidoPaso().play();
                     }
-                    if ((y <= 257) && (x >= 70) && (x <= 180)) {
+                    if ((y <= 257) && (x >= 500) && (x <= 600)) {
                         game.enterState(13, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                     }
                 }
