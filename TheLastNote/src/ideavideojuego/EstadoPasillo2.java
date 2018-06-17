@@ -44,7 +44,7 @@ public class EstadoPasillo2 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.x = 571; //Coordenadas donde empieza el personaje
         this.y = 257;
-        fondo = new Image("Design/hallway1.png"); //Imagen de fondo
+        fondo = new Image("Design/hallway2.png"); //Imagen de fondo
         derecha = true;
         mover = false;
         baile = false;
