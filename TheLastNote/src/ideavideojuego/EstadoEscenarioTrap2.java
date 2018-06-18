@@ -275,16 +275,16 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else {
                 if (contadorIntro == 0) {
                     dialpersonaje = false;
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    texto = "I will be the greatest president that god ever created";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    texto = "Menuedo ego....";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    texto = "";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
@@ -294,12 +294,12 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    texto = "I am Donald Trap. What I say is what I say";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "En unos días empezamos la gira.";
+                    texto = "¡Vamos allá!";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
