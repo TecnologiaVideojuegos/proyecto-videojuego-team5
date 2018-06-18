@@ -188,7 +188,7 @@ public class EstadoSeleccion extends BasicGameState {
                 texto = "Selecciona un personaje con las flechas del teclado. \n\nSelecciona un personaje pulsando el boton Enter";
                 dato  = 0;
                 contadorIntro++;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro==2 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro==2 && (dato > 1000)) {
                 introduccion = false;
                 dato  = 0;
             }
@@ -220,7 +220,7 @@ public class EstadoSeleccion extends BasicGameState {
 
             } else if (entrada.isKeyPressed(Input.KEY_ESCAPE)) {
                 game.enterState(0, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            } else if (entrada.isKeyPressed(Input.KEY_ENTER) && (dato > 2000)) {
+            } else if (entrada.isKeyPressed(Input.KEY_ENTER) && (dato > 1000)) {
                 switch (indicador) {
                     case 0:
                         ClaseEstatica.setPersonaje(AlfredoMercurio);

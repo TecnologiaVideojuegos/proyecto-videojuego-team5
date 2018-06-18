@@ -55,7 +55,7 @@ public class EstadoCamerino extends BasicGameState {
         baile = false;
         contadorIntro = 0;
         ang = 200f;
-        introduccion = false;
+        introduccion = true;
         texto = "";
         contadorIntro = 0;
         dialpersonaje = false;
@@ -143,19 +143,43 @@ public class EstadoCamerino extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
               
-                texto = "¡Amigo, has sido elegido por la musica\npara ser el heroe de esta aventura!\nYo soy el que te acompañara a lo largo de\ntu camino.";
+                texto = "¡Amigo, has sido elegido por la musica\npara ser el heroe de esta aventura!\nMe llamo Mic, y soy el que te acompañará a lo largo de\ntu camino.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
              
-                texto = "¿Que clase de sueño es este? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolucion de la musica desde la clasica\nhasta el jazz y el rock.";
+                texto = "¿Que clase de sueño es este? Solo\nrecuerdo quedarme dormido viendo un documental\nsobre la evolución de la musica desde la clasica\nhasta el jazz y el rock.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                 dialpersonaje = true;
               
-                texto = "Voy a ver que quiere la voz esta…\nSeñor o señora voz, ¿que tengo que\nhacer para ayudarte?";
+                texto = "(Está claro que esto es un sueño...)";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+              
+                texto = "(No... Un sueño no...)";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+              
+                texto = "(Una pesadilla.)";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+              
+                texto = "Vale... Vale.";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+              
+                texto = "Esto...señor Mic. ¿Qué puedo hacer para ayudarle?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
@@ -168,14 +192,14 @@ public class EstadoCamerino extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
                 dialpersonaje = true;
            
-                texto = "Puff… ¡Como odio esa cancion! Al menos\ntenemos un enemigo en comun. Ayudare a esta voz\ny haré lo que me diga hasta vencer al odioso\nreggeaton y asi podre volver a mi vida.";
+                texto = "(Puff… ¡Como odio esa canción! Al menos\ntenemos un enemigo en común. Ayudaré a esta voz\ny haré lo que me diga hasta vencer al odioso\nreggaeton y así podré volver a mi vida.)";
                 contadorIntro++;
                 dato = 0;
 
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
                 dialpersonaje = true;
            
-                texto = "Esta bien voz, te ayudare, pero…\n¿cómo combato contra ellos?";
+                texto = "Esta bien Mic, te ayudaré, pero…\n¿cómo combato contra ellos?";
                 contadorIntro++;
                 dato = 0;
 

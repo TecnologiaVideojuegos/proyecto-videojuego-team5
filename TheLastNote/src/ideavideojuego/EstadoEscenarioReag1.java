@@ -193,7 +193,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 texto = "A ver que consigo…";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 4 && (dato > 2000)) {
+            } else if (contadorIntro == 4 && (dato > 1000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;
@@ -294,7 +294,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                     texto = "Muy bien, ¡PREPARATE PARA MORIR!\n¡NO TENDRE NADA DE PIEDAD CONTIGO MOSQUITO INSIGNIFICANTE!";
                     contadorIntro++;
                     dato = 0;
-                } else if (contadorIntro == 6 && (dato > 2000)) {     
+                } else if (contadorIntro == 6 && (dato > 1000)) {     
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
 
