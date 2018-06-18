@@ -279,27 +279,27 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "Menuedo ego....";
+                    texto = "Menudo ego....";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "";
+                    texto = "I am very rich. What do you wanna do? Nobody can do it better than me";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    texto = "Ni siquiera lo que dice rima...";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "I am Donald Trap. What I say is what I say";
+                    texto = "Be prepared, I am Donald Trap. What I say is what I say";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "¡Vamos allá!";
+                    texto = "Esto va a ser difícil de aguantar...";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
