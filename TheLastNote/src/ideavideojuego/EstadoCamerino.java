@@ -47,7 +47,7 @@ public class EstadoCamerino extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo = new Image("Design/camerino.png"); //Imagen de fondo
+        fondo = new Image("Design/camerino1.png"); //Imagen de fondo
         narrador = new Image("Design/dialogoNarrador1.png");
         ClaseEstatica.setSonidoPaso(new Sound("Musica/Sonidos/fx_paso.ogg"));
         derecha = true;
@@ -158,66 +158,66 @@ public class EstadoCamerino extends BasicGameState {
                 texto = "(Está claro que esto es un sueño...)";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = true;
               
                 texto = "(No... Un sueño no...)";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
                 dialpersonaje = true;
               
                 texto = "(Una pesadilla.)";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
                 dialpersonaje = true;
               
                 texto = "Vale... Vale.";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
                 dialpersonaje = true;
               
                 texto = "Esto...señor Mic. ¿Qué puedo hacer para ayudarle?";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 9) && (dato > 1000)) {
                 dialpersonaje = false;
                
                 texto = "Lo primero sera vestirte adecuadamente segun tus\npoderes. Y despues tendras que salir de este\ncamerino e indagar por los pasillos en busca de tu\nprimer rival, el tirano del reggeaton, ¡Luis Fonsi!,y su temible despacito.";
                 contadorIntro++;
                 dato = 0;
 
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 10) && (dato > 1000)) {
                 dialpersonaje = true;
            
                 texto = "(Puff… ¡Como odio esa canción! Al menos\ntenemos un enemigo en común. Ayudaré a esta voz\ny haré lo que me diga hasta vencer al odioso\nreggaeton y así podré volver a mi vida.)";
                 contadorIntro++;
                 dato = 0;
 
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 11) && (dato > 1000)) {
                 dialpersonaje = true;
            
                 texto = "Esta bien Mic, te ayudaré, pero…\n¿cómo combato contra ellos?";
                 contadorIntro++;
                 dato = 0;
 
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 12) && (dato > 1000)) {
                 dialpersonaje = false;
   
                 texto = "¡Me alegra oir eso! Tienes 3 poderes, segun tu\nestilo de musica seran de una manera u otra.\nTú solo tienes que dejarte llevar por el ritmo de la\nbuena musica y los jefes seran pan comido para ti.";
                 contadorIntro++;
                 dato = 0;
 
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 9) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 13) && (dato > 1000)) {
                 dialpersonaje = true;
    
                 texto = "¡Vamos a ello!";
                 contadorIntro++;
                 dato = 0;
 
-            } else if (contadorIntro == 10 && (dato > 2000)) {
+            } else if (contadorIntro == 14 && (dato > 2000)) {
                 dialpersonaje = false;
 
                 contadorIntro = 0;

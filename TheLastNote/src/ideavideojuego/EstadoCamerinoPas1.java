@@ -43,9 +43,9 @@ public class EstadoCamerinoPas1 extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        fondo1 = new Image("Design/camerino.png"); //Imagen de fondo
-        fondo2 = new Image("Design/camerino.png");
-        fondo3 = new Image("Design/camerino.png");
+        fondo1 = new Image("Design/camerino1.png"); //Imagen de fondo
+        fondo2 = new Image("Design/camerino1.png");
+        fondo3 = new Image("Design/camerino1.png");
         pociVida = new Image("Design/Potion_V2.png");
         pociFuerza = new Image("Design/Potion_V1.png");
         derecha = true;
