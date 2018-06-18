@@ -178,7 +178,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Asustado) Pero… ¿tu crees que lo voy a poder\nconseguir? ¿Que pasa si muero?";
+                texto = "Pero… ¿tu crees que lo voy a poder\nconseguir? ¿Que pasa si muero?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
@@ -190,7 +190,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Cada vez mas asustado) A ver que consigo…";
+                texto = "A ver que consigo…";
                 contadorIntro++;
                 dato = 0;
             } else if (contadorIntro == 4 && (dato > 2000)) {
@@ -273,22 +273,28 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialnarrador = true;
                     dialpersonaje = false;
-                    texto = "(Resonando en la voz del personaje)\nVamos hombre…deja de temblar un poco\n¡QUE ERES EL HEROE DE ESTA AVENTURA!";
+                    texto = "\nVamos hombre…deja de temblar un poco\n¡QUE ERES EL HEROE DE ESTA AVENTURA!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = true;
                     dialnarrador = false;
-                    texto = "(Con un poco mas de confianza) Preparate para conocer…\n¡PARA CONOCER EL PODER DE LA BUENA MUSICA!";
+                    texto = "(Es verdad...Si, tengo que ser fuerte, y enfretarme a él)";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    dialnarrador = false;
+                    texto = "Preparate para conocer…\n¡PARA CONOCER EL PODER DE LA BUENA MUSICA!";
+                    contadorIntro++;
+                    dato = 0;    
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = false;
                     dialnarrador = false;
-                    texto = "(Muy Enfadado) Muy bien, ¡PREPARATE PARA MORIR!\n¡NO TENDRE NADA DE PIEDAD CONTIGO MOSQUITA MUERTA!";
+                    texto = "Muy bien, ¡PREPARATE PARA MORIR!\n¡NO TENDRE NADA DE PIEDAD CONTIGO MOSQUITO INSIGNIFICANTE!";
                     contadorIntro++;
                     dato = 0;
-                } else if (contadorIntro == 5 && (dato > 2000)) {     
+                } else if (contadorIntro == 6 && (dato > 2000)) {     
                     game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
 
