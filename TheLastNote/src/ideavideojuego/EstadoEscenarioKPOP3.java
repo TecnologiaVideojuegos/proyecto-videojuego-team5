@@ -177,24 +177,24 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         }
         if (introduccion) {
             if (contadorIntro == 0) {
-                dialpersonaje = false;
-
-                texto = "¡Heroe! Ha llegado el momento de tu primera\ngran batalla. Tendras que derrotar al malvado Luis Fonsi,\nel cual esta controlando la mente del publico del escenario\ncon su asquerosa musica reggeatonera.";
-                contadorIntro++;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Asustado) Pero… ¿tu crees que lo voy a poder\nconseguir? ¿Que pasa si muero?";
+                texto = "(Con bastante motivacion) ¡DONALD TRAP, HA LLEGADO EL HEROE QUE TE DERROTARA DE UNA VEZ POR TODAS!";
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                dialpersonaje = false;
+
+                texto = "(Dandose la vuelta a la vez que cuenta un fajo de billetes)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = false;
+                dialpersonaje = true;
 
                 texto = "Amigo… ¡ERES EL HEROE DE ESTA AVENTURA!\nSal ahi y demuestra todo lo que la buena musica\nte ha enseñado";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                dialpersonaje = true;
+                dialpersonaje = false;
 
                 texto = "(Cada vez mas asustado) A ver que consigo…";
                 contadorIntro++;

@@ -334,23 +334,22 @@ public class Personaje {
         }
     }
     
-    public boolean Probabilidad(int x){ //x representa la probabilidad de fallo
+    /*   public boolean Probabilidad(int x){ //x representa la probabilidad de fallo
     boolean acertado;
-        int contador = 0;
-        for (int i = 0; i < 10; i++) {
-            int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
-            contador += valor;
-            //System.out.println("Contador posibilidad -->"+contador);
-        }
-        if (contador >= x) { //si el contador es mayor que x 
-            acertado = true;
-        } else {
-            acertado = false;
-        }
-        System.out.println("CONTADOR PROBABILIDAD: "+contador+" , BOOLEANO: "+acertado);
-        return acertado;
+    int contador = 0;
+    for (int i = 0; i < 10; i++) {
+    int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
+    contador += valor;
+    //System.out.println("Contador posibilidad -->"+contador);
     }
-
+    if (contador >= x) { //si el contador es mayor que x
+    acertado = true;
+    } else {
+    acertado = false;
+    }
+    System.out.println("CONTADOR PROBABILIDAD: "+contador+" , BOOLEANO: "+acertado);
+    return acertado;
+    }*/
     Object getPersonaje() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
