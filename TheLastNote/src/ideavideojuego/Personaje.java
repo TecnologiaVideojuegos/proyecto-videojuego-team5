@@ -33,7 +33,7 @@ public class Personaje {
     private int HealthPotion, DmgPotion;
     private Sound Fail;
 
-    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial, int HPotion, int DPotion, Sound Fail,int pociVida,int pociFuerza) {
+    public Personaje(int vida, String nombre, SpriteSheet sprite, Animation animD, Animation animI, Music musicB8, Music musicH8, Music musicBnormal, Music musicHnormal, Image HUD, Animation animC, Animation baile, Image dial, int HPotion, int DPotion, Sound Fail, int pociVida, int pociFuerza) {
         this.vidaMax = vida;
         this.vida = vida;
         this.nombre = nombre;
@@ -49,9 +49,9 @@ public class Personaje {
         this.animC = animC;
         this.baile = baile;
         this.dial = dial;
-        this.HealthPotion=HPotion;
-        this.DmgPotion=DPotion;
-        this.Fail=Fail;
+        this.HealthPotion = HPotion;
+        this.DmgPotion = DPotion;
+        this.Fail = Fail;
         this.HealthPotion = pociVida;
         this.DmgPotion = pociFuerza;
     }
@@ -67,13 +67,13 @@ public class Personaje {
     public int getHealthPotion() {
         return HealthPotion;
     }
-    
-    public void addPociVida(){
-        this.HealthPotion+=1;
+
+    public void addPociVida() {
+        this.HealthPotion += 1;
     }
-    
-    public void addPociFuerza(){
-        this.DmgPotion+=1;
+
+    public void addPociFuerza() {
+        this.DmgPotion += 1;
     }
 
     public void setHealthPotion(int HealthPotion) {
@@ -212,22 +212,22 @@ public class Personaje {
     public String toString() {
         return "Personaje{" + "vida=" + vida + ", nombre=" + nombre + ", ataques=" + ataques + '}';
     }
-    
-    public boolean useHealthPotion(){
-        System.out.println("Pociones de vida --> "+HealthPotion);
-        if(HealthPotion>0){
-            this.setVida(vida+75);
+
+    public boolean useHealthPotion() {
+        System.out.println("Pociones de vida --> " + HealthPotion);
+        if (HealthPotion > 0) {
+            this.setVida(vida + 75);
             HealthPotion--;
             ClaseEstatica.getFx_potion().play();
             return true;
         }
         return false;
     }
-    
-    public boolean useDmgPotion(){
-        if(DmgPotion>0){
-            for(int i=0; i<ataques.size(); i++){
-                ataques.get(i).setDmg(ataques.get(i).getDmg()+15);
+
+    public boolean useDmgPotion() {
+        if (DmgPotion > 0) {
+            for (int i = 0; i < ataques.size(); i++) {
+                ataques.get(i).setDmg(ataques.get(i).getDmg() + 15);
             }
             DmgPotion--;
             ClaseEstatica.getFx_potion().play();
@@ -235,7 +235,7 @@ public class Personaje {
         }
         return false;
     }
-    
+
     public String atacar(Personaje penemigo, int seleccion) {
         String texto = "";
 
@@ -248,19 +248,20 @@ public class Personaje {
                     ClaseEstatica.setUltimoAtaque(this.getAtaques().get(seleccion).getNombre());
                     ClaseEstatica.setAtaqueAcertado(true);
                     //System.out.println("Clase estatica ataque --> "+ClaseEstatica.getUltimoAtaque());
-                    if(this.getAtaques().get(seleccion).isCritico(7)){  //EL Nº INDICA LA PROBABILIDAD DE SER UN ATAQUE NORMAL
-                        penemigo.setVida(penemigo.getVida() - this.getAtaques().get(seleccion).getDmg()*2); //GOLPE CRÍTICO
-                        texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó GOLPE CRÍTICO: " + this.getAtaques().get(seleccion).getDmg()*2 + " de daño";
-                    }else{
+                    if (this.getAtaques().get(seleccion).isCritico(7)) {  //EL Nº INDICA LA PROBABILIDAD DE SER UN ATAQUE NORMAL
+                        penemigo.setVida(penemigo.getVida() - this.getAtaques().get(seleccion).getDmg() * 2); //GOLPE CRÍTICO
+                        texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó GOLPE CRÍTICO: " + this.getAtaques().get(seleccion).getDmg() * 2 + " de daño";
+                    } else {
                         penemigo.setVida(penemigo.getVida() - this.getAtaques().get(seleccion).getDmg()); //GOLPE NORMAL
-                        texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó: " + this.getAtaques().get(seleccion).getDmg()+ " de daño";
+                        texto = this.getNombre() + " usó: " + this.getAtaques().get(seleccion).getNombre() + " y causó: " + this.getAtaques().get(seleccion).getDmg() + " de daño";
                     }
                     System.out.println("Ahora " + penemigo.getNombre() + " tiene: " + penemigo.getVida() + " vida");
-                    
+
                     //texto += "\n"+"Ahora "+penemigo.getNombre()+" tiene: "+penemigo.getVida()+" vida";
                 } else {
-                    if(!this.Fail.playing())
+                    if (!this.Fail.playing()) {
                         this.Fail.play();
+                    }
                     ClaseEstatica.setAtaqueAcertado(false);
                     System.out.println("OHHH que pena!!! " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                     ClaseEstatica.setUltimoAtaque("fallado");
@@ -292,10 +293,10 @@ public class Personaje {
                 }
             }
             if (this.getAtaques().get(ataqueEnemigo).isAcertado()) { //si acierta el ataque
-                if(this.getAtaques().get(ataqueEnemigo).isCritico(6)){
-                    personajeBueno.setVida(personajeBueno.getVida() - this.getAtaques().get(ataqueEnemigo).getDmg()*2); //GOLPE CRÍTICO
-                    texto = this.getNombre() + " usó: " + this.getAtaques().get(ataqueEnemigo).getNombre() + " y causó GOLPE CRÍTICO: " + this.getAtaques().get(ataqueEnemigo).getDmg()*2 + " de daño";;
-                }else{
+                if (this.getAtaques().get(ataqueEnemigo).isCritico(6)) {
+                    personajeBueno.setVida(personajeBueno.getVida() - this.getAtaques().get(ataqueEnemigo).getDmg() * 2); //GOLPE CRÍTICO
+                    texto = this.getNombre() + " usó: " + this.getAtaques().get(ataqueEnemigo).getNombre() + " y causó GOLPE CRÍTICO: " + this.getAtaques().get(ataqueEnemigo).getDmg() * 2 + " de daño";;
+                } else {
                     personajeBueno.setVida(personajeBueno.getVida() - this.getAtaques().get(ataqueEnemigo).getDmg()); //GOLPE NORMAL
                     texto = this.getNombre() + " usó: " + this.getAtaques().get(ataqueEnemigo).getNombre() + " y causó: " + this.getAtaques().get(ataqueEnemigo).getDmg() + " de daño";;
                 }
@@ -306,8 +307,9 @@ public class Personaje {
                 System.out.println("Ahora " + personajeBueno.getNombre() + " tiene: " + personajeBueno.getVida() + " vida");
                 //texto += "\n"+"Ahora "+personajeBueno.getNombre()+" tiene: "+personajeBueno.getVida()+ " vida";
             } else {
-                if(!this.Fail.playing())
+                if (!this.Fail.playing()) {
                     this.Fail.play();
+                }
                 ClaseEstatica.setAtaqueAcertado(false);
                 System.out.println("OHHH que pena!!!  " + this.getNombre() + " ha FALLADO EL ATAQUE!!!");
                 ClaseEstatica.setUltimoAtaque("fallado");
@@ -324,32 +326,33 @@ public class Personaje {
             ataques.get(i).setUsos(ataques.get(i).getUsosMax());
         }
     }
-    
-    public boolean PorcentajeVida(int x){ //devuelve true si el porcentaje es menor o igual al indicado
-        if((this.vida*100)/vidaMax<=x){
+
+    public boolean PorcentajeVida(int x) { //devuelve true si el porcentaje es menor o igual al indicado
+        if ((this.vida * 100) / vidaMax <= x) {
             return true;
             //this.useHealthPotion();
-        }else{
+        } else {
             return false;
         }
     }
-    
-    /*   public boolean Probabilidad(int x){ //x representa la probabilidad de fallo
-    boolean acertado;
-    int contador = 0;
-    for (int i = 0; i < 10; i++) {
-    int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
-    contador += valor;
-    //System.out.println("Contador posibilidad -->"+contador);
+
+    public boolean Probabilidad(int x) { //x representa la probabilidad de fallo
+        boolean acertado;
+        int contador = 0;
+        for (int i = 0; i < 10; i++) {
+            int valor = (int) (Math.floor(Math.random() * 2)); //suma 0 o 1
+            contador += valor;
+            //System.out.println("Contador posibilidad -->"+contador);
+        }
+        if (contador >= x) { //si el contador es mayor que x
+            acertado = true;
+        } else {
+            acertado = false;
+        }
+        System.out.println("CONTADOR PROBABILIDAD: " + contador + " , BOOLEANO: " + acertado);
+        return acertado;
     }
-    if (contador >= x) { //si el contador es mayor que x
-    acertado = true;
-    } else {
-    acertado = false;
-    }
-    System.out.println("CONTADOR PROBABILIDAD: "+contador+" , BOOLEANO: "+acertado);
-    return acertado;
-    }*/
+
     Object getPersonaje() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

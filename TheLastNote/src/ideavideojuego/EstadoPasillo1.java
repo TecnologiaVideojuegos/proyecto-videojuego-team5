@@ -136,9 +136,17 @@ public class EstadoPasillo1 extends BasicGameState {
         if (introduccion) {
             if (contadorIntro == 0) {
                 dato = 0;
-                texto = "(Hablando para si mismo) ¿Que ha pasado aqui?\n¡¿POR QUE ESTA TODO LLENO DE SANGRE Y TAN DESTROZADO?!\nTengo miedo…";
+                texto = "...";
                 contadorIntro++;
-            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 1 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                texto = "¿!POR QUÉ ESTÁ EL PASILLO DESTROZADO!? ";
+                contadorIntro++;
+                dato = 0;    
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                texto = " ¿Es verdad...lo que decía Mic? ";
+                contadorIntro++;
+                dato = 0;          
+            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 3 && (dato > 2000)) {
                 contadorIntro = 0;
                 introduccion = false;                
             }

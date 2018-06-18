@@ -17,7 +17,6 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Principal extends StateBasedGame {
 
     private AppGameContainer contenedor;
-    Personaje personaje = new Personaje();
 
     public Principal() throws SlickException {
         super("Pantalla Principal");

@@ -6,13 +6,11 @@
 package ideavideojuego;
 
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
@@ -150,7 +148,7 @@ public class EstadoPasillo3 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
                 dialtrap = true;
-                texto = "(Derrotado) ¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
+                texto = "¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;

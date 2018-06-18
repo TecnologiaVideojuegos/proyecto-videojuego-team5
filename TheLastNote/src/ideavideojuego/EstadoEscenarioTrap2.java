@@ -5,8 +5,6 @@
  */
 package ideavideojuego;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -14,8 +12,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Sound;
-import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.geom.Rectangle;
@@ -23,8 +19,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import org.newdawn.slick.state.transition.RotateTransition;
-import org.newdawn.slick.state.transition.SelectTransition;
 
 /**
  *
@@ -181,22 +175,40 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Riendose en sus pensamientos) ¡Que clase de persona pensaria que esto\npodria ser real? JAJAJAJA. Este aventura me esta empezando a gustar\n- (Hablando a la voz y riendose) Entonces estos personajes son\nmis siguientes rivales, ¿no?";
+                texto = "(!Que clase de persona pensaria que esto\npodria ser real? JAJAJAJA.)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = false;
+                dialpersonaje = true;
 
-                texto = "Amigo… no te confies…";
+                texto = "(Porque no es real, ¿no?)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Demasiado Motivado) ¡VOY A POR ELLOS!";
+                texto = "...";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 4 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "Entonces estos personajes son mis siguientes rivales, ¿no?";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                dialpersonaje = false;
+
+                texto = "Exacto. Amigo, no te confies, son rivales duros";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "Lo tendré en cuenta";
+                contadorIntro++;
+                dato = 0;
+            } else if (contadorIntro == 7 && (dato > 2000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;
@@ -263,31 +275,31 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else {
                 if (contadorIntro == 0) {
                     dialpersonaje = false;
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    texto = "I will be the greatest president that god ever created";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    texto = "Menudo ego....";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    texto = "I am very rich. What do you wanna do? Nobody can do it better than me";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    texto = "Ni siquiera lo que dice rima...";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    texto = "Be prepared, I am Donald Trap. What I say is what I say";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "En unos días empezamos la gira.";
+                    texto = "Esto va a ser difícil de aguantar...";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {

@@ -220,7 +220,7 @@ public class EstadoSeleccion extends BasicGameState {
 
             } else if (entrada.isKeyPressed(Input.KEY_ESCAPE)) {
                 game.enterState(0, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-            } else if (entrada.isKeyPressed(Input.KEY_ENTER) && (dato > 2000)) {
+            } else if (entrada.isKeyPressed(Input.KEY_ENTER) && (dato > 1000)) {
                 switch (indicador) {
                     case 0:
                         ClaseEstatica.setPersonaje(AlfredoMercurio);
