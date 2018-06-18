@@ -184,16 +184,22 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "Amigo… ¡ERES EL HEROE DE ESTA AVENTURA!\nSal ahi y demuestra todo lo que la buena musica\nte ha enseñado";
+                texto = "Amigo… ¡ERES EL HEROE DE ESTA AVENTURA!\nSal ahí y demuestra todo lo que la buena musica\nte ha enseñado";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "A ver que consigo…";
+                texto = "(Si casi no me has dicho nada...)";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 4 && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "..lo intentaré.";
+                contadorIntro++;
+                dato = 0;
+            } else if (contadorIntro == 5 && (dato > 1000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;

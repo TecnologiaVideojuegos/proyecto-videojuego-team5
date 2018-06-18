@@ -143,7 +143,7 @@ public class EstadoPasillo1 extends BasicGameState {
                 contadorIntro++;
                 dato = 0;    
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                texto = " ¿Es verdad...lo que decía la Voz Misteriosa de antes? ";
+                texto = " ¿Es verdad...lo que decía Mic? ";
                 contadorIntro++;
                 dato = 0;          
             }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro == 3 && (dato > 2000)) {
