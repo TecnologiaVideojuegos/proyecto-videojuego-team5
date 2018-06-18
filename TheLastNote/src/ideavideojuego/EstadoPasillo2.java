@@ -148,38 +148,44 @@ public class EstadoPasillo2 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
                 dialfonsi = true;
-                texto = "(Derrotado) ¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
+                texto = "¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
                 dialfonsi = false;
-                texto = "(Pensando asombrado y emocionado)\n¡WOW! ¡Y estos poderes! ¡¿Como puedo hacer esto?!";
+                texto = "(Ya no sabe ni como decir Reggaeton..Ni siquiera yo se como se pronuncia esa cosa)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = false;
-                texto = "(Euforico) ¡BIEN LUCHADO HEROE!\n¡La musica no se equivoco al elegirte como nuestro salvador!\n- ¿Preparado para la siguiente prueba?";
-                contadorIntro++;
-                dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
-
-                texto = "(Visiblemente motivado) ¡Por supuesto!\n¡Puedo con cualquier cosa con estos poderes!";
+                dialfonsi = false;
+                texto = "(Guau, estos poderes...¡son increibles! No tengo ni idea de como he podido vencerle)";
+                contadorIntro++;
+                dato = 0;    
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                dialpersonaje = false;
+                texto = "¡BIEN LUCHADO HEROE!\n¡La musica no se equivoco al elegirte como nuestro salvador!\n- ¿Preparado para la siguiente prueba?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
-                dialpersonaje = false;
-
-                texto = "(Riendose) JAJAJAJAJA, Tampoco te confies,\ntu siguiente rival es mucho mas poderoso de lo que crees…\n¡Posee una gran fortuna y su lacallo es uno de los musicos\nmas malvados que existen.";
-                contadorIntro++;
-                dato = 0;
-            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "¡Vamos a por el!";
+                texto = "¡Por supuesto!\n¡Puedo con cualquier cosa con estos poderes!";
                 contadorIntro++;
                 dato = 0;
-            }else if (contadorIntro == 6 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                dialpersonaje = false;
+
+                texto = "JAJAJAJAJA, Tampoco te confies,\ntu siguiente rival es mucho mas poderoso de lo que crees…\n¡Posee una gran fortuna y su lacallo es uno de los músicos\nmás malvados que existen.";
+                contadorIntro++;
+                dato = 0;
+            }else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "¡Vamos a por él!";
+                contadorIntro++;
+                dato = 0;
+            }else if (contadorIntro == 7 && (dato > 2000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;
