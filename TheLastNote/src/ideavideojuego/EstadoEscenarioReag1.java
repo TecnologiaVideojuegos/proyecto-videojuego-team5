@@ -262,12 +262,12 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 if (contadorIntro == 0) {
                     dialpersonaje = false;
                     dialnarrador = false;
-                    texto = "(Con aires de estar molesto) ¿Quien eres y que haces aqui?\n¿Como has conseguido burlar la seguridad del backstage?\n¿Quieres un autografo o que?";
+                    texto = "¿Quién eres y qué haces aqué?\n¿Cómo has conseguido burlar la seguridad del backstage?\nSi quieres un autografo tendrás que esperar afuera, con el resto de fans";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
                     dialnarrador = false;
-                    texto = "(Temblando de miedo y con la voz entrecortada)\nMal… Malvado Lu… Luis Fonsi… He venido a aca… a acabar\ncon tu control mental de es… estas pobres personas…";
+                    texto = "(¿Este es Luis Fonsi? ¿Este es el culpable de que el pasillo esté así?)";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {

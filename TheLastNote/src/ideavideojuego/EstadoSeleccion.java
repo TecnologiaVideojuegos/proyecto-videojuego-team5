@@ -188,7 +188,7 @@ public class EstadoSeleccion extends BasicGameState {
                 texto = "Selecciona un personaje con las flechas del teclado. \n\nSelecciona un personaje pulsando el boton Enter";
                 dato  = 0;
                 contadorIntro++;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro==2 && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && contadorIntro==2 && (dato > 2000)) {
                 introduccion = false;
                 dato  = 0;
             }
