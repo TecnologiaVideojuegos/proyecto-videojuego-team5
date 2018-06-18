@@ -175,22 +175,40 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Riendose en sus pensamientos) ¡Que clase de persona pensaria que esto\npodria ser real? JAJAJAJA. Este aventura me esta empezando a gustar\n- (Hablando a la voz y riendose) Entonces estos personajes son\nmis siguientes rivales, ¿no?";
+                texto = "(!Que clase de persona pensaria que esto\npodria ser real? JAJAJAJA.)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = false;
+                dialpersonaje = true;
 
-                texto = "Amigo… no te confies…";
+                texto = "(Porque no es real, ¿no?)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Demasiado Motivado) ¡VOY A POR ELLOS!";
+                texto = "...";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 4 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "Entonces estos personajes son mis siguientes rivales, ¿no?";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                dialpersonaje = false;
+
+                texto = "Exacto. Amigo, no te confies, son rivales duros";
+                contadorIntro++;
+                dato = 0;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "Lo tendré en cuenta";
+                contadorIntro++;
+                dato = 0;
+            } else if (contadorIntro == 7 && (dato > 2000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;
