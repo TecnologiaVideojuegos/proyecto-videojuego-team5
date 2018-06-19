@@ -148,38 +148,44 @@ public class EstadoPasillo3 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
                 dialtrap = true;
-                texto = "¡ME LAS PAGARAS MALDITO HEROE!\n¡EL REAGEATON VIVIRA POR SIEMPRE PARA\nCONTROLAR LAS MENTES!";
+                texto = "(Derrotado) ¡NOOOOOOO! ¡COMO HE PODIDO PERDER! ¡DIOS DEL TRAP NO ME QUIERO IIIIIR!";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
                 dialtrap = false;
-                texto = "(Pensando asombrado y emocionado)\n¡WOW! ¡Y estos poderes! ¡¿Como puedo hacer esto?!";
+                texto = "(Bastante destrozado y pensando) Que suerte he tenido… pensaba que no lo iba a contar. Puffff";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
-                texto = "(Euforico) ¡BIEN LUCHADO HEROE!\n¡La musica no se equivoco al elegirte como nuestro salvador!\n- ¿Preparado para la siguiente prueba?";
+                texto = "(Euforico) ¡BIEN LUCHADO HEROE, HAS SUPERADO LA SEGUNDA PRUEBA! ¡Estas a punto de salvar a la musica! - ¿Preparado para la siguiente prueba?";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Visiblemente motivado) ¡Por supuesto!\n¡Puedo con cualquier cosa con estos poderes!";
+                texto = "(Muy Cansado) ¡COMO QUIERES QUE SIGA LUCHANDO SI NO ME TENGO NI EN PIE!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "(Riendose) JAJAJAJAJA, Tampoco te confies,\ntu siguiente rival es mucho mas poderoso de lo que crees…\n¡Posee una gran fortuna y su lacallo es uno de los musicos\nmas malvados que existen.";
+                texto = "(Riendose muy fuerte) JAJAJAJAJA, Tranquilo heroe, en el escenario puedes encontrar alguna pocion que recuperará tus fuerzas.";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "¡Vamos a por el!";
+                texto = "(Aliviado) Menos mal (Suspiro)";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 6 && (dato > 2000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "(Pensando) Segun lo que dijo mic al entrar en este mundo, solo me queda un jefe… A saber lo que me voy a encontrar… Este sitio cada vez esta mas destrozado";
+                contadorIntro++;
+                dato = 0;
+            }else if (contadorIntro == 7 && (dato > 2000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;

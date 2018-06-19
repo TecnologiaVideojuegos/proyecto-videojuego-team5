@@ -177,26 +177,26 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
         }
         if (introduccion) {
             if (contadorIntro == 0) {
-                dialpersonaje = true;
-
-                texto = "(Con bastante motivacion) ¡DONALD TRAP, HA LLEGADO EL HEROE QUE TE DERROTARA DE UNA VEZ POR TODAS!";
-                contadorIntro++;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "(Dandose la vuelta a la vez que cuenta un fajo de billetes)";
+                texto = "¡Heroe! Ha llegado el momento de tu tercera y ultima batalla. Tendras que derrotar al malvado presidente de Korea, Kim Jong Dos, el cual esta adoctrinando a la gente en la cultura del K-POP y amenazandoles con su armamento nuclear si se revelan contra el.";
+                contadorIntro++;
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
+                dialpersonaje = true;
+
+                texto = "(Con cara de poker) Armamento nuclear… ¡¡MIC ESTO SE PUEDE AVISAR ANTES DE EMPEZAR LA AVENTURA!! +- (Muy enfadado) ¡¡¡¿TU CREES QUE SI EL ANTERIOR CASI ME DESTROZA, YO VOY A PODER ACABAR CON SU EJERCITO Y TODO SU ARMAMENTO +NUCLEAR?!!!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                dialpersonaje = true;
+                dialpersonaje = false;
 
-                texto = "Amigo… ¡ERES EL HEROE DE ESTA AVENTURA!\nSal ahi y demuestra todo lo que la buena musica\nte ha enseñado";
+                texto = "Tu tranquilo JAJAJAJA, yo te apoyare desde la distancia - (Rompiendo la 4º pared) Amigos jugadores, el heroe que habeis escogido no es mas que una gallina con cuerpo de persona JAJAJAJA. Lo mas seguro es que os toque iniciar el juego desde el principio (guiño, guiño)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                dialpersonaje = false;
+                dialpersonaje = true;
 
-                texto = "(Cada vez mas asustado) A ver que consigo…";
+                texto = "(Demasiado Asustado y enfadado) En fin…";
                 contadorIntro++;
                 dato = 0;
             } else if (contadorIntro == 4 && (dato > 2000)) {
@@ -265,32 +265,32 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                 }
             } else {
                 if (contadorIntro == 0) {
-                    dialpersonaje = true;
-                    texto = "¡TÚ! ¡SI TÚ! ¡Eres perfecto para el papel! ¿Qué papel?";
+                    dialpersonaje = false;
+                    texto = "(Con superioridad) Aquel que se hace llamar heroe de la musica, te estaba esperando.";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
-                    dialpersonaje = false;
-                    texto = "No es un simple papel que no lleva a \nninguna parte, es un papel hacia… ¡EL ÉXITO!";
+                    dialpersonaje = true;
+                    texto = "(Sorprendido) ¡¿Como sabes quien soy?!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                    dialpersonaje = true;
-                    texto = "Ya te veo ahí, brillando,una estrella sobre el escenario,\ngente eufórica animándote hasta conseguir ese orgasmo musical";
+                    dialpersonaje = false;
+                    texto = "(En tono maligno) ¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR Al MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                    dialpersonaje = false;
-                    texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
+                    dialpersonaje = true;
+                    texto = "(Pensando) Si el me trajo aqui, al derrotarle podre volver a casa… Espero que salga bien todo esto…- Señor supremo, o como te hagas llamar… ¿Como me trajiste hasta aqui? ";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
-                    dialpersonaje = true;
-                    texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
+                    dialpersonaje = false;
+                    texto = "(Muy confiado) Señor Supremo Kim Jong Dos para tu informacion… Si me derrotas te lo diré JAJAJAJA, aunque dudo que puedas ni tocarme";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
-                    dialpersonaje = false;
-                    texto = "En unos días empezamos la gira.";
+                    dialpersonaje = true;
+                    texto = "(Bastante asustado y pensando) Pues vamos a ello. Glup…";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
