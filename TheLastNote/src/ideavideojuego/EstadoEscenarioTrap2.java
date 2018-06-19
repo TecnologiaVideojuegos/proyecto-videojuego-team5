@@ -114,15 +114,7 @@ public class EstadoEscenarioTrap2 extends BasicGameState {
                 ClaseEstatica.getEnemigo().getDial().draw();
                 font.drawString(270, 570, texto);
             }
-            /*ClaseEstatica.getPersonaje().getAnimD().stop();
-            g.drawString("¿QUIERES ENFRENTARTE AL TEMIBLE LUIS FONSI?", 50, 620);
-            g.drawString("Si, no tengo miedo", 50, 654);
-            g.drawString("Nooo, no estoy preparado", 500, 654);
-            if (estado == 0) {
-                puntero.draw(221, 654);
-            } else if (estado == 1) {
-                puntero.draw(723, 654);
-            }*/
+
         }
 
         //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
