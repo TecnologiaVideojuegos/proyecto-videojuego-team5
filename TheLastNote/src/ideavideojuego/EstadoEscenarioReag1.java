@@ -112,7 +112,6 @@ public class EstadoEscenarioReag1 extends BasicGameState {
         }
         mover = true;
         //ClaseEstatica.getEnemigo().getAnimI().draw(enemigox, enemigoy);
-
         if (colision) {
             if (dialnarrador) {
                 narrador.draw();
@@ -128,8 +127,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
             }           
         }
         g.drawString(message, 10, 10);
-        g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + personajex + ", " + personajey, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
     }
 
     @Override
@@ -305,31 +304,7 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 }
 
 
-                /*if (container.getInput().isKeyPressed(Input.KEY_RIGHT)) {
-                if (estado == 0) {
-                    estado = 1;
-                }
-            } else if (container.getInput().isKeyPressed(Input.KEY_LEFT)) {
-                if (estado == 1) {
-                    estado = 0;
-                }
-            } else if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
-                if (estado == 0) {
-                    game.enterState(9, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-                } else if (estado == 1) {
-                    if (derecha) {
-                        this.personajex = 595; //Coordenadas donde empieza el personaje
-                        this.personajey = 359;
-                        perR.setX(personajex);
-                        perR.setY(personajey);
-                    } else {
-                        this.personajex = 799;
-                        this.personajey = 359;
-                        perR.setX(personajex);
-                        perR.setY(personajey);
-                    }
-                }
-            }*/
+                
             }
         }
 
@@ -339,8 +314,8 @@ public class EstadoEscenarioReag1 extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         this.personajex = 343; //Coordenadas donde empieza el personaje
         this.personajey = 349;
-        perR = new Rectangle(personajex, personajey + 100, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
-        perE = new Rectangle(enemigox + 20, enemigoy + 100, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
+        perR = new Rectangle(personajex, personajey + 120, ClaseEstatica.getPersonaje().getAnimD().getWidth(), 50);
+        perE = new Rectangle(enemigox - 20, enemigoy + 120, ClaseEstatica.getEnemigo().getAnimD().getWidth(), 50);
         rectPoci = new Rectangle(912, 530, pociVida.getWidth(), pociVida.getHeight());
         perR.setY(personajey + 100);
         perR.setX(personajex);

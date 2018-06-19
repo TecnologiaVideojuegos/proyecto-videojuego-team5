@@ -98,14 +98,13 @@ public class EstadoCamerino extends BasicGameState {
             ClaseEstatica.getPersonaje().getAnimD().stop();
             ClaseEstatica.getPersonaje().getAnimD().setCurrentFrame(0);
         }
-        g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
-        //g.drawString("UNTIL THE LAST NOTE", 30, 30);
+        //g.drawString("Coordenadas :" + x + ", " + y, 30, 30);
+        g.drawString("UNTIL THE LAST NOTE", 30, 30);
         if (!ClaseEstatica.getPersonaje().getMusicH8().playing()) {
             ClaseEstatica.getPersonaje().getMusicH8().play();
         }
         mover = true;
-        g.drawString("Contador Intro :" + contadorIntro, 30, 50);
-        System.out.println("Contador Intro :" + contadorIntro);
+        
     }
 
     @Override
