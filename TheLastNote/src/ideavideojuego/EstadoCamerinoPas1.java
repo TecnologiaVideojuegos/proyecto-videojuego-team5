@@ -170,33 +170,21 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 texto = "Seguro que me dará más fuerzas para\nderrotar a mis adversarios.";
                 contadorIntro++;
                 dato = 0;
-            } /*else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
-                texto = "¿Eh? ¿Qué quién soy? No importa para nada quién,\nlo importante es que el DESTINO nos ha puesto aquí. ";
-                contadorIntro++;
-                dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
-                texto = "Así que venga, sin rechistar, metete en el camerino\ny ponte algo de ropa.";
-                contadorIntro++;
-                dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
-                texto = "En unos días empezamos la gira.";
-                contadorIntro++;
-                dato = 0;
-            } */ else if (contadorIntro == 3 && (dato > 2000)) {
+            }  else if (contadorIntro == 3 && (dato > 2000)) {
                 introduccion1 = false;
                 vez1 = false;
             }
 
         } else if (introduccion2 && vez2) {
             if (contadorIntro == 0) {
-                texto = "Dios mio!! Casi muero ahí dento. Ese\n Luis Fonsi y su reggeaton...";
+                texto = "Dios mio!! Casi muero ahí dento. Ese Luis Fonsi y su reggeaton...";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 texto = "¡¡¡No destruirán la MÚSICA!!!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
-                texto = "Ha sido una batalla muy dura y\nnecesito fuerzas";
+                texto = "Ha sido una batalla muy dura y necesito fuerzas";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
@@ -204,7 +192,7 @@ public class EstadoCamerinoPas1 extends BasicGameState {
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
-                texto = "...¡¡¡Contra aquellos que quieren\n retar mi RITMO!!!";
+                texto = "...¡¡¡Contra aquellos que quieren retar mi RITMO!!!";
                 contadorIntro++;
                 dato = 0;
             } /*else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
