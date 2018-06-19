@@ -179,18 +179,18 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
 
-                texto = "¡Heroe! Ha llegado el momento de tu tercera y ultima batalla. Tendras que derrotar al malvado presidente de Korea, Kim Jong Dos, el cual esta adoctrinando a la gente en la cultura del K-POP y amenazandoles con su armamento nuclear si se revelan contra el.";
+                texto = "¡Heroe! Ha llegado el momento de tu tercera y ultima batalla.\nTendrás que derrotar al malvado presidente de Korea, Kim Jong Dos,\nel cual esta adoctrinando a la gente en la cultura del K-POP y\namenazándoles con su armamento nuclear si se revelan contra el.";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Con cara de poker) Armamento nuclear… ¡¡MIC ESTO SE PUEDE AVISAR ANTES DE EMPEZAR LA AVENTURA!! +- (Muy enfadado) ¡¡¡¿TU CREES QUE SI EL ANTERIOR CASI ME DESTROZA, YO VOY A PODER ACABAR CON SU EJERCITO Y TODO SU ARMAMENTO +NUCLEAR?!!!";
+                texto = "(Con cara de poker) Armamento nuclear…\n¡¡MIC ESTO SE PUEDE AVISAR ANTES DE EMPEZAR LA AVENTURA!!\n- (Muy enfadado) ¡¡¡¿TU CREES QUE SI EL ANTERIOR CASI ME DESTROZA,\nYO VOY A PODER ACABAR CON SU EJERCITO Y TODO SU ARMAMENTO NUCLEAR?!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "Tu tranquilo JAJAJAJA, yo te apoyare desde la distancia - (Rompiendo la 4º pared) Amigos jugadores, el heroe que habeis escogido no es mas que una gallina con cuerpo de persona JAJAJAJA. Lo mas seguro es que os toque iniciar el juego desde el principio (guiño, guiño)";
+                texto = "Tu tranquilo JAJAJAJA, yo te apoyare desde la distancia\n- (Rompiendo la 4º pared) Amigos jugadores, el heroe que habeis escogido\nno es mas que una gallina con cuerpo de persona JAJAJAJA. Lo mas\nseguro es que os toque iniciar el juego desde el principio (guiño, guiño)";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
@@ -266,7 +266,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             } else {
                 if (contadorIntro == 0) {
                     dialpersonaje = false;
-                    texto = "(Con superioridad) Aquel que se hace llamar heroe de la musica, te estaba esperando.";
+                    texto = "(Con superioridad) Aquel que se hace llamar heroe de la musica,\nte estaba esperando.";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
@@ -275,22 +275,22 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "(En tono maligno) ¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR Al MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
+                    texto = "(En tono maligno) ¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR\nAl MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "(Pensando) Si el me trajo aqui, al derrotarle podre volver a casa… Espero que salga bien todo esto…- Señor supremo, o como te hagas llamar… ¿Como me trajiste hasta aqui? ";
+                    texto = "(Pensando) Si el me trajo aqui, al derrotarle podre volver a casa...\nEspero que salga bien todo esto…\n- Señor supremo, o como te hagas llamar… ¿Como me trajiste hasta aqui? ";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "(Muy confiado) Señor Supremo Kim Jong Dos para tu informacion… Si me derrotas te lo diré JAJAJAJA, aunque dudo que puedas ni tocarme";
+                    texto = "(Muy confiado) Señor Supremo Kim Jong Dos para tu informacion…\nSi me derrotas te lo diré JAJAJAJA, aunque dudo que puedas ni tocarme";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "(Bastante asustado y pensando) Pues vamos a ello. Glup…";
+                    texto = "(Bastante asustado y pensando) Pues vamos a ello.\nGlup…";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
