@@ -179,7 +179,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             if (contadorIntro == 0) {
                 dialpersonaje = false;
 
-                texto = "¡Heroe! Ha llegado el momento de tu tercera y ultima batalla.\nTendrás que derrotar al malvado presidente de Korea, Kim Jong Dos,\nel cual esta adoctrinando a la gente en la cultura del K-POP y\namenazándoles con su armamento nuclear si se revelan contra el.";
+                texto = "¡Heroe! Ha llegado el momento de tu tercera y ultima batalla.\nTendrás que derrotar al maravilloso presidente de Korea, Kim Jong Dos,\nel cual esta enseñando a la gente la cultura del K-POP\nAdemás tiene armamento Nuclear, que siempre funciona";
                 contadorIntro++;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
@@ -190,13 +190,13 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "¡Confía en el poder de la música! Así has podido acabar con los enemigos anteriores";
+                texto = "¡Claro que no puedes! JAJAJAJAJAJAJA";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(¿Acabar con la gente a base de Música? No puede ser bueno, no.)";
+                texto = "¿Mic?";
                 contadorIntro++;
                 dato = 0;
             } else if (contadorIntro == 4 && (dato > 2000)) {
