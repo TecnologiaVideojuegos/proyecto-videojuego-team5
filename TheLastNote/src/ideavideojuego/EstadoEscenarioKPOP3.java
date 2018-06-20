@@ -278,82 +278,132 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     texto = "Ejem, disculpa";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Aquel que se hace llamar heroe de la musica,\nte estaba esperando.";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR\nAl MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                     dialpersonaje = true;
                     texto = "El que me trajo aquí...";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
                     dialpersonaje = true;
                     texto = "¡ESPERA ERES-!";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "¡SI! ¡EFECTIVAMENTE! YO ERA MIC";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
                     dialpersonaje = true;
                     texto = "Pero...¿qué sentido tiene que me traigas aquí?";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 9) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "¿No está claro? PARA TENERTE COMO EXCLAVO, AL IGUAL QUE LUIS Y DONALD";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 10) && (dato > 1000)) {
                     dialpersonaje = true;
                     texto = "¿Exclavo? ¿Quieres decir que ellos...?";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 11) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Ellos vinieron a mi. Luis con su Reggaeton, Donald con su Trap. Estilos musicales sencillos";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 12) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Yo les di un sentido. Vender y reproducir está mala música da mucho dinero, ¿sabias?";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 13) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "¡Mi proposito es tener poder! Y el dinero es poder.";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 14) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Así que, decidí tener a alguien que pudiera generar más ingresos.";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 15) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Necesitaba un nuevo género músical. Algo que me ayudará a generar ingresos...";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 16) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Algo no...alguien...";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 17) && (dato > 1000)) {
                     dialpersonaje = false;
                     texto = "Y es ahí donde entras tú";
                     contadorIntro++;
                     dato = 0;
-                } else if (contadorIntro == 6 && (dato > 2000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 18) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "Maldito...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 19) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Personalmente me hubiera gustado traer la música de mi nación pero...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 20) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "DEFINITIVAMENTE ERES MEJOR QUE ESO";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 21) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "Si crees que me voy a doblegar...Estás equivocado...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 22) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "¡¡¡LUCHARÉ!!!";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 23) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "¡¡¡LUCHARÉ HASTA LA ÚLTIMA NOTA!!!";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 24) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "ADELANTE, HEROE";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 25) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "DEMUESTRAME LO BUENA QUE ES TU MUSICA";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 26) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "¡JAJAJAJAJAJAJAJAJA!";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 27) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\n";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (contadorIntro == 28 && (dato > 2000)) {
                     game.enterState(11, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 }
 
