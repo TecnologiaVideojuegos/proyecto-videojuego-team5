@@ -198,31 +198,31 @@ public class EstadoEscenarioReag1 extends BasicGameState {
                 texto = "..lo intentaré.";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
                 dialpersonaje = false;
 
                 texto = "Antes de nada, ¿ves esa poción de ahí?";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 6) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "Es una Poción de Vida, podrás usarla en el combate pulsando V. Aunque al usarla gastarás tu turno";
+                texto = "Es una Poción de Vida, podrás usarla en el combate pulsando V.\nAunque al usarla gastarás tu turno";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 7) && (dato > 1000)) {
                 dialpersonaje = true;
 
                 texto = "(Quizás me venga bien cogerla)";
                 contadorIntro++;
                 dato = 0;
-            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+            } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 8) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "Además de Pociones de Vida también te podrás encontrar pociones de Fuerza, que te otorgarán más fuerza durante el combate\nPara usar una Poción de Fuerza, pulsa la tecla F";
+                texto = "Además de Pociones de Vida también te podrás encontrar pociones de Fuerza, \nque te otorgarán más fuerza durante el combate\n\nPara usar una Poción de Fuerza, pulsa la tecla F";
                 contadorIntro++;
                 dato = 0;
-            } else if (contadorIntro == 5 && (dato > 1000)) {
+            } else if (contadorIntro == 9 && (dato > 1000)) {
                 dialpersonaje = false;
                 contadorIntro = 0;
                 introduccion = false;
