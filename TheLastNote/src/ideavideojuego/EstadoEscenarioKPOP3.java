@@ -320,7 +320,37 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "Ellos vinieron a mi. Luis con su Reggaeton, Donald con Trap";
+                    texto = "Ellos vinieron a mi. Luis con su Reggaeton, Donald con su Trap. Estilos musicales sencillos";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Yo les di un sentido. Vender y reproducir está mala música da mucho dinero, ¿sabias?";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "¡Mi proposito es tener poder! Y el dinero es poder.";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Así que, decidí tener a alguien que pudiera generar más ingresos.";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Necesitaba un nuevo género músical. Algo que me ayudará a generar ingresos...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Algo no...alguien...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Y es ahí donde entras tú";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
