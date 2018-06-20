@@ -1,4 +1,0 @@
-﻿-RPG POR TURNOS
--Se puede elegir entre varios protagonistas, basados en el mismo personaje, pero cada uno representa un estilo de música
--El mapa es un recorrido lineal en el que tendrá que ir superando a varios enemigos (tipos de música, por ejemplo: reggaeton, trap, etc) y tendrá un enemigo final (la música comercial), cuando haya superado a todos los enemigos inferiores
--El mapa es un conjunto de pasillos y a continuación un escenario (se reciclarán añadiendo unas pequeñas modificaciones) y por último un despacho/camerino (el del enemigo final)
