@@ -385,12 +385,12 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 24) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "ADELANTE, HEROE";
+                    texto = "¡¡¡ADELANTE, HEROE!!!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 25) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "DEMUESTRAME LO BUENA QUE ES TU MUSICA";
+                    texto = "¡¡¡DEMUESTRAME LO BUENA QUE ES TU MUSICA!!!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 26) && (dato > 1000)) {
@@ -400,7 +400,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 27) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\n";
+                    texto = "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\n";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 28 && (dato > 2000)) {
