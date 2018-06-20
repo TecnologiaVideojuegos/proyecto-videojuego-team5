@@ -184,19 +184,19 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Con cara de poker) Armamento nuclear…\n¡¡MIC ESTO SE PUEDE AVISAR ANTES DE EMPEZAR LA AVENTURA!!\n- (Muy enfadado) ¡¡¡¿TU CREES QUE SI EL ANTERIOR CASI ME DESTROZA,\nYO VOY A PODER ACABAR CON SU EJERCITO Y TODO SU ARMAMENTO NUCLEAR?!";
+                texto = "Armamento nuclear…\n¡¡MIC ESTO SE PUEDE AVISAR ANTES DE EMPEZAR LA AVENTURA!!\n¡¡¿TU CREES QUE SI EL ANTERIOR CASI ME DESTROZA,\nYO VOY A PODER ACABAR CON SU EJERCITO Y TODO SU ARMAMENTO NUCLEAR?!";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
 
-                texto = "Tu tranquilo JAJAJAJA, yo te apoyare desde la distancia\n- (Rompiendo la 4º pared) Amigos jugadores, el heroe que habeis escogido\nno es mas que una gallina con cuerpo de persona JAJAJAJA. Lo mas\nseguro es que os toque iniciar el juego desde el principio (guiño, guiño)";
+                texto = "¡Confía en el poder de la música! Así has podido acabar con los enemigos anteriores";
                 contadorIntro++;
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                 dialpersonaje = true;
 
-                texto = "(Demasiado Asustado y enfadado) En fin…";
+                texto = "(¿Acabar con la gente a base de Música? No puede ser bueno, no.)";
                 contadorIntro++;
                 dato = 0;
             } else if (contadorIntro == 4 && (dato > 2000)) {
@@ -266,31 +266,61 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
             } else {
                 if (contadorIntro == 0) {
                     dialpersonaje = false;
-                    texto = "(Con superioridad) Aquel que se hace llamar heroe de la musica,\nte estaba esperando.";
+                    texto = "Majimag Jukkaji.";
                     contadorIntro++;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 1) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "(Sorprendido) ¡¿Como sabes quien soy?!";
+                    texto = "¿Perdón?";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "(En tono maligno) ¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR\nAl MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
+                    texto = "Ejem, disculpa";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Aquel que se hace llamar heroe de la musica,\nte estaba esperando.";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "¡YO FUI EL QUE TE TRAJO AQUI PARA DEMOSTRAR\nAl MUNDO MI INMENSO PODER! ¡SOY EL DUEÑO Y SEÑOR SUPREMO DE TODO!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "(Pensando) Si el me trajo aqui, al derrotarle podre volver a casa...\nEspero que salga bien todo esto…\n- Señor supremo, o como te hagas llamar… ¿Como me trajiste hasta aqui? ";
+                    texto = "El que me trajo aquí...";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 3) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "¡ESPERA ERES-!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "(Muy confiado) Señor Supremo Kim Jong Dos para tu informacion…\nSi me derrotas te lo diré JAJAJAJA, aunque dudo que puedas ni tocarme";
+                    texto = "¡SI! ¡EFECTIVAMENTE! YO ERA MIC";
                     contadorIntro++;
                     dato = 0;
-                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 5) && (dato > 1000)) {
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
                     dialpersonaje = true;
-                    texto = "(Bastante asustado y pensando) Pues vamos a ello.\nGlup…";
+                    texto = "Pero...¿qué sentido tiene que me traigas aquí?";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "¿No está claro? PARA TENERTE COMO EXCLAVO, AL IGUAL QUE LUIS Y DONALD";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = true;
+                    texto = "¿Exclavo? ¿Quieres decir que ellos...?";
+                    contadorIntro++;
+                    dato = 0;
+                } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 4) && (dato > 1000)) {
+                    dialpersonaje = false;
+                    texto = "Ellos vinieron a mi. Luis con su Reggaeton, Donald con Trap";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 6 && (dato > 2000)) {
