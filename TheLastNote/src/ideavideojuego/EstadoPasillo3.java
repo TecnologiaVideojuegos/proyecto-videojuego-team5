@@ -158,6 +158,7 @@ public class EstadoPasillo3 extends BasicGameState {
                 dato = 0;
             } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 2) && (dato > 1000)) {
                 dialpersonaje = false;
+                dialtrap = false;
                 texto = "¡BIEN LUCHADO HEROE, HAS SUPERADO LA SEGUNDA PRUEBA!\n¡Estas a punto de salvar a la musica!\n¿Preparado para la siguiente prueba?";
                 contadorIntro++;
                 dato = 0;
