@@ -2,23 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo1.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioTrap2.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoInfo.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoMenu.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoBatallaTrap.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Principal.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoCamerinoPas1.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Punto.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo2.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioKPOP3.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoEscenarioReag1.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/Personaje.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoCamerino.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/ClaseEstatica.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoSeleccion.java</file>
-            <file>file:/C:/GitV/proyecto-videojuego-team5/TheLastNote/src/ideavideojuego/EstadoPasillo3.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
