@@ -365,7 +365,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 20) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "DEFINITIVAMENTE ERES MEJOR QUE ESO";
+                    texto = "DEFINITIVAMENTE ERES MEJOR QUE ESO ¡ACABASTES CON ELLOS COMO SI NADA!\n¡ERES EL MEJOR GENERO QUE HE CONOCIDO!";
                     contadorIntro++;
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 21) && (dato > 1000)) {
@@ -400,7 +400,7 @@ public class EstadoEscenarioKPOP3 extends BasicGameState {
                     dato = 0;
                 } else if (container.getInput().isKeyDown(Input.KEY_ENTER) && (contadorIntro == 27) && (dato > 1000)) {
                     dialpersonaje = false;
-                    texto = "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\n";
+                    texto = "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\nJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\nJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\nJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA\n";
                     contadorIntro++;
                     dato = 0;
                 } else if (contadorIntro == 28 && (dato > 2000)) {
